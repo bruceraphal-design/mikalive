@@ -3,86 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://accounts.google.com https://*.googleapis.com; script-src 'self' 'unsafe-inline' https://accounts.google.com https://*.gstatic.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://*.googleapis.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://accounts.google.com https://*.googleapis.com; script-src 'self' 'unsafe-inline' https://accounts.google.com https://*.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.googleapis.com;">
     <title>MikaLIVE - Ferramentas para Criadores</title>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-        body { background: #0a0a0f; color: #fff; min-height: 100vh }
-        .container { max-width: 480px; margin: 0 auto; padding: 20px }
-        .logo { font-size: 32px; font-weight: 900; text-align: center; margin: 20px 0 5px }
-        .logo span { color: #a855f7 }
-        .subtitle { text-align: center; color: #aaa; font-size: 14px; margin-bottom: 25px }
-        .card { background: #1a1a24; border: 1px solid #2a2a35; border-radius: 16px; padding: 20px; margin-bottom: 15px }
-        .card h3 { font-size: 16px; margin-bottom: 8px }
-        .card p { font-size: 13px; color: #aaa; line-height: 1.5 }
-        .btn { width: 100%; padding: 14px; border: none; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 10px }
-        .btn-google { background: #fff; color: #111 }
-        .btn-guest { background: #a855f7; color: #fff }
-        .btn-shop { background: #ff3b5c; color: #fff }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+        body { background: #08080c; color: #fff; min-height: 100vh; background-image: radial-gradient(600px 300px at 50% -50px, rgba(168,85,247,.35), transparent 70%), radial-gradient(400px 300px at 90% 10%, rgba(255,59,92,.15), transparent 70%); }
+        .container { max-width: 480px; margin: 0 auto; padding: 20px 18px 40px }
+        .logo { font-size: 38px; font-weight: 900; text-align: center; margin: 18px 0 4px; letter-spacing: -1px }
+        .logo span { background: linear-gradient(90deg,#a855f7,#ff3b5c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { text-align: center; color: #9ca3af; font-size: 13.5px; margin-bottom: 24px; line-height: 1.5 }
+        .card { background: rgba(255,255,255,.04); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; padding: 20px; margin-bottom: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.3) }
+        .card h3 { font-size: 16px; margin-bottom: 8px; font-weight: 700 }
+        .card p { font-size: 13px; color: #9ca3af; line-height: 1.6 }
+        .btn { width: 100%; padding: 15px; border: none; border-radius: 14px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 10px; transition: .2s; display: flex; align-items: center; justify-content: center; gap: 8px }
+        .btn:active { transform: scale(.97) }
+        .btn-google { background: #fff; color: #111; box-shadow: 0 4px 20px rgba(255,255,255,.15) }
+        .btn-guest { background: linear-gradient(90deg,#a855f7,#7c3aed); color: #fff; box-shadow: 0 8px 25px rgba(168,85,247,.35) }
+        .btn-shop { background: linear-gradient(90deg,#ff3b5c,#ff6b35); color: #fff }
         .btn-insta { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff }
         .btn-yt { background: #ff0000; color: #fff }
-        .btn-dark { background: #2a2a35; color: #fff }
-        .btn-outline { background: transparent; border: 1px solid #333; color: #ccc }
-        .btn-small { width: auto; padding: 8px 12px; font-size: 12px; margin: 5px 5px 0 0 }
+        .btn-dark { background: #26262f; color: #fff; border: 1px solid #333 }
+        .btn-outline { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); color: #d1d5db }
+        .btn-small { width: auto; padding: 9px 14px; font-size: 12px; margin: 6px 6px 0 0 }
         .btn-danger { background: #dc2626; color: #fff }
-        input, textarea, select { width: 100%; padding: 12px; background: #0f0f16; border: 1px solid #333; border-radius: 10px; color: #fff; font-size: 14px; margin-top: 10px; outline: none }
-        input:focus, textarea:focus { border-color: #a855f7 }
-        .profile { display: flex; align-items: center; gap: 12px; background: #1a1a24; padding: 14px; border-radius: 16px; margin-bottom: 15px; border: 1px solid #2a2a35 }
-        .profile img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; background: #333 }
-        .profile b { font-size: 15px }
-        .profile small { color: #aaa; font-size: 12px }
-        .badge { background: #a855f7; color: #fff; font-size: 11px; padding: 3px 8px; border-radius: 20px }
+        .btn-google-logout { background: #fff; color: #111; border: 1px solid #ddd }
+        input, textarea, select { width: 100%; padding: 13px 14px; background: #121218; border: 1px solid #26262f; border-radius: 12px; color: #fff; font-size: 14px; margin-top: 10px; outline: none; transition: .2s }
+        input:focus, textarea:focus { border-color: #a855f7; box-shadow: 0 0 0 3px rgba(168,85,247,.2) }
+        .profile { display: flex; align-items: center; gap: 13px; background: linear-gradient(135deg, rgba(168,85,247,.15), rgba(255,59,92,.08)); padding: 16px; border-radius: 20px; margin-bottom: 14px; border: 1px solid rgba(168,85,247,.25) }
+        .profile img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; background: #333; border: 2px solid #a855f7; }
+        .profile b { font-size: 16px }
+        .profile small { color: #cbd5e1; font-size: 12px }
+        .badge { background: linear-gradient(90deg,#a855f7,#ff3b5c); color: #fff; font-size: 10px; font-weight: 800; padding: 5px 10px; border-radius: 20px; letter-spacing: .5px }
         .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px }
-        .stat { background: #0f0f16; border: 1px solid #2a2a35; border-radius: 12px; padding: 14px; text-align: center }
-        .stat b { font-size: 20px; display: block; color: #a855f7 }
-        .stat span { font-size: 11px; color: #aaa }
+        .stat { background: #121218; border: 1px solid #26262f; border-radius: 16px; padding: 16px; text-align: center }
+        .stat b { font-size: 21px; display: block; color: #a855f7; font-weight: 800 }
+        .stat span { font-size: 11px; color: #9ca3af }
         .stat.real b { color: #22c55e }
         .stat.sim b { color: #f59e0b }
-        .tool-btn { display: flex; align-items: center; gap: 12px; background: #1a1a24; border: 1px solid #2a2a35; border-radius: 16px; padding: 16px; margin-bottom: 12px; cursor: pointer; text-align: left; width: 100%; color: #fff }
-        .tool-btn:active { transform: scale(.98) }
-        .tool-icon { font-size: 28px; width: 48px; height: 48px; background: #2a2a35; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+        .tool-btn { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; padding: 16px; margin-bottom: 12px; cursor: pointer; text-align: left; width: 100%; color: #fff; transition: .2s }
+        .tool-btn:active { transform: scale(.98); background: rgba(168,85,247,.12) }
+        .tool-icon { font-size: 26px; width: 52px; height: 52px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: linear-gradient(135deg,#2a2a35,#1a1a24); border: 1px solid #333 }
         .tool-btn div { flex: 1 }
-        .tool-btn b { font-size: 15px; display: block }
-        .tool-btn small { color: #aaa; font-size: 12px }
+        .tool-btn b { font-size: 15px; display: block; font-weight: 700 }
+        .tool-btn small { color: #9ca3af; font-size: 12px; line-height: 1.4; display: block; margin-top: 2px }
         .hidden { display: none !important }
-        .video-preview { background: #000; border-radius: 12px; margin: 12px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center; border: 1px solid #333; min-height: 220px }
+        .video-preview { background: #000; border-radius: 16px; margin: 12px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 22px; text-align: center; border: 1px solid #333; min-height: 220px }
         .video-preview h2 { font-size: 22px; line-height: 1.2 }
         .video-preview p { color: #ccc; font-size: 13px; margin-top: 8px }
-        .tag { display: inline-block; background: #2a2a35; padding: 4px 10px; border-radius: 20px; font-size: 11px; margin: 3px }
-        .back { color: #a855f7; font-size: 13px; cursor: pointer; margin-bottom: 10px; display: inline-block }
-        .warn { background: #f59e0b22; border: 1px solid #f59e0b; color: #fde68a; padding: 12px; border-radius: 10px; font-size: 12px; margin-top: 10px; line-height: 1.5 }
-        .success { background: #16a34a22; border: 1px solid #16a34a; color: #86efac; padding: 12px; border-radius: 10px; font-size: 13px; margin-top: 10px }
-        .info { background: #3b82f622; border: 1px solid #3b82f6; color: #bfdbfe; padding: 12px; border-radius: 10px; font-size: 12px; margin-top: 10px; line-height: 1.5 }
-        .list-item { background: #0f0f16; border: 1px solid #2a2a35; padding: 12px; border-radius: 12px; margin-top: 10px }
+        .tag { display: inline-block; background: #26262f; padding: 5px 11px; border-radius: 20px; font-size: 11px; margin: 3px }
+        .back { color: #c084fc; font-size: 13px; font-weight: 600; cursor: pointer; margin-bottom: 12px; display: inline-block }
+        .warn { background: rgba(245,158,11,.12); border: 1px solid #f59e0b; color: #fde68a; padding: 12px; border-radius: 12px; font-size: 12px; margin-top: 10px; line-height: 1.5 }
+        .success { background: rgba(22,163,74,.12); border: 1px solid #16a34a; color: #86efac; padding: 12px; border-radius: 12px; font-size: 13px; margin-top: 10px }
+        .info { background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.3); color: #bfdbfe; padding: 13px; border-radius: 14px; font-size: 12px; margin-top: 10px; line-height: 1.5 }
+        .list-item { background: #121218; border: 1px solid #26262f; padding: 14px; border-radius: 16px; margin-top: 10px }
         .list-item b { font-size: 13px }
-        .list-item small { color: #aaa; font-size: 11px; display: block; margin-top: 3px }
-        .chip { display: inline-block; font-size: 11px; padding: 3px 8px; border-radius: 20px; margin-top: 6px }
+        .list-item small { color: #9ca3af; font-size: 11px; display: block; margin-top: 3px }
+        .chip { display: inline-block; font-size: 11px; padding: 4px 9px; border-radius: 20px; margin-top: 6px; font-weight: 700 }
         .chip-real { background: #16a34a; color: #fff }
         .chip-sim { background: #f59e0b; color: #000 }
         .chip-roteiro { background: #a855f7; color: #fff }
         .modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,.85); z-index: 99; display: flex; align-items: flex-end; justify-content: center }
-        .modal-box { background: #1a1a24; width: 100%; max-width: 480px; max-height: 85vh; overflow: auto; border-radius: 20px 20px 0 0; padding: 20px }
+        .modal-box { background: #15151d; width: 100%; max-width: 480px; max-height: 85vh; overflow: auto; border-radius: 24px 24px 0 0; padding: 22px }
         .sync-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; margin-right: 5px }
         .sync-dot.ok { background: #22c55e }
+        .section-title { font-size: 12px; font-weight: 800; letter-spacing: 1px; color: #9ca3af; margin: 18px 0 10px; text-transform: uppercase }
+        .hero-badge { display: inline-block; background: rgba(168,85,247,.15); border: 1px solid rgba(168,85,247,.3); color: #d8b4fe; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 20px; margin-bottom: 12px }
     </style>
 </head>
 <body>
     <div class="container">
         <div id="tela-login">
+            <div style="text-align:center"><span class="hero-badge">✦ PARA CRIADORES QUE VENDEM</span></div>
             <div class="logo">Mika<span>LIVE</span></div>
-            <p class="subtitle">Ferramentas para vender mais na Shop, Insta e YouTube</p>
+            <p class="subtitle">Transforme link da Shop em vídeo que vende.<br>Legenda, roteiro e comissão em um só lugar.</p>
             <div class="card">
                 <h3>👋 Bem-vindo ao MikaLIVE</h3>
                 <p>Transforme link da Shop em roteiro de vídeo, poste no Insta e acompanhe suas comissões.</p>
                 <button class="btn btn-google" onclick="loginGoogle()">G Continuar com Google</button>
                 <div id="google-btn-area" style="margin-top:10px;display:flex;justify-content:center"></div>
-                <button class="btn btn-guest" onclick="entrarVisitante()">Entrar como visitante</button>
+                <button class="btn btn-guest" onclick="entrarVisitante()">Entrar como visitante →</button>
                 <p style="font-size:11px;text-align:center;margin-top:12px;color:#666">Sessão salva - quando recarregar, você continua logado.</p>
             </div>
             <div class="card">
-                <h3>🛠️ v9 - O que foi corrigido?</h3>
-                <p>✅ Login restaura sozinho ao recarregar<br>✅ Sincronização preparada + backup Exportar/Importar<br>✅ Comissão real só aceita dados validados da API<br>✅ Sem produto duplicado<br>✅ Roteiros com Ver Completo + Excluir um por um<br>✅ Proteção contra código malicioso nos campos</p>
+                <h3>🛠️ O que tem aqui?</h3>
+                <p>✅ Roteiro da Shop em 30s<br>✅ Roteiro do Insta viral + legenda + hashtags<br>✅ Comissão real separada da simulada<br>✅ Sem produto duplicado<br>✅ Meus roteiros salvos</p>
             </div>
         </div>
         <div id="tela-painel" class="hidden">
@@ -91,13 +97,16 @@
                 <div style="flex:1"><b id="nome-perfil">Visitante</b><br><small id="email-perfil">Modo visitante</small></div>
                 <span class="badge">CRIADOR</span>
             </div>
-            <div class="logo" style="font-size:22px;margin:5px 0 10px">Mika<span>LIVE</span> Painel</div>
+            <div class="logo" style="font-size:24px;margin:5px 0 6px">Mika<span>LIVE</span></div>
+            <p style="text-align:center;color:#9ca3af;font-size:13px;margin-bottom:14px">O que você quer criar hoje?</p>
             <div class="info"><span class="sync-dot" id="sync-dot"></span><span id="sync-texto">Sincronização local - backup manual ativo</span><br><small>Para sincronizar entre celular e PC, conecte o Firebase/Supabase na próxima fase.</small></div>
-            <button class="tool-btn" onclick="abrirTela('tela-shop')"><div class="tool-icon">🛍️</div><div><b>Criar Vídeo da Shop</b><small>Link do produto → roteiro pra vender</small></div><span>›</span></button>
-            <button class="tool-btn" onclick="abrirTela('tela-insta')"><div class="tool-icon">📸</div><div><b>Criar Vídeo do Insta</b><small>Roteiro viral + legenda + hashtags</small></div><span>›</span></button>
-            <button class="tool-btn" onclick="abrirTela('tela-comissao')"><div class="tool-icon">💰</div><div><b>Minhas Comissões</b><small>Reais separadas de simuladas</small></div><span>›</span></button>
-            <button class="tool-btn" onclick="abrirTela('tela-youtube')"><div class="tool-icon">▶️</div><div><b>Meu YouTube</b><small>Preparado pra dados reais</small></div><span>›</span></button>
-            <button class="tool-btn" onclick="abrirTela('tela-meus-videos')"><div class="tool-icon">🎬</div><div><b>Meus Roteiros Salvos</b><small>Ver completo + excluir um por um</small></div><span>›</span></button>
+            <div class="section-title">Criar conteúdo</div>
+            <button class="tool-btn" onclick="abrirTela('tela-shop')"><div class="tool-icon">🛍️</div><div><b>Criar Vídeo da Shop</b><small>Link do produto → roteiro pra vender</small></div><span style="color:#666">›</span></button>
+            <button class="tool-btn" onclick="abrirTela('tela-insta')"><div class="tool-icon">📸</div><div><b>Criar Vídeo do Insta</b><small>Roteiro viral + legenda + hashtags</small></div><span style="color:#666">›</span></button>
+            <div class="section-title">Ganhar dinheiro</div>
+            <button class="tool-btn" onclick="abrirTela('tela-comissao')"><div class="tool-icon">💰</div><div><b>Minhas Comissões</b><small>Reais separadas de simuladas</small></div><span style="color:#666">›</span></button>
+            <button class="tool-btn" onclick="abrirTela('tela-youtube')"><div class="tool-icon">▶️</div><div><b>Meu YouTube</b><small>Preparado pra dados reais</small></div><span style="color:#666">›</span></button>
+            <button class="tool-btn" onclick="abrirTela('tela-meus-videos')"><div class="tool-icon">🎬</div><div><b>Meus Roteiros Salvos</b><small>Ver completo + excluir um por um</small></div><span style="color:#666">›</span></button>
             <div class="card">
                 <h3>📊 Resumo</h3>
                 <div class="stat-grid">
@@ -107,10 +116,13 @@
                     <div class="stat"><b id="stat-produtos">0</b><span>Produtos salvos</span></div>
                 </div>
             </div>
-            <button class="btn btn-outline" onclick="sair()">Sair da conta</button>
+            <div class="section-title">Conta</div>
+            <button class="btn btn-google-logout" onclick="sairDoGoogle()">G Sair da conta do Google</button>
+            <button class="btn btn-outline" onclick="sair()">Sair do app (manter Google)</button>
             <button class="btn btn-outline" onclick="exportarDados()">📥 Exportar meus dados (backup)</button>
-            <label class="btn btn-outline" style="display:block;text-align:center;cursor:pointer">📤 Importar backup<input type="file" accept=".json" onchange="importarDados(event)" style="display:none"></label>
+            <label class="btn btn-outline" style="display:flex;align-items:center;justify-content:center;cursor:pointer">📤 Importar backup<input type="file" accept=".json" onchange="importarDados(event)" style="display:none"></label>
             <button class="btn btn-outline" onclick="tentarSyncCloud()">☁️ Tentar sincronizar na nuvem</button>
+            <p style="font-size:11px;color:#666;text-align:center;margin-top:12px;line-height:1.5">Sair do Google desconecta sua conta do Google neste navegador.<br>Sair do app só volta pra tela de login.</p>
         </div>
         <div id="tela-shop" class="hidden">
             <span class="back" onclick="voltarPainel()">← Voltar pro Painel</span>
@@ -189,6 +201,7 @@
         let DB = loadDB();
         let videoAtual = null;
         let videoAbertoId = null;
+        let googleEmailAtual = "";
         function escapeHtml(s) { return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"); }
         function sanitizar(texto, max) {
             if (typeof texto !== "string") return "";
@@ -220,9 +233,9 @@
         function voltarPainel() { mostrarTela("tela-painel"); }
         function salvarSessao() { try { if (DB.usuario) { localStorage.setItem(SESSION_KEY, JSON.stringify({ usuario: DB.usuario, salvaEm: new Date().toISOString() })); } } catch(e){} }
         function restaurarSessao() {
-            try { const raw = localStorage.getItem(SESSION_KEY); if (!raw) return false; const sess = JSON.parse(raw); if (!sess || !sess.usuario || !sess.usuario.nome) return false; const dias = (Date.now() - new Date(sess.salvaEm).getTime()) / (1000*60*60*24); if (dias > 30) { localStorage.removeItem(SESSION_KEY); return false; } DB.usuario = sess.usuario; saveDB(); document.getElementById("nome-perfil").innerText = sess.usuario.nome; document.getElementById("email-perfil").innerText = sess.usuario.email || ""; if (sess.usuario.foto) document.getElementById("foto-perfil").src = sess.usuario.foto; atualizarResumo(); mostrarTela("tela-painel"); return true; } catch(e){ return false; }
+            try { const raw = localStorage.getItem(SESSION_KEY); if (!raw) return false; const sess = JSON.parse(raw); if (!sess || !sess.usuario || !sess.usuario.nome) return false; const dias = (Date.now() - new Date(sess.salvaEm).getTime()) / (1000*60*60*24); if (dias > 30) { localStorage.removeItem(SESSION_KEY); return false; } DB.usuario = sess.usuario; if (sess.usuario.email) googleEmailAtual = sess.usuario.email; saveDB(); document.getElementById("nome-perfil").innerText = sess.usuario.nome; document.getElementById("email-perfil").innerText = sess.usuario.email || ""; if (sess.usuario.foto) document.getElementById("foto-perfil").src = sess.usuario.foto; atualizarResumo(); mostrarTela("tela-painel"); return true; } catch(e){ return false; }
         }
-        function entrarPainel(nome, email, foto) { const nomeLimpo = sanitizar(nome,100) || "Usuário"; const emailLimpo = sanitizar(email,150) || ""; DB.usuario = { nome: nomeLimpo, email: emailLimpo, foto: foto || "", logadoEm: new Date().toISOString() }; saveDB(); salvarSessao(); document.getElementById("nome-perfil").innerText = nomeLimpo; document.getElementById("email-perfil").innerText = emailLimpo; if (foto) document.getElementById("foto-perfil").src = foto; atualizarResumo(); mostrarTela("tela-painel"); }
+        function entrarPainel(nome, email, foto) { const nomeLimpo = sanitizar(nome,100) || "Usuário"; const emailLimpo = sanitizar(email,150) || ""; googleEmailAtual = emailLimpo; DB.usuario = { nome: nomeLimpo, email: emailLimpo, foto: foto || "", logadoEm: new Date().toISOString() }; saveDB(); salvarSessao(); document.getElementById("nome-perfil").innerText = nomeLimpo; document.getElementById("email-perfil").innerText = emailLimpo; if (foto) document.getElementById("foto-perfil").src = foto; atualizarResumo(); mostrarTela("tela-painel"); }
         function handleGoogleCredential(res) {
             try {
                 const payload = JSON.parse(atob(res.credential.split(".")[1]));
@@ -233,17 +246,9 @@
         }
         function loginGoogle() {
             if (typeof google === "undefined" || !google.accounts) { alert("Google ainda carregando, espera 2s e tenta de novo."); return; }
-            google.accounts.id.initialize({
-                client_id: CLIENT_ID,
-                callback: handleGoogleCredential,
-                auto_select: false,
-                cancel_on_tap_outside: false
-            });
-            const old = document.getElementById("google-btn-temp");
-            if (old) old.remove();
-            const div = document.createElement("div");
-            div.id = "google-btn-temp";
-            div.style.cssText = "position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center";
+            google.accounts.id.initialize({ client_id: CLIENT_ID, callback: handleGoogleCredential, auto_select: false, cancel_on_tap_outside: false });
+            const old = document.getElementById("google-btn-temp"); if (old) old.remove();
+            const div = document.createElement("div"); div.id = "google-btn-temp"; div.style.cssText = "position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center";
             div.innerHTML = '<div style="background:#fff;padding:24px;border-radius:16px;text-align:center;max-width:320px;width:90%"><p style="color:#111;font-weight:700;margin-bottom:12px">Escolha sua conta Google</p><div id="btn-google-real" style="display:flex;justify-content:center"></div><p style="color:#666;font-size:12px;margin-top:14px;cursor:pointer" onclick="document.getElementById(\'google-btn-temp\').remove()">Fechar</p></div>';
             document.body.appendChild(div);
             google.accounts.id.renderButton(document.getElementById("btn-google-real"), { theme: "outline", size: "large", width: 280 });
@@ -253,13 +258,28 @@
             if (typeof google === "undefined" || !google.accounts) return;
             google.accounts.id.initialize({ client_id: CLIENT_ID, callback: handleGoogleCredential });
             const area = document.getElementById("google-btn-area");
-            if (area && !area.innerHTML) {
-                google.accounts.id.renderButton(area, { theme: "outline", size: "large", width: 280, text: "signin_with" });
-            }
+            if (area && !area.innerHTML) { google.accounts.id.renderButton(area, { theme: "outline", size: "large", width: 280, text: "signin_with" }); }
         }
         window.addEventListener("load", function(){ setTimeout(initGoogleBtn, 500); });
         function entrarVisitante() { entrarPainel("Visitante", "Modo visitante - sem conta", ""); }
-        function sair() { DB.usuario = null; saveDB(); try { localStorage.removeItem(SESSION_KEY); } catch(e){} mostrarTela("tela-login"); }
+        function sair() { DB.usuario = null; googleEmailAtual = ""; saveDB(); try { localStorage.removeItem(SESSION_KEY); } catch(e){} mostrarTela("tela-login"); }
+        function sairDoGoogle() {
+            if (!confirm("Sair da conta do Google?\n\nVocê vai precisar escolher a conta de novo na próxima vez.")) return;
+            try {
+                if (typeof google !== "undefined" && google.accounts && google.accounts.id) {
+                    google.accounts.id.disableAutoSelect();
+                    if (googleEmailAtual) {
+                        google.accounts.id.revoke(googleEmailAtual, function(){});
+                    }
+                }
+            } catch(e){}
+            DB.usuario = null; googleEmailAtual = ""; saveDB();
+            try { localStorage.removeItem(SESSION_KEY); } catch(e){}
+            try { localStorage.removeItem("mikalive_google_email"); } catch(e){}
+            alert("Você saiu da conta do Google! ✅\n\nNa próxima vez vai precisar escolher a conta de novo.");
+            mostrarTela("tela-login");
+            setTimeout(initGoogleBtn, 300);
+        }
         function formatarBRL(v) { return "R$ " + Number(v || 0).toFixed(2).replace(".", ","); }
         function atualizarResumo() { document.getElementById("stat-videos").innerText = DB.videos.length; document.getElementById("stat-comissao-real").innerText = formatarBRL(DB.comissoes.reais.total); document.getElementById("stat-comissao-sim").innerText = formatarBRL(DB.comissoes.simuladas.total); document.getElementById("stat-produtos").innerText = DB.produtos.length; const st = document.getElementById("status-conexao"); if (st) st.innerText = "Shop: " + DB.conexoes.shop.status + " | Instagram: " + DB.conexoes.instagram.status; atualizarSyncUI(); }
         function atualizarComissoesTela() { document.getElementById("comissao-real-total").innerText = formatarBRL(DB.comissoes.reais.total); document.getElementById("comissao-real-vendas").innerText = DB.comissoes.reais.vendas; document.getElementById("comissao-sim-total").innerText = formatarBRL(DB.comissoes.simuladas.total); document.getElementById("comissao-sim-vendas").innerText = DB.comissoes.simuladas.vendas; }
