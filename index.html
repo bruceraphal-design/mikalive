@@ -150,11 +150,6 @@ input:focus,textarea:focus{border-color:#8b5cf6;box-shadow:0 0 0 4px rgba(139,92
 <div id="modal-video" class="modal hidden" onclick="if(event.target.id==='modal-video') fecharModal()"><div class="modal-box"><span class="back" onclick="fecharModal()">← Fechar</span><h2 id="modal-titulo" style="font-size:20px;margin:10px 0"></h2><p id="modal-meta" style="color:#aaa;font-size:12px"></p><div class="card" style="margin-top:12px"><h3>🎬 Roteiro Completo</h3><p id="modal-roteiro" style="white-space:pre-line;color:#ddd"></p></div><div class="card"><h3>✍️ Legenda</h3><p id="modal-legenda" style="white-space:pre-line;color:#ddd"></p></div><div class="card"><h3>#️⃣ Hashtags</h3><p id="modal-hashtags" style="white-space:pre-line;color:#ddd"></p></div><button class="btn btn-dark" onclick="copiarModal()">📋 Copiar tudo</button><button class="btn btn-danger" id="modal-excluir" onclick="excluirVideoModal()">🗑️ Excluir este roteiro</button></div></div>
 <script>
 // ===== MikaLIVE v10 - REVISÃO TÉCNICA =====
-// REGRAS DE SEGURANÇA:
-// 1. NUNCA colocar Secret / API Key de Shopee / Meta / YouTube / IA neste HTML
-// 2. Chaves ficam em variáveis de ambiente no servidor (Vercel / Supabase)
-// 3. Webhook real valida assinatura HMAC no servidor, não no navegador
-// 4. Este arquivo só simula o webhook em modo teste
 const CLIENT_ID = "794794476883-gosgvl6c2849hatm2298neuffgfvo86s.apps.googleusercontent.com";
 const DB_KEY = "mikalive_db_v10";
 const SESSION_KEY = "mikalive_session_v10";
@@ -165,7 +160,6 @@ let DB = loadDB();
 let videoAtual = null;
 let videoAbertoId = null;
 let googleEmailAtual = "";
-// --- LOG DE SEGURANÇA / ERROS ---
 function registrarLog(tipo, mensagem, detalhe) {
   try {
     let logs = JSON.parse(localStorage.getItem(LOG_KEY) || "[]");
@@ -197,7 +191,6 @@ function verLogSeguranca() {
 }
 window.addEventListener("error", function(e){ registrarLog("erro", "Erro JS", e.message || ""); });
 window.addEventListener("unhandledrejection", function(e){ registrarLog("erro", "Promise rejeitada", String(e.reason||"").slice(0,200)); });
-// --- HELPERS SEGUROS ---
 function escapeHtml(s) { return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"); }
 function sanitizar(texto, max) { if (typeof texto !== "string") return ""; let t = texto.trim(); t = t.replace(/<script[\s\S]*?<\/script>/gi, "").replace(/<iframe[\s\S]*?<\/iframe>/gi, "").replace(/javascript:/gi, "").replace(/on\w+\s*=/gi, "").replace(/data:/gi, ""); if (max && t.length > max) t = t.substring(0, max); return t; }
 function validarLink(link) { if (!link) return false; try { const u = new URL(link); return u.protocol === "http:" || u.protocol === "https:"; } catch (e) { return false; } }
@@ -232,7 +225,6 @@ function loadDB() {
   try {
     const raw = localStorage.getItem(DB_KEY);
     if (!raw) {
-      // Migração v9 -> v10 sem perder dados
       const old = localStorage.getItem("mikalive_db_v9") || localStorage.getItem("mikalive_db_v8");
       if (old) { const p = JSON.parse(old); const base = getDBPadrao(); return { ...base, ...p, versao: "10" }; }
       return getDBPadrao();
@@ -256,14 +248,12 @@ function importarDados(event) {
       const imported = JSON.parse(reader.result);
       const v = validarBackup(imported);
       if (!v.ok) { registrarLog("erro","Backup rejeitado", v.erro); alert("❌ Backup rejeitado por segurança: " + v.erro + "\nSeus dados atuais foram preservados."); return; }
-      // BACKUP AUTOMÁTICO ANTES DE MEXER
       fazerBackupAutomatico("antes_importar");
       const linksExistentes = new Set(DB.produtos.map(function(p){ return p.linkNormalizado || normalizarLink(p.link); }));
       imported.produtos.forEach(function(p){ const norm = normalizarLink(p.link || ""); if (!linksExistentes.has(norm) && validarLink(p.link||"")) { DB.produtos.push(p); linksExistentes.add(norm); } });
       const idsExistentes = new Set(DB.videos.map(function(v){ return v.id; }));
       imported.videos.forEach(function(v){ if (!idsExistentes.has(v.id)) DB.videos.push(v); });
       if (imported.comissoes && imported.comissoes.reais && imported.comissoes.reais.total > DB.comissoes.reais.total) {
-        // Só aceita se a lista bater com o total - evita fraude
         const soma = (imported.comissoes.reais.lista||[]).reduce((s,c)=>s+Number(c.comissao||0),0);
         if (Math.abs(soma - imported.comissoes.reais.total) < 0.02) DB.comissoes.reais = imported.comissoes.reais;
         else registrarLog("erro","Backup com comissão inconsistente - ignorado","soma="+soma);
@@ -334,16 +324,9 @@ function excluirVideo(id) { if (!confirm("Excluir este roteiro?")) return; fazer
 function excluirVideoModal() { if (videoAbertoId) excluirVideo(videoAbertoId); }
 function limparVideos() { if (confirm("Apagar todos os roteiros? Isso cria backup automático antes.")) { fazerBackupAutomatico("antes_limpar_videos"); DB.videos = []; saveDB(); atualizarResumo(); renderListaVideos(); } }
 function copiarTexto(id) { const el = document.getElementById(id); if (!el) return; copiarTextoDireto(el.innerText); }
-// ===== WEBHOOK / COMISSÃO REAL - COM VALIDAÇÃO =====
-// Em produção: esta função roda NO SERVIDOR, não no navegador.
-// O servidor verifica: assinatura HMAC com o Secret da Shopee + timestamp + orderId único
 function verificarAssinaturaWebhook(payload, assinatura, timestamp) {
-  // MODO TESTE: se assinatura vazia, aceita como teste e registra no log
-  // MODO PRODUÇÃO: aqui o servidor calcula HMAC-SHA256(payload + timestamp, SECRET) e compara
   if (!assinatura) { registrarLog("webhook_teste","Webhook em modo TESTE - sem assinatura","order="+(payload.orderId||"")); return { modo:"teste", ok:true }; }
-  // Placeholder: em produção trocar por verificação real no servidor
   if (String(assinatura).length < 10) { return { modo:"producao", ok:false, erro:"Assinatura inválida - muito curta" }; }
-  // Se timestamp for muito antigo (>5min) rejeita - anti replay
   if (timestamp) { const diff = Math.abs(Date.now() - Number(timestamp)); if (diff > 5*60*1000) return { modo:"producao", ok:false, erro:"Webhook expirado - replay detectado" }; }
   return { modo:"producao", ok:true };
 }
@@ -363,7 +346,6 @@ function validarPayloadComissao(payload) {
   return { ok: true, dados: { orderId: orderId, valorVenda: valorVenda, taxa: taxa, origem: origem } };
 }
 function receberWebhookComissao(payload, assinatura, timestamp) {
-  // Função central - será chamada pelo servidor em produção
   const ver = verificarAssinaturaWebhook(payload, assinatura, timestamp);
   if (!ver.ok) { registrarLog("webhook_rejeitado","Webhook rejeitado - assinatura", ver.erro); return { ok:false, erro: ver.erro }; }
   const v = validarPayloadComissao(payload);
