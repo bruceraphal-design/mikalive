@@ -76,6 +76,7 @@
                 <h3>👋 Bem-vindo ao MikaLIVE</h3>
                 <p>Transforme link da Shop em roteiro de vídeo, poste no Insta e acompanhe suas comissões.</p>
                 <button class="btn btn-google" onclick="loginGoogle()">G Continuar com Google</button>
+                <div id="google-btn-area" style="margin-top:10px;display:flex;justify-content:center"></div>
                 <button class="btn btn-guest" onclick="entrarVisitante()">Entrar como visitante</button>
                 <p style="font-size:11px;text-align:center;margin-top:12px;color:#666">Sessão salva - quando recarregar, você continua logado.</p>
             </div>
@@ -222,16 +223,41 @@
             try { const raw = localStorage.getItem(SESSION_KEY); if (!raw) return false; const sess = JSON.parse(raw); if (!sess || !sess.usuario || !sess.usuario.nome) return false; const dias = (Date.now() - new Date(sess.salvaEm).getTime()) / (1000*60*60*24); if (dias > 30) { localStorage.removeItem(SESSION_KEY); return false; } DB.usuario = sess.usuario; saveDB(); document.getElementById("nome-perfil").innerText = sess.usuario.nome; document.getElementById("email-perfil").innerText = sess.usuario.email || ""; if (sess.usuario.foto) document.getElementById("foto-perfil").src = sess.usuario.foto; atualizarResumo(); mostrarTela("tela-painel"); return true; } catch(e){ return false; }
         }
         function entrarPainel(nome, email, foto) { const nomeLimpo = sanitizar(nome,100) || "Usuário"; const emailLimpo = sanitizar(email,150) || ""; DB.usuario = { nome: nomeLimpo, email: emailLimpo, foto: foto || "", logadoEm: new Date().toISOString() }; saveDB(); salvarSessao(); document.getElementById("nome-perfil").innerText = nomeLimpo; document.getElementById("email-perfil").innerText = emailLimpo; if (foto) document.getElementById("foto-perfil").src = foto; atualizarResumo(); mostrarTela("tela-painel"); }
+        function handleGoogleCredential(res) {
+            try {
+                const payload = JSON.parse(atob(res.credential.split(".")[1]));
+                const temp = document.getElementById("google-btn-temp");
+                if (temp) temp.remove();
+                entrarPainel(payload.name || "Usuário", payload.email || "", payload.picture || "");
+            } catch(e){ alert("Erro ao logar, tenta de novo."); }
+        }
         function loginGoogle() {
             if (typeof google === "undefined" || !google.accounts) { alert("Google ainda carregando, espera 2s e tenta de novo."); return; }
             google.accounts.id.initialize({
                 client_id: CLIENT_ID,
-                callback: function(res) {
-                    try { const payload = JSON.parse(atob(res.credential.split(".")[1])); entrarPainel(payload.name || "Usuário", payload.email || "", payload.picture || ""); } catch(e){ alert("Erro ao logar, tenta de novo."); }
-                }
+                callback: handleGoogleCredential,
+                auto_select: false,
+                cancel_on_tap_outside: false
             });
+            const old = document.getElementById("google-btn-temp");
+            if (old) old.remove();
+            const div = document.createElement("div");
+            div.id = "google-btn-temp";
+            div.style.cssText = "position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center";
+            div.innerHTML = '<div style="background:#fff;padding:24px;border-radius:16px;text-align:center;max-width:320px;width:90%"><p style="color:#111;font-weight:700;margin-bottom:12px">Escolha sua conta Google</p><div id="btn-google-real" style="display:flex;justify-content:center"></div><p style="color:#666;font-size:12px;margin-top:14px;cursor:pointer" onclick="document.getElementById(\'google-btn-temp\').remove()">Fechar</p></div>';
+            document.body.appendChild(div);
+            google.accounts.id.renderButton(document.getElementById("btn-google-real"), { theme: "outline", size: "large", width: 280 });
             google.accounts.id.prompt();
         }
+        function initGoogleBtn() {
+            if (typeof google === "undefined" || !google.accounts) return;
+            google.accounts.id.initialize({ client_id: CLIENT_ID, callback: handleGoogleCredential });
+            const area = document.getElementById("google-btn-area");
+            if (area && !area.innerHTML) {
+                google.accounts.id.renderButton(area, { theme: "outline", size: "large", width: 280, text: "signin_with" });
+            }
+        }
+        window.addEventListener("load", function(){ setTimeout(initGoogleBtn, 500); });
         function entrarVisitante() { entrarPainel("Visitante", "Modo visitante - sem conta", ""); }
         function sair() { DB.usuario = null; saveDB(); try { localStorage.removeItem(SESSION_KEY); } catch(e){} mostrarTela("tela-login"); }
         function formatarBRL(v) { return "R$ " + Number(v || 0).toFixed(2).replace(".", ","); }
