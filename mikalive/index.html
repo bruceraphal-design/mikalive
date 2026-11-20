@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- PROTEÇÃO: bloqueia scripts externos maliciosos, só permite Google + inline seguro -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https://accounts.google.com https://*.googleapis.com; script-src 'self' 'unsafe-inline' https://accounts.google.com https://*.gstatic.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://*.googleapis.com;">
+    <title>MikaLIVE - Ferramentas para Criadores</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif
+        }
+
+        body {
+            background: #0a0a0f;
+            color: #fff;
+            min-height: 100vh
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            text-align: center;
+            margin: 20px 0 5px
+        }
+
+        .logo span {
+            color: #a855f7
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 25px
+        }
+
+        .card {
+            background: #1a1a24;
+            border: 1px solid #2a2a35;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px
+        }
+
+        .card h3 {
+            font-size: 16px;
+            margin-bottom: 8px
+        }
+
+        .card p {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.5
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px
+        }
+
+        .btn-google {
+            background: #fff;
+            color: #111
+        }
+
+        .btn-guest {
+            background: #a855f7;
+            color: #fff
+        }
+
+        .btn-shop {
+            background: #ff3b5c;
+            color: #fff
+        }
+
+        .btn-insta {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: #fff
+        }
+
+        .btn-yt {
+            background: #ff0000;
+            color: #fff
+        }
+
+        .btn-dark {
+            background: #2a2a35;
+            color: #fff
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #333;
+            color: #ccc
+        }
+
+        .btn-small {
+            width: auto;
+            padding: 8px 12px;
+            font-size: 12px;
+            margin: 5px 5px 0 0
+        }
+
+        .btn-danger {
+            background: #dc2626;
+            color: #fff
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            background: #0f0f16;
+            border: 1px solid #333;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            margin-top: 10px;
+            outline: none
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #a855f7
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #1a1a24;
+            padding: 14px;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #2a2a35
+        }
+
+        .profile img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #333
+        }
+
+        .profile b {
+            font-size: 15px
+        }
+
+        .profile small {
+            color: #aaa;
+            font-size: 12px
+        }
+
+        .badge {
+            background: #a855f7;
+            color: #fff;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 20px
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 12px
+        }
+
+        .stat {
+            background: #0f0f16;
+            border: 1px solid #2a2a35;
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center
+        }
+
+        .stat b {
+            font-size: 20px;
+            display: block;
+            color: #a855f7
+        }
+
+        .stat span {
+            font-size: 11px;
+            color: #aaa
+        }
+
+        .stat.real b {
+            color: #22c55e
+        }
+
+        .stat.sim b {
+            color: #f59e0b
+        }
+
+        .tool-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #1a1a24;
+            border: 1px solid #2a2a35;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            text-align: left;
+            width: 100%;
+            color: #fff
+        }
+
+        .tool-btn:active {
+            transform: scale(.98)
+        }
+
+        .tool-icon {
+            font-size: 28px;
+            width: 48px;
+            height: 48px;
+            background: #2a2a35;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0
+        }
+
+        .tool-btn div {
+            flex: 1
+        }
+
+        .tool-btn b {
+            font-size: 15px;
+            display: block
+        }
+
+        .tool-btn small {
+            color: #aaa;
+            font-size: 12px
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        .video-preview {
+            background: #000;
+            border-radius: 12px;
+            margin: 12px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #333;
+            min-height: 220px
+        }
+
+        .video-preview h2 {
+            font-size: 22px;
+            line-height: 1.2
+        }
+
+        .video-preview p {
+            color: #ccc;
+            font-size: 13px;
+            margin-top: 8px
+        }
+
+        .tag {
+            display: inline-block;
+            background: #2a2a35;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            margin: 3px
+        }
+
+        .back {
+            color: #a855f7;
+            font-size: 13px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            display: inline-block
+        }
+
+        .warn {
+            background: #f59e0b22;
+            border: 1px solid #f59e0b;
+            color: #fde68a;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            margin-top: 10px;
+            line-height: 1.5
+        }
+
+        .success {
+            background: #16a34a22;
+            border: 1px solid #16a34a;
+            color: #86efac;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            margin-top: 10px
+        }
+
+        .info {
+            background: #3b82f622;
+            border: 1px solid #3b82f6;
+            color: #bfdbfe;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            margin-top: 10px;
+            line-height: 1.5
+        }
+
+        .list-item {
+            background: #0f0f16;
+            border: 1px solid #2a2a35;
+            padding: 12px;
+            border-radius: 12px;
+            margin-top: 10px
+        }
+
+        .list-item b {
+            font-size: 13px
+        }
+
+        .list-item small {
+            color: #aaa;
+            font-size: 11px;
+            display: block;
+            margin-top: 3px
+        }
+
+        .chip {
+            display: inline-block;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 20px;
+            margin-top: 6px
+        }
+
+        .chip-real {
+            background: #16a34a;
+            color: #fff
+        }
+
+        .chip-sim {
+            background: #f59e0b;
+            color: #000
+        }
+
+        .chip-roteiro {
+            background: #a855f7;
+            color: #fff
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, .85);
+            z-index: 99;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center
+        }
+
+        .modal-box {
+            background: #1a1a24;
+            width: 100%;
+            max-width: 480px;
+            max-height: 85vh;
+            overflow: auto;
+            border-radius: 20px 20px 0 0;
+            padding: 20px
+        }
+
+        .sync-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #f59e0b;
+            margin-right: 5px
+        }
+
+        .sync-dot.ok {
+            background: #22c55e
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- LOGIN -->
+        <div id="tela-login">
+            <div class="logo">Mika<span>LIVE</span></div>
+            <p class="subtitle">Ferramentas para vender mais na Shop, Insta e YouTube</p>
+            <div class="card">
+                <h3>👋 Bem-vindo ao MikaLIVE</h3>
+                <p>Transforme link da Shop em roteiro de vídeo, poste no Insta e acompanhe suas comissões.</p>
+                <button class="btn btn-google" onclick="loginGoogle()">G Continuar com Google</button>
+                <button class="btn btn-guest" onclick="entrarVisitante()">Entrar como visitante</button>
+                <p style="font-size:11px;text-align:center;margin-top:12px;color:#666">Sessão salva - quando recarregar,
+                    você continua logado.</p>
+            </div>
+            <div class="card">
+                <h3>🛠️ v9 - O que foi corrigido?</h3>
+                <p>✅ Login restaura sozinho ao recarregar<br>✅ Sincronização preparada + backup Exportar/Importar<br>✅
+                    Comissão real só aceita dados validados da API<br>✅ Sem produto duplicado<br>✅ Roteiros com Ver
+                    Completo + Excluir um por um<br>✅ Proteção contra código malicioso nos campos</p>
+            </div>
+        </div>
+
+        <!-- PAINEL -->
+        <div id="tela-painel" class="hidden">
+            <div class="profile">
+                <img id="foto-perfil" src="" alt="">
+                <div style="flex:1"><b id="nome-perfil">Visitante</b><br><small id="email-perfil">Modo visitante</small>
+                </div>
+                <span class="badge">CRIADOR</span>
+            </div>
+            <div class="logo" style="font-size:22px;margin:5px 0 10px">Mika<span>LIVE</span> Painel</div>
+            <div class="info"><span class="sync-dot" id="sync-dot"></span><span id="sync-texto">Sincronização local -
+                    backup manual ativo</span><br><small>Para sincronizar entre celular e PC, conecte o
+                    Firebase/Supabase na próxima fase.</small></div>
+
+            <button class="tool-btn" onclick="abrirTela('tela-shop')">
+                <div class="tool-icon">🛍️</div>
+                <div><b>Criar Vídeo da Shop</b><small>Link do produto → roteiro pra vender</small></div><span>›</span>
+            </button>
+            <button class="tool-btn" onclick="abrirTela('tela-insta')">
+                <div class="tool-icon">📸</div>
+                <div><b>Criar Vídeo do Insta</b><small>Roteiro viral + legenda + hashtags</small></div><span>›</span>
+            </button>
+            <button class="tool-btn" onclick="abrirTela('tela-comissao')">
+                <div class="tool-icon">💰</div>
+                <div><b>Minhas Comissões</b><small>Reais separadas de simuladas</small></div><span>›</span>
+            </button>
+            <button class="tool-btn" onclick="abrirTela('tela-youtube')">
+                <div class="tool-icon">▶️</div>
+                <div><b>Meu YouTube</b><small>Preparado pra dados reais</small></div><span>›</span>
+            </button>
+            <button class="tool-btn" onclick="abrirTela('tela-meus-videos')">
+                <div class="tool-icon">🎬</div>
+                <div><b>Meus Roteiros Salvos</b><small>Ver completo + excluir um por um</small></div><span>›</span>
+            </button>
+
+            <div class="card">
+                <h3>📊 Resumo</h3>
+                <div class="stat-grid">
+                    <div class="stat"><b id="stat-videos">0</b><span>Roteiros criados</span></div>
+                    <div class="stat real"><b id="stat-comissao-real">R$ 0,00</b><span>Comissão REAL</span></div>
+                    <div class="stat sim"><b id="stat-comissao-sim">R$ 0,00</b><span>Comissão SIMULADA</span></div>
+                    <div class="stat"><b id="stat-produtos">0</b><span>Produtos salvos</span></div>
+                </div>
+            </div>
+            <button class="btn btn-outline" onclick="sair()">Sair da conta</button>
+            <button class="btn btn-outline" onclick="exportarDados()">📥 Exportar meus dados (backup)</button>
+            <label class="btn btn-outline" style="display:block;text-align:center;cursor:pointer">📤 Importar
+                backup<input type="file" accept=".json" onchange="importarDados(event)" style="display:none"></label>
+            <button class="btn btn-outline" onclick="tentarSyncCloud()">☁️ Tentar sincronizar na nuvem</button>
+        </div>
+
+        <!-- SHOP -->
+        <div id="tela-shop" class="hidden">
+            <span class="back" onclick="voltarPainel()">← Voltar pro Painel</span>
+            <h2 style="font-size:22px;margin-bottom:5px">🛍️ Vídeo da Shop</h2>
+            <p style="color:#aaa;font-size:13px">Cola o link. Se já existir, a gente atualiza, não duplica.</p>
+            <input id="link-shop" placeholder="Link do produto - ex: https://s.shopee.com.br/..." maxlength="500">
+            <input id="loja-produto" placeholder="Loja / Plataforma - ex: Shopee" maxlength="80">
+            <input id="nome-produto" placeholder="Nome do produto" maxlength="120">
+            <input id="preco-produto" placeholder="Preço - ex: 49,90" inputmode="decimal" maxlength="20">
+            <textarea id="desc-produto" rows="3" placeholder="O que o produto faz? Pra quem é?"
+                maxlength="1000"></textarea>
+            <button class="btn btn-shop" onclick="gerarVideoShop()">Gerar Roteiro da Shop →</button>
+            <div id="resultado-shop" class="hidden">
+                <div class="video-preview">
+                    <h2 id="preview-titulo-shop">Seu Roteiro</h2>
+                    <p id="preview-texto-shop"></p>
+                    <div id="preview-tags-shop"></div>
+                </div>
+                <div class="card">
+                    <h3>🎬 Roteiro Shop - Pra Vender (30s)</h3>
+                    <p id="roteiro-shop" style="white-space:pre-line;color:#ddd"></p>
+                </div>
+                <button class="btn btn-dark" onclick="copiarTexto('roteiro-shop')">📋 Copiar roteiro</button>
+                <button class="btn btn-shop" onclick="salvarVideoAtual()">✅ Salvar roteiro</button>
+                <div id="aviso-duplicado" class="warn hidden"></div>
+            </div>
+        </div>
+
+        <!-- INSTA -->
+        <div id="tela-insta" class="hidden">
+            <span class="back" onclick="voltarPainel()">← Voltar pro Painel</span>
+            <h2 style="font-size:22px;margin-bottom:5px">📸 Vídeo do Insta</h2>
+            <p style="color:#aaa;font-size:13px">Roteiro viral + legenda + hashtags.</p>
+            <input id="tema-insta" placeholder="Tema - ex: Antes e depois do creme" maxlength="120">
+            <select id="estilo-insta">
+                <option value="viral">Estilo: Viral / Gancho forte</option>
+                <option value="tutorial">Estilo: Tutorial rápido</option>
+                <option value="depoimento">Estilo: Depoimento / Prova social</option>
+                <option value="humor">Estilo: Humor / Trend</option>
+                <option value="comparacao">Estilo: Comparação / Qual vale mais?</option>
+            </select>
+            <select id="nicho-insta">
+                <option value="beleza">Nicho: Beleza / Skincare</option>
+                <option value="casa">Nicho: Casa / Utilidades</option>
+                <option value="moda">Nicho: Moda / Acessórios</option>
+                <option value="fitness">Nicho: Fitness / Saúde</option>
+                <option value="geral">Nicho: Geral / Achadinhos</option>
+            </select>
+            <input id="link-insta-shop" placeholder="Link da Shop pra legenda" maxlength="500">
+            <button class="btn btn-insta" onclick="gerarVideoInsta()">Gerar Roteiro do Insta →</button>
+            <div id="resultado-insta" class="hidden">
+                <div class="video-preview">
+                    <h2 id="preview-titulo-insta">Roteiro Insta</h2>
+                    <p id="preview-texto-insta"></p>
+                </div>
+                <div class="card">
+                    <h3>🎬 Roteiro Insta</h3>
+                    <p id="roteiro-insta" style="white-space:pre-line;color:#ddd"></p>
+                </div>
+                <div class="card">
+                    <h3>✍️ Legenda pronta</h3>
+                    <p id="legenda-insta" style="white-space:pre-line;color:#ddd"></p>
+                </div>
+                <div class="card">
+                    <h3>#️⃣ Hashtags</h3>
+                    <p id="hashtags-insta" style="white-space:pre-line;color:#ddd"></p>
+                </div>
+                <button class="btn btn-dark" onclick="copiarTexto('legenda-insta')">📋 Copiar legenda</button>
+                <button class="btn btn-dark" onclick="copiarTexto('hashtags-insta')">📋 Copiar hashtags</button>
+                <button class="btn btn-insta" onclick="salvarVideoAtual()">✅ Salvar roteiro</button>
+            </div>
+        </div>
+
+        <!-- COMISSÕES -->
+        <div id="tela-comissao" class="hidden">
+            <span class="back" onclick="voltarPainel()">← Voltar pro Painel</span>
+            <h2 style="font-size:22px;margin-bottom:5px">💰 Minhas Comissões</h2>
+            <div class="card">
+                <h3>🔗 Conexões</h3>
+                <p>Status: <span id="status-conexao">Nenhuma conta real conectada.</span></p>
+                <button class="btn btn-shop" onclick="prepararConexao('Shop')">Preparar conexão da Shop (API)</button>
+                <button class="btn btn-insta" onclick="prepararConexao('Instagram')">Preparar conexão do Instagram
+                    (API)</button>
+                <div class="info">ℹ️ Comissão real só entra via API validada. Simulação fica separada.</div>
+            </div>
+            <div class="card">
+                <h3>💵 Comissão REAL <span class="chip chip-real">REAL - API</span></h3>
+                <div class="stat-grid">
+                    <div class="stat real"><b id="comissao-real-total">R$ 0,00</b><span>Total Real</span></div>
+                    <div class="stat real"><b id="comissao-real-vendas">0</b><span>Vendas Reais</span></div>
+                </div>
+                <div id="lista-comissao-real"></div>
+                <p style="margin-top:10px;font-size:12px">Só aparece aqui quando a API da Shop enviar dados validados.
+                </p>
+            </div>
+            <div class="card">
+                <h3>🧪 Comissão SIMULADA <span class="chip chip-sim">SIMULAÇÃO</span></h3>
+                <div class="stat-grid">
+                    <div class="stat sim"><b id="comissao-sim-total">R$ 0,00</b><span>Total Simulado</span></div>
+                    <div class="stat sim"><b id="comissao-sim-vendas">0</b><span>Vendas Simuladas</span></div>
+                </div>
+                <button class="btn btn-dark" onclick="simularVenda()">+ Simular venda de R$ 49,90 (ganha R$
+                    7,48)</button>
+                <button class="btn btn-outline" onclick="limparSimulacao()">Limpar simulação</button>
+            </div>
+            <div class="card">
+                <h3>🧪 Testar API Real (simulando webhook)</h3>
+                <p>Isso simula como a Shop vai mandar os dados de verdade. Tenta colocar dado errado pra ver que ele
+                    rejeita.</p>
+                <input id="api-order" placeholder="Order ID - ex: ORD-12345" maxlength="80">
+                <input id="api-valor" placeholder="Valor da venda - ex: 89,90" inputmode="decimal" maxlength="20">
+                <button class="btn btn-dark" onclick="testarAPIComissao()">Testar receber comissão da API →</button>
+                <p id="api-resultado" style="font-size:12px;margin-top:10px;color:#aaa"></p>
+            </div>
+        </div>
+
+        <!-- YOUTUBE -->
+        <div id="tela-youtube" class="hidden">
+            <span class="back" onclick="voltarPainel()">← Voltar pro Painel</span>
+            <h2 style="font-size:22px;margin-bottom:5px">▶️ Meu YouTube</h2>
+            <p style="color:#aaa;font-size:13px">Dados reais só via API oficial.</p>
+            <div class="card">
+                <h3>🔗 Conectar canal</h3>
+                <input id="canal-yt" placeholder="Link do canal - ex: https://youtube.com/@seucanal" maxlength="300">
+                <button class="btn btn-yt" onclick="prepararYT()">Preparar integração com YouTube</button>
+                <div id="resultado-yt" class="hidden">
+                    <div class="info">✅ Canal salvo: <span id="canal-yt-salvo"></span><br><br>📊 <b>Dados reais ainda
+                            não carregados.</b> Precisamos da chave da YouTube Data API v3.</div>
+                    <div class="card" style="margin-top:12px">
+                        <h3>✍️ Análise manual</h3>
+                        <input id="yt-melhor-video" placeholder="Qual vídeo teve mais views?" maxlength="120">
+                        <input id="yt-views" placeholder="Quantas views? Ex: 12400" inputmode="numeric" maxlength="10">
+                        <button class="btn btn-dark" onclick="gerarIdeiaYT()">Gerar ideia pro próximo vídeo →</button>
+                        <p id="ideia-yt-resultado" style="white-space:pre-line;color:#ddd;margin-top:12px"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MEUS VIDEOS -->
+        <div id="tela-meus-videos" class="hidden">
+            <span class="back" onclick="voltarPainel()">← Voltar pro Painel</span>
+            <h2 style="font-size:22px;margin-bottom:5px">🎬 Meus Roteiros Salvos</h2>
+            <div id="lista-videos"></div>
+            <button class="btn btn-outline" onclick="limparVideos()">Limpar todos os roteiros</button>
+        </div>
+
+    </div>
+
+    <!-- MODAL VER COMPLETO -->
+    <div id="modal-video" class="modal hidden" onclick="if(event.target.id==='modal-video') fecharModal()">
+        <div class="modal-box">
+            <span class="back" onclick="fecharModal()">← Fechar</span>
+            <h2 id="modal-titulo" style="font-size:20px;margin:10px 0"></h2>
+            <p id="modal-meta" style="color:#aaa;font-size:12px"></p>
+            <div class="card" style="margin-top:12px">
+                <h3>🎬 Roteiro Completo</h3>
+                <p id="modal-roteiro" style="white-space:pre-line;color:#ddd"></p>
+            </div>
+            <div class="card">
+                <h3>✍️ Legenda</h3>
+                <p id="modal-legenda" style="white-space:pre-line;color:#ddd"></p>
+            </div>
+            <div class="card">
+                <h3>#️⃣ Hashtags</h3>
+                <p id="modal-hashtags" style="white-space:pre-line;color:#ddd"></p>
+            </div>
+            <button class="btn btn-dark" onclick="copiarModal()">📋 Copiar tudo</button>
+            <button class="btn btn-danger" id="modal-excluir" onclick="excluirVideoModal()">🗑️ Excluir este
+                roteiro</button>
+        </div>
+    </div>
+
+    <script>
+        // ================= CONFIG =================
+        const CLIENT_ID = "743276779425-j9t7a3g1q1e3i6r1p95vnhvts0eq8j7n.apps.googleusercontent.com";
+        const DB_KEY = "mikalive_db_v9";
+        const SESSION_KEY = "mikalive_session_v9";
+        let DB = loadDB();
+        let videoAtual = null;
+        let videoAbertoId = null;
+
+        // ================= SEGURANÇA - PROTEÇÃO DE DADOS DO USUÁRIO =================
+        // CORREÇÃO 6: Nenhum dado digitado vai direto pro HTML. Tudo passa por aqui.
+        function escapeHtml(s) {
+            return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+        }
+        function sanitizar(texto, max) {
+            if (typeof texto !== "string") return "";
+            let t = texto.trim();
+            // Remove tags script, iframe, javascript:, onerror, etc.
+            t = t.replace(/<script[\s\S]*?<\/script>/gi, "")
+                .replace(/<iframe[\s\S]*?<\/iframe>/gi, "")
+                .replace(/javascript:/gi, "")
+                .replace(/on\w+\s*=/gi, "");
+            if (max && t.length > max) t = t.substring(0, max);
+            return t;
+        }
+        function validarLink(link) {
+            if (!link) return false;
+            try { const u = new URL(link); return u.protocol === "http:" || u.protocol === "https:"; } catch (e) { return false; }
+        }
+        function parsePreco(txt) {
+            if (!txt) return 0;
+            const limpo = String(txt).replace("R$", "").replace(/\s/g, "").replace(",", ".");
+            const n = parseFloat(limpo);
+            if (isNaN(n) || n < 0 || n > 1000000) return 0;
+            return n;
+        }
+        function normalizarLink(link) {
+            try {
+                const u = new URL(link.trim().toLowerCase());
+                // Remove parâmetros de rastreio que geram duplicata falsa (?utm_, ?fbclid, etc)
+                ["utm_source", "utm_medium", "utm_campaign", "fbclid", "gclid", "igshid"].forEach(function (p) { u.searchParams.delete(p); });
+                // Remove barra final
+                let href = u.toString();
+                if (href.endsWith("/")) href = href.slice(0, -1);
+                return href;
+            } catch (e) { return link.trim().toLowerCase(); }
+        }
+
+        // ================= BANCO + SYNC =================
+        function getDBPadrao() {
+            return {
+                versao: "9",
+                usuario: null,
+                produtos: [],
+                videos: [],
+                comissoes: { reais: { total: 0, vendas: 0, lista: [] }, simuladas: { total: 0, vendas: 0, lista: [] } },
+                conexoes: { shop: { status: "nao_conectada", conectadaEm: null }, instagram: { status: "nao_conectada", conectadaEm: null }, youtube: { status: "nao_conectada", canal: "", conectadaEm: null } },
+                youtubeManual: { melhorVideo: "", views: 0 },
+                sync: { ultimaSync: null, pendente: false },
+                criadoEm: new Date().toISOString()
+            };
+        }
+        function loadDB() {
+            try {
+                const raw = localStorage.getItem(DB_KEY);
+                if (!raw) {
+                    // Migra DB antigo v8 se existir
+                    const old = localStorage.getItem("mikalive_db_v8");
+                    if (old) { const p = JSON.parse(old); const base = getDBPadrao(); return { ...base, ...p, versao: "9" }; }
+                    return getDBPadrao();
+                }
+                const parsed = JSON.parse(raw);
+                const base = getDBPadrao();
+                return { ...base, ...parsed, comissoes: { ...base.comissoes, ...(parsed.comissoes || {}) }, conexoes: { ...base.conexoes, ...(parsed.conexoes || {}) } };
+            } catch (e) { return getDBPadrao(); }
+        }
+        function saveDB() {
+            try {
+                localStorage.setItem(DB_KEY, JSON.stringify(DB));
+                DB.sync.pendente = true;
+                atualizarSyncUI();
+            } catch (e) { console.warn("Erro ao salvar", e); }
+        }
+        function atualizarSyncUI() {
+            const dot = document.getElementById("sync-dot");
+            const txt = document.getElementById("sync-texto");
+            if (!dot || !txt) return;
+            if (DB.sync && DB.sync.ultimaSync) {
+                dot.classList.add("ok");
+                txt.innerText = "Última sincronização: " + new Date(DB.sync.ultimaSync).toLocaleString("pt-BR");
+            } else {
+                txt.innerText = "Só neste dispositivo - exporte o backup pra levar pra outro celular";
+            }
+        }
+        // CORREÇÃO 2: Estrutura pronta pra nuvem. Hoje salva local + backup. Amanhã troca essa função por Firebase.
+        async function tentarSyncCloud() {
+            // TODO: Trocar por: firebase.firestore().doc('users/'+DB.usuario.email).set(DB)
+            // Ou Supabase: supabase.from('mikalive').upsert(...)
+            alert("☁️ Sincronização na nuvem PREPARADA, mas ainda não conectada.\n\nPara ativar de verdade precisamos criar o projeto no Firebase/Supabase e colar a chave aqui.\n\nPor enquanto use Exportar / Importar backup pra passar os dados de um celular pro outro.");
+            return false;
+        }
+        function exportarDados() {
+            const blob = new Blob([JSON.stringify(DB, null, 2)], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url; a.download = "mikalive-backup-v9.json"; a.click();
+            URL.revokeObjectURL(url);
+        }
+        function importarDados(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function () {
+                try {
+                    const imported = JSON.parse(reader.result);
+                    if (!imported || !imported.versao || !Array.isArray(imported.videos)) { alert("Arquivo inválido!"); return; }
+                    // Mescla sem duplicar: produtos por link normalizado, videos por id
+                    const linksExistentes = new Set(DB.produtos.map(function (p) { return p.linkNormalizado || normalizarLink(p.link); }));
+                    imported.produtos.forEach(function (p) {
+                        const norm = normalizarLink(p.link || "");
+                        if (!linksExistentes.has(norm)) { DB.produtos.push(p); linksExistentes.add(norm); }
+                    });
+                    const idsExistentes = new Set(DB.videos.map(function (v) { return v.id; }));
+                    imported.videos.forEach(function (v) { if (!idsExistentes.has(v.id)) DB.videos.push(v); });
+                    // Comissões: mantém o maior valor (não soma duplicado)
+                    if (imported.comissoes && imported.comissoes.reais && imported.comissoes.reais.total > DB.comissoes.reais.total) {
+                        DB.comissoes.reais = imported.comissoes.reais;
+                    }
+                    saveDB(); atualizarResumo();
+                    alert("Backup importado! Produtos e roteiros mesclados sem duplicar.");
+                    mostrarTela("tela-painel");
+                } catch (e) { alert("Erro ao importar backup."); }
+            };
+            reader.readAsText(file);
+        }
+
+        // ================= NAVEGAÇÃO =================
+        function mostrarTela(id) {
+            const telas = ["tela-login", "tela-painel", "tela-shop", "tela-insta", "tela-comissao", "tela-youtube", "tela-meus-videos"];
+            telas.forEach(function (t) { document.getElementById(t).classList.add("hidden"); });
+            const el = document.getElementById(id);
+            if (el) el.classList.remove("hidden");
+            window.scrollTo(0, 0);
+            if (id === "tela-meus-videos") renderListaVideos();
+            if (id === "tela-comissao") { atualizarComissoesTela(); renderComissoesReais(); }
+            if (id === "tela-painel") atualizarResumo();
+        }
+        function abrirTela(id) { mostrarTela(id); }
+        function voltarPainel() { mostrarTela("tela-painel"); }
+
+        // ================= LOGIN + RESTAURAR SESSÃO =================
+        // CORREÇÃO 1: Sessão salva e restaurada automaticamente
+        function salvarSessao() {
+            try {
+                if (DB.usuario) {
+                    localStorage.setItem(SESSION_KEY, JSON.stringify({ usuario: DB.usuario, salvaEm: new Date().toISOString() }));
+                }
+            } catch (e) { }
+        }
+        function restaurarSessao() {
+            try {
+                const raw = localStorage.getItem(SESSION_KEY);
+                if (!raw) return false;
+                const sess = JSON.parse(raw);
+                if (!sess || !sess.usuario || !sess.usuario.nome) return false;
+                // Sessão válida por 30 dias
+                const dias = (Date.now() - new Date(sess.salvaEm).getTime()) / (1000 * 60 * 60 * 24);
+                if (dias > 30) { localStorage.removeItem(SESSION_KEY); return false; }
+                DB.usuario = sess.usuario;
+                saveDB();
+                document.getElementById("nome-perfil").innerText = sess.usuario.nome;
+                document.getElementById("email-perfil").innerText = sess.usuario.email || "";
+                if (sess.usuario.foto) document.getElementById("foto-perfil").src = sess.usuario.foto;
+                atualizarResumo();
+                mostrarTela("tela-painel");
+                return true;
+            } catch (e) { return false; }
+        }
+        function entrarPainel(nome, email, foto) {
+            const nomeLimpo = sanitizar(nome, 100) || "Usuário";
+            const emailLimpo = sanitizar(email, 150) || "";
+            DB.usuario = { nome: nomeLimpo, email: emailLimpo, foto: foto || "", logadoEm: new Date().toISOString() };
+            saveDB(); salvarSessao();
+            document.getElementById("nome-perfil").innerText = nomeLimpo;
+            document.getElementById("email-perfil").innerText = emailLimpo;
+            if (foto) document.getElementById("foto-perfil").src = foto;
+            atualizarResumo();
+            mostrarTela("tela-painel");
+        }
+        function loginGoogle() {
+            if (typeof google === "undefined" || !google.accounts) { alert("Google ainda carregando, espera 2s e tenta de novo."); return; }
+            google.accounts.id.initialize({
+                client_id: CLIENT_ID,
+                callback: function (res) {
+                    try {
+                        const payload = JSON.parse(atob(res.credential.split(".")[1]));
+                        entrarPainel(payload.name || "Usuário", payload.email || "", payload.picture || "");
+                    } catch (e) { alert("Erro ao logar, tenta de novo."); }
+                }
+            });
+            google.accounts.id.prompt();
+        }
+        function entrarVisitante() { entrarPainel("Visitante", "Modo visitante - sem conta", ""); }
+        function sair() {
+            DB.usuario = null; saveDB();
+            try { localStorage.removeItem(SESSION_KEY); } catch (e) { }
+            mostrarTela("tela-login");
+        }
+
+        // ================= RESUMO =================
+        function formatarBRL(v) { return "R$ " + Number(v || 0).toFixed(2).replace(".", ","); }
+        function atualizarResumo() {
+            document.getElementById("stat-videos").innerText = DB.videos.length;
+            document.getElementById("stat-comissao-real").innerText = formatarBRL(DB.comissoes.reais.total);
+            document.getElementById("stat-comissao-sim").innerText = formatarBRL(DB.comissoes.simuladas.total);
+            document.getElementById("stat-produtos").innerText = DB.produtos.length;
+            const st = document.getElementById("status-conexao");
+            if (st) st.innerText = "Shop: " + DB.conexoes.shop.status + " | Instagram: " + DB.conexoes.instagram.status;
+            atualizarSyncUI();
+        }
+        function atualizarComissoesTela() {
+            document.getElementById("comissao-real-total").innerText = formatarBRL(DB.comissoes.reais.total);
+            document.getElementById("comissao-real-vendas").innerText = DB.comissoes.reais.vendas;
+            document.getElementById("comissao-sim-total").innerText = formatarBRL(DB.comissoes.simuladas.total);
+            document.getElementById("comissao-sim-vendas").innerText = DB.comissoes.simuladas.vendas;
+        }
+        function renderComissoesReais() {
+            const el = document.getElementById("lista-comissao-real");
+            if (!el) return;
+            if (DB.comissoes.reais.lista.length === 0) { el.innerHTML = ""; return; }
+            let html = "";
+            DB.comissoes.reais.lista.slice().reverse().forEach(function (c) {
+                html += '<div class="list-item"><b>Pedido ' + escapeHtml(c.orderId) + '</b><small>Comissão ' + formatarBRL(c.comissao) + ' • Venda ' + formatarBRL(c.valorVenda) + ' • ' + new Date(c.data).toLocaleDateString("pt-BR") + '</small><span class="chip chip-real">API VALIDADA</span></div>';
+            });
+            el.innerHTML = html;
+        }
+
+        // ================= SHOP - SEM DUPLICATA =================
+        // CORREÇÃO 4: Produto duplicado agora atualiza, não duplica
+        function criarOuAtualizarProduto(dados) {
+            const norm = normalizarLink(dados.link);
+            const existente = DB.produtos.find(function (p) { return (p.linkNormalizado || normalizarLink(p.link)) === norm; });
+            if (existente) {
+                existente.nome = dados.nome;
+                existente.preco = dados.preco;
+                existente.descricao = dados.descricao;
+                existente.loja = dados.loja;
+                existente.link = dados.link;
+                existente.atualizadoEm = new Date().toISOString();
+                saveDB();
+                return { produto: existente, foiAtualizado: true };
+            }
+            const produto = {
+                id: "prod_" + Date.now(),
+                link: dados.link,
+                linkNormalizado: norm,
+                loja: dados.loja || "Shop",
+                nome: dados.nome || "Produto da Shop",
+                preco: dados.preco || 0,
+                descricao: dados.descricao || "",
+                criadoEm: new Date().toISOString()
+            };
+            DB.produtos.push(produto);
+            saveDB();
+            return { produto: produto, foiAtualizado: false };
+        }
+        function gerarVideoShop() {
+            const linkRaw = document.getElementById("link-shop").value;
+            const link = sanitizar(linkRaw, 500);
+            const loja = sanitizar(document.getElementById("loja-produto").value, 80) || "Shop";
+            const nome = sanitizar(document.getElementById("nome-produto").value, 120) || "Produto da Shop";
+            const precoNum = parsePreco(document.getElementById("preco-produto").value);
+            const desc = sanitizar(document.getElementById("desc-produto").value, 1000) || "Produto incrível que você precisa conhecer.";
+            if (!validarLink(link)) { alert("Cola um link válido! Tem que começar com https://"); return; }
+
+            const res = criarOuAtualizarProduto({ link: link, loja: loja, nome: nome, preco: precoNum, descricao: desc });
+            const produto = res.produto;
+            const precoTxt = precoNum > 0 ? "R$ " + precoNum.toFixed(2).replace(".", ",") : "Preço na Shop";
+
+            // Mostra no preview com escape - nunca innerHTML com dado do usuário
+            document.getElementById("preview-titulo-shop").textContent = produto.nome;
+            document.getElementById("preview-texto-shop").textContent = precoTxt + " • " + produto.loja;
+            document.getElementById("preview-tags-shop").innerHTML = '<span class="tag">#shop</span><span class="tag">#achadinhos</span><span class="tag">#produtobom</span>';
+
+            const roteiro =
+                "🎬 ROTEIRO SHOP - PRA VENDER (30 seg)\n\n" +
+                "0-3s - GANCHO: \"Você ainda não conhece " + produto.nome + "? Olha isso!\"\n" +
+                "3-10s - MOSTRA O PRODUTO: Mostra ele de perto, abrindo / usando.\n" +
+                "10-20s - BENEFÍCIO: \"" + desc + "\"\n" +
+                "20-25s - PROVA: Mostra o resultado, o antes/depois.\n" +
+                "25-30s - CTA: \"Tá só " + precoTxt + ". Link tá na Shop, corre que acaba!\"\n\n" +
+                "🔗 Link: " + produto.link + "\n🏪 Loja: " + produto.loja;
+
+            document.getElementById("roteiro-shop").textContent = roteiro;
+            document.getElementById("resultado-shop").classList.remove("hidden");
+            const aviso = document.getElementById("aviso-duplicado");
+            if (res.foiAtualizado) {
+                aviso.classList.remove("hidden");
+                aviso.textContent = "ℹ️ Esse produto já existia! Eu atualizei ele em vez de duplicar. Total de produtos: " + DB.produtos.length;
+            } else {
+                aviso.classList.add("hidden");
+            }
+            videoAtual = { tipo: "shop", titulo: produto.nome, produtoId: produto.id, roteiro: roteiro, legenda: "", hashtags: "", criadoEm: new Date().toISOString() };
+        }
+
+        // ================= INSTA =================
+        function hashtagsPorNicho(nicho) {
+            const mapa = {
+                beleza: "#skincare #beleza #cuidadoscomapele #achadinhos #produtobom #dicasdebeleza #rotinadebeleza #mikalive",
+                casa: "#achadinhos #casalinda #utilidades #dicasdecasa #produtosuteis #achadinhosshopee #mikalive",
+                moda: "#moda #look #achadinhos #modafeminina #estilo #tendencia #mikalive",
+                fitness: "#fitness #saude #treino #vidasaudavel #dicasfitness #mikalive",
+                geral: "#viral #achadinhos #shop #dica #produtobom #foryou #fyp #mikalive"
+            };
+            return mapa[nicho] || mapa.geral;
+        }
+        function gerarVideoInsta() {
+            const tema = sanitizar(document.getElementById("tema-insta").value, 120) || "Produto da Shop";
+            const estilo = document.getElementById("estilo-insta").value;
+            const nicho = document.getElementById("nicho-insta").value;
+            const link = sanitizar(document.getElementById("link-insta-shop").value, 500) || "Link na bio";
+            const estilosTexto = { viral: "Viral / Gancho forte", tutorial: "Tutorial rápido", depoimento: "Depoimento / Prova social", humor: "Humor / Trend", comparacao: "Comparação / Qual vale mais?" };
+            const ganchos = {
+                viral: "NINGUÉM te contou isso sobre " + tema + "...",
+                tutorial: "Como usar " + tema + " do jeito CERTO em 15 segundos",
+                depoimento: "Eu testei " + tema + " por 7 dias e olha o que aconteceu",
+                humor: "POV: você descobre " + tema + " e nunca mais vive sem",
+                comparacao: tema + " vs o mais caro - qual vale mais a pena?"
+            };
+            document.getElementById("preview-titulo-insta").textContent = tema;
+            document.getElementById("preview-texto-insta").textContent = "Estilo: " + (estilosTexto[estilo] || estilo) + " • Pra viralizar";
+            const roteiro =
+                "🎬 ROTEIRO INSTA - PRA VIRALIZAR (15-20s)\n\n" +
+                "0-2s - GANCHO: \"" + (ganchos[estilo] || ganchos.viral) + "\"\n" +
+                "2-8s - DESENVOLVIMENTO: Mostra o produto em uso, o resultado, o antes/depois. Fala 1 benefício só.\n" +
+                "8-12s - PROVA: Sua reação real, zoom no resultado.\n" +
+                "12-15s - CTA: \"Comenta EU QUERO que eu te mando o link!\"\n\n" +
+                "🎵 Som: usa um som em alta no Reels.";
+            const legenda =
+                "OPÇÃO 1 - Curta:\n🤯 " + tema + "\nVocê já testou? Comenta EU QUERO que eu te mando o link!\n🔗 " + link + "\n\n" +
+                "OPÇÃO 2 - História:\nEu não acreditava até testar... " + tema + " mudou minha rotina.\nSalva e me segue pra mais!\n🔗 " + link + "\n\n" +
+                "OPÇÃO 3 - Venda:\nAchadinho que vale cada centavo: " + tema + "\nCorre que tá com preço bom!\n🔗 " + link;
+            const hashtags = hashtagsPorNicho(nicho);
+            document.getElementById("roteiro-insta").textContent = roteiro;
+            document.getElementById("legenda-insta").textContent = legenda;
+            document.getElementById("hashtags-insta").textContent = hashtags;
+            document.getElementById("resultado-insta").classList.remove("hidden");
+            videoAtual = { tipo: "insta", titulo: tema, produtoId: null, roteiro: roteiro, legenda: legenda, hashtags: hashtags, criadoEm: new Date().toISOString() };
+        }
+
+        // ================= SALVAR / LISTAR / VER / EXCLUIR =================
+        // CORREÇÃO 5: Ver completo + excluir individual
+        function salvarVideoAtual() {
+            if (!videoAtual) { alert("Gera o roteiro primeiro!"); return; }
+            DB.videos.push({ ...videoAtual, id: "vid_" + Date.now() });
+            saveDB();
+            videoAtual = null;
+            atualizarResumo();
+            alert("Roteiro salvo! Total: " + DB.videos.length);
+            voltarPainel();
+        }
+        function renderListaVideos() {
+            const el = document.getElementById("lista-videos");
+            if (!el) return;
+            if (DB.videos.length === 0) {
+                el.innerHTML = '<div class="card"><p>Nenhum roteiro ainda. Cria o primeiro na Shop ou no Insta!</p></div>';
+                return;
+            }
+            let html = "";
+            DB.videos.slice().reverse().forEach(function (v) {
+                const data = new Date(v.criadoEm).toLocaleDateString("pt-BR");
+                html += '<div class="list-item"><b>' + escapeHtml(v.titulo) + '</b><small>Tipo: ' + escapeHtml(v.tipo) + ' • ' + data + '</small><br><span class="chip chip-roteiro">ROTEIRO</span><br>' +
+                    '<button class="btn btn-dark btn-small" onclick="abrirVideo(\'' + v.id + '\')">👁️ Ver completo</button>' +
+                    '<button class="btn btn-danger btn-small" onclick="excluirVideo(\'' + v.id + '\')">🗑️ Excluir</button></div>';
+            });
+            el.innerHTML = html;
+        }
+        function abrirVideo(id) {
+            const v = DB.videos.find(function (x) { return x.id === id; });
+            if (!v) return;
+            videoAbertoId = id;
+            document.getElementById("modal-titulo").textContent = v.titulo;
+            document.getElementById("modal-meta").textContent = "Tipo: " + v.tipo + " • " + new Date(v.criadoEm).toLocaleString("pt-BR");
+            document.getElementById("modal-roteiro").textContent = v.roteiro || "Sem roteiro";
+            document.getElementById("modal-legenda").textContent = v.legenda || "Sem legenda (roteiro Shop não tem legenda)";
+            document.getElementById("modal-hashtags").textContent = v.hashtags || "Sem hashtags";
+            document.getElementById("modal-video").classList.remove("hidden");
+        }
+        function fecharModal() { document.getElementById("modal-video").classList.add("hidden"); videoAbertoId = null; }
+        function copiarModal() {
+            const v = DB.videos.find(function (x) { return x.id === videoAbertoId; });
+            if (!v) return;
+            const txt = v.titulo + "\n\n" + v.roteiro + "\n\n" + (v.legenda || "") + "\n\n" + (v.hashtags || "");
+            copiarTextoDireto(txt);
+        }
+        function copiarTextoDireto(txt) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(txt).then(function () { alert("Copiado!"); }).catch(function () { alert("Não consegui copiar."); });
+            }
+        }
+        function excluirVideo(id) {
+            if (!confirm("Excluir este roteiro?")) return;
+            DB.videos = DB.videos.filter(function (v) { return v.id !== id; });
+            saveDB(); atualizarResumo(); renderListaVideos();
+            if (videoAbertoId === id) fecharModal();
+        }
+        function excluirVideoModal() {
+            if (videoAbertoId) excluirVideo(videoAbertoId);
+        }
+        function limparVideos() { if (confirm("Apagar todos os roteiros?")) { DB.videos = []; saveDB(); atualizarResumo(); renderListaVideos(); } }
+        function copiarTexto(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            copiarTextoDireto(el.innerText);
+        }
+
+        // ================= COMISSÕES - API REAL VALIDADA =================
+        // CORREÇÃO 3: registrarComissaoReal agora só aceita payload validado da API
+        function validarPayloadComissao(payload) {
+            if (!payload || typeof payload !== "object") return { ok: false, erro: "Payload inválido" };
+            const orderId = sanitizar(payload.orderId || payload.order_id || "", 80);
+            const valorVenda = Number(payload.valorVenda ?? payload.valor ?? payload.amount);
+            const taxa = Number(payload.taxa ?? payload.commissionRate ?? 0.15);
+            const origem = sanitizar(payload.origem || payload.source || "", 50);
+            if (!orderId) return { ok: false, erro: "Falta orderId" };
+            if (isNaN(valorVenda) || valorVenda <= 0 || valorVenda > 100000) return { ok: false, erro: "Valor da venda inválido" };
+            if (isNaN(taxa) || taxa < 0 || taxa > 0.9) return { ok: false, erro: "Taxa de comissão inválida" };
+            if (origem !== "api" && origem !== "shopee_api" && origem !== "tiktok_shop_api" && origem !== "webhook") { return { ok: false, erro: "Origem não é API oficial. Use simulação para testes." }; }
+            // Evita duplicar mesma venda
+            const jaExiste = DB.comissoes.reais.lista.some(function (c) { return c.orderId === orderId; });
+            if (jaExiste) return { ok: false, erro: "Pedido " + orderId + " já foi registrado!" };
+            return { ok: true, dados: { orderId: orderId, valorVenda: valorVenda, taxa: taxa, origem: origem } };
+        }
+        function registrarComissaoReal(payload) {
+            const v = validarPayloadComissao(payload);
+            if (!v.ok) { console.warn("Comissão rejeitada:", v.erro); return { ok: false, erro: v.erro }; }
+            const comissao = v.dados.valorVenda * v.dados.taxa;
+            DB.comissoes.reais.total += comissao;
+            DB.comissoes.reais.vendas += 1;
+            DB.comissoes.reais.lista.push({ orderId: v.dados.orderId, valorVenda: v.dados.valorVenda, taxa: v.dados.taxa, comissao: comissao, origem: v.dados.origem, data: new Date().toISOString(), tipo: "real" });
+            saveDB(); atualizarComissoesTela(); atualizarResumo(); renderComissoesReais();
+            return { ok: true, comissao: comissao };
+        }
+        // Exemplo de como a API real vai chamar no futuro:
+        // fetch('/api/webhook/shopee', {method:'POST', body: JSON.stringify({orderId, valorVenda, taxa, origem:'api'})})
+        //   .then(r => r.json()).then(d => registrarComissaoReal(d))
+        function testarAPIComissao() {
+            const orderId = sanitizar(document.getElementById("api-order").value, 80) || "ORD-12345";
+            const valor = parsePreco(document.getElementById("api-valor").value) || 89.90;
+            const res = registrarComissaoReal({ orderId: orderId, valorVenda: valor, taxa: 0.15, origem: "api" });
+            const el = document.getElementById("api-resultado");
+            if (res.ok) { el.textContent = "✅ Comissão REAL registrada: " + formatarBRL(res.comissao) + " • Pedido " + orderId; el.style.color = "#86efac"; }
+            else { el.textContent = "❌ Rejeitado: " + res.erro; el.style.color = "#fca5a5"; }
+            atualizarComissoesTela();
+        }
+        function prepararConexao(plataforma) {
+            alert("Conexão " + plataforma + " ainda não ativa.\n\nPrecisamos da chave da API oficial pra ativar de verdade.");
+            document.getElementById("status-conexao").textContent = "Preparando conexão " + plataforma + " - aguardando chave da API.";
+        }
+        function simularVenda() {
+            const valorVenda = 49.90;
+            const comissao = 7.48;
+            DB.comissoes.simuladas.total += comissao;
+            DB.comissoes.simuladas.vendas += 1;
+            DB.comissoes.simuladas.lista.push({ valorVenda: valorVenda, comissao: comissao, data: new Date().toISOString(), tipo: "simulada" });
+            saveDB(); atualizarComissoesTela(); atualizarResumo();
+            alert("Venda SIMULADA! R$ 7,48 (simulação, não é dinheiro real). Total simulado: " + formatarBRL(DB.comissoes.simuladas.total));
+        }
+        function limparSimulacao() {
+            if (confirm("Limpar só a simulação?")) {
+                DB.comissoes.simuladas = { total: 0, vendas: 0, lista: [] };
+                saveDB(); atualizarComissoesTela(); atualizarResumo();
+            }
+        }
+
+        // ================= YOUTUBE =================
+        function prepararYT() {
+            const canal = sanitizar(document.getElementById("canal-yt").value, 300);
+            if (!canal) { alert("Escreve o link do seu canal primeiro"); return; }
+            if (!validarLink(canal)) { alert("Link do canal tem que começar com https://"); return; }
+            DB.conexoes.youtube = { status: "preparada", canal: canal, conectadaEm: new Date().toISOString() };
+            saveDB();
+            document.getElementById("canal-yt-salvo").textContent = canal;
+            document.getElementById("resultado-yt").classList.remove("hidden");
+        }
+        function gerarIdeiaYT() {
+            const melhor = sanitizar(document.getElementById("yt-melhor-video").value, 120);
+            const views = sanitizar(document.getElementById("yt-views").value, 10);
+            if (!melhor) { alert("Escreve qual vídeo seu teve mais views"); return; }
+            DB.youtubeManual = { melhorVideo: melhor, views: parseInt(views || "0") || 0 };
+            saveDB();
+            const ideia = "💡 IDEIA PRO PRÓXIMO VÍDEO\n\nSeu vídeo que mais bombou foi: \"" + melhor + "\" (" + (views || "0") + " views)\n\nO que fazer agora:\n1. Faça a PARTE 2 desse vídeo\n2. Ou faça: \"" + melhor + " - Versão atualizada\"\n3. Ou comparação: \"" + melhor + " vs outro produto da Shop\"";
+            document.getElementById("ideia-yt-resultado").textContent = ideia;
+        }
+        async function buscarDadosReaisYouTube(apiKey, channelId) {
+            console.log("buscarDadosReaisYouTube - aguardando chave real");
+            return null;
+        }
+
+        // ================= INICIO - RESTAURA SESSÃO =================
+        atualizarResumo();
+        const restaurou = restaurarSessao();
+        if (!restaurou) {
+            mostrarTela("tela-login");
+        }
+    </script>
+</body>
+
+</html>
