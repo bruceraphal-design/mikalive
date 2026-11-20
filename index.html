@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- PROTEÇÃO: bloqueia scripts externos maliciosos, só permite Google + inline seguro -->
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self' https://accounts.google.com https://*.googleapis.com; script-src 'self' 'unsafe-inline' https://accounts.google.com https://*.gstatic.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://*.googleapis.com;">
     <title>MikaLIVE - Ferramentas para Criadores</title>
@@ -14,39 +12,33 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
-
         body {
             background: #0a0a0f;
             color: #fff;
             min-height: 100vh
         }
-
         .container {
             max-width: 480px;
             margin: 0 auto;
             padding: 20px
         }
-
         .logo {
             font-size: 32px;
             font-weight: 900;
             text-align: center;
             margin: 20px 0 5px
         }
-
         .logo span {
             color: #a855f7
         }
-
         .subtitle {
             text-align: center;
             color: #aaa;
             font-size: 14px;
             margin-bottom: 25px
         }
-
         .card {
             background: #1a1a24;
             border: 1px solid #2a2a35;
@@ -54,18 +46,15 @@
             padding: 20px;
             margin-bottom: 15px
         }
-
         .card h3 {
             font-size: 16px;
             margin-bottom: 8px
         }
-
         .card p {
             font-size: 13px;
             color: #aaa;
             line-height: 1.5
         }
-
         .btn {
             width: 100%;
             padding: 14px;
@@ -76,55 +65,45 @@
             cursor: pointer;
             margin-top: 10px
         }
-
         .btn-google {
             background: #fff;
             color: #111
         }
-
         .btn-guest {
             background: #a855f7;
             color: #fff
         }
-
         .btn-shop {
             background: #ff3b5c;
             color: #fff
         }
-
         .btn-insta {
             background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
             color: #fff
         }
-
         .btn-yt {
             background: #ff0000;
             color: #fff
         }
-
         .btn-dark {
             background: #2a2a35;
             color: #fff
         }
-
         .btn-outline {
             background: transparent;
             border: 1px solid #333;
             color: #ccc
         }
-
         .btn-small {
             width: auto;
             padding: 8px 12px;
             font-size: 12px;
             margin: 5px 5px 0 0
         }
-
         .btn-danger {
             background: #dc2626;
             color: #fff
         }
-
         input,
         textarea,
         select {
@@ -138,12 +117,10 @@
             margin-top: 10px;
             outline: none
         }
-
         input:focus,
         textarea:focus {
             border-color: #a855f7
         }
-
         .profile {
             display: flex;
             align-items: center;
@@ -154,7 +131,6 @@
             margin-bottom: 15px;
             border: 1px solid #2a2a35
         }
-
         .profile img {
             width: 48px;
             height: 48px;
@@ -162,16 +138,13 @@
             object-fit: cover;
             background: #333
         }
-
         .profile b {
             font-size: 15px
         }
-
         .profile small {
             color: #aaa;
             font-size: 12px
         }
-
         .badge {
             background: #a855f7;
             color: #fff;
@@ -179,14 +152,12 @@
             padding: 3px 8px;
             border-radius: 20px
         }
-
         .stat-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
             margin-top: 12px
         }
-
         .stat {
             background: #0f0f16;
             border: 1px solid #2a2a35;
@@ -194,26 +165,21 @@
             padding: 14px;
             text-align: center
         }
-
         .stat b {
             font-size: 20px;
             display: block;
             color: #a855f7
         }
-
         .stat span {
             font-size: 11px;
             color: #aaa
         }
-
         .stat.real b {
             color: #22c55e
         }
-
         .stat.sim b {
             color: #f59e0b
         }
-
         .tool-btn {
             display: flex;
             align-items: center;
@@ -228,11 +194,9 @@
             width: 100%;
             color: #fff
         }
-
         .tool-btn:active {
             transform: scale(.98)
         }
-
         .tool-icon {
             font-size: 28px;
             width: 48px;
@@ -244,25 +208,20 @@
             justify-content: center;
             flex-shrink: 0
         }
-
         .tool-btn div {
             flex: 1
         }
-
         .tool-btn b {
             font-size: 15px;
             display: block
         }
-
         .tool-btn small {
             color: #aaa;
             font-size: 12px
         }
-
         .hidden {
             display: none !important
         }
-
         .video-preview {
             background: #000;
             border-radius: 12px;
@@ -276,18 +235,15 @@
             border: 1px solid #333;
             min-height: 220px
         }
-
         .video-preview h2 {
             font-size: 22px;
             line-height: 1.2
         }
-
         .video-preview p {
             color: #ccc;
             font-size: 13px;
             margin-top: 8px
         }
-
         .tag {
             display: inline-block;
             background: #2a2a35;
@@ -296,7 +252,6 @@
             font-size: 11px;
             margin: 3px
         }
-
         .back {
             color: #a855f7;
             font-size: 13px;
@@ -304,7 +259,6 @@
             margin-bottom: 10px;
             display: inline-block
         }
-
         .warn {
             background: #f59e0b22;
             border: 1px solid #f59e0b;
@@ -315,7 +269,6 @@
             margin-top: 10px;
             line-height: 1.5
         }
-
         .success {
             background: #16a34a22;
             border: 1px solid #16a34a;
@@ -325,7 +278,6 @@
             font-size: 13px;
             margin-top: 10px
         }
-
         .info {
             background: #3b82f622;
             border: 1px solid #3b82f6;
@@ -336,7 +288,6 @@
             margin-top: 10px;
             line-height: 1.5
         }
-
         .list-item {
             background: #0f0f16;
             border: 1px solid #2a2a35;
@@ -344,18 +295,15 @@
             border-radius: 12px;
             margin-top: 10px
         }
-
         .list-item b {
             font-size: 13px
         }
-
         .list-item small {
             color: #aaa;
             font-size: 11px;
             display: block;
             margin-top: 3px
         }
-
         .chip {
             display: inline-block;
             font-size: 11px;
@@ -363,22 +311,18 @@
             border-radius: 20px;
             margin-top: 6px
         }
-
         .chip-real {
             background: #16a34a;
             color: #fff
         }
-
         .chip-sim {
             background: #f59e0b;
             color: #000
         }
-
         .chip-roteiro {
             background: #a855f7;
             color: #fff
         }
-
         .modal {
             position: fixed;
             top: 0;
@@ -391,7 +335,6 @@
             align-items: flex-end;
             justify-content: center
         }
-
         .modal-box {
             background: #1a1a24;
             width: 100%;
@@ -401,7 +344,6 @@
             border-radius: 20px 20px 0 0;
             padding: 20px
         }
-
         .sync-dot {
             display: inline-block;
             width: 8px;
@@ -410,17 +352,13 @@
             background: #f59e0b;
             margin-right: 5px
         }
-
         .sync-dot.ok {
             background: #22c55e
         }
     </style>
 </head>
-
 <body>
     <div class="container">
-
-        <!-- LOGIN -->
         <div id="tela-login">
             <div class="logo">Mika<span>LIVE</span></div>
             <p class="subtitle">Ferramentas para vender mais na Shop, Insta e YouTube</p>
@@ -429,51 +367,26 @@
                 <p>Transforme link da Shop em roteiro de vídeo, poste no Insta e acompanhe suas comissões.</p>
                 <button class="btn btn-google" onclick="loginGoogle()">G Continuar com Google</button>
                 <button class="btn btn-guest" onclick="entrarVisitante()">Entrar como visitante</button>
-                <p style="font-size:11px;text-align:center;margin-top:12px;color:#666">Sessão salva - quando recarregar,
-                    você continua logado.</p>
+                <p style="font-size:11px;text-align:center;margin-top:12px;color:#666">Sessão salva - quando recarregar, você continua logado.</p>
             </div>
             <div class="card">
                 <h3>🛠️ v9 - O que foi corrigido?</h3>
-                <p>✅ Login restaura sozinho ao recarregar<br>✅ Sincronização preparada + backup Exportar/Importar<br>✅
-                    Comissão real só aceita dados validados da API<br>✅ Sem produto duplicado<br>✅ Roteiros com Ver
-                    Completo + Excluir um por um<br>✅ Proteção contra código malicioso nos campos</p>
+                <p>✅ Login restaura sozinho ao recarregar<br>✅ Sincronização preparada + backup Exportar/Importar<br>✅ Comissão real só aceita dados validados da API<br>✅ Sem produto duplicado<br>✅ Roteiros com Ver Completo + Excluir um por um<br>✅ Proteção contra código malicioso nos campos</p>
             </div>
         </div>
-
-        <!-- PAINEL -->
         <div id="tela-painel" class="hidden">
             <div class="profile">
                 <img id="foto-perfil" src="" alt="">
-                <div style="flex:1"><b id="nome-perfil">Visitante</b><br><small id="email-perfil">Modo visitante</small>
-                </div>
+                <div style="flex:1"><b id="nome-perfil">Visitante</b><br><small id="email-perfil">Modo visitante</small></div>
                 <span class="badge">CRIADOR</span>
             </div>
             <div class="logo" style="font-size:22px;margin:5px 0 10px">Mika<span>LIVE</span> Painel</div>
-            <div class="info"><span class="sync-dot" id="sync-dot"></span><span id="sync-texto">Sincronização local -
-                    backup manual ativo</span><br><small>Para sincronizar entre celular e PC, conecte o
-                    Firebase/Supabase na próxima fase.</small></div>
-
-            <button class="tool-btn" onclick="abrirTela('tela-shop')">
-                <div class="tool-icon">🛍️</div>
-                <div><b>Criar Vídeo da Shop</b><small>Link do produto → roteiro pra vender</small></div><span>›</span>
-            </button>
-            <button class="tool-btn" onclick="abrirTela('tela-insta')">
-                <div class="tool-icon">📸</div>
-                <div><b>Criar Vídeo do Insta</b><small>Roteiro viral + legenda + hashtags</small></div><span>›</span>
-            </button>
-            <button class="tool-btn" onclick="abrirTela('tela-comissao')">
-                <div class="tool-icon">💰</div>
-                <div><b>Minhas Comissões</b><small>Reais separadas de simuladas</small></div><span>›</span>
-            </button>
-            <button class="tool-btn" onclick="abrirTela('tela-youtube')">
-                <div class="tool-icon">▶️</div>
-                <div><b>Meu YouTube</b><small>Preparado pra dados reais</small></div><span>›</span>
-            </button>
-            <button class="tool-btn" onclick="abrirTela('tela-meus-videos')">
-                <div class="tool-icon">🎬</div>
-                <div><b>Meus Roteiros Salvos</b><small>Ver completo + excluir um por um</small></div><span>›</span>
-            </button>
-
+            <div class="info"><span class="sync-dot" id="sync-dot"></span><span id="sync-texto">Sincronização local - backup manual ativo</span><br><small>Para sincronizar entre celular e PC, conecte o Firebase/Supabase na próxima fase.</small></div>
+            <button class="tool-btn" onclick="abrirTela('tela-shop')"><div class="tool-icon">🛍️</div><div><b>Criar Vídeo da Shop</b><small>Link do produto → roteiro pra vender</small></div><span>›</span></button>
+            <button class="tool-btn" onclick="abrirTela('tela-insta')"><div class="tool-icon">📸</div><div><b>Criar Vídeo do Insta</b><small>Roteiro viral + legenda + hashtags</small></div><span>›</span></button>
+            <button class="tool-btn" onclick="abrirTela('tela-comissao')"><div class="tool-icon">💰</div><div><b>Minhas Comissões</b><small>Reais separadas de simuladas</small></div><span>›</span></button>
+            <button class="tool-btn" onclick="abrirTela('tela-youtube')"><div class="tool-icon">▶️</div><div><b>Meu YouTube</b><small>Preparado pra dados reais</small></div><span>›</span></button>
+            <button class="tool-btn" onclick="abrirTela('tela-meus-videos')"><div class="tool-icon">🎬</div><div><b>Meus Roteiros Salvos</b><small>Ver completo + excluir um por um</small></div><span>›</span></button>
             <div class="card">
                 <h3>📊 Resumo</h3>
                 <div class="stat-grid">
@@ -485,12 +398,9 @@
             </div>
             <button class="btn btn-outline" onclick="sair()">Sair da conta</button>
             <button class="btn btn-outline" onclick="exportarDados()">📥 Exportar meus dados (backup)</button>
-            <label class="btn btn-outline" style="display:block;text-align:center;cursor:pointer">📤 Importar
-                backup<input type="file" accept=".json" onchange="importarDados(event)" style="display:none"></label>
+            <label class="btn btn-outline" style="display:block;text-align:center;cursor:pointer">📤 Importar backup<input type="file" accept=".json" onchange="importarDados(event)" style="display:none"></label>
             <button class="btn btn-outline" onclick="tentarSyncCloud()">☁️ Tentar sincronizar na nuvem</button>
         </div>
-
-        <!-- SHOP -->
         <div id="tela-shop" class="hidden">
             <span class="back" onclick="voltarPainel()">← Voltar pro Painel</span>
             <h2 style="font-size:22px;margin-bottom:5px">🛍️ Vídeo da Shop</h2>
@@ -499,26 +409,16 @@
             <input id="loja-produto" placeholder="Loja / Plataforma - ex: Shopee" maxlength="80">
             <input id="nome-produto" placeholder="Nome do produto" maxlength="120">
             <input id="preco-produto" placeholder="Preço - ex: 49,90" inputmode="decimal" maxlength="20">
-            <textarea id="desc-produto" rows="3" placeholder="O que o produto faz? Pra quem é?"
-                maxlength="1000"></textarea>
+            <textarea id="desc-produto" rows="3" placeholder="O que o produto faz? Pra quem é?" maxlength="1000"></textarea>
             <button class="btn btn-shop" onclick="gerarVideoShop()">Gerar Roteiro da Shop →</button>
             <div id="resultado-shop" class="hidden">
-                <div class="video-preview">
-                    <h2 id="preview-titulo-shop">Seu Roteiro</h2>
-                    <p id="preview-texto-shop"></p>
-                    <div id="preview-tags-shop"></div>
-                </div>
-                <div class="card">
-                    <h3>🎬 Roteiro Shop - Pra Vender (30s)</h3>
-                    <p id="roteiro-shop" style="white-space:pre-line;color:#ddd"></p>
-                </div>
+                <div class="video-preview"><h2 id="preview-titulo-shop">Seu Roteiro</h2><p id="preview-texto-shop"></p><div id="preview-tags-shop"></div></div>
+                <div class="card"><h3>🎬 Roteiro Shop - Pra Vender (30s)</h3><p id="roteiro-shop" style="white-space:pre-line;color:#ddd"></p></div>
                 <button class="btn btn-dark" onclick="copiarTexto('roteiro-shop')">📋 Copiar roteiro</button>
                 <button class="btn btn-shop" onclick="salvarVideoAtual()">✅ Salvar roteiro</button>
                 <div id="aviso-duplicado" class="warn hidden"></div>
             </div>
         </div>
-
-        <!-- INSTA -->
         <div id="tela-insta" class="hidden">
             <span class="back" onclick="voltarPainel()">← Voltar pro Painel</span>
             <h2 style="font-size:22px;margin-bottom:5px">📸 Vídeo do Insta</h2>
@@ -541,146 +441,62 @@
             <input id="link-insta-shop" placeholder="Link da Shop pra legenda" maxlength="500">
             <button class="btn btn-insta" onclick="gerarVideoInsta()">Gerar Roteiro do Insta →</button>
             <div id="resultado-insta" class="hidden">
-                <div class="video-preview">
-                    <h2 id="preview-titulo-insta">Roteiro Insta</h2>
-                    <p id="preview-texto-insta"></p>
-                </div>
-                <div class="card">
-                    <h3>🎬 Roteiro Insta</h3>
-                    <p id="roteiro-insta" style="white-space:pre-line;color:#ddd"></p>
-                </div>
-                <div class="card">
-                    <h3>✍️ Legenda pronta</h3>
-                    <p id="legenda-insta" style="white-space:pre-line;color:#ddd"></p>
-                </div>
-                <div class="card">
-                    <h3>#️⃣ Hashtags</h3>
-                    <p id="hashtags-insta" style="white-space:pre-line;color:#ddd"></p>
-                </div>
+                <div class="video-preview"><h2 id="preview-titulo-insta">Roteiro Insta</h2><p id="preview-texto-insta"></p></div>
+                <div class="card"><h3>🎬 Roteiro Insta</h3><p id="roteiro-insta" style="white-space:pre-line;color:#ddd"></p></div>
+                <div class="card"><h3>✍️ Legenda pronta</h3><p id="legenda-insta" style="white-space:pre-line;color:#ddd"></p></div>
+                <div class="card"><h3>#️⃣ Hashtags</h3><p id="hashtags-insta" style="white-space:pre-line;color:#ddd"></p></div>
                 <button class="btn btn-dark" onclick="copiarTexto('legenda-insta')">📋 Copiar legenda</button>
                 <button class="btn btn-dark" onclick="copiarTexto('hashtags-insta')">📋 Copiar hashtags</button>
                 <button class="btn btn-insta" onclick="salvarVideoAtual()">✅ Salvar roteiro</button>
             </div>
         </div>
-
-        <!-- COMISSÕES -->
         <div id="tela-comissao" class="hidden">
             <span class="back" onclick="voltarPainel()">← Voltar pro Painel</span>
             <h2 style="font-size:22px;margin-bottom:5px">💰 Minhas Comissões</h2>
-            <div class="card">
-                <h3>🔗 Conexões</h3>
-                <p>Status: <span id="status-conexao">Nenhuma conta real conectada.</span></p>
-                <button class="btn btn-shop" onclick="prepararConexao('Shop')">Preparar conexão da Shop (API)</button>
-                <button class="btn btn-insta" onclick="prepararConexao('Instagram')">Preparar conexão do Instagram
-                    (API)</button>
-                <div class="info">ℹ️ Comissão real só entra via API validada. Simulação fica separada.</div>
-            </div>
-            <div class="card">
-                <h3>💵 Comissão REAL <span class="chip chip-real">REAL - API</span></h3>
-                <div class="stat-grid">
-                    <div class="stat real"><b id="comissao-real-total">R$ 0,00</b><span>Total Real</span></div>
-                    <div class="stat real"><b id="comissao-real-vendas">0</b><span>Vendas Reais</span></div>
-                </div>
-                <div id="lista-comissao-real"></div>
-                <p style="margin-top:10px;font-size:12px">Só aparece aqui quando a API da Shop enviar dados validados.
-                </p>
-            </div>
-            <div class="card">
-                <h3>🧪 Comissão SIMULADA <span class="chip chip-sim">SIMULAÇÃO</span></h3>
-                <div class="stat-grid">
-                    <div class="stat sim"><b id="comissao-sim-total">R$ 0,00</b><span>Total Simulado</span></div>
-                    <div class="stat sim"><b id="comissao-sim-vendas">0</b><span>Vendas Simuladas</span></div>
-                </div>
-                <button class="btn btn-dark" onclick="simularVenda()">+ Simular venda de R$ 49,90 (ganha R$
-                    7,48)</button>
-                <button class="btn btn-outline" onclick="limparSimulacao()">Limpar simulação</button>
-            </div>
-            <div class="card">
-                <h3>🧪 Testar API Real (simulando webhook)</h3>
-                <p>Isso simula como a Shop vai mandar os dados de verdade. Tenta colocar dado errado pra ver que ele
-                    rejeita.</p>
-                <input id="api-order" placeholder="Order ID - ex: ORD-12345" maxlength="80">
-                <input id="api-valor" placeholder="Valor da venda - ex: 89,90" inputmode="decimal" maxlength="20">
-                <button class="btn btn-dark" onclick="testarAPIComissao()">Testar receber comissão da API →</button>
-                <p id="api-resultado" style="font-size:12px;margin-top:10px;color:#aaa"></p>
-            </div>
+            <div class="card"><h3>🔗 Conexões</h3><p>Status: <span id="status-conexao">Nenhuma conta real conectada.</span></p><button class="btn btn-shop" onclick="prepararConexao('Shop')">Preparar conexão da Shop (API)</button><button class="btn btn-insta" onclick="prepararConexao('Instagram')">Preparar conexão do Instagram (API)</button><div class="info">ℹ️ Comissão real só entra via API validada. Simulação fica separada.</div></div>
+            <div class="card"><h3>💵 Comissão REAL <span class="chip chip-real">REAL - API</span></h3><div class="stat-grid"><div class="stat real"><b id="comissao-real-total">R$ 0,00</b><span>Total Real</span></div><div class="stat real"><b id="comissao-real-vendas">0</b><span>Vendas Reais</span></div></div><div id="lista-comissao-real"></div><p style="margin-top:10px;font-size:12px">Só aparece aqui quando a API da Shop enviar dados validados.</p></div>
+            <div class="card"><h3>🧪 Comissão SIMULADA <span class="chip chip-sim">SIMULAÇÃO</span></h3><div class="stat-grid"><div class="stat sim"><b id="comissao-sim-total">R$ 0,00</b><span>Total Simulado</span></div><div class="stat sim"><b id="comissao-sim-vendas">0</b><span>Vendas Simuladas</span></div></div><button class="btn btn-dark" onclick="simularVenda()">+ Simular venda de R$ 49,90 (ganha R$ 7,48)</button><button class="btn btn-outline" onclick="limparSimulacao()">Limpar simulação</button></div>
+            <div class="card"><h3>🧪 Testar API Real (simulando webhook)</h3><p>Isso simula como a Shop vai mandar os dados de verdade. Tenta colocar dado errado pra ver que ele rejeita.</p><input id="api-order" placeholder="Order ID - ex: ORD-12345" maxlength="80"><input id="api-valor" placeholder="Valor da venda - ex: 89,90" inputmode="decimal" maxlength="20"><button class="btn btn-dark" onclick="testarAPIComissao()">Testar receber comissão da API →</button><p id="api-resultado" style="font-size:12px;margin-top:10px;color:#aaa"></p></div>
         </div>
-
-        <!-- YOUTUBE -->
         <div id="tela-youtube" class="hidden">
             <span class="back" onclick="voltarPainel()">← Voltar pro Painel</span>
             <h2 style="font-size:22px;margin-bottom:5px">▶️ Meu YouTube</h2>
             <p style="color:#aaa;font-size:13px">Dados reais só via API oficial.</p>
-            <div class="card">
-                <h3>🔗 Conectar canal</h3>
-                <input id="canal-yt" placeholder="Link do canal - ex: https://youtube.com/@seucanal" maxlength="300">
-                <button class="btn btn-yt" onclick="prepararYT()">Preparar integração com YouTube</button>
-                <div id="resultado-yt" class="hidden">
-                    <div class="info">✅ Canal salvo: <span id="canal-yt-salvo"></span><br><br>📊 <b>Dados reais ainda
-                            não carregados.</b> Precisamos da chave da YouTube Data API v3.</div>
-                    <div class="card" style="margin-top:12px">
-                        <h3>✍️ Análise manual</h3>
-                        <input id="yt-melhor-video" placeholder="Qual vídeo teve mais views?" maxlength="120">
-                        <input id="yt-views" placeholder="Quantas views? Ex: 12400" inputmode="numeric" maxlength="10">
-                        <button class="btn btn-dark" onclick="gerarIdeiaYT()">Gerar ideia pro próximo vídeo →</button>
-                        <p id="ideia-yt-resultado" style="white-space:pre-line;color:#ddd;margin-top:12px"></p>
-                    </div>
-                </div>
-            </div>
+            <div class="card"><h3>🔗 Conectar canal</h3><input id="canal-yt" placeholder="Link do canal - ex: https://youtube.com/@seucanal" maxlength="300"><button class="btn btn-yt" onclick="prepararYT()">Preparar integração com YouTube</button><div id="resultado-yt" class="hidden"><div class="info">✅ Canal salvo: <span id="canal-yt-salvo"></span><br><br>📊 <b>Dados reais ainda não carregados.</b> Precisamos da chave da YouTube Data API v3.</div><div class="card" style="margin-top:12px"><h3>✍️ Análise manual</h3><input id="yt-melhor-video" placeholder="Qual vídeo teve mais views?" maxlength="120"><input id="yt-views" placeholder="Quantas views? Ex: 12400" inputmode="numeric" maxlength="10"><button class="btn btn-dark" onclick="gerarIdeiaYT()">Gerar ideia pro próximo vídeo →</button><p id="ideia-yt-resultado" style="white-space:pre-line;color:#ddd;margin-top:12px"></p></div></div></div>
         </div>
-
-        <!-- MEUS VIDEOS -->
         <div id="tela-meus-videos" class="hidden">
             <span class="back" onclick="voltarPainel()">← Voltar pro Painel</span>
             <h2 style="font-size:22px;margin-bottom:5px">🎬 Meus Roteiros Salvos</h2>
             <div id="lista-videos"></div>
             <button class="btn btn-outline" onclick="limparVideos()">Limpar todos os roteiros</button>
         </div>
-
     </div>
-
-    <!-- MODAL VER COMPLETO -->
     <div id="modal-video" class="modal hidden" onclick="if(event.target.id==='modal-video') fecharModal()">
         <div class="modal-box">
             <span class="back" onclick="fecharModal()">← Fechar</span>
             <h2 id="modal-titulo" style="font-size:20px;margin:10px 0"></h2>
             <p id="modal-meta" style="color:#aaa;font-size:12px"></p>
-            <div class="card" style="margin-top:12px">
-                <h3>🎬 Roteiro Completo</h3>
-                <p id="modal-roteiro" style="white-space:pre-line;color:#ddd"></p>
-            </div>
-            <div class="card">
-                <h3>✍️ Legenda</h3>
-                <p id="modal-legenda" style="white-space:pre-line;color:#ddd"></p>
-            </div>
-            <div class="card">
-                <h3>#️⃣ Hashtags</h3>
-                <p id="modal-hashtags" style="white-space:pre-line;color:#ddd"></p>
-            </div>
+            <div class="card" style="margin-top:12px"><h3>🎬 Roteiro Completo</h3><p id="modal-roteiro" style="white-space:pre-line;color:#ddd"></p></div>
+            <div class="card"><h3>✍️ Legenda</h3><p id="modal-legenda" style="white-space:pre-line;color:#ddd"></p></div>
+            <div class="card"><h3>#️⃣ Hashtags</h3><p id="modal-hashtags" style="white-space:pre-line;color:#ddd"></p></div>
             <button class="btn btn-dark" onclick="copiarModal()">📋 Copiar tudo</button>
-            <button class="btn btn-danger" id="modal-excluir" onclick="excluirVideoModal()">🗑️ Excluir este
-                roteiro</button>
+            <button class="btn btn-danger" id="modal-excluir" onclick="excluirVideoModal()">🗑️ Excluir este roteiro</button>
         </div>
     </div>
-
     <script>
-        // ================= CONFIG =================
-        const CLIENT_ID = "743276779425-j9t7a3g1q1e3i6r1p95vnhvts0eq8j7n.apps.googleusercontent.com";
+        // ================= CONFIG - ID NOVO CORRETO =================
+        const CLIENT_ID = "794794476883-gosgvl6c2849hatm2298neuffgfvo86s.apps.googleusercontent.com";
         const DB_KEY = "mikalive_db_v9";
         const SESSION_KEY = "mikalive_session_v9";
         let DB = loadDB();
         let videoAtual = null;
         let videoAbertoId = null;
-
-        // ================= SEGURANÇA - PROTEÇÃO DE DADOS DO USUÁRIO =================
-        // CORREÇÃO 6: Nenhum dado digitado vai direto pro HTML. Tudo passa por aqui.
         function escapeHtml(s) {
             return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
         }
         function sanitizar(texto, max) {
             if (typeof texto !== "string") return "";
             let t = texto.trim();
-            // Remove tags script, iframe, javascript:, onerror, etc.
             t = t.replace(/<script[\s\S]*?<\/script>/gi, "")
                 .replace(/<iframe[\s\S]*?<\/iframe>/gi, "")
                 .replace(/javascript:/gi, "")
@@ -702,16 +518,12 @@
         function normalizarLink(link) {
             try {
                 const u = new URL(link.trim().toLowerCase());
-                // Remove parâmetros de rastreio que geram duplicata falsa (?utm_, ?fbclid, etc)
                 ["utm_source", "utm_medium", "utm_campaign", "fbclid", "gclid", "igshid"].forEach(function (p) { u.searchParams.delete(p); });
-                // Remove barra final
                 let href = u.toString();
                 if (href.endsWith("/")) href = href.slice(0, -1);
                 return href;
             } catch (e) { return link.trim().toLowerCase(); }
         }
-
-        // ================= BANCO + SYNC =================
         function getDBPadrao() {
             return {
                 versao: "9",
@@ -729,7 +541,6 @@
             try {
                 const raw = localStorage.getItem(DB_KEY);
                 if (!raw) {
-                    // Migra DB antigo v8 se existir
                     const old = localStorage.getItem("mikalive_db_v8");
                     if (old) { const p = JSON.parse(old); const base = getDBPadrao(); return { ...base, ...p, versao: "9" }; }
                     return getDBPadrao();
@@ -757,10 +568,7 @@
                 txt.innerText = "Só neste dispositivo - exporte o backup pra levar pra outro celular";
             }
         }
-        // CORREÇÃO 2: Estrutura pronta pra nuvem. Hoje salva local + backup. Amanhã troca essa função por Firebase.
         async function tentarSyncCloud() {
-            // TODO: Trocar por: firebase.firestore().doc('users/'+DB.usuario.email).set(DB)
-            // Ou Supabase: supabase.from('mikalive').upsert(...)
             alert("☁️ Sincronização na nuvem PREPARADA, mas ainda não conectada.\n\nPara ativar de verdade precisamos criar o projeto no Firebase/Supabase e colar a chave aqui.\n\nPor enquanto use Exportar / Importar backup pra passar os dados de um celular pro outro.");
             return false;
         }
@@ -779,7 +587,6 @@
                 try {
                     const imported = JSON.parse(reader.result);
                     if (!imported || !imported.versao || !Array.isArray(imported.videos)) { alert("Arquivo inválido!"); return; }
-                    // Mescla sem duplicar: produtos por link normalizado, videos por id
                     const linksExistentes = new Set(DB.produtos.map(function (p) { return p.linkNormalizado || normalizarLink(p.link); }));
                     imported.produtos.forEach(function (p) {
                         const norm = normalizarLink(p.link || "");
@@ -787,7 +594,6 @@
                     });
                     const idsExistentes = new Set(DB.videos.map(function (v) { return v.id; }));
                     imported.videos.forEach(function (v) { if (!idsExistentes.has(v.id)) DB.videos.push(v); });
-                    // Comissões: mantém o maior valor (não soma duplicado)
                     if (imported.comissoes && imported.comissoes.reais && imported.comissoes.reais.total > DB.comissoes.reais.total) {
                         DB.comissoes.reais = imported.comissoes.reais;
                     }
@@ -798,8 +604,6 @@
             };
             reader.readAsText(file);
         }
-
-        // ================= NAVEGAÇÃO =================
         function mostrarTela(id) {
             const telas = ["tela-login", "tela-painel", "tela-shop", "tela-insta", "tela-comissao", "tela-youtube", "tela-meus-videos"];
             telas.forEach(function (t) { document.getElementById(t).classList.add("hidden"); });
@@ -812,9 +616,6 @@
         }
         function abrirTela(id) { mostrarTela(id); }
         function voltarPainel() { mostrarTela("tela-painel"); }
-
-        // ================= LOGIN + RESTAURAR SESSÃO =================
-        // CORREÇÃO 1: Sessão salva e restaurada automaticamente
         function salvarSessao() {
             try {
                 if (DB.usuario) {
@@ -828,7 +629,6 @@
                 if (!raw) return false;
                 const sess = JSON.parse(raw);
                 if (!sess || !sess.usuario || !sess.usuario.nome) return false;
-                // Sessão válida por 30 dias
                 const dias = (Date.now() - new Date(sess.salvaEm).getTime()) / (1000 * 60 * 60 * 24);
                 if (dias > 30) { localStorage.removeItem(SESSION_KEY); return false; }
                 DB.usuario = sess.usuario;
@@ -871,8 +671,6 @@
             try { localStorage.removeItem(SESSION_KEY); } catch (e) { }
             mostrarTela("tela-login");
         }
-
-        // ================= RESUMO =================
         function formatarBRL(v) { return "R$ " + Number(v || 0).toFixed(2).replace(".", ","); }
         function atualizarResumo() {
             document.getElementById("stat-videos").innerText = DB.videos.length;
@@ -899,9 +697,6 @@
             });
             el.innerHTML = html;
         }
-
-        // ================= SHOP - SEM DUPLICATA =================
-        // CORREÇÃO 4: Produto duplicado agora atualiza, não duplica
         function criarOuAtualizarProduto(dados) {
             const norm = normalizarLink(dados.link);
             const existente = DB.produtos.find(function (p) { return (p.linkNormalizado || normalizarLink(p.link)) === norm; });
@@ -937,16 +732,12 @@
             const precoNum = parsePreco(document.getElementById("preco-produto").value);
             const desc = sanitizar(document.getElementById("desc-produto").value, 1000) || "Produto incrível que você precisa conhecer.";
             if (!validarLink(link)) { alert("Cola um link válido! Tem que começar com https://"); return; }
-
             const res = criarOuAtualizarProduto({ link: link, loja: loja, nome: nome, preco: precoNum, descricao: desc });
             const produto = res.produto;
             const precoTxt = precoNum > 0 ? "R$ " + precoNum.toFixed(2).replace(".", ",") : "Preço na Shop";
-
-            // Mostra no preview com escape - nunca innerHTML com dado do usuário
             document.getElementById("preview-titulo-shop").textContent = produto.nome;
             document.getElementById("preview-texto-shop").textContent = precoTxt + " • " + produto.loja;
             document.getElementById("preview-tags-shop").innerHTML = '<span class="tag">#shop</span><span class="tag">#achadinhos</span><span class="tag">#produtobom</span>';
-
             const roteiro =
                 "🎬 ROTEIRO SHOP - PRA VENDER (30 seg)\n\n" +
                 "0-3s - GANCHO: \"Você ainda não conhece " + produto.nome + "? Olha isso!\"\n" +
@@ -955,7 +746,6 @@
                 "20-25s - PROVA: Mostra o resultado, o antes/depois.\n" +
                 "25-30s - CTA: \"Tá só " + precoTxt + ". Link tá na Shop, corre que acaba!\"\n\n" +
                 "🔗 Link: " + produto.link + "\n🏪 Loja: " + produto.loja;
-
             document.getElementById("roteiro-shop").textContent = roteiro;
             document.getElementById("resultado-shop").classList.remove("hidden");
             const aviso = document.getElementById("aviso-duplicado");
@@ -967,8 +757,6 @@
             }
             videoAtual = { tipo: "shop", titulo: produto.nome, produtoId: produto.id, roteiro: roteiro, legenda: "", hashtags: "", criadoEm: new Date().toISOString() };
         }
-
-        // ================= INSTA =================
         function hashtagsPorNicho(nicho) {
             const mapa = {
                 beleza: "#skincare #beleza #cuidadoscomapele #achadinhos #produtobom #dicasdebeleza #rotinadebeleza #mikalive",
@@ -1012,9 +800,6 @@
             document.getElementById("resultado-insta").classList.remove("hidden");
             videoAtual = { tipo: "insta", titulo: tema, produtoId: null, roteiro: roteiro, legenda: legenda, hashtags: hashtags, criadoEm: new Date().toISOString() };
         }
-
-        // ================= SALVAR / LISTAR / VER / EXCLUIR =================
-        // CORREÇÃO 5: Ver completo + excluir individual
         function salvarVideoAtual() {
             if (!videoAtual) { alert("Gera o roteiro primeiro!"); return; }
             DB.videos.push({ ...videoAtual, id: "vid_" + Date.now() });
@@ -1078,9 +863,6 @@
             if (!el) return;
             copiarTextoDireto(el.innerText);
         }
-
-        // ================= COMISSÕES - API REAL VALIDADA =================
-        // CORREÇÃO 3: registrarComissaoReal agora só aceita payload validado da API
         function validarPayloadComissao(payload) {
             if (!payload || typeof payload !== "object") return { ok: false, erro: "Payload inválido" };
             const orderId = sanitizar(payload.orderId || payload.order_id || "", 80);
@@ -1091,7 +873,6 @@
             if (isNaN(valorVenda) || valorVenda <= 0 || valorVenda > 100000) return { ok: false, erro: "Valor da venda inválido" };
             if (isNaN(taxa) || taxa < 0 || taxa > 0.9) return { ok: false, erro: "Taxa de comissão inválida" };
             if (origem !== "api" && origem !== "shopee_api" && origem !== "tiktok_shop_api" && origem !== "webhook") { return { ok: false, erro: "Origem não é API oficial. Use simulação para testes." }; }
-            // Evita duplicar mesma venda
             const jaExiste = DB.comissoes.reais.lista.some(function (c) { return c.orderId === orderId; });
             if (jaExiste) return { ok: false, erro: "Pedido " + orderId + " já foi registrado!" };
             return { ok: true, dados: { orderId: orderId, valorVenda: valorVenda, taxa: taxa, origem: origem } };
@@ -1106,9 +887,6 @@
             saveDB(); atualizarComissoesTela(); atualizarResumo(); renderComissoesReais();
             return { ok: true, comissao: comissao };
         }
-        // Exemplo de como a API real vai chamar no futuro:
-        // fetch('/api/webhook/shopee', {method:'POST', body: JSON.stringify({orderId, valorVenda, taxa, origem:'api'})})
-        //   .then(r => r.json()).then(d => registrarComissaoReal(d))
         function testarAPIComissao() {
             const orderId = sanitizar(document.getElementById("api-order").value, 80) || "ORD-12345";
             const valor = parsePreco(document.getElementById("api-valor").value) || 89.90;
@@ -1137,8 +915,6 @@
                 saveDB(); atualizarComissoesTela(); atualizarResumo();
             }
         }
-
-        // ================= YOUTUBE =================
         function prepararYT() {
             const canal = sanitizar(document.getElementById("canal-yt").value, 300);
             if (!canal) { alert("Escreve o link do seu canal primeiro"); return; }
@@ -1161,8 +937,6 @@
             console.log("buscarDadosReaisYouTube - aguardando chave real");
             return null;
         }
-
-        // ================= INICIO - RESTAURA SESSÃO =================
         atualizarResumo();
         const restaurou = restaurarSessao();
         if (!restaurou) {
@@ -1170,5 +944,4 @@
         }
     </script>
 </body>
-
 </html>
