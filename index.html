@@ -149,7 +149,7 @@ input:focus,textarea:focus{border-color:#8b5cf6;box-shadow:0 0 0 4px rgba(139,92
 </div>
 <div id="modal-video" class="modal hidden" onclick="if(event.target.id==='modal-video') fecharModal()"><div class="modal-box"><span class="back" onclick="fecharModal()">← Fechar</span><h2 id="modal-titulo" style="font-size:20px;margin:10px 0"></h2><p id="modal-meta" style="color:#aaa;font-size:12px"></p><div class="card" style="margin-top:12px"><h3>🎬 Roteiro Completo</h3><p id="modal-roteiro" style="white-space:pre-line;color:#ddd"></p></div><div class="card"><h3>✍️ Legenda</h3><p id="modal-legenda" style="white-space:pre-line;color:#ddd"></p></div><div class="card"><h3>#️⃣ Hashtags</h3><p id="modal-hashtags" style="white-space:pre-line;color:#ddd"></p></div><button class="btn btn-dark" onclick="copiarModal()">📋 Copiar tudo</button><button class="btn btn-danger" id="modal-excluir" onclick="excluirVideoModal()">🗑️ Excluir este roteiro</button></div></div>
 <script>
-// ===== MikaLIVE v10 - REVISÃO TÉCNICA =====
+// ===== MikaLIVE v10 - REVISÃO TÉCNICA - CORRIGIDO VISITANTE =====
 const CLIENT_ID = "794794476883-gosgvl6c2849hatm2298neuffgfvo86s.apps.googleusercontent.com";
 const DB_KEY = "mikalive_db_v10";
 const SESSION_KEY = "mikalive_session_v10";
@@ -278,7 +278,7 @@ function restaurarSessao() {
     if (dias > SESSION_DIAS) { localStorage.removeItem(SESSION_KEY); registrarLog("sessao","Sessão expirada por segurança","dias="+dias.toFixed(1)); return false; }
     DB.usuario = sess.usuario; if (sess.usuario.email) googleEmailAtual = sess.usuario.email; saveDB();
     document.getElementById("nome-perfil").innerText = sess.usuario.nome;
-    document.getElementById("email-perfil").innerText = sess.usuario.email || "";
+    document.getElementById("email-perfil").innerText = sess.usuario.email || "Modo visitante";
     const si = document.getElementById("sessao-info"); if (si) si.textContent = "🔒 Sessão segura • expira em " + Math.max(0, Math.ceil(SESSION_DIAS - dias)) + " dias";
     if (sess.usuario.foto) document.getElementById("foto-perfil").src = sess.usuario.foto;
     atualizarResumo(); mostrarTela("tela-painel"); return true;
@@ -292,10 +292,10 @@ function entrarPainel(nome, email, foto) {
     DB.usuario = { nome: nomeLimpo, email: emailLimpo, foto: foto || "", logadoEm: new Date().toISOString() };
     saveDB(); salvarSessao();
     document.getElementById("nome-perfil").innerText = nomeLimpo;
-    document.getElementById("email-perfil").innerText = emailLimpo;
+    document.getElementById("email-perfil").innerText = emailLimpo || "Modo visitante";
     const si = document.getElementById("sessao-info"); if (si) si.textContent = "🔒 Sessão segura • expira em 30 dias";
     if (foto) document.getElementById("foto-perfil").src = foto;
-    registrarLog("sessao","Login realizado", emailLimpo);
+    registrarLog("sessao","Login realizado", emailLimpo || "visitante");
     atualizarResumo(); mostrarTela("tela-painel");
   } catch(e){ registrarLog("erro","Falha entrarPainel", e.message); alert("Erro ao entrar. Tente de novo."); }
 }
@@ -303,7 +303,7 @@ function handleGoogleCredential(res) { try { const payload = JSON.parse(atob(res
 function loginGoogle() { if (typeof google === "undefined" || !google.accounts) { alert("Google ainda carregando, espera 2s e tenta de novo."); return; } google.accounts.id.initialize({ client_id: CLIENT_ID, callback: handleGoogleCredential, auto_select: false, cancel_on_tap_outside: false }); const old = document.getElementById("google-btn-temp"); if (old) old.remove(); const div = document.createElement("div"); div.id = "google-btn-temp"; div.style.cssText = "position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center"; div.innerHTML = '<div style="background:#fff;padding:24px;border-radius:16px;text-align:center;max-width:320px;width:90%"><p style="color:#111;font-weight:700;margin-bottom:12px">Escolha sua conta Google</p><div id="btn-google-real" style="display:flex;justify-content:center"></div><p style="color:#666;font-size:12px;margin-top:14px;cursor:pointer" onclick="document.getElementById(\'google-btn-temp\').remove()">Fechar</p></div>'; document.body.appendChild(div); google.accounts.id.renderButton(document.getElementById("btn-google-real"), { theme: "outline", size: "large", width: 280 }); google.accounts.id.prompt(); }
 function initGoogleBtn() { if (typeof google === "undefined" || !google.accounts) return; google.accounts.id.initialize({ client_id: CLIENT_ID, callback: handleGoogleCredential }); const area = document.getElementById("google-btn-area"); if (area && !area.innerHTML) { google.accounts.id.renderButton(area, { theme: "outline", size: "large", width: 280, text: "signin_with" }); } }
 window.addEventListener("load", function(){ setTimeout(initGoogleBtn, 500); atualizarLogUI(); });
-function entrarVisitante() { entrarPainel("Visitante", "Modo visitante - sem conta", ""); }
+function entrarVisitante() { entrarPainel("Visitante", "", ""); }
 function sair() { try { registrarLog("sessao","Sair do app",""); DB.usuario = null; googleEmailAtual = ""; saveDB(); localStorage.removeItem(SESSION_KEY); } catch(e){} mostrarTela("tela-login"); }
 function sairDoGoogle() { if (!confirm("Sair da conta do Google?\n\nVocê vai precisar escolher a conta de novo na próxima vez.")) return; try { if (typeof google !== "undefined" && google.accounts && google.accounts.id) { google.accounts.id.disableAutoSelect(); if (googleEmailAtual) { google.accounts.id.revoke(googleEmailAtual, function(){}); } } } catch(e){ registrarLog("erro","Falha revoke Google", e.message); } DB.usuario = null; googleEmailAtual = ""; saveDB(); try { localStorage.removeItem(SESSION_KEY); } catch(e){} registrarLog("sessao","Sair do Google",""); alert("Você saiu da conta do Google! ✅\n\nNa próxima vez vai precisar escolher a conta de novo."); mostrarTela("tela-login"); setTimeout(initGoogleBtn, 300); }
 function formatarBRL(v) { return "R$ " + Number(v || 0).toFixed(2).replace(".", ","); }
