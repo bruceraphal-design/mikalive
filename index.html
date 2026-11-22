@@ -6,6 +6,8 @@
 <title>MikaLIVE - Ferramentas para Criadores</title>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
+<!-- ========== PARTE 1 - CSS ========== -->
 <style>
 :root{--bg:#f8f7ff;--card:#fff;--border:#ece9ff;--text:#0f0f14;--muted:#6b6b78;--grad:linear-gradient(135deg,#7c3aed,#a855f7 55%,#c084fc)}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,sans-serif}
@@ -30,6 +32,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .btn-outline{background:#fff;border:1.5px solid #e9e5ff;color:#333;font-weight:600}
 .btn-small{width:auto;padding:9px 14px;font-size:12px;margin:6px 6px 0 0}
 .btn-danger{background:#dc2626;color:#fff}
+.btn-mini{padding:12px 14px;font-size:13px;margin-top:8px}
 input,textarea,select{width:100%;padding:13px 14px;background:#fff;border:1.5px solid #e9e5ff;border-radius:12px;color:#111;font-size:14px;margin-top:10px;outline:none}
 input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4px rgba(168,85,247,.15)}
 .profile{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid #ddd6fe;padding:16px;border-radius:20px;margin-bottom:16px}
@@ -43,7 +46,7 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 .hidden{display:none!important}
 .video-preview{background:#fff;border-radius:16px;margin:12px auto;padding:22px;text-align:center;border:1.5px solid #e9e5ff;min-height:120px}
 .video-preview h2{font-size:22px;color:#111}.video-preview p{color:#666;font-size:13px;margin-top:8px}
-.tag{display:inline-block;background:#f3f0ff;border:1px solid #e9e5ff;padding:5px 11px;border-radius:999px;font-size:11px;margin:3px;color:#7c3aed;font-weight:600}
+.tag{display:inline-block;background:#f3f0ff;border:1.5px solid #e9e5ff;padding:5px 11px;border-radius:999px;font-size:11px;margin:3px;color:#7c3aed;font-weight:600}
 .back{color:#7c3aed;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:12px;display:inline-flex;gap:6px}
 .warn{background:#fffbeb;border:1.5px solid #fde68a;color:#92400e;padding:12px;border-radius:12px;font-size:12px;margin-top:10px}
 .info{background:#f5f3ff;border:1.5px solid #ddd6fe;color:#5b21b6;padding:13px;border-radius:14px;font-size:12px;margin-top:10px;line-height:1.55}
@@ -78,22 +81,34 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 .abas-resultado{display:flex;gap:8px;margin:12px 0}
 .aba-res{flex:1;padding:11px 6px;border-radius:12px;border:1.5px solid #eeeaff;background:#fff;font-size:12px;font-weight:700;cursor:pointer;text-align:center}
 .aba-res.ativa{background:#111;color:#fff;border-color:#111}
+/* CONTA E SEGURANÇA - GRUPOS DOBRÁVEIS */
+.grupo-conta{background:#fff;border:1.5px solid #eeeaff;border-radius:20px;padding:0;margin-bottom:12px;overflow:hidden}
+.grupo-header{display:flex;align-items:center;gap:12px;padding:18px;cursor:pointer;width:100%;background:#fff;border:none;text-align:left;color:#111}
+.grupo-header b{font-size:15px}
+.grupo-header small{color:#6b6b78;font-size:12px;display:block}
+.grupo-header .seta-grupo{margin-left:auto;font-size:18px;color:#a855f7;font-weight:800}
+.grupo-conteudo{padding:0 18px 18px;display:none}
+.grupo-conteudo.aberto{display:block}
 @media(min-width:768px){.container{max-width:1120px;padding:28px 28px 60px}#tela-login{max-width:560px;margin:0 auto}.grid-3-principal{grid-template-columns:1fr 1fr 1fr}.modal{align-items:center}.modal-box{border-radius:24px}}
 </style>
 </head>
 <body>
 <div class="container">
 
+<!-- ========== PARTE 2 - HTML ========== -->
+<!-- ===== 2.1 TELA LOGIN ===== -->
 <div id="tela-login">
 <div class="cover"><span class="hero-badge">✦ Para criadores que vendem</span><div class="logo">Mika<span>LIVE</span></div><p class="subtitle">Transforme link da Shop em vídeo que vende.<br>Legenda, roteiro e comissão em um só lugar.</p></div>
 <div class="card"><h3>✦ Bem-vindo ao MikaLIVE</h3><p>Transforme link da Shop em roteiro de vídeo, poste no Insta e acompanhe suas comissões.</p><button class="btn btn-google" onclick="loginGoogle()">Continuar com Google</button><div id="google-btn-area" style="margin-top:10px;display:flex;justify-content:center"></div><button class="btn btn-guest" onclick="entrarVisitante()">Entrar como visitante →</button><div style="margin-top:12px;text-align:center"><span class="security-badge">🔒 Login seguro • Sessão protegida • Dados validados</span></div><p style="font-size:11px;text-align:center;margin-top:10px;color:#9a9aa8">Sessão salva por 30 dias — expira automaticamente por segurança.</p><div class="key-box">🔐 <b>Proteção total ativa</b><br>Todas as chaves SECRET só no servidor Vercel. Nenhuma chave SECRET no site.</div></div>
 </div>
 
+<!-- ===== 2.2 TELA PAINEL ===== -->
 <div id="tela-painel" class="hidden">
 <div class="profile"><img id="foto-perfil" src="" alt=""><div style="flex:1"><b id="nome-perfil">Visitante</b><br><small id="email-perfil">Modo visitante</small><br><small id="sessao-info" style="color:#16a34a;font-size:11px;font-weight:600"></small></div><span class="badge">✦ CRIADOR</span></div>
 <div style="text-align:center;margin-bottom:6px"><div class="logo" style="font-size:26px;margin:6px 0 4px">Mika<span>LIVE</span></div><p style="color:#6b6b78;font-size:13px">Onde você quer trabalhar hoje?</p></div>
 <div class="info"><span class="sync-dot" id="sync-dot"></span><span id="sync-texto">Sincronização local - backup manual ativo</span><br><small>Backup automático antes de importar. Nenhuma chave SECRET fica no site.</small><br><small id="log-erros-info" style="color:#b45309"></small></div>
 
+<!-- 3 CARTÕES PRINCIPAIS -->
 <div class="section-title">Suas plataformas</div>
 <div class="grid-3-principal">
 <button class="cartao-plataforma shop" onclick="abrirTela('tela-shop')"><div class="ico">🛍️</div><div><b>Shopee</b><small>Criar vídeo • Link → Roteiro • Produtos salvos</small></div><span class="seta">›</span></button>
@@ -101,9 +116,9 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 <button class="cartao-plataforma yt" onclick="abrirTela('tela-youtube')"><div class="ico">▶️</div><div><b>YouTube</b><small>Canal • Ideias • Conteúdo</small></div><span class="seta">›</span></button>
 </div>
 
+<!-- MEUS RESULTADOS -->
 <div class="section-title">Meus Resultados</div>
 <p style="font-size:12.5px;color:#6b6b78;margin-bottom:12px">Cada pasta mostra SÓ os dados daquela plataforma. Sem misturar.</p>
-
 <div class="pasta-resultado" id="pasta-shop" onclick="abrirPastaResultado('shop')">
 <div class="pasta-header"><span style="font-size:26px">🛍️</span><div style="flex:1"><b>Shopee</b><small>Comissões • Produtos • Roteiros Shopee</small></div><span>›</span></div>
 <div id="conteudo-pasta-shop" class="hidden" style="margin-top:14px">
@@ -111,7 +126,6 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 <button class="btn btn-outline" onclick="event.stopPropagation(); abrirTela('tela-comissao')">Ver comissão completa →</button>
 </div>
 </div>
-
 <div class="pasta-resultado" id="pasta-instagram" onclick="abrirPastaResultado('instagram')">
 <div class="pasta-header"><span style="font-size:26px">📸</span><div style="flex:1"><b>Instagram</b><small>Conteúdos • Roteiros Instagram</small></div><span>›</span></div>
 <div id="conteudo-pasta-instagram" class="hidden" style="margin-top:14px">
@@ -119,7 +133,6 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 <p style="font-size:12px;color:#666;margin-top:8px">Status: <span id="status-conexao">Nenhuma conta real conectada.</span></p>
 </div>
 </div>
-
 <div class="pasta-resultado" id="pasta-youtube" onclick="abrirPastaResultado('youtube')">
 <div class="pasta-header"><span style="font-size:26px">▶️</span><div style="flex:1"><b>YouTube</b><small>Conteúdos • Roteiros YouTube</small></div><span>›</span></div>
 <div id="conteudo-pasta-youtube" class="hidden" style="margin-top:14px">
@@ -127,6 +140,7 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 </div>
 </div>
 
+<!-- ROTEIROS SALVOS -->
 <div class="section-title">Meus Roteiros Salvos</div>
 <div class="abas-resultado">
 <button class="aba-res ativa" id="aba-res-shop" onclick="filtrarRoteirosPorPlataforma('shop')">🛍️ Shopee</button>
@@ -137,20 +151,68 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 <div id="lista-videos"></div>
 <button class="btn btn-outline" onclick="limparVideos()">Limpar todos os roteiros</button>
 
+<!-- ===== CONTA & SEGURANÇA - 5 GRUPOS DOBRÁVEIS ===== -->
 <div class="section-title">Conta & Segurança</div>
-<div class="card"><h3>☁️ Sincronizar na nuvem</h3><p>Sua chave da nuvem fica só no seu celular. Não vai pro código do site.</p><input id="cloud-url" placeholder="Supabase URL"><input id="cloud-key" placeholder="Supabase anon key - só sua"><button class="btn btn-dark" onclick="salvarConfigNuvem()">Salvar minha chave da nuvem</button><p id="cloud-status" style="font-size:12px;margin-top:10px;color:#666"></p></div>
-<div class="card"><h3>🔑 Minhas chaves PÚBLICAS</h3><p>Conecta sua Shop, Insta e YouTube. Só chave PÚBLICA aqui. SECRET nunca aqui.</p><select id="key-servico"><option value="shop">Shop / Shopee</option><option value="instagram">Instagram</option><option value="youtube">YouTube</option><option value="pagamento">Pagamento / Pix</option></select><input id="key-publica" placeholder="Chave PÚBLICA - ex: App ID / Public Key"><button class="btn btn-dark" onclick="salvarChaveAssinante()">Salvar minha chave pública</button><button class="btn btn-outline" onclick="removerChaveAssinante()">Remover minha chave</button><p id="key-status" style="font-size:12px;margin-top:10px;color:#666"></p><div id="lista-chaves-assinante" style="font-size:12px;color:#666;margin-top:8px"></div><div class="key-box">⚠️ <b>NUNCA</b> cole SECRET / SERVICE_ROLE / senha aqui. SECRET fica só no servidor Vercel.</div></div>
-<button class="btn btn-outline" onclick="sairDoGoogle()">Sair da conta do Google</button>
-<button class="btn btn-outline" onclick="sair()">Sair do app (manter Google)</button>
-<button class="btn btn-outline" onclick="exportarDados()">Exportar meus dados (backup)</button>
-<label class="btn btn-outline" style="display:flex;justify-content:center;cursor:pointer">Importar backup<input type="file" accept=".json" onchange="importarDados(event)" style="display:none"></label>
-<button class="btn btn-outline" onclick="restaurarBackupAutomatico()">↩️ Restaurar backup automático</button>
-<button class="btn btn-outline" onclick="tentarSyncCloud()">☁️ Tentar sincronizar na nuvem</button>
-<button class="btn btn-outline" onclick="baixarDaNuvem()">⬇️ Baixar da nuvem</button>
-<button class="btn btn-outline" onclick="verLogSeguranca()">🛡️ Ver log de segurança</button>
-<button class="btn btn-outline" onclick="apagarTodasChaves()">🧹 Apagar todas as minhas chaves</button>
+
+<!-- GRUPO 1 - NUVEM COMPACTA -->
+<div class="grupo-conta">
+<button class="grupo-header" onclick="abrirGrupoConta('grupo-nuvem', this)"><span style="font-size:24px">☁️</span><div style="flex:1"><b>Sincronizar na nuvem</b><small id="resumo-nuvem">Não conectada - clica pra configurar</small></div><span id="dot-nuvem" style="font-size:18px">🔴</span><span class="seta-grupo">›</span></button>
+<div class="grupo-conteudo" id="grupo-nuvem">
+<p style="font-size:12.5px;color:#6b6b78;line-height:1.6;margin-bottom:6px">Sua chave fica só no seu celular. Não vai pro código do site.</p>
+<input id="cloud-url" placeholder="Supabase URL" style="font-size:13px;padding:11px 12px">
+<input id="cloud-key" placeholder="Supabase anon key" style="font-size:13px;padding:11px 12px">
+<button class="btn btn-dark btn-mini" onclick="salvarConfigNuvem()">Salvar chave da nuvem</button>
+<p id="cloud-status" style="font-size:12px;margin-top:10px;color:#666"></p>
+</div>
 </div>
 
+<!-- GRUPO 2 - CHAVES PÚBLICAS COMPACTA -->
+<div class="grupo-conta">
+<button class="grupo-header" onclick="abrirGrupoConta('grupo-chaves', this)"><span style="font-size:24px">🔑</span><div style="flex:1"><b>Chaves Públicas</b><small id="resumo-chaves">Nenhuma salva - clica pra adicionar</small></div><span class="seta-grupo">›</span></button>
+<div class="grupo-conteudo" id="grupo-chaves">
+<p style="font-size:12.5px;color:#6b6b78;line-height:1.6;margin-bottom:6px">Só chave PÚBLICA aqui. SECRET nunca aqui, fica só na Vercel.</p>
+<select id="key-servico" style="font-size:13px;padding:11px 12px"><option value="shop">🛍️ Shop / Shopee</option><option value="instagram">📸 Instagram</option><option value="youtube">▶️ YouTube</option><option value="pagamento">💰 Pagamento / Pix</option></select>
+<input id="key-publica" placeholder="Cole a chave pública aqui" style="font-size:13px;padding:11px 12px">
+<button class="btn btn-dark btn-mini" onclick="salvarChaveAssinante()">Salvar chave pública</button>
+<button class="btn btn-outline btn-mini" onclick="removerChaveAssinante()">Remover essa chave</button>
+<p id="key-status" style="font-size:12px;margin-top:10px;color:#666"></p>
+<div id="lista-chaves-assinante" style="font-size:12px;color:#666;margin-top:8px"></div>
+<div class="key-box">⚠️ <b>NUNCA</b> cole SECRET / SERVICE_ROLE / senha aqui.</div>
+</div>
+</div>
+
+<!-- GRUPO 3 - MINHA CONTA -->
+<div class="grupo-conta">
+<button class="grupo-header" onclick="abrirGrupoConta('grupo-conta-1', this)"><span style="font-size:24px">👤</span><div style="flex:1"><b>Minha Conta</b><small>Sair do app ou do Google</small></div><span class="seta-grupo">›</span></button>
+<div class="grupo-conteudo" id="grupo-conta-1">
+<button class="btn btn-outline btn-mini" onclick="sairDoGoogle()">Sair da conta do Google</button>
+<button class="btn btn-outline btn-mini" onclick="sair()">Sair do app (manter Google)</button>
+</div>
+</div>
+
+<!-- GRUPO 4 - BACKUP E NUVEM -->
+<div class="grupo-conta">
+<button class="grupo-header" onclick="abrirGrupoConta('grupo-conta-2', this)"><span style="font-size:24px">☁️</span><div style="flex:1"><b>Backup & Nuvem</b><small>Exportar, importar, sincronizar</small></div><span class="seta-grupo">›</span></button>
+<div class="grupo-conteudo" id="grupo-conta-2">
+<button class="btn btn-outline btn-mini" onclick="exportarDados()">Exportar meus dados (backup)</button>
+<label class="btn btn-outline btn-mini" style="display:flex;justify-content:center;cursor:pointer">Importar backup<input type="file" accept=".json" onchange="importarDados(event)" style="display:none"></label>
+<button class="btn btn-outline btn-mini" onclick="restaurarBackupAutomatico()">↩️ Restaurar backup automático</button>
+<button class="btn btn-outline btn-mini" onclick="tentarSyncCloud()">☁️ Tentar sincronizar na nuvem</button>
+<button class="btn btn-outline btn-mini" onclick="baixarDaNuvem()">⬇️ Baixar da nuvem</button>
+</div>
+</div>
+
+<!-- GRUPO 5 - SEGURANÇA -->
+<div class="grupo-conta">
+<button class="grupo-header" onclick="abrirGrupoConta('grupo-conta-3', this)"><span style="font-size:24px">🛡️</span><div style="flex:1"><b>Segurança</b><small>Log e apagar chaves</small></div><span class="seta-grupo">›</span></button>
+<div class="grupo-conteudo" id="grupo-conta-3">
+<button class="btn btn-outline btn-mini" onclick="verLogSeguranca()">🛡️ Ver log de segurança</button>
+<button class="btn btn-outline btn-mini" onclick="apagarTodasChaves()">🧹 Apagar todas as minhas chaves</button>
+</div>
+</div>
+</div>
+
+<!-- ===== 2.3 TELA SHOPEE ===== -->
 <div id="tela-shop" class="hidden"><span class="back" onclick="voltarPainel()">← Voltar pro Painel</span><h2 style="font-size:22px;color:#111">🛍️ Shopee</h2><p style="color:#666;font-size:13px">Tudo da Shopee aqui dentro. Link → Roteiro • Produtos salvos</p>
 <input id="link-shop" placeholder="Link do produto" maxlength="500"><input id="loja-produto" placeholder="Loja / Plataforma" maxlength="80"><input id="nome-produto" placeholder="Nome do produto" maxlength="120"><input id="preco-produto" placeholder="Preço - ex: 49,90" inputmode="decimal" maxlength="20"><textarea id="desc-produto" rows="3" placeholder="O que o produto faz? Pra quem é?" maxlength="1000"></textarea>
 <button class="btn btn-shop" onclick="gerarVideoShop()">Gerar Roteiro da Shop →</button>
@@ -158,26 +220,31 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 <div id="resultado-shop" class="hidden"><div class="video-preview"><h2 id="preview-titulo-shop">Seu Roteiro</h2><p id="preview-texto-shop"></p><div id="preview-tags-shop"></div></div><div class="card"><h3>🎬 Roteiro Shop</h3><p id="roteiro-shop" style="white-space:pre-line;color:#444"></p></div><button class="btn btn-dark" onclick="copiarTexto('roteiro-shop')">Copiar roteiro</button><button class="btn btn-shop" onclick="salvarVideoAtual()">✅ Salvar roteiro</button><div id="aviso-duplicado" class="warn hidden"></div></div>
 </div>
 
+<!-- ===== 2.4 TELA INSTAGRAM ===== -->
 <div id="tela-insta" class="hidden"><span class="back" onclick="voltarPainel()">← Voltar pro Painel</span><h2 style="font-size:22px;color:#111">📸 Instagram</h2><p style="color:#666;font-size:13px">Tudo do Instagram aqui dentro. Roteiro viral + legenda + hashtags</p>
 <input id="tema-insta" placeholder="Tema" maxlength="120"><select id="estilo-insta"><option value="viral">Estilo: Viral / Gancho forte</option><option value="tutorial">Estilo: Tutorial rápido</option><option value="depoimento">Estilo: Depoimento</option><option value="humor">Estilo: Humor / Trend</option><option value="comparacao">Estilo: Comparação</option></select><select id="nicho-insta"><option value="beleza">Nicho: Beleza / Skincare</option><option value="casa">Nicho: Casa / Utilidades</option><option value="moda">Nicho: Moda / Acessórios</option><option value="fitness">Nicho: Fitness / Saúde</option><option value="geral">Nicho: Geral / Achadinhos</option></select><input id="link-insta-shop" placeholder="Link da Shop pra legenda" maxlength="500">
 <button class="btn btn-insta" onclick="gerarVideoInsta()">Gerar Roteiro do Insta →</button>
 <button class="btn btn-dark" onclick="gerarComIA('insta')">🤖 Gerar com IA Groq</button>
 <div id="resultado-insta" class="hidden"><div class="video-preview"><h2 id="preview-titulo-insta">Roteiro Insta</h2><p id="preview-texto-insta"></p></div><div class="card"><h3>🎬 Roteiro Insta</h3><p id="roteiro-insta" style="white-space:pre-line;color:#444"></p></div><div class="card"><h3>✍️ Legenda pronta</h3><p id="legenda-insta" style="white-space:pre-line;color:#444"></p></div><div class="card"><h3>#️⃣ Hashtags</h3><p id="hashtags-insta" style="white-space:pre-line;color:#444"></p></div><button class="btn btn-dark" onclick="copiarTexto('legenda-insta')">📋 Copiar legenda</button><button class="btn btn-dark" onclick="copiarTexto('hashtags-insta')">📋 Copiar hashtags</button><button class="btn btn-insta" onclick="salvarVideoAtual()">✅ Salvar roteiro</button></div></div>
 
+<!-- ===== 2.5 TELA YOUTUBE ===== -->
 <div id="tela-youtube" class="hidden"><span class="back" onclick="voltarPainel()">← Voltar pro Painel</span><h2 style="font-size:22px;color:#111">▶️ YouTube</h2><p style="color:#666;font-size:13px">Tudo do YouTube aqui dentro. Canal + ideias</p>
 <div class="card"><h3>🔗 Conectar canal</h3><input id="canal-yt" placeholder="Link do canal" maxlength="300"><button class="btn btn-yt" onclick="prepararYT()">Preparar integração com YouTube</button><div id="resultado-yt" class="hidden"><div class="info">✅ Canal salvo: <span id="canal-yt-salvo"></span></div><div class="card" style="margin-top:12px"><h3>✍️ Análise manual</h3><input id="yt-melhor-video" placeholder="Qual vídeo teve mais views?" maxlength="120"><input id="yt-views" placeholder="Quantas views? Ex: 12400" inputmode="numeric" maxlength="10"><button class="btn btn-dark" onclick="gerarIdeiaYT()">Gerar ideia pro próximo vídeo →</button><p id="ideia-yt-resultado" style="white-space:pre-line;color:#444;margin-top:12px"></p></div></div></div>
 <div class="card"><h3>🎬 Criar conteúdo YouTube</h3><p>Use o botão de IA para gerar roteiro pro YouTube.</p><input id="tema-yt" placeholder="Tema do vídeo YouTube" maxlength="120"><button class="btn btn-dark" onclick="gerarComIA('youtube')">🤖 Gerar roteiro YouTube com IA</button><div id="resultado-yt-ia" class="hidden"><div class="card"><p id="roteiro-yt-ia" style="white-space:pre-line;color:#444"></p></div><button class="btn btn-dark" onclick="copiarTexto('roteiro-yt-ia')">Copiar roteiro</button></div></div>
 </div>
 
+<!-- ===== 2.6 TELA COMISSÃO ===== -->
 <div id="tela-comissao" class="hidden"><span class="back" onclick="voltarPainel()">← Voltar pro Painel</span><h2 style="font-size:22px;color:#111">💰 Minhas Comissões</h2><div class="card"><h3>🔗 Conexões</h3><p>Status: <span id="status-conexao-2">Nenhuma conta real conectada.</span></p><p style="font-size:11px;color:#b45309">⚠️ SECRET nunca aqui. SECRET fica só no servidor.</p><button class="btn btn-shop" onclick="prepararConexao('Shop')">Preparar conexão da Shop (API)</button><button class="btn btn-insta" onclick="prepararConexao('Instagram')">Preparar conexão do Instagram (API)</button><div class="info">ℹ️ Comissão real só entra via API validada no servidor.</div></div><div class="card"><h3>💵 Comissão REAL <span class="chip chip-real">REAL - API</span></h3><div class="stat-grid"><div class="stat real"><b id="comissao-real-total">R$ 0,00</b><span>Total Real</span></div><div class="stat real"><b id="comissao-real-vendas">0</b><span>Vendas Reais</span></div></div><div id="lista-comissao-real"></div></div><div class="card"><h3>🧪 Comissão SIMULADA <span class="chip chip-sim">SIMULAÇÃO</span></h3><div class="stat-grid"><div class="stat sim"><b id="comissao-sim-total">R$ 0,00</b><span>Total Simulado</span></div><div class="stat sim"><b id="comissao-sim-vendas">0</b><span>Vendas Simuladas</span></div></div><button class="btn btn-dark" onclick="simularVenda()">+ Simular venda de R$ 49,90 (ganha R$ 7,48)</button><button class="btn btn-outline" onclick="limparSimulacao()">Limpar simulação</button></div><div class="card"><h3>🧪 Testar API Real</h3><input id="api-order" placeholder="Order ID - ex: ORD-12345" maxlength="80"><input id="api-valor" placeholder="Valor da venda - ex: 89,90" inputmode="decimal" maxlength="20"><input id="api-signature" placeholder="Assinatura do webhook (teste: deixe vazio)" maxlength="200"><button class="btn btn-dark" onclick="testarAPIComissao()">Testar receber comissão da API →</button><p id="api-resultado" style="font-size:12px;margin-top:10px;color:#666"></p></div></div>
 
 <div id="tela-meus-videos" class="hidden"><span class="back" onclick="voltarPainel()">← Voltar pro Painel</span><h2 style="font-size:22px;color:#111">🎬 Meus Roteiros Salvos</h2><div id="lista-videos-2"></div></div>
 </div>
 
+<!-- ===== MODAL VER ROTEIRO ===== -->
 <div id="modal-video" class="modal hidden" onclick="if(event.target.id==='modal-video') fecharModal()"><div class="modal-box"><span class="back" onclick="fecharModal()">← Fechar</span><h2 id="modal-titulo" style="font-size:20px;margin:10px 0"></h2><p id="modal-meta" style="color:#666;font-size:12px"></p><div class="card"><h3>🎬 Roteiro Completo</h3><p id="modal-roteiro" style="white-space:pre-line;color:#444"></p></div><div class="card"><h3>✍️ Legenda</h3><p id="modal-legenda" style="white-space:pre-line;color:#444"></p></div><div class="card"><h3>#️⃣ Hashtags</h3><p id="modal-hashtags" style="white-space:pre-line;color:#444"></p></div><button class="btn btn-dark" onclick="copiarModal()">📋 Copiar tudo</button><button class="btn btn-danger" onclick="excluirVideoModal()">🗑️ Excluir este roteiro</button></div></div>
 
+<!-- ========== PARTE 3 - JAVASCRIPT ========== -->
 <script>
-// ----- CONFIG - SÓ PÚBLICA -----
+// ----- 3.1 CONFIG - SÓ PÚBLICA -----
 window.MIKA_CONFIG = window.MIKA_CONFIG || { GOOGLE_CLIENT_ID: "", SUPABASE_URL: "", SUPABASE_ANON_KEY: "", SHOP_PUBLIC_KEY: "", INSTAGRAM_APP_ID: "", YOUTUBE_PUBLIC_KEY: "", PAGAMENTO_PUBLIC_KEY: "" };
 function getConfig(){
   var w = window.MIKA_CONFIG || {};
@@ -192,7 +259,7 @@ function getChavePublica(servico){
   return getChaveAssinante(servico) || "";
 }
 
-// ----- NAVEGAÇÃO NOVA -----
+// ----- 3.2 NAVEGAÇÃO + GRUPOS DOBRÁVEIS -----
 var filtroRoteiroAtual = 'shop';
 function abrirPastaResultado(plataforma){
   ['shop','instagram','youtube'].forEach(function(p){
@@ -211,6 +278,41 @@ function filtrarRoteirosPorPlataforma(filtro){
   });
   renderListaVideos();
 }
+function abrirGrupoConta(id, botao){
+  var conteudo = document.getElementById(id);
+  if(!conteudo) return;
+  var estaAberto = conteudo.classList.contains('aberto');
+  document.querySelectorAll('.grupo-conteudo').forEach(function(c){ c.classList.remove('aberto'); });
+  document.querySelectorAll('.seta-grupo').forEach(function(s){ s.textContent = '›'; });
+  if(!estaAberto){
+    conteudo.classList.add('aberto');
+    if(botao){
+      var seta = botao.querySelector('.seta-grupo');
+      if(seta) seta.textContent = '⌄';
+    }
+  }
+}
+function atualizarResumoConta(){
+  var resumoNuvem = document.getElementById('resumo-nuvem');
+  var dotNuvem = document.getElementById('dot-nuvem');
+  var cfg = getCloudConfig();
+  if(resumoNuvem){
+    if(cfg && cfg.url){
+      resumoNuvem.textContent = '✅ Conectada - ' + cfg.url.replace('https://','').split('.')[0];
+      if(dotNuvem) dotNuvem.textContent = '🟢';
+    } else {
+      resumoNuvem.textContent = 'Não conectada - clica pra configurar';
+      if(dotNuvem) dotNuvem.textContent = '🔴';
+    }
+  }
+  var resumoChaves = document.getElementById('resumo-chaves');
+  if(resumoChaves){
+    var qtd = Object.keys(getUserKeys()).length;
+    if(qtd === 0) resumoChaves.textContent = 'Nenhuma salva - clica pra adicionar';
+    else if(qtd === 1) resumoChaves.textContent = '✅ 1 chave salva';
+    else resumoChaves.textContent = '✅ ' + qtd + ' chaves salvas';
+  }
+}
 async function gerarComIA(tipo){
   try{
     var pergunta = "";
@@ -225,7 +327,7 @@ async function gerarComIA(tipo){
   }catch(e){ alert("Erro IA: "+e.message+" - Verifica se groq_api_key está na Vercel."); }
 }
 
-// ----- CHAVES PÚBLICAS -----
+// ----- 3.3 CHAVES PÚBLICAS -----
 var USER_KEYS_KEY = "mikalive_user_keys_v12";
 function getUserKeys(){ try{ return JSON.parse(localStorage.getItem(USER_KEYS_KEY)||"{}"); }catch(e){ return {}; } }
 function setUserKeys(o){ localStorage.setItem(USER_KEYS_KEY, JSON.stringify(o)); }
@@ -233,29 +335,30 @@ function getChaveAssinante(servico){ var all=getUserKeys(); return (all[servico]
 function salvarChaveAssinante(){ var servico=document.getElementById("key-servico").value; var publica=(document.getElementById("key-publica").value||"").trim(); if(!publica){alert("Cola pelo menos a chave pública.");return;} if(/service_role|sk_live|gsk_|senha|secret/i.test(publica)){alert("Isso parece SECRET! Não cole SECRET aqui.");return;} var all=getUserKeys(); all[servico]={publica:publica,salvaEm:new Date().toISOString()}; setUserKeys(all); document.getElementById("key-publica").value=""; document.getElementById("key-status").textContent="✅ Chave PÚBLICA salva só neste aparelho."; registrarLog("chave","Chave pública salva",servico); atualizarListaChaves(); }
 function removerChaveAssinante(){ var servico=document.getElementById("key-servico").value; var all=getUserKeys(); if(!all[servico]){alert("Nenhuma chave pra "+servico);return;} if(!confirm("Remover sua chave de "+servico+"?")) return; delete all[servico]; setUserKeys(all); atualizarListaChaves(); document.getElementById("key-status").textContent="✅ Chave removida."; }
 function apagarTodasChaves(){ if(!confirm("Apagar TODAS as suas chaves deste aparelho?")) return; localStorage.removeItem(USER_KEYS_KEY); localStorage.removeItem("mikalive_cloud_config_v11"); atualizarListaChaves(); document.getElementById("cloud-status").textContent=""; alert("✅ Todas as suas chaves apagadas."); }
-function atualizarListaChaves(){ var el=document.getElementById("lista-chaves-assinante"); if(!el) return; var all=getUserKeys(); var nomes=Object.keys(all); if(!nomes.length){ el.innerHTML="Nenhuma chave salva neste aparelho."; return; } el.innerHTML="Chaves PÚBLICAS salvas: "+nomes.map(function(n){ return "✅ "+n+" (****"+getChaveAssinante(n).slice(-4)+")"; }).join(" • "); }
+function atualizarListaChaves(){ var el=document.getElementById("lista-chaves-assinante"); if(!el) return; var all=getUserKeys(); var nomes=Object.keys(all); if(!nomes.length){ el.innerHTML="Nenhuma chave salva neste aparelho."; atualizarResumoConta(); return; } el.innerHTML="Chaves PÚBLICAS salvas: "+nomes.map(function(n){ return "✅ "+n+" (****"+getChaveAssinante(n).slice(-4)+")"; }).join(" • "); atualizarResumoConta(); }
 
-// ----- BANCO / SISTEMA -----
+// ----- 3.4 BANCO / NUVEM / BACKUP -----
 var CLIENT_ID = getConfig().GOOGLE_CLIENT_ID;
 var DB_KEY = "mikalive_db_v10"; var SESSION_KEY = "mikalive_session_v10"; var BACKUP_AUTO_KEY = "mikalive_backup_auto_v10"; var LOG_KEY = "mikalive_log_v10"; var CLOUD_KEY = "mikalive_cloud_config_v11"; var SESSION_DIAS = 30;
 var DB = loadDB(); var videoAtual = null; var videoAbertoId = null; var googleEmailAtual = "";
 function getCloudConfig(){ var cfg=getConfig(); if(cfg.SUPABASE_URL && cfg.SUPABASE_ANON_KEY) return {url:cfg.SUPABASE_URL,key:cfg.SUPABASE_ANON_KEY}; try{return JSON.parse(localStorage.getItem(CLOUD_KEY)||"null");}catch(e){return null;} }
 function getUserIdNuvem(){ if(DB.usuario && DB.usuario.email) return "google_"+DB.usuario.email.toLowerCase(); return "visitante_"+(DB.usuario?DB.usuario.nome:"anonimo"); }
-function salvarConfigNuvem(){ var url=(document.getElementById("cloud-url").value||"").trim(); var key=(document.getElementById("cloud-key").value||"").trim(); if(!url.startsWith("https://")||!url.includes("supabase.co")){alert("URL do Supabase inválida.");return;} if(key.length<20){alert("Chave anon inválida.");return;} localStorage.setItem(CLOUD_KEY,JSON.stringify({url:url.replace(/\/$/,""),key:key})); document.getElementById("cloud-status").textContent="✅ Nuvem configurada só neste aparelho."; registrarLog("cloud","Nuvem configurada",""); }
-function mostrarCloudConfig(){ var c=getCloudConfig(); if(!c) return; var u=document.getElementById("cloud-url"); var k=document.getElementById("cloud-key"); var s=document.getElementById("cloud-status"); if(u) u.value=c.url; if(k) k.value="****"+c.key.slice(-4); if(s) s.textContent="✅ Nuvem configurada - pronta."; }
+function salvarConfigNuvem(){ var url=(document.getElementById("cloud-url").value||"").trim(); var key=(document.getElementById("cloud-key").value||"").trim(); if(!url.startsWith("https://")||!url.includes("supabase.co")){alert("URL do Supabase inválida.");return;} if(key.length<20){alert("Chave anon inválida.");return;} localStorage.setItem(CLOUD_KEY,JSON.stringify({url:url.replace(/\/$/,""),key:key})); document.getElementById("cloud-status").textContent="✅ Nuvem configurada só neste aparelho."; atualizarResumoConta(); registrarLog("cloud","Nuvem configurada",""); }
+function mostrarCloudConfig(){ var c=getCloudConfig(); if(!c) { atualizarResumoConta(); return; } var u=document.getElementById("cloud-url"); var k=document.getElementById("cloud-key"); var s=document.getElementById("cloud-status"); if(u) u.value=c.url; if(k) k.value="****"+c.key.slice(-4); if(s) s.textContent="✅ Nuvem configurada - pronta."; atualizarResumoConta(); }
 async function tentarSyncCloud(){ var cfg=getCloudConfig(); if(!cfg){alert("☁️ Configura a nuvem primeiro!");return false;} try{ fazerBackupAutomatico("antes_sync_nuvem"); var userId=getUserIdNuvem(); var res=await fetch(cfg.url+"/rest/v1/mikalive_sync?on_conflict=user_id",{method:"POST",headers:{"apikey":cfg.key,"Authorization":"Bearer "+cfg.key,"Content-Type":"application/json","Prefer":"resolution=merge-duplicates,return=representation"},body:JSON.stringify({user_id:userId,dados:DB,atualizado_em:new Date().toISOString()})}); if(!res.ok) throw new Error("Supabase retornou "+res.status); DB.sync.ultimaSync=new Date().toISOString(); DB.sync.pendente=false; saveDB(); atualizarSyncUI(); registrarLog("cloud","Sync enviado",userId); alert("✅ Sincronizado na nuvem!"); return true; }catch(e){ registrarLog("erro","Falha sync nuvem",e.message); alert("❌ Não consegui sincronizar: "+e.message); return false; } }
 async function baixarDaNuvem(){ var cfg=getCloudConfig(); if(!cfg){alert("Configura a nuvem primeiro.");return;} if(!confirm("Baixar dados da nuvem? Vai substituir os dados deste celular. Backup automático criado antes.")) return; try{ fazerBackupAutomatico("antes_baixar_nuvem"); var userId=getUserIdNuvem(); var res=await fetch(cfg.url+"/rest/v1/mikalive_sync?user_id=eq."+encodeURIComponent(userId)+"&select=dados,atualizado_em",{headers:{"apikey":cfg.key,"Authorization":"Bearer "+cfg.key}}); if(!res.ok) throw new Error("Supabase retornou "+res.status); var arr=await res.json(); if(!arr||!arr.length||!arr[0].dados){alert("Nenhum dado na nuvem pra essa conta ainda.");return;} var v=validarBackup(arr[0].dados); if(!v.ok){alert("❌ Dados da nuvem rejeitados: "+v.erro);return;} DB=arr[0].dados; saveDB(); atualizarResumo(); mostrarCloudConfig(); alert("✅ Dados baixados da nuvem!"); mostrarTela("tela-painel"); }catch(e){ alert("❌ Erro ao baixar: "+e.message); } }
 function registrarLog(tipo,mensagem,detalhe){ try{ var logs=JSON.parse(localStorage.getItem(LOG_KEY)||"[]"); logs.push({tipo:String(tipo).slice(0,30),mensagem:String(mensagem).slice(0,200),detalhe:String(detalhe||"").slice(0,300),data:new Date().toISOString()}); if(logs.length>100) logs=logs.slice(-100); localStorage.setItem(LOG_KEY,JSON.stringify(logs)); atualizarLogUI(); }catch(e){} }
 function atualizarLogUI(){ try{ var el=document.getElementById("log-erros-info"); if(!el) return; var logs=JSON.parse(localStorage.getItem(LOG_KEY)||"[]"); var erros=logs.filter(function(l){return l.tipo==="erro"||l.tipo==="webhook_rejeitado"||l.tipo==="duplicado";}); el.textContent=erros.length?"⚠️ "+erros.length+" evento(s) registrados.":"✅ Nenhum erro registrado."; }catch(e){} }
 function verLogSeguranca(){ try{ var logs=JSON.parse(localStorage.getItem(LOG_KEY)||"[]"); if(!logs.length){alert("✅ Log limpo.");return;} var txt="🛡️ LOG - últimos 20:\n\n"; logs.slice(-20).reverse().forEach(function(l){ txt+="["+new Date(l.data).toLocaleString("pt-BR")+"] "+l.tipo+": "+l.mensagem+"\n"; }); alert(txt); }catch(e){alert("Erro ao ler log.");} }
 window.addEventListener("error",function(e){ registrarLog("erro","Erro JS",e.message||""); });
+
+// ----- 3.5 SEGURANÇA - CORRIGIDA -----
 function escapeHtml(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;"); }
 function sanitizar(texto, max){
   if(typeof texto !== "string") return "";
   var t = texto.trim();
   t = t.replace(/<script[\s\S]*?<\/script>/gi, "");
   t = t.replace(/<iframe[\s\S]*?<\/iframe>/gi, "");
-  t = t.replace(/javascript:/gi, "");
   t = t.replace(/on\w+\s*=/gi, "");
   if(max && t.length > max) t = t.substring(0, max);
   return t;
@@ -272,7 +375,9 @@ function saveDB(){ try{ localStorage.setItem(DB_KEY,JSON.stringify(DB)); DB.sync
 function atualizarSyncUI(){ var dot=document.getElementById("sync-dot"); var txt=document.getElementById("sync-texto"); if(!dot||!txt) return; if(DB.sync&&DB.sync.ultimaSync){ dot.classList.add("ok"); txt.innerText="Última sincronização: "+new Date(DB.sync.ultimaSync).toLocaleString("pt-BR"); } else { txt.innerText="Só neste dispositivo - exporte o backup pra levar pra outro celular"; } }
 function exportarDados(){ try{ fazerBackupAutomatico("antes_exportar"); var blob=new Blob([JSON.stringify(DB,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="mikalive-backup-v10.json"; a.click(); URL.revokeObjectURL(url); }catch(e){alert("Erro ao exportar.");} }
 function importarDados(event){ var file=event.target.files[0]; if(!file) return; if(file.size>5*1024*1024){alert("Arquivo muito grande! Máximo 5MB.");event.target.value="";return;} var reader=new FileReader(); reader.onload=function(){ try{ var imported=JSON.parse(reader.result); var v=validarBackup(imported); if(!v.ok){alert("❌ Backup rejeitado: "+v.erro);return;} fazerBackupAutomatico("antes_importar"); var linksExistentes=new Set(DB.produtos.map(function(p){return p.linkNormalizado||normalizarLink(p.link);})); imported.produtos.forEach(function(p){ var norm=normalizarLink(p.link||""); if(!linksExistentes.has(norm)&&validarLink(p.link||"")){ DB.produtos.push(p); linksExistentes.add(norm); } }); var idsExistentes=new Set(DB.videos.map(function(v){return v.id;})); imported.videos.forEach(function(v){ if(!idsExistentes.has(v.id)) DB.videos.push(v); }); saveDB(); atualizarResumo(); alert("Backup importado!"); mostrarTela("tela-painel"); }catch(e){alert("Erro ao importar.");} }; reader.readAsText(file); event.target.value=""; }
-function mostrarTela(id){ var telas=["tela-login","tela-painel","tela-shop","tela-insta","tela-comissao","tela-youtube","tela-meus-videos"]; telas.forEach(function(t){ var el=document.getElementById(t); if(el) el.classList.add("hidden"); }); var el=document.getElementById(id); if(el) el.classList.remove("hidden"); window.scrollTo(0,0); if(id==="tela-meus-videos") renderListaVideos(); if(id==="tela-comissao"){ atualizarComissoesTela(); renderComissoesReais(); } if(id==="tela-painel"){ atualizarResumo(); mostrarCloudConfig(); atualizarListaChaves(); renderListaVideos(); } }
+
+// ----- 3.6 TELAS E LOGIN -----
+function mostrarTela(id){ var telas=["tela-login","tela-painel","tela-shop","tela-insta","tela-comissao","tela-youtube","tela-meus-videos"]; telas.forEach(function(t){ var el=document.getElementById(t); if(el) el.classList.add("hidden"); }); var el=document.getElementById(id); if(el) el.classList.remove("hidden"); window.scrollTo(0,0); if(id==="tela-meus-videos") renderListaVideos(); if(id==="tela-comissao"){ atualizarComissoesTela(); renderComissoesReais(); } if(id==="tela-painel"){ atualizarResumo(); mostrarCloudConfig(); atualizarListaChaves(); renderListaVideos(); atualizarResumoConta(); } }
 function abrirTela(id){ mostrarTela(id); }
 function voltarPainel(){ mostrarTela("tela-painel"); }
 function salvarSessao(){ try{ if(DB.usuario){ localStorage.setItem(SESSION_KEY,JSON.stringify({usuario:DB.usuario,salvaEm:new Date().toISOString()})); } }catch(e){} }
@@ -281,10 +386,12 @@ function entrarPainel(nome,email,foto){ try{ var nomeLimpo=sanitizar(nome,100)||
 function handleGoogleCredential(res){ try{ var payload=JSON.parse(atob(res.credential.split(".")[1])); var temp=document.getElementById("google-btn-temp"); if(temp) temp.remove(); entrarPainel(payload.name||"Usuário",payload.email||"",payload.picture||""); }catch(e){alert("Erro ao logar.");} }
 function loginGoogle(){ if(!CLIENT_ID){alert("GOOGLE_CLIENT_ID não configurado. Preenche em window.MIKA_CONFIG.");return;} if(typeof google==="undefined"||!google.accounts){alert("Google ainda carregando, espera 2s e tenta de novo.");return;} google.accounts.id.initialize({client_id:CLIENT_ID,callback:handleGoogleCredential,auto_select:false,cancel_on_tap_outside:false}); var old=document.getElementById("google-btn-temp"); if(old) old.remove(); var div=document.createElement("div"); div.id="google-btn-temp"; div.style.cssText="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.45);z-index:9999;display:flex;align-items:center;justify-content:center"; div.innerHTML='<div style="background:#fff;padding:24px;border-radius:16px;text-align:center;max-width:320px;width:90%"><p style="color:#111;font-weight:700;margin-bottom:12px">Escolha sua conta Google</p><div id="btn-google-real" style="display:flex;justify-content:center"></div><p style="color:#666;font-size:12px;margin-top:14px;cursor:pointer" onclick="document.getElementById(\'google-btn-temp\').remove()">Fechar</p></div>'; document.body.appendChild(div); google.accounts.id.renderButton(document.getElementById("btn-google-real"),{theme:"outline",size:"large",width:280}); google.accounts.id.prompt(); }
 function initGoogleBtn(){ if(!CLIENT_ID) return; if(typeof google==="undefined"||!google.accounts) return; google.accounts.id.initialize({client_id:CLIENT_ID,callback:handleGoogleCredential}); var area=document.getElementById("google-btn-area"); if(area&&!area.innerHTML){ google.accounts.id.renderButton(area,{theme:"outline",size:"large",width:280,text:"signin_with"}); } }
-window.addEventListener("load",function(){ setTimeout(initGoogleBtn,500); atualizarLogUI(); mostrarCloudConfig(); atualizarListaChaves(); });
+window.addEventListener("load",function(){ setTimeout(initGoogleBtn,500); atualizarLogUI(); mostrarCloudConfig(); atualizarListaChaves(); atualizarResumoConta(); });
 function entrarVisitante(){ entrarPainel("Visitante","",""); }
 function sair(){ try{ DB.usuario=null; googleEmailAtual=""; saveDB(); localStorage.removeItem(SESSION_KEY); }catch(e){} mostrarTela("tela-login"); }
 function sairDoGoogle(){ if(!confirm("Sair da conta do Google?")) return; try{ if(typeof google!=="undefined"&&google.accounts&&google.accounts.id){ google.accounts.id.disableAutoSelect(); if(googleEmailAtual){ google.accounts.id.revoke(googleEmailAtual,function(){}); } } }catch(e){} DB.usuario=null; googleEmailAtual=""; saveDB(); try{ localStorage.removeItem(SESSION_KEY); }catch(e){} alert("Você saiu da conta do Google! ✅"); mostrarTela("tela-login"); setTimeout(initGoogleBtn,300); }
+
+// ----- 3.7 RESUMOS -----
 function formatarBRL(v){ return "R$ "+Number(v||0).toFixed(2).replace(".",","); }
 function atualizarResumo(){
   var shopVideos = DB.videos.filter(function(v){return v.tipo==='shop';}).length;
@@ -315,10 +422,14 @@ function renderComissoesReais(){
   if(DB.comissoes.reais.lista.length===0){ el.innerHTML=""; return; }
   var html=""; DB.comissoes.reais.lista.slice().reverse().forEach(function(c){ html+='<div class="list-item"><b>Pedido '+escapeHtml(c.orderId)+'</b><small>Comissão '+formatarBRL(c.comissao)+' • Venda '+formatarBRL(c.valorVenda)+' • '+new Date(c.data).toLocaleDateString("pt-BR")+'</small><span class="chip chip-real">API VALIDADA</span></div>'; }); el.innerHTML=html;
 }
+
+// ----- 3.8 SHOPEE / INSTAGRAM -----
 function criarOuAtualizarProduto(dados){ var norm=normalizarLink(dados.link); var existente=DB.produtos.find(function(p){ return (p.linkNormalizado||normalizarLink(p.link))===norm; }); if(existente){ existente.nome=dados.nome; existente.preco=dados.preco; existente.descricao=dados.descricao; existente.loja=dados.loja; existente.link=dados.link; existente.atualizadoEm=new Date().toISOString(); saveDB(); return {produto:existente,foiAtualizado:true}; } var produto={id:"prod_"+Date.now(),link:dados.link,linkNormalizado:norm,loja:dados.loja||"Shop",nome:dados.nome||"Produto da Shop",preco:dados.preco||0,descricao:dados.descricao||"",criadoEm:new Date().toISOString()}; DB.produtos.push(produto); saveDB(); return {produto:produto,foiAtualizado:false}; }
 function gerarVideoShop(){ try{ var link=sanitizar(document.getElementById("link-shop").value,500); var loja=sanitizar(document.getElementById("loja-produto").value,80)||"Shop"; var nome=sanitizar(document.getElementById("nome-produto").value,120)||"Produto da Shop"; var precoNum=parsePreco(document.getElementById("preco-produto").value); var desc=sanitizar(document.getElementById("desc-produto").value,1000)||"Produto incrível que você precisa conhecer."; if(!validarLink(link)){alert("Cola um link válido!");return;} var res=criarOuAtualizarProduto({link:link,loja:loja,nome:nome,preco:precoNum,descricao:desc}); var produto=res.produto; var precoTxt=precoNum>0?"R$ "+precoNum.toFixed(2).replace(".",","):"Preço na Shop"; document.getElementById("preview-titulo-shop").textContent=produto.nome; document.getElementById("preview-texto-shop").textContent=precoTxt+" • "+produto.loja; document.getElementById("preview-tags-shop").innerHTML='<span class="tag">#shop</span><span class="tag">#achadinhos</span><span class="tag">#produtobom</span>'; var roteiro="🎬 ROTEIRO SHOP - PRA VENDER (30 seg)\n\n0-3s - GANCHO: \"Você ainda não conhece "+produto.nome+"? Olha isso!\"\n3-10s - MOSTRA O PRODUTO: Mostra ele de perto.\n10-20s - BENEFÍCIO: \""+desc+"\"\n20-25s - PROVA: Mostra o resultado.\n25-30s - CTA: \"Tá só "+precoTxt+". Link tá na Shop, corre que acaba!\"\n\n🔗 Link: "+produto.link+"\n🏪 Loja: "+produto.loja; document.getElementById("roteiro-shop").textContent=roteiro; document.getElementById("resultado-shop").classList.remove("hidden"); var aviso=document.getElementById("aviso-duplicado"); if(res.foiAtualizado){ aviso.classList.remove("hidden"); aviso.textContent="ℹ️ Esse produto já existia! Atualizei em vez de duplicar."; } else { aviso.classList.add("hidden"); } videoAtual={tipo:"shop",titulo:produto.nome,produtoId:produto.id,roteiro:roteiro,legenda:"",hashtags:"",criadoEm:new Date().toISOString()}; }catch(e){alert("Erro ao gerar roteiro.");} }
 function hashtagsPorNicho(nicho){ var mapa={beleza:"#skincare #beleza #cuidadoscomapele #achadinhos #produtobom #dicasdebeleza #rotinadebeleza #mikalive",casa:"#achadinhos #casalinda #utilidades #dicasdecasa #produtosuteis #achadinhosshopee #mikalive",moda:"#moda #look #achadinhos #modafeminina #estilo #tendencia #mikalive",fitness:"#fitness #saude #treino #vidasaudavel #dicasfitness #mikalive",geral:"#viral #achadinhos #shop #dica #produtobom #foryou #fyp #mikalive"}; return mapa[nicho]||mapa.geral; }
 function gerarVideoInsta(){ try{ var tema=sanitizar(document.getElementById("tema-insta").value,120)||"Produto da Shop"; var estilo=document.getElementById("estilo-insta").value; var nicho=document.getElementById("nicho-insta").value; var link=sanitizar(document.getElementById("link-insta-shop").value,500)||"Link na bio"; var roteiro="🎬 ROTEIRO INSTA (15-20s)\n\n0-2s - GANCHO: \""+tema+"\"\n2-8s - Mostra o produto em uso.\n8-12s - PROVA: Sua reação real.\n12-15s - CTA: \"Comenta EU QUERO que eu te mando o link!\""; var legenda="🤯 "+tema+"\nComenta EU QUERO que eu te mando o link!\n🔗 "+link; var hashtags=hashtagsPorNicho(nicho); document.getElementById("preview-titulo-insta").textContent=tema; document.getElementById("preview-texto-insta").textContent="Estilo: "+estilo; document.getElementById("roteiro-insta").textContent=roteiro; document.getElementById("legenda-insta").textContent=legenda; document.getElementById("hashtags-insta").textContent=hashtags; document.getElementById("resultado-insta").classList.remove("hidden"); videoAtual={tipo:"insta",titulo:tema,produtoId:null,roteiro:roteiro,legenda:legenda,hashtags:hashtags,criadoEm:new Date().toISOString()}; }catch(e){alert("Erro ao gerar.");} }
+
+// ----- 3.9 ROTEIROS SALVOS -----
 function salvarVideoAtual(){ try{ if(!videoAtual){alert("Gera o roteiro primeiro!");return;} DB.videos.push(Object.assign({}, videoAtual, {id:"vid_"+Date.now()})); saveDB(); videoAtual=null; atualizarResumo(); alert("Roteiro salvo! Total: "+DB.videos.length); voltarPainel(); }catch(e){alert("Erro ao salvar.");} }
 function renderListaVideos(){
   var el=document.getElementById("lista-videos"); var el2=document.getElementById("lista-videos-2");
@@ -337,6 +448,8 @@ function excluirVideo(id){ if(!confirm("Excluir este roteiro?")) return; fazerBa
 function excluirVideoModal(){ if(videoAbertoId) excluirVideo(videoAbertoId); }
 function limparVideos(){ if(confirm("Apagar todos os roteiros?")){ fazerBackupAutomatico("antes_limpar_videos"); DB.videos=[]; saveDB(); atualizarResumo(); renderListaVideos(); } }
 function copiarTexto(id){ var el=document.getElementById(id); if(!el) return; copiarTextoDireto(el.innerText); }
+
+// ----- 3.10 COMISSÃO + YOUTUBE -----
 function verificarAssinaturaWebhook(payload,assinatura,timestamp){ if(!assinatura){ return {modo:"teste",ok:true}; } if(String(assinatura).length<10){ return {modo:"producao",ok:false,erro:"Assinatura inválida"}; } if(timestamp){ var diff=Math.abs(Date.now()-Number(timestamp)); if(diff>5*60*1000) return {modo:"producao",ok:false,erro:"Webhook expirado"}; } return {modo:"producao",ok:true}; }
 function validarPayloadComissao(payload){ if(!payload||typeof payload!=="object") return {ok:false,erro:"Payload inválido"}; var orderId=sanitizar(payload.orderId||payload.order_id||"",80); var valorVenda=Number(payload.valorVenda!==undefined?payload.valorVenda:(payload.valor!==undefined?payload.valor:payload.amount)); var taxa=Number(payload.taxa!==undefined?payload.taxa:(payload.commissionRate!==undefined?payload.commissionRate:0.15)); var origem=sanitizar(payload.origem||payload.source||"",50); if(!orderId) return {ok:false,erro:"Falta orderId"}; if(!/^[A-Za-z0-9\-_]{3,80}$/.test(orderId)) return {ok:false,erro:"OrderId inválido"}; if(isNaN(valorVenda)||valorVenda<=0||valorVenda>100000) return {ok:false,erro:"Valor inválido"}; if(isNaN(taxa)||taxa<0||taxa>0.9) return {ok:false,erro:"Taxa inválida"}; if(origem!=="api"&&origem!=="shopee_api"&&origem!=="tiktok_shop_api"&&origem!=="webhook"){ return {ok:false,erro:"Origem não é API oficial."}; } var jaExiste=DB.comissoes.reais.lista.some(function(c){return c.orderId===orderId;}); if(jaExiste){ return {ok:false,erro:"Pedido já registrado!"}; } return {ok:true,dados:{orderId:orderId,valorVenda:valorVenda,taxa:taxa,origem:origem}}; }
 function receberWebhookComissao(payload,assinatura,timestamp){ var ver=verificarAssinaturaWebhook(payload,assinatura,timestamp); if(!ver.ok){ return {ok:false,erro:ver.erro}; } var v=validarPayloadComissao(payload); if(!v.ok) return v; var comissao=v.dados.valorVenda*v.dados.taxa; DB.comissoes.reais.total+=comissao; DB.comissoes.reais.vendas+=1; DB.comissoes.reais.lista.push({orderId:v.dados.orderId,valorVenda:v.dados.valorVenda,taxa:v.dados.taxa,comissao:comissao,origem:v.dados.origem,data:new Date().toISOString(),tipo:"real",modo:ver.modo}); saveDB(); atualizarComissoesTela(); atualizarResumo(); renderComissoesReais(); return {ok:true,comissao:comissao,modo:ver.modo}; }
@@ -346,7 +459,9 @@ function simularVenda(){ var comissao=7.48; DB.comissoes.simuladas.total+=comiss
 function limparSimulacao(){ if(confirm("Limpar só a simulação?")){ DB.comissoes.simuladas={total:0,vendas:0,lista:[]}; saveDB(); atualizarComissoesTela(); atualizarResumo(); } }
 function prepararYT(){ try{ var canal=sanitizar(document.getElementById("canal-yt").value,300); if(!canal){alert("Escreve o link do seu canal primeiro");return;} if(!validarLink(canal)){alert("Link tem que começar com https://");return;} DB.conexoes.youtube={status:"preparada",canal:canal,conectadaEm:new Date().toISOString()}; saveDB(); document.getElementById("canal-yt-salvo").textContent=canal; document.getElementById("resultado-yt").classList.remove("hidden"); }catch(e){} }
 function gerarIdeiaYT(){ try{ var melhor=sanitizar(document.getElementById("yt-melhor-video").value,120); var views=sanitizar(document.getElementById("yt-views").value,10); if(!melhor){alert("Escreve qual vídeo seu teve mais views");return;} DB.youtubeManual={melhorVideo:melhor,views:parseInt(views||"0")||0}; saveDB(); document.getElementById("ideia-yt-resultado").textContent="💡 IDEIA: Faça a PARTE 2 de \""+melhor+"\" ("+(views||"0")+" views) ou versão atualizada."; }catch(e){} }
-atualizarResumo(); atualizarLogUI();
+
+// ----- 3.11 INÍCIO -----
+atualizarResumo(); atualizarLogUI(); atualizarResumoConta();
 var restaurou = restaurarSessao();
 if(!restaurou){ mostrarTela("tela-login"); }
 </script>
