@@ -1,0 +1,16 @@
+/* CELULAR: até 767px */
+@media(max-width:767px){
+  .app{padding:0 14px 90px}
+  .hero h1{font-size:22px}
+  .kpi{flex-wrap:wrap}
+  .kpi div{flex:1 1 40%}
+  .nav{padding-bottom:8px}
+}
+/* PC / TABLET: a partir de 768px */
+@media(min-width:768px){
+  .app{max-width:1100px}
+  .stat-grid{grid-template-columns:repeat(4,1fr)}
+  .modal{align-items:center}
+  .modal-box{border-radius:24px}
+  .hero h1{font-size:32px}
+}
