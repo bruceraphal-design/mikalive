@@ -81,7 +81,6 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 .abas-resultado{display:flex;gap:8px;margin:12px 0}
 .aba-res{flex:1;padding:11px 6px;border-radius:12px;border:1.5px solid #eeeaff;background:#fff;font-size:12px;font-weight:700;cursor:pointer;text-align:center}
 .aba-res.ativa{background:#111;color:#fff;border-color:#111}
-/* CONTA E SEGURANÇA - GRUPOS DOBRÁVEIS */
 .grupo-conta{background:#fff;border:1.5px solid #eeeaff;border-radius:20px;padding:0;margin-bottom:12px;overflow:hidden}
 .grupo-header{display:flex;align-items:center;gap:12px;padding:18px;cursor:pointer;width:100%;background:#fff;border:none;text-align:left;color:#111}
 .grupo-header b{font-size:15px}
@@ -108,7 +107,6 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 <div style="text-align:center;margin-bottom:6px"><div class="logo" style="font-size:26px;margin:6px 0 4px">Mika<span>LIVE</span></div><p style="color:#6b6b78;font-size:13px">Onde você quer trabalhar hoje?</p></div>
 <div class="info"><span class="sync-dot" id="sync-dot"></span><span id="sync-texto">Sincronização local - backup manual ativo</span><br><small>Backup automático antes de importar. Nenhuma chave SECRET fica no site.</small><br><small id="log-erros-info" style="color:#b45309"></small></div>
 
-<!-- 3 CARTÕES PRINCIPAIS -->
 <div class="section-title">Suas plataformas</div>
 <div class="grid-3-principal">
 <button class="cartao-plataforma shop" onclick="abrirTela('tela-shop')"><div class="ico">🛍️</div><div><b>Shopee</b><small>Criar vídeo • Link → Roteiro • Produtos salvos</small></div><span class="seta">›</span></button>
@@ -116,7 +114,6 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 <button class="cartao-plataforma yt" onclick="abrirTela('tela-youtube')"><div class="ico">▶️</div><div><b>YouTube</b><small>Canal • Ideias • Conteúdo</small></div><span class="seta">›</span></button>
 </div>
 
-<!-- MEUS RESULTADOS -->
 <div class="section-title">Meus Resultados</div>
 <p style="font-size:12.5px;color:#6b6b78;margin-bottom:12px">Cada pasta mostra SÓ os dados daquela plataforma. Sem misturar.</p>
 <div class="pasta-resultado" id="pasta-shop" onclick="abrirPastaResultado('shop')">
@@ -140,7 +137,6 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 </div>
 </div>
 
-<!-- ROTEIROS SALVOS -->
 <div class="section-title">Meus Roteiros Salvos</div>
 <div class="abas-resultado">
 <button class="aba-res ativa" id="aba-res-shop" onclick="filtrarRoteirosPorPlataforma('shop')">🛍️ Shopee</button>
@@ -153,8 +149,6 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 
 <!-- ===== CONTA & SEGURANÇA - 5 GRUPOS DOBRÁVEIS ===== -->
 <div class="section-title">Conta & Segurança</div>
-
-<!-- GRUPO 1 - NUVEM COMPACTA -->
 <div class="grupo-conta">
 <button class="grupo-header" onclick="abrirGrupoConta('grupo-nuvem', this)"><span style="font-size:24px">☁️</span><div style="flex:1"><b>Sincronizar na nuvem</b><small id="resumo-nuvem">Não conectada - clica pra configurar</small></div><span id="dot-nuvem" style="font-size:18px">🔴</span><span class="seta-grupo">›</span></button>
 <div class="grupo-conteudo" id="grupo-nuvem">
@@ -165,8 +159,6 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 <p id="cloud-status" style="font-size:12px;margin-top:10px;color:#666"></p>
 </div>
 </div>
-
-<!-- GRUPO 2 - CHAVES PÚBLICAS COMPACTA -->
 <div class="grupo-conta">
 <button class="grupo-header" onclick="abrirGrupoConta('grupo-chaves', this)"><span style="font-size:24px">🔑</span><div style="flex:1"><b>Chaves Públicas</b><small id="resumo-chaves">Nenhuma salva - clica pra adicionar</small></div><span class="seta-grupo">›</span></button>
 <div class="grupo-conteudo" id="grupo-chaves">
@@ -180,8 +172,6 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 <div class="key-box">⚠️ <b>NUNCA</b> cole SECRET / SERVICE_ROLE / senha aqui.</div>
 </div>
 </div>
-
-<!-- GRUPO 3 - MINHA CONTA -->
 <div class="grupo-conta">
 <button class="grupo-header" onclick="abrirGrupoConta('grupo-conta-1', this)"><span style="font-size:24px">👤</span><div style="flex:1"><b>Minha Conta</b><small>Sair do app ou do Google</small></div><span class="seta-grupo">›</span></button>
 <div class="grupo-conteudo" id="grupo-conta-1">
@@ -189,8 +179,6 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 <button class="btn btn-outline btn-mini" onclick="sair()">Sair do app (manter Google)</button>
 </div>
 </div>
-
-<!-- GRUPO 4 - BACKUP E NUVEM -->
 <div class="grupo-conta">
 <button class="grupo-header" onclick="abrirGrupoConta('grupo-conta-2', this)"><span style="font-size:24px">☁️</span><div style="flex:1"><b>Backup & Nuvem</b><small>Exportar, importar, sincronizar</small></div><span class="seta-grupo">›</span></button>
 <div class="grupo-conteudo" id="grupo-conta-2">
@@ -201,8 +189,6 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 <button class="btn btn-outline btn-mini" onclick="baixarDaNuvem()">⬇️ Baixar da nuvem</button>
 </div>
 </div>
-
-<!-- GRUPO 5 - SEGURANÇA -->
 <div class="grupo-conta">
 <button class="grupo-header" onclick="abrirGrupoConta('grupo-conta-3', this)"><span style="font-size:24px">🛡️</span><div style="flex:1"><b>Segurança</b><small>Log e apagar chaves</small></div><span class="seta-grupo">›</span></button>
 <div class="grupo-conteudo" id="grupo-conta-3">
@@ -212,25 +198,25 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 </div>
 </div>
 
-<!-- ===== 2.3 TELA SHOPEE ===== -->
-<div id="tela-shop" class="hidden"><span class="back" onclick="voltarPainel()">← Voltar pro Painel</span><h2 style="font-size:22px;color:#111">🛍️ Shopee</h2><p style="color:#666;font-size:13px">Tudo da Shopee aqui dentro. Link → Roteiro • Produtos salvos</p>
-<input id="link-shop" placeholder="Link do produto" maxlength="500"><input id="loja-produto" placeholder="Loja / Plataforma" maxlength="80"><input id="nome-produto" placeholder="Nome do produto" maxlength="120"><input id="preco-produto" placeholder="Preço - ex: 49,90" inputmode="decimal" maxlength="20"><textarea id="desc-produto" rows="3" placeholder="O que o produto faz? Pra quem é?" maxlength="1000"></textarea>
-<button class="btn btn-shop" onclick="gerarVideoShop()">Gerar Roteiro da Shop →</button>
-<button class="btn btn-dark" onclick="gerarComIA('shop')">🤖 Gerar com IA Groq</button>
+<!-- ===== 2.3 TELA SHOPEE - ORGANIZADA EM PASSOS ===== -->
+<div id="tela-shop" class="hidden"><span class="back" onclick="voltarPainel()">← Voltar pro Painel</span><h2 style="font-size:22px;color:#111">🛍️ Shopee</h2><p style="color:#666;font-size:13px">Siga os 3 passos: link → detalhes → gerar</p>
+<div class="card" style="margin-top:14px"><h3>1️⃣ Link do produto</h3><p>Cole o link da Shop que você quer vender.</p><input id="link-shop" placeholder="Cole o link aqui..." maxlength="500"></div>
+<div class="card"><h3>2️⃣ Detalhes do produto</h3><p>Isso ajuda o roteiro ficar mais vendedor.</p><input id="loja-produto" placeholder="Loja / Plataforma" maxlength="80"><input id="nome-produto" placeholder="Nome do produto" maxlength="120"><input id="preco-produto" placeholder="Preço - ex: 49,90" inputmode="decimal" maxlength="20"><textarea id="desc-produto" rows="3" placeholder="O que o produto faz? Pra quem é?" maxlength="1000"></textarea></div>
+<div class="card"><h3>3️⃣ Gerar roteiro</h3><p>Escolha como quer gerar.</p><button class="btn btn-shop" onclick="gerarVideoShop()">Gerar Roteiro da Shop →</button><button class="btn btn-dark" onclick="gerarComIA('shop')">🤖 Gerar com IA Groq</button></div>
 <div id="resultado-shop" class="hidden"><div class="video-preview"><h2 id="preview-titulo-shop">Seu Roteiro</h2><p id="preview-texto-shop"></p><div id="preview-tags-shop"></div></div><div class="card"><h3>🎬 Roteiro Shop</h3><p id="roteiro-shop" style="white-space:pre-line;color:#444"></p></div><button class="btn btn-dark" onclick="copiarTexto('roteiro-shop')">Copiar roteiro</button><button class="btn btn-shop" onclick="salvarVideoAtual()">✅ Salvar roteiro</button><div id="aviso-duplicado" class="warn hidden"></div></div>
 </div>
 
-<!-- ===== 2.4 TELA INSTAGRAM ===== -->
-<div id="tela-insta" class="hidden"><span class="back" onclick="voltarPainel()">← Voltar pro Painel</span><h2 style="font-size:22px;color:#111">📸 Instagram</h2><p style="color:#666;font-size:13px">Tudo do Instagram aqui dentro. Roteiro viral + legenda + hashtags</p>
-<input id="tema-insta" placeholder="Tema" maxlength="120"><select id="estilo-insta"><option value="viral">Estilo: Viral / Gancho forte</option><option value="tutorial">Estilo: Tutorial rápido</option><option value="depoimento">Estilo: Depoimento</option><option value="humor">Estilo: Humor / Trend</option><option value="comparacao">Estilo: Comparação</option></select><select id="nicho-insta"><option value="beleza">Nicho: Beleza / Skincare</option><option value="casa">Nicho: Casa / Utilidades</option><option value="moda">Nicho: Moda / Acessórios</option><option value="fitness">Nicho: Fitness / Saúde</option><option value="geral">Nicho: Geral / Achadinhos</option></select><input id="link-insta-shop" placeholder="Link da Shop pra legenda" maxlength="500">
-<button class="btn btn-insta" onclick="gerarVideoInsta()">Gerar Roteiro do Insta →</button>
-<button class="btn btn-dark" onclick="gerarComIA('insta')">🤖 Gerar com IA Groq</button>
+<!-- ===== 2.4 TELA INSTAGRAM - ORGANIZADA EM PASSOS ===== -->
+<div id="tela-insta" class="hidden"><span class="back" onclick="voltarPainel()">← Voltar pro Painel</span><h2 style="font-size:22px;color:#111">📸 Instagram</h2><p style="color:#666;font-size:13px">Tema → estilo → gerar. Legenda e hashtags saem prontas.</p>
+<div class="card" style="margin-top:14px"><h3>1️⃣ Tema do vídeo</h3><p>Sobre o que é o vídeo?</p><input id="tema-insta" placeholder="Ex: Achadinho de cozinha" maxlength="120"></div>
+<div class="card"><h3>2️⃣ Estilo e nicho</h3><p>Como você quer que o vídeo seja?</p><select id="estilo-insta"><option value="viral">Estilo: Viral / Gancho forte</option><option value="tutorial">Estilo: Tutorial rápido</option><option value="depoimento">Estilo: Depoimento</option><option value="humor">Estilo: Humor / Trend</option><option value="comparacao">Estilo: Comparação</option></select><select id="nicho-insta"><option value="beleza">Nicho: Beleza / Skincare</option><option value="casa">Nicho: Casa / Utilidades</option><option value="moda">Nicho: Moda / Acessórios</option><option value="fitness">Nicho: Fitness / Saúde</option><option value="geral">Nicho: Geral / Achadinhos</option></select><input id="link-insta-shop" placeholder="Link da Shop pra legenda" maxlength="500"></div>
+<div class="card"><h3>3️⃣ Gerar</h3><button class="btn btn-insta" onclick="gerarVideoInsta()">Gerar Roteiro do Insta →</button><button class="btn btn-dark" onclick="gerarComIA('insta')">🤖 Gerar com IA Groq</button></div>
 <div id="resultado-insta" class="hidden"><div class="video-preview"><h2 id="preview-titulo-insta">Roteiro Insta</h2><p id="preview-texto-insta"></p></div><div class="card"><h3>🎬 Roteiro Insta</h3><p id="roteiro-insta" style="white-space:pre-line;color:#444"></p></div><div class="card"><h3>✍️ Legenda pronta</h3><p id="legenda-insta" style="white-space:pre-line;color:#444"></p></div><div class="card"><h3>#️⃣ Hashtags</h3><p id="hashtags-insta" style="white-space:pre-line;color:#444"></p></div><button class="btn btn-dark" onclick="copiarTexto('legenda-insta')">📋 Copiar legenda</button><button class="btn btn-dark" onclick="copiarTexto('hashtags-insta')">📋 Copiar hashtags</button><button class="btn btn-insta" onclick="salvarVideoAtual()">✅ Salvar roteiro</button></div></div>
 
-<!-- ===== 2.5 TELA YOUTUBE ===== -->
-<div id="tela-youtube" class="hidden"><span class="back" onclick="voltarPainel()">← Voltar pro Painel</span><h2 style="font-size:22px;color:#111">▶️ YouTube</h2><p style="color:#666;font-size:13px">Tudo do YouTube aqui dentro. Canal + ideias</p>
-<div class="card"><h3>🔗 Conectar canal</h3><input id="canal-yt" placeholder="Link do canal" maxlength="300"><button class="btn btn-yt" onclick="prepararYT()">Preparar integração com YouTube</button><div id="resultado-yt" class="hidden"><div class="info">✅ Canal salvo: <span id="canal-yt-salvo"></span></div><div class="card" style="margin-top:12px"><h3>✍️ Análise manual</h3><input id="yt-melhor-video" placeholder="Qual vídeo teve mais views?" maxlength="120"><input id="yt-views" placeholder="Quantas views? Ex: 12400" inputmode="numeric" maxlength="10"><button class="btn btn-dark" onclick="gerarIdeiaYT()">Gerar ideia pro próximo vídeo →</button><p id="ideia-yt-resultado" style="white-space:pre-line;color:#444;margin-top:12px"></p></div></div></div>
-<div class="card"><h3>🎬 Criar conteúdo YouTube</h3><p>Use o botão de IA para gerar roteiro pro YouTube.</p><input id="tema-yt" placeholder="Tema do vídeo YouTube" maxlength="120"><button class="btn btn-dark" onclick="gerarComIA('youtube')">🤖 Gerar roteiro YouTube com IA</button><div id="resultado-yt-ia" class="hidden"><div class="card"><p id="roteiro-yt-ia" style="white-space:pre-line;color:#444"></p></div><button class="btn btn-dark" onclick="copiarTexto('roteiro-yt-ia')">Copiar roteiro</button></div></div>
+<!-- ===== 2.5 TELA YOUTUBE - ORGANIZADA EM PASSOS ===== -->
+<div id="tela-youtube" class="hidden"><span class="back" onclick="voltarPainel()">← Voltar pro Painel</span><h2 style="font-size:22px;color:#111">▶️ YouTube</h2><p style="color:#666;font-size:13px">Canal → ideia → roteiro</p>
+<div class="card" style="margin-top:14px"><h3>1️⃣ Seu canal</h3><input id="canal-yt" placeholder="Link do canal" maxlength="300"><button class="btn btn-yt" onclick="prepararYT()">Preparar integração com YouTube</button><div id="resultado-yt" class="hidden"><div class="info">✅ Canal salvo: <span id="canal-yt-salvo"></span></div><div class="card" style="margin-top:12px"><h3>✍️ Análise manual</h3><input id="yt-melhor-video" placeholder="Qual vídeo teve mais views?" maxlength="120"><input id="yt-views" placeholder="Quantas views? Ex: 12400" inputmode="numeric" maxlength="10"><button class="btn btn-dark" onclick="gerarIdeiaYT()">Gerar ideia pro próximo vídeo →</button><p id="ideia-yt-resultado" style="white-space:pre-line;color:#444;margin-top:12px"></p></div></div></div>
+<div class="card"><h3>2️⃣ Criar conteúdo</h3><p>Tema do próximo vídeo.</p><input id="tema-yt" placeholder="Tema do vídeo YouTube" maxlength="120"><button class="btn btn-dark" onclick="gerarComIA('youtube')">🤖 Gerar roteiro YouTube com IA</button><div id="resultado-yt-ia" class="hidden"><div class="card"><p id="roteiro-yt-ia" style="white-space:pre-line;color:#444"></p></div><button class="btn btn-dark" onclick="copiarTexto('roteiro-yt-ia')">Copiar roteiro</button></div></div>
 </div>
 
 <!-- ===== 2.6 TELA COMISSÃO ===== -->
@@ -244,7 +230,7 @@ input:focus,textarea:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 4p
 
 <!-- ========== PARTE 3 - JAVASCRIPT ========== -->
 <script>
-// ----- 3.1 CONFIG - SÓ PÚBLICA -----
+// ----- 3.1 CONFIG -----
 window.MIKA_CONFIG = window.MIKA_CONFIG || { GOOGLE_CLIENT_ID: "", SUPABASE_URL: "", SUPABASE_ANON_KEY: "", SHOP_PUBLIC_KEY: "", INSTAGRAM_APP_ID: "", YOUTUBE_PUBLIC_KEY: "", PAGAMENTO_PUBLIC_KEY: "" };
 function getConfig(){
   var w = window.MIKA_CONFIG || {};
@@ -259,7 +245,7 @@ function getChavePublica(servico){
   return getChaveAssinante(servico) || "";
 }
 
-// ----- 3.2 NAVEGAÇÃO + GRUPOS DOBRÁVEIS -----
+// ----- 3.2 NAVEGAÇÃO + GRUPOS -----
 var filtroRoteiroAtual = 'shop';
 function abrirPastaResultado(plataforma){
   ['shop','instagram','youtube'].forEach(function(p){
@@ -327,7 +313,7 @@ async function gerarComIA(tipo){
   }catch(e){ alert("Erro IA: "+e.message+" - Verifica se groq_api_key está na Vercel."); }
 }
 
-// ----- 3.3 CHAVES PÚBLICAS -----
+// ----- 3.3 CHAVES -----
 var USER_KEYS_KEY = "mikalive_user_keys_v12";
 function getUserKeys(){ try{ return JSON.parse(localStorage.getItem(USER_KEYS_KEY)||"{}"); }catch(e){ return {}; } }
 function setUserKeys(o){ localStorage.setItem(USER_KEYS_KEY, JSON.stringify(o)); }
@@ -337,7 +323,7 @@ function removerChaveAssinante(){ var servico=document.getElementById("key-servi
 function apagarTodasChaves(){ if(!confirm("Apagar TODAS as suas chaves deste aparelho?")) return; localStorage.removeItem(USER_KEYS_KEY); localStorage.removeItem("mikalive_cloud_config_v11"); atualizarListaChaves(); document.getElementById("cloud-status").textContent=""; alert("✅ Todas as suas chaves apagadas."); }
 function atualizarListaChaves(){ var el=document.getElementById("lista-chaves-assinante"); if(!el) return; var all=getUserKeys(); var nomes=Object.keys(all); if(!nomes.length){ el.innerHTML="Nenhuma chave salva neste aparelho."; atualizarResumoConta(); return; } el.innerHTML="Chaves PÚBLICAS salvas: "+nomes.map(function(n){ return "✅ "+n+" (****"+getChaveAssinante(n).slice(-4)+")"; }).join(" • "); atualizarResumoConta(); }
 
-// ----- 3.4 BANCO / NUVEM / BACKUP -----
+// ----- 3.4 BANCO / NUVEM -----
 var CLIENT_ID = getConfig().GOOGLE_CLIENT_ID;
 var DB_KEY = "mikalive_db_v10"; var SESSION_KEY = "mikalive_session_v10"; var BACKUP_AUTO_KEY = "mikalive_backup_auto_v10"; var LOG_KEY = "mikalive_log_v10"; var CLOUD_KEY = "mikalive_cloud_config_v11"; var SESSION_DIAS = 30;
 var DB = loadDB(); var videoAtual = null; var videoAbertoId = null; var googleEmailAtual = "";
@@ -352,7 +338,7 @@ function atualizarLogUI(){ try{ var el=document.getElementById("log-erros-info")
 function verLogSeguranca(){ try{ var logs=JSON.parse(localStorage.getItem(LOG_KEY)||"[]"); if(!logs.length){alert("✅ Log limpo.");return;} var txt="🛡️ LOG - últimos 20:\n\n"; logs.slice(-20).reverse().forEach(function(l){ txt+="["+new Date(l.data).toLocaleString("pt-BR")+"] "+l.tipo+": "+l.mensagem+"\n"; }); alert(txt); }catch(e){alert("Erro ao ler log.");} }
 window.addEventListener("error",function(e){ registrarLog("erro","Erro JS",e.message||""); });
 
-// ----- 3.5 SEGURANÇA - CORRIGIDA -----
+// ----- 3.5 SEGURANÇA -----
 function escapeHtml(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;"); }
 function sanitizar(texto, max){
   if(typeof texto !== "string") return "";
