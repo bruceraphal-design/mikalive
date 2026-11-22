@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MikaLIVE - Plataforma de Criação com IA</title>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/mobile.css">
+</head>
+<body>
+<div class="app">
+<div class="topbar"><div class="logo">Mika<span>LIVE</span></div><div style="flex:1"></div><img id="foto-perfil" class="avatar" src=""><div><b id="nome-perfil">Visitante</b><br><small id="email-perfil">Modo visitante</small></div></div>
+
+<div class="nav">
+<button class="nav-btn" data-tela="tela-inicio" onclick="irPara('tela-inicio')">🏠 Início</button>
+<button class="nav-btn" data-tela="tela-shop" onclick="irPara('tela-shop')">🛍️ Shopee</button>
+<button class="nav-btn" data-tela="tela-insta" onclick="irPara('tela-insta')">📸 Instagram</button>
+<button class="nav-btn" data-tela="tela-youtube" onclick="irPara('tela-youtube')">▶️ YouTube</button>
+<button class="nav-btn" data-tela="tela-mikaia" onclick="irPara('tela-mikaia')">✨ Mika IA</button>
+<button class="nav-btn" data-tela="tela-conteudos" onclick="irPara('tela-conteudos')">📚 Meus Conteúdos</button>
+<button class="nav-btn" data-tela="tela-calendario" onclick="irPara('tela-calendario')">📅 Calendário</button>
+<button class="nav-btn" data-tela="tela-comissao" onclick="irPara('tela-comissao')">💰 Resultados</button>
+<button class="nav-btn" data-tela="tela-conta" onclick="irPara('tela-conta')">👤 Minha Conta</button>
+</div>
+
+<div id="tela-login">
+<div class="hero"><h1>Transforme link em vídeo que vende.</h1><p>Roteiro, legenda, hashtags e comissão em um só lugar. Com IA.</p></div>
+<div class="card"><h3>✦ Bem-vindo ao MikaLIVE</h3><p>Entre com Google ou como visitante.</p><button class="btn btn-dark" onclick="loginGoogle()">Continuar com Google</button><div id="google-btn-area" style="display:flex;justify-content:center;margin-top:10px"></div><button class="btn btn-grad" onclick="entrarVisitante()">Entrar como visitante →</button></div>
+</div>
+
+<div id="tela-inicio" class="hidden">
+<div class="hero"><h1 id="saudacao">Olá, Criador 👋</h1><p>Onde você quer criar hoje?</p></div>
+<div class="kpi"><div><b id="kpi-roteiros">0</b><span>Roteiros</span></div><div><b id="kpi-produtos">0</b><span>Produtos</span></div><div><b id="kpi-real">R$ 0,00</b><span>Real</span></div><div><b id="kpi-sim">R$ 0,00</b><span>Simulada</span></div></div>
+<div class="card"><h3>🚀 Acesso rápido</h3><button class="btn btn-shop" onclick="irPara('tela-shop')">🛍️ Shopee - Link → Roteiro</button><button class="btn btn-insta" onclick="irPara('tela-insta')">📸 Instagram - Reels + Legenda</button><button class="btn btn-yt" onclick="irPara('tela-youtube')">▶️ YouTube - Canal + Ideias</button><button class="btn btn-grad" onclick="irPara('tela-mikaia')">✨ Mika IA</button></div>
+<div class="card"><h3>📚 Biblioteca recente</h3><div id="lista-recentes"></div><button class="btn btn-ghost" onclick="irPara('tela-conteudos')">Ver toda a biblioteca →</button></div>
+<div class="card"><h3>📅 Hoje no calendário</h3><div id="calendario-hoje"><p>Nenhum conteúdo planejado pra hoje.</p></div></div>
+</div>
+
+<div id="tela-shop" class="hidden">
+<h2>🛍️ Shopee</h2><p class="sub">Link → Roteiro • Produtos • Comissão estimada</p>
+<div class="card"><h3>1️⃣ Link do produto</h3><input id="link-shop" placeholder="Cole o link aqui..." maxlength="500"></div>
+<div class="card"><h3>2️⃣ Detalhes</h3><input id="loja-produto" placeholder="Loja / Plataforma" maxlength="80"><input id="nome-produto" placeholder="Nome do produto" maxlength="120"><input id="preco-produto" placeholder="Preço - ex: 49,90" inputmode="decimal" maxlength="20"><textarea id="desc-produto" rows="3" placeholder="O que o produto faz? Pra quem é?" maxlength="1000"></textarea></div>
+<div class="card"><h3>3️⃣ Gerar</h3><button class="btn btn-shop" onclick="gerarVideoShop()">Gerar Roteiro da Shop →</button><button class="btn btn-dark" onclick="gerarComIA('shop')">🤖 Gerar com IA Groq</button><button class="btn btn-ghost" onclick="gerarTresVersoes()">✨ Gerar 3 versões</button><button class="btn btn-ghost" onclick="gerarGanchos()">🪝 Gerar 5 ganchos</button></div>
+<div class="card"><h3>🧮 Calculadora de comissão estimada</h3><input id="calc-preco" placeholder="Preço - ex: 89,90" inputmode="decimal"><input id="calc-taxa" placeholder="Taxa % - ex: 15" inputmode="decimal"><button class="btn btn-ghost" onclick="calcularComissao()">Calcular estimativa</button><p id="calc-resultado" style="margin-top:10px;font-weight:700"></p></div>
+<div id="resultado-shop" class="hidden"><div class="card"><h3>🎬 Roteiro Shop</h3><p id="roteiro-shop" style="white-space:pre-line"></p><div id="preview-tags-shop"></div></div><button class="btn btn-dark" onclick="copiarTexto('roteiro-shop')">Copiar roteiro</button><button class="btn btn-shop" onclick="salvarVideoAtual()">✅ Salvar roteiro</button><div id="aviso-duplicado" class="warn hidden"></div></div>
+<div class="card"><h3>📦 Biblioteca de produtos</h3><div id="lista-produtos"></div></div>
+</div>
+
+<div id="tela-insta" class="hidden">
+<h2>📸 Instagram</h2><p class="sub">Reels + Legenda + Hashtags + Série</p>
+<div class="card"><h3>1️⃣ Tema</h3><input id="tema-insta" placeholder="Ex: Achadinho de cozinha" maxlength="120"></div>
+<div class="card"><h3>2️⃣ Estilo e nicho</h3><select id="estilo-insta"><option value="viral">Viral / Gancho forte</option><option value="tutorial">Tutorial rápido</option><option value="depoimento">Depoimento</option><option value="humor">Humor / Trend</option><option value="comparacao">Comparação</option></select><select id="nicho-insta"><option value="beleza">Beleza / Skincare</option><option value="casa">Casa / Utilidades</option><option value="moda">Moda / Acessórios</option><option value="fitness">Fitness / Saúde</option><option value="geral">Geral / Achadinhos</option></select><input id="link-insta-shop" placeholder="Link da Shop pra legenda" maxlength="500"></div>
+<div class="card"><h3>3️⃣ Gerar</h3><button class="btn btn-insta" onclick="gerarVideoInsta()">Gerar Roteiro do Insta →</button><button class="btn btn-dark" onclick="gerarComIA('insta')">🤖 Gerar com IA Groq</button><button class="btn btn-ghost" onclick="gerarIdeiasReels()">💡 Gerar 5 ideias de Reels</button><button class="btn btn-ghost" onclick="gerarSerieConteudo()">🎬 SÉRIE - 5 vídeos</button></div>
+<div class="card"><h3>✍️ Ferramentas rápidas</h3><button class="btn btn-ghost" onclick="gerarLegendasEstilos()">✍️ Legendas em 3 estilos</button><button class="btn btn-ghost" onclick="mostrarBancoHashtags()">#️⃣ Banco de hashtags</button><button class="btn btn-ghost" onclick="gerarCTA()">💬 Chamada pra comentários</button><p id="ferramenta-insta-resultado" style="white-space:pre-line;margin-top:12px"></p></div>
+<div id="resultado-insta" class="hidden"><div class="card"><h3>🎬 Roteiro Insta</h3><p id="roteiro-insta" style="white-space:pre-line"></p></div><div class="card"><h3>✍️ Legenda</h3><p id="legenda-insta" style="white-space:pre-line"></p></div><div class="card"><h3>#️⃣ Hashtags</h3><p id="hashtags-insta" style="white-space:pre-line"></p></div><button class="btn btn-dark" onclick="copiarTexto('legenda-insta')">📋 Copiar legenda</button><button class="btn btn-dark" onclick="copiarTexto('hashtags-insta')">📋 Copiar hashtags</button><button class="btn btn-insta" onclick="salvarVideoAtual()">✅ Salvar roteiro</button></div>
+</div>
+
+<div id="tela-youtube" class="hidden">
+<h2>▶️ YouTube</h2><p class="sub">Canal • Títulos • Descrição • Shorts</p>
+<div class="card"><h3>1️⃣ Seu canal</h3><input id="canal-yt" placeholder="Link do canal" maxlength="300"><button class="btn btn-yt" onclick="prepararYT()">Preparar integração</button><div id="resultado-yt" class="hidden"><div class="info">✅ Canal salvo: <span id="canal-yt-salvo"></span></div><input id="yt-melhor-video" placeholder="Qual vídeo teve mais views?" maxlength="120"><input id="yt-views" placeholder="Quantas views? Ex: 12400" inputmode="numeric"><button class="btn btn-dark" onclick="gerarIdeiaYT()">Gerar ideia →</button><p id="ideia-yt-resultado" style="white-space:pre-line;margin-top:10px"></p></div></div>
+<div class="card"><h3>2️⃣ Criar conteúdo</h3><input id="tema-yt" placeholder="Tema do vídeo YouTube" maxlength="120"><button class="btn btn-dark" onclick="gerarComIA('youtube')">🤖 Gerar roteiro YouTube com IA</button><button class="btn btn-ghost" onclick="gerarTitulosYT()">✍️ Gerar 5 títulos</button><button class="btn btn-ghost" onclick="gerarDescricaoYT()">📝 Descrição + palavras-chave</button><button class="btn btn-ghost" onclick="gerarIdeiasShorts()">📱 5 ideias de Shorts</button><p id="ferramenta-yt-resultado" style="white-space:pre-line;margin-top:12px"></p><div id="resultado-yt-ia" class="hidden"><p id="roteiro-yt-ia" style="white-space:pre-line"></p><button class="btn btn-dark" onclick="copiarTexto('roteiro-yt-ia')">Copiar roteiro</button></div></div>
+<div class="card"><h3>📅 Planejamento semanal</h3><input id="planej-yt-tema" placeholder="Tema da semana"><select id="planej-yt-dia"><option>Segunda</option><option>Terça</option><option>Quarta</option><option>Quinta</option><option>Sexta</option><option>Sábado</option><option>Domingo</option></select><button class="btn btn-ghost" onclick="salvarPlanejamentoYT()">Salvar no planejamento</button><div id="lista-planej-yt"></div></div>
+</div>
+
+<div id="tela-mikaia" class="hidden">
+<div class="hero"><h1>✨ Mika IA</h1><p>Assistente central. Escreva o tema, escolha a plataforma e peça pra melhorar.</p></div>
+<div class="card"><h3>1️⃣ O que criar?</h3><textarea id="mika-tema" rows="3" placeholder="Ex: Creme de cabelo, preço 49,90"></textarea><select id="mika-plataforma"><option value="shop">🛍️ Shopee</option><option value="insta">📸 Instagram</option><option value="youtube">▶️ YouTube</option></select><button class="btn btn-grad" onclick="perguntarMikaIA()">✨ Criar com Mika IA</button></div>
+<div class="card"><h3>2️⃣ Melhorar</h3><button class="btn btn-ghost btn-small" onclick="melhorarMika('mais profissional')">Mais profissional</button><button class="btn btn-ghost btn-small" onclick="melhorarMika('mais persuasivo')">Mais persuasivo</button><button class="btn btn-ghost btn-small" onclick="melhorarMika('mais curto')">Mais curto</button><button class="btn btn-ghost btn-small" onclick="melhorarMika('mais engraçado')">Mais engraçado</button><button class="btn btn-ghost btn-small" onclick="melhorarMika('outro gancho')">Outro gancho</button><button class="btn btn-ghost btn-small" onclick="melhorarMika('outra versão')">Outra versão</button><button class="btn btn-ghost btn-small" onclick="melhorarMika('melhor CTA')">Melhor CTA</button></div>
+<div class="card"><h3>💬 Resposta da Mika IA</h3><p id="mika-resposta" style="white-space:pre-line">Ainda não gerou nada.</p><button class="btn btn-dark" onclick="copiarTexto('mika-resposta')">📋 Copiar resposta</button><button class="btn btn-grad" onclick="salvarMikaIAComoRoteiro()">✅ Salvar como roteiro</button></div>
+</div>
+
+<div id="tela-conteudos" class="hidden">
+<h2>📚 Meus Conteúdos</h2><p class="sub">Biblioteca - sem misturar plataformas.</p>
+<input id="busca-conteudo" placeholder="🔍 Pesquisar por nome..." oninput="renderListaVideos()">
+<div class="abas"><button class="aba ativa" id="aba-res-shop" onclick="filtrarRoteirosPorPlataforma('shop')">🛍️ Shopee</button><button class="aba" id="aba-res-insta" onclick="filtrarRoteirosPorPlataforma('instagram')">📸 Instagram</button><button class="aba" id="aba-res-yt" onclick="filtrarRoteirosPorPlataforma('youtube')">▶️ YouTube</button><button class="aba" id="aba-res-todos" onclick="filtrarRoteirosPorPlataforma('todos')">Todos</button><button class="aba" id="aba-fav" onclick="filtrarFavoritos()">⭐ Favoritos</button></div>
+<div id="lista-videos"></div><button class="btn btn-ghost" onclick="limparVideos()">Limpar todos</button>
+</div>
+
+<div id="tela-calendario" class="hidden">
+<h2>📅 Calendário</h2><p class="sub">Planeje, não publica automático.</p>
+<div class="card"><h3>Novo planejamento</h3><input id="cal-tema" placeholder="Tema"><select id="cal-plataforma"><option value="shop">🛍️ Shopee</option><option value="instagram">📸 Instagram</option><option value="youtube">▶️ YouTube</option></select><input id="cal-data" type="date"><button class="btn btn-grad" onclick="salvarCalendario()">Salvar planejamento</button></div>
+<div id="lista-calendario"></div>
+</div>
+
+<div id="tela-comissao" class="hidden">
+<h2>💰 Resultados e Comissões</h2><p class="sub">Real e simulado separados.</p>
+<div class="card"><h3>💵 Comissão REAL <span class="chip chip-real">REAL - API</span></h3><div class="stat-grid"><div class="stat"><b id="comissao-real-total">R$ 0,00</b><span>Total Real</span></div><div class="stat"><b id="comissao-real-vendas">0</b><span>Vendas Reais</span></div></div><div id="lista-comissao-real"></div></div>
+<div class="card"><h3>🧪 Comissão SIMULADA <span class="chip chip-sim">SIMULAÇÃO</span></h3><div class="stat-grid"><div class="stat"><b id="comissao-sim-total">R$ 0,00</b><span>Total Simulado</span></div><div class="stat"><b id="comissao-sim-vendas">0</b><span>Vendas Simuladas</span></div></div><button class="btn btn-dark" onclick="simularVenda()">+ Simular venda R$ 49,90</button><button class="btn btn-ghost" onclick="limparSimulacao()">Limpar simulação</button></div>
+<div class="card"><h3>🔗 Conexões</h3><p>Status: <span id="status-conexao-2">Nenhuma conta real conectada.</span></p><button class="btn btn-shop" onclick="prepararConexao('Shop')">Preparar conexão Shop</button><button class="btn btn-insta" onclick="prepararConexao('Instagram')">Preparar conexão Instagram</button></div>
+<div class="card"><h3>🧪 Testar API Real</h3><input id="api-order" placeholder="Order ID - ex: ORD-12345"><input id="api-valor" placeholder="Valor - ex: 89,90" inputmode="decimal"><input id="api-signature" placeholder="Assinatura webhook (teste: deixe vazio)"><button class="btn btn-dark" onclick="testarAPIComissao()">Testar receber comissão →</button><p id="api-resultado" style="font-size:12px;margin-top:10px"></p></div>
+</div>
+
+<div id="tela-conta" class="hidden">
+<h2>👤 Minha Conta</h2><p class="sub">Todas as configurações aqui.</p>
+<div class="grupo-conta"><button class="grupo-header" onclick="abrirGrupoConta('g-perfil',this)"><span>👤</span><div style="flex:1"><b>Perfil</b><small>Nome, email e sessão</small></div><span class="seta-grupo">›</span></button><div class="grupo-conteudo" id="g-perfil"><p id="perfil-detalhe"></p><small id="sessao-info"></small><br><button class="btn btn-ghost btn-small" onclick="sair()">Sair do app</button><button class="btn btn-ghost btn-small" onclick="sairDoGoogle()">Sair do Google</button></div></div>
+<div class="grupo-conta"><button class="grupo-header" onclick="abrirGrupoConta('grupo-nuvem',this)"><span>☁️</span><div style="flex:1"><b>Sincronizar na nuvem</b><small id="resumo-nuvem">Não conectada</small></div><span id="dot-nuvem">🔴</span><span class="seta-grupo">›</span></button><div class="grupo-conteudo" id="grupo-nuvem"><input id="cloud-url" placeholder="Supabase URL"><input id="cloud-key" placeholder="Supabase anon key"><button class="btn btn-dark" onclick="salvarConfigNuvem()">Salvar chave da nuvem</button><p id="cloud-status"></p></div></div>
+<div class="grupo-conta"><button class="grupo-header" onclick="abrirGrupoConta('grupo-chaves',this)"><span>🔑</span><div style="flex:1"><b>Chaves Públicas</b><small id="resumo-chaves">Nenhuma salva</small></div><span class="seta-grupo">›</span></button><div class="grupo-conteudo" id="grupo-chaves"><select id="key-servico"><option value="shop">🛍️ Shop / Shopee</option><option value="instagram">📸 Instagram</option><option value="youtube">▶️ YouTube</option><option value="pagamento">💰 Pagamento / Pix</option></select><input id="key-publica" placeholder="Cole a chave pública aqui"><button class="btn btn-dark" onclick="salvarChaveAssinante()">Salvar chave pública</button><button class="btn btn-ghost" onclick="removerChaveAssinante()">Remover essa chave</button><p id="key-status"></p><div id="lista-chaves-assinante"></div><div class="info">⚠️ NUNCA cole SECRET / SERVICE_ROLE aqui.</div></div></div>
+<div class="grupo-conta"><button class="grupo-header" onclick="abrirGrupoConta('grupo-conta-2',this)"><span>☁️</span><div style="flex:1"><b>Backup & Nuvem</b><small>Exportar, importar, sincronizar</small></div><span class="seta-grupo">›</span></button><div class="grupo-conteudo" id="grupo-conta-2"><button class="btn btn-ghost" onclick="exportarDados()">Exportar backup</button><label class="btn btn-ghost" style="display:flex;justify-content:center;cursor:pointer">Importar backup<input type="file" accept=".json" onchange="importarDados(event)" style="display:none"></label><button class="btn btn-ghost" onclick="restaurarBackupAutomatico()">↩️ Restaurar backup automático</button><button class="btn btn-ghost" onclick="tentarSyncCloud()">☁️ Sincronizar na nuvem</button><button class="btn btn-ghost" onclick="baixarDaNuvem()">⬇️ Baixar da nuvem</button></div></div>
+<div class="grupo-conta"><button class="grupo-header" onclick="abrirGrupoConta('grupo-conta-3',this)"><span>🛡️</span><div style="flex:1"><b>Segurança</b><small>Log e apagar chaves</small></div><span class="seta-grupo">›</span></button><div class="grupo-conteudo" id="grupo-conta-3"><button class="btn btn-ghost" onclick="verLogSeguranca()">🛡️ Ver log</button><button class="btn btn-ghost" onclick="apagarTodasChaves()">🧹 Apagar todas as chaves</button><br><small id="log-erros-info"></small><br><span id="sync-texto"></span></div></div>
+</div>
+</div>
+
+<div id="modal-video" class="modal hidden" onclick="if(event.target.id==='modal-video') fecharModal()"><div class="modal-box"><span class="back" onclick="fecharModal()">← Fechar</span><h2 id="modal-titulo"></h2><p id="modal-meta"></p><div class="card"><h3>🎬 Roteiro</h3><p id="modal-roteiro" style="white-space:pre-line"></p></div><div class="card"><h3>✍️ Legenda</h3><p id="modal-legenda" style="white-space:pre-line"></p></div><div class="card"><h3>#️⃣ Hashtags</h3><p id="modal-hashtags" style="white-space:pre-line"></p></div><button class="btn btn-dark" onclick="copiarModal()">📋 Copiar tudo</button><button class="btn btn-ghost" onclick="editarVideoModal()">✏️ Editar</button><button class="btn btn-ghost" onclick="favoritarVideoModal()">⭐ Favoritar</button><button class="btn btn-danger" onclick="excluirVideoModal()">🗑️ Excluir</button></div></div>
+
+<script src="../js/database.js"></script>
+<script src="../js/navigation.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/shopee.js"></script>
+<script src="../js/instagram.js"></script>
+<script src="../js/youtube.js"></script>
+<script src="../js/mika-ia.js"></script>
+<script src="../js/content-library.js"></script>
+<script src="../js/calendar.js"></script>
+<script src="../js/commission.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>
