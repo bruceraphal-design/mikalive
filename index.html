@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>MikaLIVE - Transforme qualquer produto em um vídeo que vende</title>
     <meta name="description"
         content="Envie o link do produto e receba um roteiro de vendas, legenda e cálculo de comissão em segundos.">
@@ -12,6 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
         rel="stylesheet">
     <style>
+
         /* ============ MIKALIVE - PAGINA INICIAL PREMIUM ============ */
         :root {
             --bg: #080D20;
@@ -87,10 +88,9 @@
 
         .logo b {
             background: var(--grad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text
-        }
+            
+            
+            }
 
         .badge-top {
             font-size: 11px;
@@ -124,10 +124,9 @@
         h1 em {
             font-style: normal;
             background: var(--grad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text
-        }
+            
+            
+            }
 
         .sub {
             color: var(--muted);
@@ -280,12 +279,10 @@
             justify-content: center;
             gap: 10px;
             padding: 0 16px;
-            transition: filter .15s, transform .12s
-        }
+            }
 
         .btn:active {
-            transform: scale(.98)
-        }
+            }
 
         .btn:focus-visible {
             outline: 2px solid var(--roxo2);
@@ -357,11 +354,10 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 20px;
-            transition: transform .15s, border-color .15s
-        }
+            }
 
         .benef:hover {
-            transform: translateY(-2px);
+            
             border-color: #3A4A80
         }
 
@@ -415,8 +411,8 @@
             font-family: 'Sora', sans-serif;
             font-size: 32px;
             font-weight: 800;
-            color: transparent;
-            -webkit-text-stroke: 1px #6D6FE8;
+            color:#A78BFA;
+            
             line-height: 1
         }
 
@@ -745,11 +741,1184 @@
 
         @media(prefers-reduced-motion:reduce) {
             * {
-                animation: none !important;
-                transition: none !important
-            }
+                
+                }
         }
-    </style>
+
+/* =========================================================
+   MIKALIVE — REDESIGN VISUAL GERAL
+   Camada visual: preserva IDs, telas, eventos e lógica atual.
+   ========================================================= */
+:root {
+    color-scheme: dark;
+    --bg: #090d18; --card: #111827; --card2: #172033; --border: #273449;
+    --roxo: #7657f6; --roxo2: #9b87ff;
+    --grad: linear-gradient(120deg, #7657f6 0%, #a855f7 52%, #d946a8 100%);
+    --text: #f4f6fb; --muted: #9aa7ba; --verde: #34d399; --verde-bg: #102820;
+    --surface: #0e1523; --radius-card: 18px; --shadow-card: 0 14px 38px rgba(0,0,0,.18);
+}
+html { scroll-behavior:auto; }
+body { background: radial-gradient(ellipse at 12% 0%, rgba(118,87,246,.12), transparent 34rem), var(--bg); color: var(--text); line-height: 1.55; letter-spacing: -.01em; }
+button, input, textarea, select { font: inherit; }
+button {  }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--roxo2); outline-offset: 3px; }
+.landing { max-width: 1120px; padding: 0 28px 64px; }
+.top { padding: 24px 0 18px; }
+.logo { font-size: 27px; letter-spacing: -1.1px; }
+.badge-top { border-color: rgba(155,135,255,.25); color: #c7bbff; background: rgba(118,87,246,.08); }
+.landing > section:first-of-type { padding: 28px 0 12px; }
+.eyebrow { color: #b9aaff; letter-spacing: 1.5px; }
+.landing h1 { max-width: 780px; font-size: clamp(38px, 6vw, 66px); letter-spacing: -2.6px; line-height: 1.04; }
+.sub { max-width: 650px; font-size: 17px; }
+.demo { max-width: 720px; border-radius: 22px; box-shadow: 0 24px 70px rgba(0,0,0,.25); }
+.demo-head { background: rgba(255,255,255,.025); }
+.secao { margin-top: 64px; }
+.secao h2, .cta-final h2 { letter-spacing: -1px; }
+.card-entrada, .benef, .passo, .depo, .demo, .card-app, .grupo-conta { border-color: var(--border); box-shadow: var(--shadow-card); }
+.card-entrada, .benef, .passo { background: linear-gradient(160deg, #151e2f, #101827); }
+.grid3, .passos { gap: 16px; }
+.benef, .passo { border-radius: var(--radius-card); padding: 22px; }
+.benef .ico { background: rgba(118,87,246,.13); border-color: rgba(155,135,255,.22); }
+.depo { background: #10251f; border-color: #245441; }
+.cta-final { border-radius: 24px; padding: 38px 28px; box-shadow: 0 18px 48px rgba(118,87,246,.18); }
+.footer { padding: 8px 12px 0; }
+.app { max-width: 1180px; padding: 0 28px 128px; }
+.app.visivel { min-height: 100vh; }
+.topbar { position: sticky; top: 0; z-index: 20; margin: 0 -28px 28px; padding: 17px 28px; background: rgba(9,13,24,.88); border-bottom: 1px solid rgba(39,52,73,.72);  }
+.topbar .logo { font-size: 24px !important; }
+.tela { max-width: 900px; margin: 0 auto; }
+.tela.ativa {  }
+
+.tela > h1, .tela > h2 { font-family: 'Sora', sans-serif; letter-spacing: -1px; line-height: 1.2; margin: 8px 0 12px; }
+.tela > h2 { font-size: clamp(24px, 3vw, 32px) !important; }
+.tela > p { line-height: 1.6; }
+.card-app { background: linear-gradient(155deg, rgba(23,32,51,.98), rgba(17,24,39,.98)); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 22px; margin: 16px 0; }
+.card-app > b { display: block; font-size: 15px; letter-spacing: -.2px; margin-bottom: 8px; }
+.card-app p { line-height: 1.7; }
+input, textarea, select { background: #0b1220; border: 1px solid #2a3850; border-radius: 11px; min-height: 48px; padding: 12px 14px; color: var(--text); margin-top: 7px; margin-bottom: 12px;  }
+textarea { min-height: 92px; resize: vertical; }
+input::placeholder, textarea::placeholder { color: #718096; }
+input:focus, textarea:focus, select:focus { border-color: var(--roxo2); box-shadow: 0 0 0 3px rgba(155,135,255,.12); outline: none; }
+label { color: #c0cada; font-size: 12px; letter-spacing: .02em; margin-top: 13px; }
+.btn-app { min-height: 48px; padding: 12px 16px; border-radius: 11px; margin-top: 10px; font-size: 13px; letter-spacing: .01em; }
+.btn-app:hover { filter: brightness(1.08); }
+.btn-app:active {  }
+.btn-grad { background: var(--grad); box-shadow: 0 8px 22px rgba(118,87,246,.2); }
+.btn-dark { background: #e9eaf2; color: #171827; }
+.btn-ghost-app { background: #182338; border: 1px solid #30415d; color: #e5eaf4; }
+.btn-ghost-app:hover { background: #202e48; border-color: #56658a; }
+.list-item { background: #121d2d; border: 1px solid #2a3850; border-radius: 13px; padding: 15px 16px; margin-top: 10px;  }
+.list-item:hover { border-color: #6d5bd0; background: #172338; }
+.list-item b { font-size: 14px; }
+.list-item small { line-height: 1.55; }
+.abas { gap: 8px; }
+.aba { background: #121d2d; border-color: #2a3850; color: #c5cede; }
+.aba.ativa { background: #e9eaf2; color: #171827; border-color: #e9eaf2; }
+.grupo-conta { background: #111827; border-radius: 15px; }
+.grupo-header { min-height: 58px; }
+.grupo-header:hover { background: rgba(255,255,255,.025); }
+.grupo-conteudo { padding-top: 4px; }
+.aviso-seguro { background: #2b2412; border-color: #705b2b; color: #f5dfa1; }
+.modal { align-items: center; padding: 18px; }
+.modal-box { background: #111a2a; border: 1px solid #35445e; border-radius: 22px; box-shadow: 0 24px 80px rgba(0,0,0,.5); }
+.menu-baixo { left: 50%; right: auto; bottom: max(14px, env(safe-area-inset-bottom));  width: min(680px, calc(100% - 24px)); background: rgba(14,21,35,.94); border: 1px solid #2a3850; border-radius: 20px; box-shadow: 0 16px 50px rgba(0,0,0,.42);  padding: 9px 10px calc(9px + env(safe-area-inset-bottom)); }
+.menu-baixo button { flex: 1; min-height: 48px; border-radius: 12px; color: #9aa7ba; font-weight: 600; }
+.menu-baixo button.ativo { color: #fff; background: rgba(118,87,246,.2); }
+.menu-centro { border-color: #0e1523 !important; box-shadow: 0 8px 24px rgba(118,87,246,.35); }
+@media (min-width: 768px) {
+    .landing > section:first-of-type { padding-top: 46px; }
+    .landing > section:first-of-type .demo { margin-top: 28px; }
+    .landing .secao { margin-top: 76px; }
+    .app { padding-left: 36px; padding-right: 36px; }
+    .topbar { margin-left: -36px; margin-right: -36px; padding-left: 36px; padding-right: 36px; }
+    .tela { max-width: 900px; }
+    .card-app { padding: 24px; }
+    .btn-app { min-height: 50px; }
+}
+@media (max-width: 600px) {
+    .landing { padding-left: 18px; padding-right: 18px; }
+    .top { align-items: flex-start; gap: 10px; }
+    .badge-top { max-width: 170px; text-align: center; font-size: 9px; line-height: 1.4; }
+    .landing h1 { font-size: clamp(36px, 10vw, 46px); letter-spacing: -1.8px; }
+    .sub { font-size: 15px; }
+    .secao { margin-top: 48px; }
+    .app { padding-left: 16px; padding-right: 16px; }
+    .topbar { margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
+    .card-app { padding: 17px; border-radius: 15px; }
+    .menu-baixo { width: calc(100% - 20px); border-radius: 17px; }
+    .menu-baixo button { font-size: 10px; padding-left: 3px; padding-right: 3px; }
+    .menu-centro { width: 50px; height: 50px; }
+    .modal { padding: 10px; }
+    .modal-box { max-height: 90vh; padding: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { .tela.ativa {  } }
+
+
+/* =========================================================
+   MIKALIVE — ACABAMENTO DA ÁREA INTERNA
+   Ajustes de consistência, leitura e responsividade.
+   Sem alterar IDs, eventos ou lógica.
+   ========================================================= */
+.app {
+    position: relative;
+    isolation: isolate;
+}
+.app::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 82% 12%, rgba(168,85,247,.07), transparent 34rem);
+}
+.topbar > div:last-child {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(155,135,255,.24);
+    border-radius: 14px;
+    background: rgba(118,87,246,.12);
+    font-size: 18px;
+}
+.tela {
+    padding-bottom: 24px;
+}
+.tela > h2 {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 38px;
+}
+.tela > p {
+    color: var(--muted);
+}
+.card-app {
+    position: relative;
+    overflow: hidden;
+}
+.card-app > b:first-child {
+    color: #f2f3fb;
+}
+.card-app label {
+    line-height: 1.45;
+}
+.card-app input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.card-app textarea,
+.card-app select {
+    width: 100%;
+}
+input[type="checkbox"], input[type="radio"] {
+    width: 18px !important;
+    min-width: 18px;
+    height: 18px;
+    min-height: 18px;
+    margin: 0;
+    padding: 0;
+    accent-color: var(--roxo2);
+    flex: 0 0 18px;
+}
+input[type="file"] {
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+.btn-app {
+    line-height: 1.35;
+    white-space: normal;
+}
+.btn-app:disabled,
+button:disabled {
+    opacity: .48;
+    cursor: not-allowed;
+    
+    filter: none;
+}
+#tela-inicio .card-app > b,
+#tela-shop .card-app > b,
+#tela-mikaia .card-app > b {
+    letter-spacing: -.25px;
+}
+#tela-inicio #kpi-roteiros,
+#tela-inicio #kpi-produtos {
+    color: #d9ceff;
+    font-family: 'Sora', sans-serif;
+}
+#tela-conteudos .abas {
+    padding: 4px 0 8px;
+}
+#tela-conteudos .aba {
+    min-height: 40px;
+}
+#lista-videos,
+#lista-videos-2,
+#lista-produtos,
+#lista-calendario,
+#lista-comissao-real,
+#lista-recentes {
+    min-width: 0;
+}
+#resultado-shop,
+#resultado-insta,
+#resultado-yt-ia {
+    
+}
+#roteiro-shop,
+#roteiro-insta,
+#legenda-insta,
+#hashtags-insta,
+#roteiro-yt-ia,
+#mika-resposta,
+#modal-roteiro,
+#modal-legenda,
+#modal-hashtags {
+    overflow-wrap: anywhere;
+}
+#calc-resultado,
+#api-resultado,
+#cloud-status,
+#key-status,
+#ferramenta-insta-resultado,
+#ferramenta-yt-resultado {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.035);
+}
+.grupo-conta {
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+.grupo-header {
+    gap: 13px;
+}
+.grupo-header > span:first-child {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: rgba(118,87,246,.12);
+}
+.grupo-conteudo .card-app {
+    box-shadow: none;
+}
+.menu-baixo button {
+    line-height: 1.2;
+}
+.menu-baixo button span {
+    font-size: 17px;
+}
+.menu-centro {
+    flex: 0 0 54px !important;
+    line-height: 1.15;
+}
+.modal-box > h2 {
+    margin: 14px 0 6px;
+    font-family: 'Sora', sans-serif;
+    letter-spacing: -.7px;
+}
+.modal-box > p {
+    margin-bottom: 14px;
+}
+@media (min-width: 900px) {
+    .app {
+        padding-bottom: 150px;
+    }
+    .topbar {
+        margin-bottom: 34px;
+    }
+    .tela > h2 {
+        margin-bottom: 18px;
+    }
+    #tela-inicio > .card-app,
+    #tela-shop > .card-app,
+    #tela-insta > .card-app,
+    #tela-youtube > .card-app,
+    #tela-mikaia > .card-app {
+        padding: 24px;
+    }
+}
+@media (max-width: 600px) {
+    .topbar {
+        min-height: 68px;
+    }
+    .tela {
+        padding-bottom: 18px;
+    }
+    .tela > h2 {
+        font-size: 25px !important;
+    }
+    .card-app {
+        margin: 12px 0;
+    }
+    .card-app label {
+        font-size: 12px;
+    }
+    .btn-app {
+        min-height: 46px;
+    }
+    #tela-conteudos .abas {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding-bottom: 10px;
+    }
+    #tela-conteudos .abas::-webkit-scrollbar {
+        display: none;
+    }
+    #tela-conteudos .aba {
+        flex: 0 0 auto;
+    }
+    .menu-baixo {
+        bottom: max(10px, env(safe-area-inset-bottom));
+        padding-top: 7px;
+        padding-bottom: calc(7px + env(safe-area-inset-bottom));
+    }
+    .menu-centro {
+        flex-basis: 50px !important;
+    }
+}
+
+
+/* =========================================================
+   MIKALIVE — HIERARQUIA DAS TELAS E FORMULÁRIOS
+   Terceira etapa da reforma visual.
+   ========================================================= */
+#tela-inicio > button:first-of-type {
+    min-height: 58px;
+    border-radius: 15px;
+    font-size: 13px;
+    letter-spacing: .035em;
+    box-shadow: 0 12px 28px rgba(118,87,246,.24);
+}
+#tela-inicio > div[style*="grid-template-columns:1fr 1fr 1fr"] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 9px !important;
+}
+#tela-inicio > div[style*="grid-template-columns:1fr 1fr 1fr"] button:last-child {
+    grid-column: 1 / -1;
+}
+#tela-inicio > div[style*="grid-template-columns:1fr 1fr"] {
+    gap: 10px !important;
+}
+#tela-inicio > div[style*="grid-template-columns:1fr 1fr"] .card-app {
+    min-height: 92px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#tela-inicio > .card-app {
+    padding: 19px;
+}
+#tela-inicio > .card-app > b,
+#tela-shop .card-app > b,
+#tela-insta .card-app > b,
+#tela-youtube .card-app > b,
+#tela-mikaia .card-app > b,
+#tela-calendario .card-app > b,
+#tela-comissao .card-app > b {
+    font-family: 'Sora', sans-serif;
+    font-size: 15px;
+}
+#tela-shop .aviso-seguro,
+#tela-youtube .aviso-seguro {
+    border-radius: 14px;
+    line-height: 1.65;
+}
+#tela-shop .card-app:first-of-type,
+#tela-insta .card-app:first-of-type,
+#tela-youtube .card-app:first-of-type,
+#tela-mikaia .card-app:first-of-type,
+#tela-calendario .card-app:first-of-type {
+    border-top-color: rgba(155,135,255,.42);
+}
+#tela-shop input,
+#tela-shop textarea,
+#tela-insta input,
+#tela-insta textarea,
+#tela-insta select,
+#tela-youtube input,
+#tela-youtube textarea,
+#tela-mikaia textarea,
+#tela-mikaia select,
+#tela-calendario input,
+#tela-calendario select,
+#tela-comissao input {
+    margin-bottom: 15px;
+}
+#tela-shop textarea,
+#tela-insta textarea,
+#tela-youtube textarea,
+#tela-mikaia textarea {
+    line-height: 1.6;
+}
+#tela-insta .card-app:nth-of-type(2),
+#tela-youtube .card-app:nth-of-type(2) {
+    background: linear-gradient(145deg, rgba(118,87,246,.10), rgba(17,24,39,.98) 58%);
+}
+#tela-mikaia .card-app:nth-of-type(2) {
+    border-color: rgba(155,135,255,.3);
+}
+#tela-mikaia .card-app:nth-of-type(2) button {
+    min-height: 44px;
+    font-size: 12px;
+}
+#tela-mikaia #mika-resposta {
+    min-height: 90px;
+    padding: 14px;
+    border: 1px solid rgba(155,135,255,.18);
+    border-radius: 12px;
+    background: rgba(5,10,20,.38);
+    line-height: 1.7;
+}
+#tela-conteudos #busca-conteudo {
+    margin: 8px 0 14px;
+}
+#tela-conteudos #lista-videos {
+    display: grid;
+    gap: 10px;
+}
+#tela-calendario .card-app {
+    padding: 20px;
+}
+#tela-comissao .card-app[style*="border-color:#1E5A3A"] {
+    background: linear-gradient(145deg, rgba(16,80,53,.20), rgba(17,24,39,.98) 65%);
+}
+#tela-comissao .card-app[style*="border-color:#7C5A00"] {
+    background: linear-gradient(145deg, rgba(124,90,0,.16), rgba(17,24,39,.98) 65%);
+}
+#tela-comissao .card-app p {
+    line-height: 1.8;
+}
+#tela-conta .grupo-header {
+    padding: 14px 16px;
+}
+#tela-conta .grupo-conteudo {
+    border-top: 1px solid rgba(39,52,73,.6);
+}
+#tela-conta .grupo-conteudo > input,
+#tela-conta .grupo-conteudo > select {
+    margin-bottom: 14px;
+}
+#tela-conta .grupo-conteudo > .btn-app:first-of-type {
+    margin-top: 14px;
+}
+#tela-conta .grupo-conteudo .card-app {
+    line-height: 1.75;
+}
+#tela-meus-videos #lista-videos-2 {
+    display: grid;
+    gap: 12px;
+}
+#resultado-shop .card-app,
+#resultado-insta .card-app,
+#resultado-yt-ia .card-app {
+    border-color: rgba(155,135,255,.25);
+}
+#resultado-shop .btn-app,
+#resultado-insta .btn-app,
+#resultado-yt-ia .btn-app {
+    margin-top: 9px;
+}
+@media (min-width: 768px) {
+    #tela-inicio > div[style*="grid-template-columns:1fr 1fr 1fr"] {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+    #tela-inicio > div[style*="grid-template-columns:1fr 1fr 1fr"] button:last-child {
+        grid-column: auto;
+    }
+    #tela-inicio > .card-app {
+        padding: 23px;
+    }
+}
+@media (max-width: 600px) {
+    #tela-inicio > div[style*="grid-template-columns:1fr 1fr 1fr"] button {
+        min-height: 48px;
+        font-size: 11px;
+    }
+    #tela-inicio > div[style*="grid-template-columns:1fr 1fr"] .card-app {
+        padding: 13px 8px;
+    }
+    #tela-inicio > .card-app {
+        padding: 16px;
+    }
+    #tela-mikaia .card-app:nth-of-type(2) > div {
+        gap: 7px !important;
+    }
+    #tela-mikaia .card-app:nth-of-type(2) button {
+        padding: 10px 7px;
+        font-size: 11px;
+    }
+    #tela-conta .grupo-header {
+        padding: 13px;
+    }
+    #tela-comissao .card-app p {
+        font-size: 13px;
+    }
+}
+
+
+/* REFINO FINAL DA LANDING PUBLICA - CAMADA VISUAL */
+.landing {
+    width: min(100% - 32px, 1160px);
+    padding: 0 0 76px;
+}
+.landing .top {
+    min-height: 76px;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(148,163,184,.10);
+}
+.landing .logo {
+    font-size: 29px;
+    font-weight: 800;
+}
+.landing .badge-top {
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-size: 10px;
+    line-height: 1.4;
+}
+.landing > section:first-of-type {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr);
+    grid-template-rows: auto auto auto;
+    column-gap: clamp(34px, 6vw, 76px);
+    align-items: center;
+    padding: clamp(54px, 8vw, 96px) 0 30px;
+}
+.landing > section:first-of-type > .eyebrow {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0 0 16px;
+    font-size: 11px;
+}
+.landing > section:first-of-type > h1 {
+    grid-column: 1;
+    grid-row: 2;
+    max-width: 590px;
+    margin: 0;
+    font-size: clamp(42px, 5.2vw, 68px);
+    line-height: 1.045;
+    letter-spacing: -2.8px;
+}
+.landing > section:first-of-type > .sub {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 20px 0 0;
+    max-width: 510px;
+    font-size: clamp(16px, 1.5vw, 18px);
+    line-height: 1.75;
+}
+.landing > section:first-of-type > .demo {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    width: 100%;
+    max-width: none;
+    align-self: center;
+    margin: 0;
+    
+}
+.landing .demo-body { padding: clamp(16px, 2.2vw, 24px); }
+.landing .demo-roteiro { box-shadow: inset 0 1px rgba(255,255,255,.035); }
+.landing .secao {
+    max-width: 100%;
+    margin-top: clamp(58px, 7vw, 82px);
+}
+.landing .secao > h2 {
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+.landing .secao > .desc {
+    max-width: 620px;
+    margin-bottom: 22px;
+}
+.landing #area-entrada {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.landing .card-entrada {
+    padding: clamp(20px, 3vw, 30px);
+    border-radius: 22px;
+}
+.landing .btn {
+    min-height: 50px;
+    border-radius: 13px;
+    font-weight: 700;
+    
+}
+.landing .btn:hover {
+    filter: brightness(1.07);
+    
+}
+.landing .btn:active {  }
+.landing .micro {
+    color: #9eabc0;
+    line-height: 1.6;
+}
+.landing .grid3, .landing .passos {
+    gap: 18px;
+}
+.landing .benef, .landing .passo {
+    min-width: 0;
+    padding: 24px;
+    border-radius: 20px;
+}
+.landing .benef .ico {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 16px;
+}
+.landing .benef b, .landing .passo b {
+    font-size: 15px;
+    line-height: 1.45;
+}
+.landing .benef p, .landing .passo p {
+    color: #aab6c9;
+    line-height: 1.7;
+}
+.landing .depo {
+    border-radius: 20px;
+    padding: 24px;
+}
+.landing .depo p { margin-top: 14px; }
+.landing .cta-final {
+    margin-top: clamp(58px, 7vw, 82px);
+    padding: clamp(30px, 5vw, 52px);
+}
+.landing .cta-final h2 {
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: clamp(25px, 3.5vw, 36px);
+}
+.landing .cta-final p {
+    max-width: 600px;
+    margin: 12px auto 22px;
+}
+.landing .cta-final .btn {
+    min-height: 52px;
+    box-shadow: 0 8px 24px rgba(9,13,24,.18);
+}
+.landing .footer {
+    max-width: 620px;
+    margin: 24px auto 0;
+    color: #8997ad;
+}
+.landing a:focus-visible, .landing button:focus-visible {
+    outline: 3px solid #b9aaff;
+    outline-offset: 4px;
+}
+@media (max-width: 767px) {
+    .landing {
+        width: min(100% - 36px, 560px);
+        padding-bottom: 48px;
+    }
+    .landing .top {
+        min-height: 66px;
+        padding: 18px 0 14px;
+    }
+    .landing .logo { font-size: 25px; }
+    .landing .badge-top {
+        max-width: 150px;
+        padding: 6px 9px;
+        font-size: 8px;
+    }
+    .landing > section:first-of-type {
+        display: block;
+        padding: 48px 0 10px;
+    }
+    .landing > section:first-of-type > .eyebrow {
+        margin: 0 0 14px;
+    }
+    .landing > section:first-of-type > h1 {
+        max-width: 540px;
+        font-size: clamp(37px, 8.7vw, 52px);
+        letter-spacing: -1.9px;
+        line-height: 1.08;
+    }
+    .landing > section:first-of-type > .sub {
+        margin: 16px 0 24px;
+        font-size: 15.5px;
+        line-height: 1.7;
+    }
+    .landing > section:first-of-type > .demo {
+        width: 100%;
+        margin: 0;
+        
+    }
+    .landing .secao { margin-top: 52px; }
+    .landing .secao > h2 { font-size: 25px; }
+    .landing .grid3, .landing .passos { gap: 12px; }
+    .landing .benef, .landing .passo { padding: 20px; }
+    .landing .cta-final { margin-top: 52px; padding: 30px 20px; }
+}
+@media (max-width: 380px) {
+    .landing { width: calc(100% - 28px); }
+    .landing .top { gap: 8px; }
+    .landing .logo { font-size: 23px; }
+    .landing .badge-top { max-width: 132px; font-size: 7px; }
+    .landing > section:first-of-type { padding-top: 38px; }
+    .landing > section:first-of-type > h1 { font-size: 36px; }
+    .landing .demo-cta { gap: 6px; }
+    .landing .demo-cta div { padding: 9px 6px; font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .landing html { scroll-behavior: auto; }
+    .landing .btn {  }
+    .landing .btn:hover {  }
+}
+
+
+/* MÓDULOS DE CRIAÇÃO — SHOPEE, INSTAGRAM E YOUTUBE */
+.module-intro { margin: 8px 0 22px; }
+.module-kicker { display: inline-block; margin-bottom: 10px; color: #b9aaff; font-size: 10px; font-weight: 800; letter-spacing: 1.4px; }
+.module-intro h2 { margin: 0 0 8px !important; font-size: clamp(25px, 3.2vw, 34px) !important; }
+.module-intro p { max-width: 650px; margin: 0; color: #aab6c9; font-size: 14px; line-height: 1.7; }
+.module-card { padding: clamp(18px, 2.5vw, 26px); }
+.module-card-heading { display: flex; align-items: flex-start; gap: 13px; margin-bottom: 20px; }
+.module-card-heading > div { min-width: 0; }
+.module-card-heading b { display: block; margin: 1px 0 4px; font-size: 15px; }
+.module-card-heading p { margin: 0; color: #9aa7ba; font-size: 12px; line-height: 1.6; }
+.module-step { display: grid; place-items: center; flex: 0 0 32px; width: 32px; height: 32px; border: 1px solid rgba(155,135,255,.25); border-radius: 10px; background: rgba(118,87,246,.13); color: #c7bbff; font-size: 11px; font-weight: 800; }
+.module-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.module-fields-compact { margin-bottom: 4px; }
+.module-field { min-width: 0; }
+.module-field-wide { grid-column: 1 / -1; }
+.module-field label { display: block; margin: 0 0 7px; color: #d5dced; font-size: 12px; font-weight: 700; }
+.module-field input, .module-field textarea, .module-field select { margin: 0; }
+.module-field small { display: block; margin-top: 6px; color: #8492a8; font-size: 11px; line-height: 1.55; }
+.module-actions > .btn-app { width: 100%; margin-top: 8px; }
+.module-actions > .btn-app:first-of-type { margin-top: 0; }
+.module-result-note { margin: 10px 0 0; color: #d6caff; font-weight: 700; }
+.module-tool-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+.module-tool-grid .btn-app { margin: 0; height: 100%; }
+.module-tool-result:empty { display: none; }
+.module-tool-result:not(:empty) { margin: 16px 0 0; padding: 15px; border: 1px solid #2a3850; border-radius: 12px; background: #0b1220; }
+.module-generated-text { margin: 12px 0 0; color: #e1e7f1; line-height: 1.8; white-space: pre-line; overflow-wrap: anywhere; }
+.module-output { margin-top: 18px; }
+.module-output .card-app { margin: 12px 0; }
+.module-output .card-app > b { margin-bottom: 6px; }
+.module-output-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.module-output-actions .btn-app { margin: 0; }
+.module-output-actions .btn-app:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.module-secondary { margin-top: 22px; }
+.module-secondary > p { margin: 0 0 12px; color: #9aa7ba; font-size: 12px; }
+.module-checklist { display: grid; gap: 12px; margin: 20px 0; padding: 15px; border: 1px solid #2a3850; border-radius: 13px; background: #0b1220; }
+.module-checklist label { display: flex; align-items: flex-start; gap: 10px; margin: 0; color: #c8d2e2; font-size: 12px; line-height: 1.55; }
+.module-checklist input { margin-top: 1px; }
+@media (max-width: 600px) {
+    .module-intro { margin-top: 4px; }
+    .module-intro p { font-size: 13px; }
+    .module-card { padding: 17px; }
+    .module-fields { grid-template-columns: 1fr; gap: 14px; }
+    .module-field-wide { grid-column: auto; }
+    .module-tool-grid { grid-template-columns: 1fr; }
+    .module-tool-grid .btn-app { min-height: 44px; }
+    .module-output-actions { grid-template-columns: 1fr; }
+    .module-output-actions .btn-app:last-child:nth-child(odd) { grid-column: auto; }
+}
+
+
+/* REORGANIZAÇÃO DAS TELAS INTERNAS — MIKA IA, BIBLIOTECA, AGENDA E CONTA */
+#tela-inicio .home-welcome { margin: 8px 0 22px; }
+#tela-inicio .home-welcome > p { margin: 0 0 3px; color: #9aa7ba; font-size: 13px; }
+#tela-inicio .home-welcome h1 { margin: 0 0 7px; font-size: clamp(27px,4vw,34px) !important; }
+#tela-inicio .home-welcome > span:last-child { color: #aab6c9; font-size: 14px; }
+#tela-inicio .home-primary-action { padding: 19px; border: 1px solid rgba(155,135,255,.18); border-radius: 18px; background: linear-gradient(145deg,rgba(118,87,246,.13),rgba(17,24,39,.96) 65%); }
+#tela-inicio .home-primary-action > .btn-app { margin: 0; min-height: 52px; }
+#tela-inicio .home-shortcuts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; margin-top: 10px; }
+#tela-inicio .home-shortcuts .btn-app { margin: 0; min-height: 45px; padding: 9px 5px; font-size: 12px; }
+#tela-inicio .home-kpis { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; margin: 13px 0; }
+#tela-inicio .home-kpis .card-app { display: flex; flex-direction: column; gap: 4px; margin: 0; padding: 15px; }
+#tela-inicio .home-kpis b { font-size: 23px; }
+#tela-inicio .home-kpis span,.home-panel-heading span { color: #94a3b8; font-size: 11px; }
+#tela-inicio .home-panel { padding: 18px; }
+.home-panel-heading { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+#tela-mikaia .module-card > .module-field { margin-bottom: 14px; }
+#tela-mikaia .module-card > .btn-app { width: 100%; margin-top: 8px; }
+#tela-mikaia .mika-adjust-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+#tela-mikaia .mika-adjust-grid .btn-app:last-child { grid-column: 1 / -1; }
+#tela-mikaia #mika-resposta { min-height: 100px; padding: 16px; border: 1px solid rgba(155,135,255,.18); border-radius: 13px; background: rgba(5,10,20,.38); }
+#tela-conteudos .library-toolbar { margin-bottom: 18px; }
+.library-toolbar > label,.library-filter-label { display: block; margin: 0 0 8px; color: #d5dced; font-size: 12px; font-weight: 700; }
+.library-toolbar > input { margin: 0 0 17px; }
+.library-filter-label { color: #9aa7ba; font-weight: 600; }
+.library-tabs { display: flex; flex-wrap: wrap; gap: 7px; margin: 0; }
+.library-tabs .aba { flex: 1 1 auto; min-height: 39px; margin: 0; padding: 8px 11px; }
+.library-results-heading { display: flex; flex-direction: column; gap: 4px; margin: 0 0 13px; }
+.library-results-heading b { font-size: 15px; }
+.library-results-heading span { color: #94a3b8; font-size: 11px; }
+#tela-conteudos #lista-videos,#tela-calendario #lista-calendario { display: grid; gap: 11px; }
+#tela-conteudos .library-clear { margin-top: 15px; }
+#tela-calendario .module-card > .btn-app,#tela-comissao .api-test-card > .btn-app { width: 100%; margin-top: 16px; }
+#tela-calendario .calendar-list { margin-top: 22px; }
+#tela-comissao .results-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+#tela-comissao .results-heading > div { min-width: 0; }
+#tela-comissao .results-heading b { display: block; font-size: 15px; }
+#tela-comissao .results-heading p { margin: 4px 0 0; color: #9aa7ba; font-size: 11px; line-height: 1.5; }
+#tela-comissao .results-icon { display: grid; place-items: center; flex: 0 0 40px; width: 40px; height: 40px; border-radius: 12px; background: rgba(16,185,129,.13); color: #86efac; font-size: 13px; font-weight: 800; }
+#tela-comissao .results-simulated .results-icon { background: rgba(245,158,11,.12); color: #fcd34d; }
+#tela-comissao .results-metrics { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; margin-bottom: 14px; }
+#tela-comissao .results-metrics > div { display: flex; flex-direction: column; gap: 5px; padding: 13px; border: 1px solid rgba(148,163,184,.12); border-radius: 12px; background: rgba(5,10,20,.25); }
+#tela-comissao .results-metrics small { color: #94a3b8; font-size: 11px; }
+#tela-comissao .results-metrics b { font-size: clamp(17px,4vw,22px); overflow-wrap: anywhere; }
+#tela-comissao .results-real { border-color: rgba(16,185,129,.3); }
+#tela-comissao .results-simulated { border-color: rgba(245,158,11,.3); }
+#tela-comissao .api-test-card .module-fields { margin-bottom: 4px; }
+#tela-conta .account-groups { display: grid; gap: 10px; }
+#tela-conta .grupo-conta { overflow: hidden; border: 1px solid rgba(148,163,184,.14); border-radius: 15px; background: rgba(17,24,39,.88); }
+#tela-conta .grupo-header { width: 100%; min-height: 65px; padding: 14px 16px; }
+#tela-conta .grupo-conteudo { padding: 15px; border-top: 1px solid rgba(39,52,73,.6); }
+#tela-conta .grupo-conteudo > input,#tela-conta .grupo-conteudo > select { margin-bottom: 13px; }
+#tela-conta .grupo-conteudo > .btn-app { margin-top: 7px; }
+#tela-conta .grupo-conteudo .card-app { line-height: 1.75; }
+@media (max-width: 600px) {
+    #tela-inicio .home-primary-action { padding: 15px; }
+    #tela-inicio .home-shortcuts { gap: 6px; }
+    #tela-inicio .home-shortcuts .btn-app { font-size: 10px; }
+    #tela-mikaia .mika-adjust-grid { gap: 7px; }
+    #tela-mikaia .mika-adjust-grid .btn-app { min-height: 44px; padding: 9px 7px; font-size: 11px; }
+    .library-tabs .aba { min-width: calc(33.333% - 7px); }
+    #tela-comissao .results-metrics > div { padding: 11px; }
+    #tela-conta .grupo-header { padding: 13px; }
+}
+
+
+/* Tela inicial: hierarquia visual do resumo e dos painéis */
+#tela-inicio .home-overview { margin: 18px 0 14px; }
+#tela-inicio .home-section-heading { display:flex; align-items:end; justify-content:space-between; gap:12px; margin:0 2px 10px; }
+#tela-inicio .home-section-heading h2,
+#tela-inicio .home-panel-heading h2 { margin:4px 0 0; font-size:17px; line-height:1.3; }
+#tela-inicio .home-section-heading > span,
+#tela-inicio .home-panel-heading > span { color:#94a3b8; font-size:11px; text-align:right; }
+#tela-inicio .home-kpis { margin:0; gap:10px; }
+#tela-inicio .home-kpi-card { position:relative; min-height:112px; display:grid; grid-template-columns:1fr auto; grid-template-rows:auto 1fr; align-items:center; gap:4px 8px; padding:14px 15px; }
+#tela-inicio .home-kpi-card .home-kpi-icon { grid-column:2; grid-row:1 / span 2; width:38px; height:38px; display:grid; place-items:center; border-radius:12px; background:rgba(139,92,246,.14); font-size:19px; }
+#tela-inicio .home-kpi-card b { grid-column:1; grid-row:1; align-self:end; font-size:26px; line-height:1.1; }
+#tela-inicio .home-kpi-card > span:last-child { grid-column:1; grid-row:2; align-self:start; color:#aab6c9; font-size:12px; }
+#tela-inicio .home-panel { margin-top:12px; padding:17px; }
+#tela-inicio .home-panel-heading { align-items:end; margin-bottom:14px; }
+#tela-inicio .home-panel-heading .module-kicker { display:block; }
+#tela-inicio .home-panel > .btn-app { width:100%; margin-top:12px; }
+#tela-inicio .home-welcome { padding:2px 1px; }
+#tela-inicio .home-primary-action { box-shadow:0 12px 32px rgba(7,10,20,.16); }
+@media (max-width:600px) {
+  #tela-inicio .home-section-heading { align-items:start; }
+  #tela-inicio .home-section-heading > span { max-width:110px; }
+  #tela-inicio .home-panel { padding:14px; }
+  #tela-inicio .home-panel-heading { align-items:start; }
+  #tela-inicio .home-panel-heading > span { max-width:105px; }
+}
+
+
+/* Mika IA: fluxo de criação mais claro */
+#tela-mikaia .mika-idea-card,
+#tela-mikaia .mika-adjust-card,
+#tela-mikaia .mika-result-card { margin-top: 14px; }
+#tela-mikaia .mika-input-fields { gap: 15px; }
+#tela-mikaia .mika-input-fields textarea { min-height: 116px; line-height: 1.65; }
+#tela-mikaia .mika-input-fields select { min-height: 48px; }
+#tela-mikaia .mika-create-action { margin-top: 17px; padding-top: 15px; border-top: 1px solid rgba(148,163,184,.13); }
+#tela-mikaia .mika-create-action .btn-app { width: 100%; min-height: 49px; margin: 0; }
+#tela-mikaia .mika-create-action p { margin: 9px 0 0; color: #8998ad; font-size: 11px; line-height: 1.5; text-align: center; }
+#tela-mikaia .mika-adjust-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+#tela-mikaia .mika-adjust-grid .btn-app { min-height: 44px; padding: 10px 12px; }
+#tela-mikaia .mika-adjust-grid .btn-app:last-child { grid-column: 1 / -1; }
+#tela-mikaia .mika-result-card { border-color: rgba(155,135,255,.2); }
+#tela-mikaia .mika-result-card #mika-resposta { min-height: 116px; margin: 0 0 17px; padding: 17px; border: 1px solid rgba(155,135,255,.17); border-radius: 13px; background: rgba(5,10,20,.38); }
+#tela-mikaia .mika-result-card .module-output-actions { padding-top: 15px; border-top: 1px solid rgba(148,163,184,.13); }
+@media (max-width: 600px) {
+  #tela-mikaia .mika-adjust-grid { gap: 8px; }
+  #tela-mikaia .mika-adjust-grid .btn-app { min-height: 46px; padding: 9px 7px; font-size: 11px; }
+  #tela-mikaia .mika-result-card .module-output-actions { grid-template-columns: 1fr; }
+}
+
+
+/* Meus Conteúdos: pesquisa, filtros e biblioteca */
+#tela-conteudos .library-toolbar { padding: clamp(18px,2.5vw,24px); }
+#tela-conteudos .library-toolbar-heading { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+#tela-conteudos .library-toolbar-heading > div { min-width:0; }
+#tela-conteudos .library-toolbar-heading b { display:block; margin-bottom:4px; font-size:15px; }
+#tela-conteudos .library-toolbar-heading p { margin:0; color:#94a3b8; font-size:12px; line-height:1.55; }
+#tela-conteudos .library-toolbar-icon { display:grid; place-items:center; flex:0 0 40px; width:40px; height:40px; border:1px solid rgba(155,135,255,.2); border-radius:13px; background:rgba(118,87,246,.13); color:#c7bbff; font-size:25px; }
+#tela-conteudos .library-toolbar > label { margin-bottom:8px; }
+#tela-conteudos .library-toolbar > input { min-height:48px; margin:0 0 21px; }
+#tela-conteudos .library-filter-heading { display:flex; flex-direction:column; gap:4px; margin-bottom:11px; }
+#tela-conteudos .library-filter-heading b { color:#d5dced; font-size:12px; }
+#tela-conteudos .library-filter-heading span { color:#8998ad; font-size:11px; }
+#tela-conteudos .library-tabs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+#tela-conteudos .library-tabs .aba { min-width:0; min-height:43px; padding:9px 8px; }
+#tela-conteudos .library-results { margin-top:22px; }
+#tela-conteudos .library-results-heading { display:flex; align-items:end; justify-content:space-between; gap:12px; padding:0 2px 13px; border-bottom:1px solid rgba(148,163,184,.13); }
+#tela-conteudos .library-results-heading > div { display:flex; flex-direction:column; gap:4px; }
+#tela-conteudos .library-results-heading .module-kicker { margin:0; font-size:9px; }
+#tela-conteudos .library-results-heading b { color:#edf2fb; font-size:17px; }
+#tela-conteudos .library-results-heading > span { max-width:180px; text-align:right; }
+#tela-conteudos #lista-videos { padding-top:14px; }
+#tela-conteudos .library-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:18px; padding-top:14px; border-top:1px solid rgba(148,163,184,.13); }
+#tela-conteudos .library-footer p { margin:0; color:#8998ad; font-size:11px; line-height:1.5; }
+#tela-conteudos .library-clear { flex:0 0 auto; margin:0; min-height:40px; padding:9px 13px; }
+@media (max-width:600px) {
+  #tela-conteudos .library-toolbar { padding:16px; }
+  #tela-conteudos .library-tabs { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #tela-conteudos .library-tabs .aba:last-child { grid-column:1 / -1; }
+  #tela-conteudos .library-results-heading { align-items:start; }
+  #tela-conteudos .library-results-heading > span { max-width:120px; }
+  #tela-conteudos .library-footer { align-items:flex-start; flex-direction:column; }
+  #tela-conteudos .library-clear { width:100%; }
+}
+
+
+/* Calendário: criação de planejamento e lista da agenda */
+#tela-calendario .calendar-create-card { margin-top:14px; }
+#tela-calendario .calendar-fields { gap:15px; }
+#tela-calendario .calendar-fields input,
+#tela-calendario .calendar-fields select { min-height:47px; }
+#tela-calendario .calendar-save-action { margin-top:18px; padding-top:15px; border-top:1px solid rgba(148,163,184,.13); }
+#tela-calendario .calendar-save-action .btn-app { width:100%; min-height:49px; margin:0; }
+#tela-calendario .calendar-save-action p { margin:9px 0 0; color:#8998ad; font-size:11px; line-height:1.5; text-align:center; }
+#tela-calendario .calendar-list { margin-top:24px; }
+#tela-calendario .calendar-list .library-results-heading { align-items:end; padding:0 2px 13px; border-bottom:1px solid rgba(148,163,184,.13); }
+#tela-calendario .calendar-list .library-results-heading > div { display:flex; flex-direction:column; gap:4px; }
+#tela-calendario .calendar-list .library-results-heading .module-kicker { margin:0; font-size:9px; }
+#tela-calendario .calendar-list .library-results-heading b { color:#edf2fb; font-size:17px; }
+#tela-calendario #lista-calendario { padding-top:14px; }
+@media (max-width:600px) {
+  #tela-calendario .calendar-fields { grid-template-columns:1fr; }
+  #tela-calendario .calendar-fields .module-field-wide { grid-column:auto; }
+  #tela-calendario .calendar-list .library-results-heading { align-items:start; }
+  #tela-calendario .calendar-list .library-results-heading > span { max-width:125px; }
+}
+
+
+/* Resultados: separar acompanhamento real, simulações e integração */
+#tela-comissao .results-real,
+#tela-comissao .results-simulated,
+#tela-comissao .api-test-card { margin-top:14px; }
+#tela-comissao .results-real { border-color:rgba(16,185,129,.25); }
+#tela-comissao .results-simulated { border-color:rgba(245,158,11,.25); }
+#tela-comissao .results-heading { align-items:center; }
+#tela-comissao .results-metrics { gap:11px; margin:18px 0 15px; }
+#tela-comissao .results-metrics > div { min-height:88px; justify-content:center; }
+#tela-comissao .results-list-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; padding-top:14px; border-top:1px solid rgba(148,163,184,.13); }
+#tela-comissao .results-list-heading b { color:#dce5f3; font-size:12px; }
+#tela-comissao .results-list-heading span { color:#8998ad; font-size:10px; text-align:right; }
+#tela-comissao .results-simulated .module-output-actions { margin-top:16px; }
+#tela-comissao .results-simulated .module-output-actions .btn-app { min-height:45px; }
+#tela-comissao .api-test-card { margin-top:22px; border-style:dashed; border-color:rgba(148,163,184,.22); }
+#tela-comissao .api-test-card .module-fields { margin-top:4px; }
+#tela-comissao .api-test-card input { min-height:46px; }
+#tela-comissao .api-test-card > .btn-app { min-height:46px; margin-top:16px; }
+#tela-comissao #api-resultado { overflow-wrap:anywhere; }
+@media (max-width:600px) {
+  #tela-comissao .results-metrics { gap:8px; }
+  #tela-comissao .results-metrics > div { min-height:78px; padding:11px; }
+  #tela-comissao .results-heading { align-items:flex-start; }
+  #tela-comissao .results-list-heading { align-items:flex-start; flex-direction:column; }
+  #tela-comissao .results-list-heading span { text-align:left; }
+  #tela-comissao .results-simulated .module-output-actions { grid-template-columns:1fr; }
+}
+
+
+/* Meus Vídeos: orientação clara para a biblioteca de conteúdos */
+#tela-meus-videos .my-videos-guide {
+  display:flex; flex-direction:column; align-items:flex-start; gap:14px;
+  margin-top:16px; padding:20px;
+  border:1px solid rgba(168,85,247,.22);
+  background:linear-gradient(145deg,rgba(124,58,237,.10),rgba(15,23,42,.42));
+}
+#tela-meus-videos .my-videos-guide-icon {
+  display:grid; place-items:center; width:46px; height:46px;
+  border-radius:14px; color:#d8b4fe; background:rgba(168,85,247,.16); font-size:23px;
+}
+#tela-meus-videos .my-videos-guide-copy b { display:block; color:#f1f5f9; font-size:15px; margin-bottom:7px; }
+#tela-meus-videos .my-videos-guide-copy p { margin:0; color:#9aa9bd; font-size:12px; line-height:1.7; }
+#tela-meus-videos .my-videos-guide .btn-app { width:100%; min-height:46px; }
+@media (min-width:650px) {
+  #tela-meus-videos .my-videos-guide { padding:24px; }
+  #tela-meus-videos .my-videos-guide .btn-app { width:auto; min-width:220px; }
+}
+
+
+/* Acabamento global: cabeçalho do app e janela de roteiro */
+.app .topbar {
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px 2px 18px;
+  margin-bottom:8px;
+  border-bottom:1px solid rgba(148,163,184,.12);
+}
+.app .topbar .logo {
+  font-size:21px !important;
+  font-weight:800;
+  letter-spacing:-.7px;
+}
+.app .topbar > div:last-child {
+  display:grid;
+  place-items:center;
+  width:38px;
+  height:38px;
+  border:1px solid rgba(148,163,184,.18);
+  border-radius:13px;
+  background:rgba(30,41,59,.72);
+  font-size:17px;
+}
+#modal-video {
+  padding:16px;
+  background:rgba(3,7,18,.78);
+  
+  align-items:center;
+}
+#modal-video .modal-box {
+  width:min(100%,600px);
+  max-height:min(88vh,820px);
+  padding:22px;
+  border:1px solid rgba(148,163,184,.2);
+  border-radius:22px;
+  background:linear-gradient(160deg,#172033,#101827);
+  box-shadow:0 24px 80px rgba(0,0,0,.48);
+}
+#modal-video .modal-box > span:first-child {
+  display:inline-flex;
+  align-items:center;
+  min-height:36px;
+  padding:0 12px;
+  border-radius:10px;
+  background:rgba(168,85,247,.12);
+  color:#d8b4fe !important;
+  font-size:12px;
+  font-weight:700;
+}
+#modal-video .modal-box h2 {
+  margin:18px 0 6px;
+  color:#f8fafc;
+  font-size:21px;
+  line-height:1.3;
+  overflow-wrap:anywhere;
+}
+#modal-video .modal-box > p {
+  margin-bottom:18px;
+  color:#94a3b8 !important;
+}
+#modal-video .modal-box .card-app {
+  padding:16px;
+  margin-bottom:12px;
+  border-radius:15px;
+  background:rgba(15,23,42,.72);
+}
+#modal-video .modal-box .card-app b {
+  color:#d8b4fe;
+  font-size:12px;
+}
+#modal-video .modal-box .card-app p {
+  margin:9px 0 0;
+  color:#dbe4f0;
+  font-size:13px;
+  line-height:1.75;
+  overflow-wrap:anywhere;
+}
+#modal-video .modal-box > button {
+  min-height:44px;
+  margin-top:10px;
+}
+@media (max-width:600px) {
+  #modal-video { padding:0; align-items:flex-end; }
+  #modal-video .modal-box {
+    width:100%;
+    max-height:90vh;
+    padding:20px 16px calc(20px + env(safe-area-inset-bottom));
+    border-radius:22px 22px 0 0;
+  }
+}
+
+
+/* MIKALIVE — SISTEMA VISUAL MOBILE-FIRST */
+:root{color-scheme:dark;--bg:#080D20;--card:#151D38;--border:#232D55;--primary:#823DF0;--highlight:#A78BFA;--text:#F7F8FF;--muted:#A7B2CC;--button-gradient:linear-gradient(135deg,#823DF0 0%,#EC4899 100%)}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6}
+h1,h2,h3,.home-welcome h1,.module-intro h2{font-family:'Sora',sans-serif;color:var(--text);letter-spacing:-.035em}
+h1,.landing h1{font-size:32px;line-height:1.16} h2,.landing h2,.module-intro h2{font-size:22px;line-height:1.28}
+p,small,label{color:var(--muted)}
+.logo b,.landing h1 em,.num,.module-kicker,.home-kpi-icon{color:var(--highlight)!important;background:none!important}
+.logo b,.landing h1 em{background-image:none!important}
+.landing,.app{width:min(100%,900px);box-sizing:border-box;margin-inline:auto}
+.landing{padding:20px 18px 44px}.landing .top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:12px 0 22px}
+.landing .logo{color:var(--text);font-family:'Sora',sans-serif;font-weight:800;font-size:24px}.landing .badge-top{font-size:10px;color:var(--muted);letter-spacing:.08em}
+.landing>section{margin-top:32px}.landing>section:first-of-type{margin-top:18px}
+.landing .eyebrow,.module-kicker{color:var(--highlight);font-size:11px;font-weight:700;letter-spacing:.09em}
+.landing h1{max-width:680px;margin:10px 0 12px}.landing .sub{max-width:600px;font-size:15px;color:var(--muted);line-height:1.65}
+.landing .demo,.landing .card-entrada,.landing .benef,.landing .passo,.landing .depo,.landing .cta-final{background:var(--card);border:1px solid var(--border);border-radius:18px}
+.landing .demo{margin-top:22px;overflow:hidden}.landing .demo-head{padding:13px 16px;border-bottom:1px solid var(--border);color:var(--muted)}
+.landing .demo-body{padding:16px}.landing .demo-link{overflow-wrap:anywhere;color:var(--muted);font-size:13px}
+.landing .demo-roteiro{margin-top:12px;padding:16px;border:1px solid var(--border);border-radius:14px;background:#101831}.landing .demo-roteiro p{font-size:13px}
+.landing .demo-cta{display:flex;flex-wrap:wrap;gap:12px}.landing .demo-cta>div{flex:1 1 120px;color:var(--muted);font-size:12px}.landing .demo-cta b{display:block;color:var(--text);font-size:15px}
+.landing .secao{margin-top:32px}.landing .secao h2{margin:0 0 12px;font-size:22px}.landing .secao p.desc{font-size:15px;line-height:1.6}
+.landing .card-entrada{padding:16px}.landing .benef,.landing .passo{padding:18px;min-width:0}.landing .benef b,.landing .passo b{display:block;color:var(--text);font-size:15px;margin:8px 0}
+.landing .benef p,.landing .passo p{font-size:13px;line-height:1.6}.landing .grid3,.landing .passos{display:grid;grid-template-columns:1fr;gap:12px}
+.landing .num{font-family:'Sora',sans-serif;font-size:26px;font-weight:800}.landing .tag{display:inline-flex;padding:6px 9px;border-radius:8px;background:rgba(167,139,250,.12);color:var(--highlight);font-size:11px;font-weight:700}
+.landing .depo{padding:18px}.landing .depo p{color:var(--text);font-size:14px}.landing .cta-final{padding:22px 18px;text-align:center}.landing .cta-final h2{font-size:24px;margin:0}.landing .cta-final p{margin:10px 0 18px}.landing .footer{color:var(--muted);font-size:12px;text-align:center;margin-top:22px}
+.app{display:none;padding:12px 16px calc(100px + env(safe-area-inset-bottom))}.app.visivel{display:block}.app .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 0 18px;margin-bottom:12px;border-bottom:1px solid var(--border)}
+.app .topbar .logo{font-family:'Sora',sans-serif;color:var(--text);font-weight:800}.tela{max-width:100%}.tela.ativa{display:block}
+.module-intro{margin:8px 0 22px}.module-intro h2{margin:4px 0 8px}.module-intro p{margin:0;font-size:14px;line-height:1.6;color:var(--muted)}
+.module-card,.card-app,.home-panel,.home-kpi-card,.library-toolbar{background:var(--card)!important;border:1px solid var(--border)!important;border-radius:16px!important;box-shadow:none!important;margin-bottom:12px;padding:16px}
+.home-welcome{margin:10px 0 20px}.home-welcome p{margin:0;font-size:14px}.home-welcome h1{margin:4px 0;font-size:32px}.home-primary-action{margin:0 0 32px}
+.home-shortcuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}.home-shortcuts .btn-app{padding-inline:6px;font-size:12px}
+.home-overview,.home-panel{margin-top:32px}.home-section-heading,.home-panel-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin-bottom:12px}
+.home-section-heading h2,.home-panel-heading h2{margin:2px 0 0;font-size:22px}.home-section-heading>span,.home-panel-heading>span{color:var(--muted);font-size:11px}
+.home-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.home-kpi-card{display:flex;flex-direction:column;gap:4px;text-align:left}
+.home-kpi-card b{font-family:'Sora',sans-serif;font-size:28px;color:var(--text)}.home-kpi-card>span:last-child{color:var(--muted);font-size:12px}
+input,textarea,select{display:block;box-sizing:border-box;width:100%;min-width:0;min-height:56px;padding:16px!important;border:1px solid var(--border)!important;border-radius:14px!important;background:#0E1630!important;color:var(--text)!important;font-family:'Inter',sans-serif!important;font-size:16px!important;line-height:1.4!important;margin-top:8px}
+textarea{min-height:112px;resize:vertical}input::placeholder,textarea::placeholder{color:#9AA7C2!important;opacity:1;font-size:14px}
+input:focus,textarea:focus,select:focus{border-color:var(--highlight)!important;outline:2px solid rgba(167,139,250,.22);outline-offset:1px}
+label{display:block;margin-top:14px;color:var(--muted);font-size:13px;font-weight:600}
+button,.btn,.btn-app,.landing .btn{box-sizing:border-box;min-height:56px;border:1px solid transparent;border-radius:16px;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:none!important}
+.btn-grad,.btn-visitante,.landing .cta-final .btn{color:#fff!important;background:var(--button-gradient)!important}.btn-dark{background:#E9EAF2!important;color:#111827!important}
+.btn-ghost-app,.btn-google{background:#202B4D!important;color:var(--text)!important;border-color:var(--border)!important}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--highlight);outline-offset:3px}
+button:hover,.btn:hover,.btn-app:hover{filter:brightness(1.04)}button:active,.btn:active,.btn-app:active{filter:brightness(.97)}button:disabled{opacity:.5;cursor:not-allowed}
+.module-fields{gap:12px}.module-field{min-width:0}.module-card-heading,.results-heading{display:flex;align-items:flex-start;gap:12px}
+.module-card-heading b,.results-heading b{display:block;color:var(--text);font-size:15px}.module-card-heading p,.results-heading p{margin:4px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
+.module-step{color:var(--highlight);font-weight:800}.module-output,.module-generated-text{color:var(--text);overflow-wrap:anywhere;line-height:1.7}
+.menu-baixo{position:fixed;z-index:50;left:12px;right:12px;bottom:max(10px,env(safe-area-inset-bottom));width:auto;display:flex;gap:4px;padding:8px;border:1px solid var(--border);border-radius:18px;background:#101831;box-shadow:none!important}
+.menu-baixo button{flex:1;min-width:0;min-height:56px;padding:5px 2px;border:0;border-radius:16px;background:transparent;color:var(--muted);font-size:11px}.menu-baixo button.ativo{color:var(--highlight);background:rgba(167,139,250,.12)}
+#modal-video{padding:12px;background:rgba(3,7,18,.92);align-items:flex-end}#modal-video .modal-box{width:100%;max-width:600px;max-height:88vh;overflow:auto;padding:18px;border:1px solid var(--border);border-radius:20px 20px 0 0;background:var(--card);box-shadow:none}
+#modal-video .modal-box h2{font-size:22px;color:var(--text)}#modal-video .modal-box .card-app{padding:14px;margin-bottom:12px}.list-item{min-width:0;overflow-wrap:anywhere;border-bottom:1px solid var(--border);padding:12px 0}
+.aba{min-height:56px;border-radius:16px;background:#202B4D;color:var(--muted)}.aba.ativa{background:var(--primary);color:#fff}
+@media(min-width:640px){.landing{padding:28px 28px 56px}.landing .grid3,.landing .passos{grid-template-columns:repeat(3,minmax(0,1fr))}.app{padding-inline:24px}.module-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.module-field-wide{grid-column:1/-1}.menu-baixo{left:50%;right:auto;width:min(680px,calc(100% - 32px))}#modal-video{align-items:center}#modal-video .modal-box{border-radius:20px}}
+@media(max-width:380px){.home-shortcuts{gap:5px}.home-shortcuts .btn-app{font-size:11px}.app{padding-inline:12px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+
+
+/* MIKALIVE HOME — REFINO MOBILE-FIRST */
+#tela-inicio .home-welcome { margin: 10px 0 24px; }
+#tela-inicio .home-welcome h1 { font-size: 32px !important; line-height: 1.15; letter-spacing: -.8px; }
+#tela-inicio .home-primary-action { padding: 18px; border-radius: 16px; box-shadow: none; }
+#tela-inicio .home-primary-action > .btn-app { min-height: 56px; border-radius: 16px; font-size: 15px; }
+#tela-inicio .home-shortcuts { gap: 10px; margin-top: 12px; }
+#tela-inicio .home-shortcuts .btn-app { min-height: 56px; padding: 10px 6px; border-radius: 14px; font-size: 12px; line-height: 1.25; }
+#tela-inicio .home-overview { margin: 30px 0 0; }
+#tela-inicio .home-section-heading h2,
+#tela-inicio .home-panel-heading h2 { font-size: 22px; line-height: 1.25; letter-spacing: -.45px; }
+#tela-inicio .home-kpis { gap: 12px; }
+#tela-inicio .home-kpi-card { min-height: 112px; padding: 16px; border-radius: 16px; box-shadow: none; }
+#tela-inicio .home-kpi-card b { font-size: 26px; }
+#tela-inicio .home-panel { margin-top: 30px; padding: 18px; border-radius: 16px; box-shadow: none; }
+#tela-inicio .home-panel-heading { margin-bottom: 14px; }
+#tela-inicio .home-panel > .btn-app { min-height: 56px; border-radius: 16px; }
+#tela-inicio #lista-recentes .list-item { padding: 14px; }
+#tela-inicio #calendario-hoje { color: #A7B2CC; font-size: 14px; line-height: 1.6; }
+@media (max-width: 380px) {
+  #tela-inicio .home-shortcuts { gap: 7px; }
+  #tela-inicio .home-shortcuts .btn-app { padding-inline: 3px; font-size: 11px; }
+  #tela-inicio .home-kpi-card { padding: 13px; }
+}
+
+</style>
 </head>
 
 <body>
@@ -764,9 +1933,9 @@
         <!-- SECAO 1 - HERO -->
         <section>
             <p class="eyebrow">Sua plataforma de vídeos de vendas</p>
-            <h1>Transforme qualquer produto em um <em>vídeo que vende.</em></h1>
-            <p class="sub">Envie o link do produto e receba um roteiro de vendas, legenda e cálculo de comissão em
-                segundos.</p>
+            <h1>Transforme o link da Shopee em <em>roteiro, legenda e comissão.</em></h1>
+            <p class="sub">Cole o link do produto e organize roteiro, legenda e estimativa de comissão em um só lugar.</p>
+            <button class="btn btn-visitante" onclick="document.getElementById('area-entrada').scrollIntoView({behavior:'auto'})">Começar gratuitamente →</button>
 
             <div class="demo" aria-label="Exemplo de como funciona">
                 <div class="demo-head"><span class="dot"></span><span class="dot"></span><span
@@ -806,12 +1975,12 @@
             <h2 style="margin-bottom:16px">Por que usar o MikaLIVE?</h2>
             <div class="grid3">
                 <div class="benef">
-                    <div class="ico">🎁</div><b>10 roteiros grátis</b>
-                    <p>Experimente a plataforma e comece a criar seus primeiros conteúdos.</p>
+                    <div class="ico">🎁</div><b>Criação mais simples</b>
+                    <p>Organize suas ideias e transforme informações do produto em um roteiro claro.</p>
                 </div>
                 <div class="benef">
-                    <div class="ico">⚡</div><b>Roteiros em segundos</b>
-                    <p>Receba um texto organizado, pronto para ler e gravar.</p>
+                    <div class="ico">⚡</div><b>Roteiros organizados</b>
+                    <p>Estruture gancho, apresentação do produto e chamada para ação.</p>
                 </div>
                 <div class="benef">
                     <div class="ico">💰</div><b>Calculadora de comissão</b>
@@ -844,7 +2013,7 @@
             <h2 style="margin-bottom:16px">O que as pessoas dizem</h2>
             <div class="depo">
                 <span class="tag">EXEMPLO • NÃO É AVALIAÇÃO REAL</span>
-                <p>“Fiz meu primeiro vídeo com roteiro da Mika e vendi 7 produtos no mesmo dia!”</p>
+                <p>“Organizei meu roteiro, legenda e comissão em um só lugar.”</p>
                 <small>⭐⭐⭐⭐⭐ • Exemplo de layout — substitua por depoimento real quando houver</small>
             </div>
             <p style="font-size:12px;color:var(--muted);margin-top:10px">Não utilizamos depoimentos, nomes ou resultados
@@ -856,7 +2025,7 @@
             <h2>Seu próximo vídeo pode começar aqui.</h2>
             <p>Transforme seus links em conteúdo de vendas e comece a criar com o MikaLIVE.</p>
             <button class="btn"
-                onclick="document.getElementById('area-entrada').scrollIntoView({behavior:'smooth'})">Começar
+                onclick="document.getElementById('area-entrada').scrollIntoView({behavior:'auto'})">Começar
                 gratuitamente →</button>
         </section>
         <p class="footer">MikaLIVE • A Mika cria só o roteiro. Você grava, edita e posta.<br>Não poste conteúdo
@@ -871,215 +2040,469 @@
         </div>
 
         <div id="tela-inicio" class="tela ativa">
-            <p style="color:var(--muted);font-size:13px">Olá,</p>
-            <h1 id="saudacao" style="font-size:24px">Criador 👋</h1>
-            <p style="color:var(--muted);font-size:14px;margin:6px 0 14px">O que vamos criar hoje?</p>
-            <button class="btn-app btn-grad" style="background:linear-gradient(135deg,#823DF0,#EC4899)"
-                onclick="irPara('tela-shop')">🛍️ CRIAR ROTEIRO SHOPEE →</button>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px"><button
-                    class="btn-app btn-ghost-app" style="margin:0" onclick="irPara('tela-insta')">📸
-                    Instagram</button><button class="btn-app btn-ghost-app" style="margin:0"
-                    onclick="irPara('tela-youtube')">▶️ YouTube</button><button class="btn-app btn-ghost-app"
-                    style="margin:0" onclick="irPara('tela-mikaia')">✨ Mika IA</button></div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0">
-                <div class="card-app" style="text-align:center;margin:0"><b id="kpi-roteiros"
-                        style="font-size:20px;display:block">1</b><span
-                        style="font-size:11px;color:var(--muted)">Roteiros</span></div>
-                <div class="card-app" style="text-align:center;margin:0"><b id="kpi-produtos"
-                        style="font-size:20px;display:block">1</b><span
-                        style="font-size:11px;color:var(--muted)">Produtos</span></div>
-            </div>
-            <div class="card-app"><b>Conteúdos recentes</b>
-                <div id="lista-recentes"></div><button class="btn-app btn-ghost-app"
-                    onclick="irPara('tela-conteudos')">Ver toda a biblioteca →</button>
-            </div>
-            <div class="card-app"><b>Planejamento de hoje</b>
-                <div id="calendario-hoje">
-                    <p>Nenhum conteúdo planejado pra hoje.</p>
-                </div><button class="btn-app btn-ghost-app" onclick="irPara('tela-calendario')">Abrir calendário
-                    →</button>
-            </div>
+            <header class="home-welcome">
+                <span class="module-kicker">SEU ESPAÇO DE CRIAÇÃO</span>
+                <p>Olá,</p>
+                <h1 id="saudacao">Criador 👋</h1>
+                <span>O que vamos criar hoje?</span>
+            </header>
+            <section class="home-primary-action">
+                <button class="btn-app btn-grad" onclick="irPara('tela-shop')">🛍️ Criar roteiro para Shopee →</button>
+                <div class="home-shortcuts">
+                    <button class="btn-app btn-ghost-app" onclick="irPara('tela-insta')">📸 Instagram</button>
+                    <button class="btn-app btn-ghost-app" onclick="irPara('tela-youtube')">▶️ YouTube</button>
+                    <button class="btn-app btn-ghost-app" onclick="irPara('tela-mikaia')">✨ Mika IA</button>
+                </div>
+            </section>
+            <section class="home-overview" aria-label="Resumo da sua criação">
+                <div class="home-section-heading">
+                    <div><span class="module-kicker">VISÃO GERAL</span><h2>Seu progresso</h2></div>
+                    <span>Resumo da biblioteca</span>
+                </div>
+                <div class="home-kpis">
+                    <div class="card-app home-kpi-card"><span class="home-kpi-icon">✍️</span><b id="kpi-roteiros">0</b><span>Roteiros criados</span></div>
+                    <div class="card-app home-kpi-card"><span class="home-kpi-icon">🛍️</span><b id="kpi-produtos">0</b><span>Produtos salvos</span></div>
+                </div>
+            </section>
+            <section class="card-app home-panel">
+                <div class="home-panel-heading"><div><span class="module-kicker">CONTINUE DE ONDE PAROU</span><h2>Conteúdos recentes</h2></div><span>Seus últimos roteiros</span></div>
+                <div id="lista-recentes"></div>
+                <button class="btn-app btn-ghost-app" onclick="irPara('tela-conteudos')">Ver toda a biblioteca →</button>
+            </section>
+            <section class="card-app home-panel">
+                <div class="home-panel-heading"><div><span class="module-kicker">SUA ROTINA</span><h2>Planejamento de hoje</h2></div><span>O que está na sua agenda</span></div>
+                <div id="calendario-hoje"><p>Nenhum conteúdo planejado pra hoje.</p></div>
+                <button class="btn-app btn-ghost-app" onclick="irPara('tela-calendario')">Abrir calendário →</button>
+            </section>
         </div>
 
         <div id="tela-shop" class="tela">
-            <h2 style="font-size:22px">🛍️ Shopee</h2>
-            <p style="color:var(--muted);font-size:13.5px;margin:4px 0 14px">Link → Roteiro em 30 segundos.</p>
-            <div class="aviso-seguro">⚠️ Não prometa o que o produto não faz. Fale sua experiência real.</div>
-            <div class="card-app"><label>Link / Código / Nome</label><input id="link-shop"
-                    placeholder="Ex: https://shopee... ou EUD-HBB-TYD"><label>Nome do produto</label><input
-                    id="nome-produto" placeholder="Ex: Tv box"><label>Preço</label><input id="preco-produto"
-                    placeholder="Ex: 200" inputmode="decimal"><label>O que o produto faz?</label><textarea
-                    id="desc-produto" rows="3" placeholder="Ex: Proporciona mais para minha tv"></textarea><label>Minha
-                    opinião real</label><textarea id="shop-opiniao" rows="2"
-                    placeholder="Ex: Usei e gostei..."></textarea></div>
-            <div class="card-app"><button class="btn-app btn-grad"
-                    style="background:linear-gradient(135deg,#823DF0,#EC4899)" onclick="gerarVideoShop()">Gerar Roteiro
-                    →</button><button class="btn-app btn-dark" onclick="gerarComIA('shop')">🤖 Gerar com IA
-                    Groq</button></div>
-            <div class="card-app"><b>🧮 Calculadora de comissão</b><input id="calc-preco"
-                    placeholder="Preço - ex: 89,90" inputmode="decimal"><input id="calc-taxa"
-                    placeholder="Taxa % - ex: 15" inputmode="decimal"><button class="btn-app btn-ghost-app"
-                    onclick="calcularComissao()">Calcular estimativa</button>
-                <p id="calc-resultado" style="margin-top:10px;font-weight:700"></p>
-            </div>
-            <div id="resultado-shop" style="display:none">
-                <div class="card-app"><b>🎬 Roteiro Shopee</b>
-                    <p id="roteiro-shop" style="white-space:pre-line;color:#ddd"></p>
-                </div><button class="btn-app btn-dark" onclick="copiarTexto('roteiro-shop')">Copiar
-                    roteiro</button><button class="btn-app btn-grad"
-                    style="background:linear-gradient(135deg,#823DF0,#EC4899)" onclick="salvarVideoAtual()">✅ Salvar
-                    roteiro</button>
-                <div id="aviso-duplicado"
-                    style="display:none;background:#2A220A;border:1px solid #7C5A00;color:#FDE68A;padding:12px;border-radius:12px;font-size:12px;margin-top:10px">
+            <header class="module-intro">
+                <span class="module-kicker">CRIAÇÃO DE CONTEÚDO • SHOPEE</span>
+                <h2>🛍️ Roteiro para Shopee</h2>
+                <p>Transforme as informações de um produto em um roteiro curto para apresentar e divulgar.</p>
+            </header>
+
+            <div class="aviso-seguro">Dica: descreva o produto com sinceridade e compartilhe sua experiência real. Não prometa resultados que não pode garantir.</div>
+
+            <section class="card-app module-card">
+                <div class="module-card-heading">
+                    <span class="module-step">01</span>
+                    <div><b>Informações do produto</b><p>Preencha os dados para montar seu roteiro.</p></div>
                 </div>
-            </div>
-            <div class="card-app"><b>📦 Produtos recentes</b>
+                <div class="module-fields">
+                    <div class="module-field module-field-wide">
+                        <label for="link-shop">Link, código ou nome do produto</label>
+                        <input id="link-shop" placeholder="Link ou código do produto">
+                        <small>Se tiver o link, cole aqui. Também pode informar o nome ou código.</small>
+                    </div>
+                    <div class="module-field">
+                        <label for="nome-produto">Nome do produto</label>
+                        <input id="nome-produto" placeholder="Ex.: Fone Bluetooth">
+                    </div>
+                    <div class="module-field">
+                        <label for="preco-produto">Preço do produto</label>
+                        <input id="preco-produto" placeholder="Ex.: 49,90" inputmode="decimal">
+                    </div>
+                    <div class="module-field module-field-wide">
+                        <label for="desc-produto">O que o produto faz?</label>
+                        <textarea id="desc-produto" rows="3" placeholder="Descreva o produto"></textarea>
+                    </div>
+                    <div class="module-field module-field-wide">
+                        <label for="shop-opiniao">Sua opinião ou experiência</label>
+                        <textarea id="shop-opiniao" rows="3" placeholder="Sua opinião sobre o produto"></textarea>
+                        <small>Use sua opinião verdadeira para deixar o conteúdo mais autêntico.</small>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card-app module-card module-actions">
+                <div class="module-card-heading">
+                    <span class="module-step">02</span>
+                    <div><b>Crie seu roteiro</b><p>Escolha uma das opções para gerar o texto.</p></div>
+                </div>
+                <button class="btn-app btn-grad" style="background:linear-gradient(135deg,#823DF0,#EC4899)" onclick="gerarVideoShop()">Gerar roteiro básico →</button>
+                <button class="btn-app btn-dark" onclick="gerarComIA('shop')">✨ Gerar roteiro com IA</button>
+            </section>
+
+            <section class="card-app module-card">
+                <div class="module-card-heading">
+                    <span class="module-step">03</span>
+                    <div><b>Calcular comissão</b><p>Faça uma estimativa com base no preço e na taxa.</p></div>
+                </div>
+                <div class="module-fields module-fields-compact">
+                    <div class="module-field">
+                        <label for="calc-preco">Preço do produto</label>
+                        <input id="calc-preco" placeholder="Ex.: 89,90" inputmode="decimal">
+                    </div>
+                    <div class="module-field">
+                        <label for="calc-taxa">Comissão (%)</label>
+                        <input id="calc-taxa" placeholder="Ex.: 15" inputmode="decimal">
+                    </div>
+                </div>
+                <button class="btn-app btn-ghost-app" onclick="calcularComissao()">Calcular estimativa</button>
+                <p id="calc-resultado" class="module-result-note"></p>
+            </section>
+
+            <section id="resultado-shop" class="module-output" style="display:none">
+                <div class="card-app">
+                    <div class="module-card-heading"><span class="module-step">04</span><div><b>Seu roteiro está pronto</b><p>Revise o texto antes de gravar.</p></div></div>
+                    <p id="roteiro-shop" class="module-generated-text"></p>
+                </div>
+                <div class="module-output-actions">
+                    <button class="btn-app btn-dark" onclick="copiarTexto('roteiro-shop')">Copiar roteiro</button>
+                    <button class="btn-app btn-grad" style="background:linear-gradient(135deg,#823DF0,#EC4899)" onclick="salvarVideoAtual()">Salvar roteiro</button>
+                </div>
+                <div id="aviso-duplicado" style="display:none;background:#2A220A;border:1px solid #7C5A00;color:#FDE68A;padding:12px;border-radius:12px;font-size:12px;margin-top:10px"></div>
+            </section>
+
+            <section class="card-app module-card module-secondary">
+                <b>Produtos usados recentemente</b>
+                <p>Seus últimos produtos adicionados aparecem aqui.</p>
                 <div id="lista-produtos"></div>
-            </div>
+            </section>
             <input id="loja-produto" type="hidden" value="">
         </div>
 
         <div id="tela-insta" class="tela">
-            <h2 style="font-size:22px">📸 Instagram</h2>
-            <div class="card-app"><input id="tema-insta" placeholder="Ex: Achadinho de cozinha"><label>Opinião real —
-                    obrigatória</label><textarea id="insta-opiniao" rows="2"
-                    placeholder="Sua experiência real"></textarea><select id="estilo-insta">
-                    <option value="viral">Viral / Gancho forte</option>
-                    <option value="tutorial">Tutorial rápido</option>
-                    <option value="depoimento">Depoimento</option>
-                    <option value="humor">Humor / Trend</option>
-                    <option value="comparacao">Comparação</option>
-                </select><select id="nicho-insta">
-                    <option value="beleza">Beleza / Skincare</option>
-                    <option value="casa">Casa / Utilidades</option>
-                    <option value="moda">Moda / Acessórios</option>
-                    <option value="fitness">Fitness / Saúde</option>
-                    <option value="geral">Geral / Achadinhos</option>
-                </select><input id="link-insta-shop" placeholder="Link da Shopee pra legenda"></div>
-            <div class="card-app"><button class="btn-app btn-grad" onclick="gerarVideoInsta()">Gerar Roteiro
-                    →</button><button class="btn-app btn-dark" onclick="gerarComIA('insta')">🤖 Gerar com IA</button>
-            </div>
-            <div class="card-app"><b>✍️ Ferramentas</b><button class="btn-app btn-ghost-app"
-                    onclick="gerarLegendasEstilos()">✍️ Legendas em 3 estilos</button><button
-                    class="btn-app btn-ghost-app" onclick="mostrarBancoHashtags()">#️⃣ Banco de hashtags</button><button
-                    class="btn-app btn-ghost-app" onclick="gerarCTA()">💬 Chamada pra comentários</button>
-                <p id="ferramenta-insta-resultado" style="white-space:pre-line;margin-top:12px;color:#ddd"></p>
-            </div>
-            <div id="resultado-insta" style="display:none">
-                <div class="card-app"><b>🎬 Roteiro</b>
-                    <p id="roteiro-insta" style="white-space:pre-line;color:#ddd"></p>
+            <header class="module-intro">
+                <span class="module-kicker">CRIAÇÃO DE CONTEÚDO • INSTAGRAM</span>
+                <h2>📸 Conteúdo para Instagram</h2>
+                <p>Monte um roteiro para Reels, uma legenda e hashtags a partir do tema e da sua opinião.</p>
+            </header>
+
+            <section class="card-app module-card">
+                <div class="module-card-heading">
+                    <span class="module-step">01</span>
+                    <div><b>Sobre o que será o vídeo?</b><p>Conte qual é o assunto e dê seu ponto de vista.</p></div>
                 </div>
-                <div class="card-app"><b>✍️ Legenda</b>
-                    <p id="legenda-insta" style="white-space:pre-line;color:#ddd"></p>
+                <div class="module-fields">
+                    <div class="module-field module-field-wide">
+                        <label for="tema-insta">Tema ou nome do produto</label>
+                        <input id="tema-insta" placeholder="Ex.: organização da cozinha">
+                    </div>
+                    <div class="module-field module-field-wide">
+                        <label for="insta-opiniao">Sua opinião ou experiência</label>
+                        <textarea id="insta-opiniao" rows="3" placeholder="O que você pensa ou viveu sobre esse assunto?"></textarea>
+                        <small>Esse campo ajuda a criar um conteúdo mais pessoal e original.</small>
+                    </div>
+                    <div class="module-field">
+                        <label for="estilo-insta">Estilo do vídeo</label>
+                        <select id="estilo-insta">
+                            <option value="viral">Gancho forte</option>
+                            <option value="tutorial">Tutorial rápido</option>
+                            <option value="depoimento">Relato pessoal</option>
+                            <option value="humor">Humor / Trend</option>
+                            <option value="comparacao">Comparação</option>
+                        </select>
+                    </div>
+                    <div class="module-field">
+                        <label for="nicho-insta">Categoria do conteúdo</label>
+                        <select id="nicho-insta">
+                            <option value="beleza">Beleza / Skincare</option>
+                            <option value="casa">Casa / Utilidades</option>
+                            <option value="moda">Moda / Acessórios</option>
+                            <option value="fitness">Fitness / Saúde</option>
+                            <option value="geral">Geral / Achadinhos</option>
+                        </select>
+                    </div>
+                    <div class="module-field module-field-wide">
+                        <label for="link-insta-shop">Link do produto (opcional)</label>
+                        <input id="link-insta-shop" placeholder="Link do produto (opcional)">
+                    </div>
                 </div>
-                <div class="card-app"><b>#️⃣ Hashtags</b>
-                    <p id="hashtags-insta" style="white-space:pre-line;color:#ddd"></p>
-                </div><button class="btn-app btn-dark" onclick="copiarTexto('legenda-insta')">📋 Copiar
-                    legenda</button><button class="btn-app btn-dark" onclick="copiarTexto('hashtags-insta')">📋 Copiar
-                    hashtags</button><button class="btn-app btn-grad" onclick="salvarVideoAtual()">✅ Salvar</button>
-            </div>
+            </section>
+
+            <section class="card-app module-card module-actions">
+                <div class="module-card-heading">
+                    <span class="module-step">02</span>
+                    <div><b>Gerar conteúdo</b><p>Crie uma primeira versão e depois revise com seu jeito de falar.</p></div>
+                </div>
+                <button class="btn-app btn-grad" onclick="gerarVideoInsta()">Gerar roteiro e legenda →</button>
+                <button class="btn-app btn-dark" onclick="gerarComIA('insta')">✨ Gerar com IA</button>
+            </section>
+
+            <section class="card-app module-card module-tools">
+                <div class="module-card-heading">
+                    <span class="module-step">03</span>
+                    <div><b>Ferramentas extras</b><p>Recursos rápidos para complementar sua publicação.</p></div>
+                </div>
+                <div class="module-tool-grid">
+                    <button class="btn-app btn-ghost-app" onclick="gerarLegendasEstilos()">Criar 3 opções de legenda</button>
+                    <button class="btn-app btn-ghost-app" onclick="mostrarBancoHashtags()">Ver ideias de hashtags</button>
+                    <button class="btn-app btn-ghost-app" onclick="gerarCTA()">Criar chamada para comentários</button>
+                </div>
+                <p id="ferramenta-insta-resultado" class="module-generated-text module-tool-result"></p>
+            </section>
+
+            <section id="resultado-insta" class="module-output" style="display:none">
+                <div class="card-app"><b>Roteiro do vídeo</b><p id="roteiro-insta" class="module-generated-text"></p></div>
+                <div class="card-app"><b>Legenda da publicação</b><p id="legenda-insta" class="module-generated-text"></p></div>
+                <div class="card-app"><b>Hashtags</b><p id="hashtags-insta" class="module-generated-text"></p></div>
+                <div class="module-output-actions">
+                    <button class="btn-app btn-dark" onclick="copiarTexto('legenda-insta')">Copiar legenda</button>
+                    <button class="btn-app btn-dark" onclick="copiarTexto('hashtags-insta')">Copiar hashtags</button>
+                    <button class="btn-app btn-grad" onclick="salvarVideoAtual()">Salvar conteúdo</button>
+                </div>
+            </section>
         </div>
 
         <div id="tela-youtube" class="tela">
-            <h2 style="font-size:22px">▶️ YouTube — Modo Seguro</h2>
-            <div class="aviso-seguro">⚠️ É PROIBIDO gerar conteúdo igual em massa. Use IA só como ajuda e grave com sua
-                voz e opinião.</div>
-            <div class="card-app"><input id="tema-yt" placeholder="Ex: Testei fone barato por 7 dias"><label>Opinião
-                    pessoal — obrigatória</label><textarea id="yt-opiniao" rows="2"
-                    placeholder="Sua opinião real"></textarea><input id="canal-yt" placeholder="Link do seu canal">
-            </div>
-            <div class="card-app"><button class="btn-app btn-dark" onclick="gerarComIASeguroYT()">🤖 Gerar 1 roteiro com
-                    sua opinião</button><button class="btn-app btn-ghost-app" onclick="gerarTitulosYTSeguro()">✍️ 3
-                    ideias de título</button>
-                <p id="ferramenta-yt-resultado" style="white-space:pre-line;margin-top:12px;color:#ddd"></p>
-            </div>
-            <div id="resultado-yt-ia" style="display:none">
-                <div class="card-app"><b>🎬 Roteiro YouTube</b>
-                    <p id="roteiro-yt-ia" style="white-space:pre-line;color:#ddd"></p><label
-                        style="display:flex;gap:8px;font-size:13px"><input type="checkbox" id="check-humano"
-                            style="width:18px"> Eu vou gravar com minha voz e mudar com minhas palavras.</label><label
-                        style="display:flex;gap:8px;font-size:13px"><input type="checkbox" id="check-original"
-                            style="width:18px"> Tem minha opinião, não é cópia.</label><button class="btn-app btn-dark"
-                        onclick="copiarTexto('roteiro-yt-ia')">Copiar roteiro</button><button class="btn-app btn-grad"
-                        onclick="salvarVideoYTSeguro()">✅ Salvar depois de revisar</button>
+            <header class="module-intro">
+                <span class="module-kicker">CRIAÇÃO DE CONTEÚDO • YOUTUBE</span>
+                <h2>▶️ Roteiro para YouTube</h2>
+                <p>Organize suas ideias para criar vídeos originais, com sua voz, experiência e opinião.</p>
+            </header>
+
+            <div class="aviso-seguro">Importante: use o roteiro como ponto de partida. Revise, acrescente sua experiência e evite publicar vídeos repetitivos ou conteúdo que não represente sua opinião.</div>
+
+            <section class="card-app module-card">
+                <div class="module-card-heading">
+                    <span class="module-step">01</span>
+                    <div><b>Planeje seu vídeo</b><p>Informe o assunto e o que você tem a dizer sobre ele.</p></div>
                 </div>
-            </div>
+                <div class="module-fields">
+                    <div class="module-field module-field-wide">
+                        <label for="tema-yt">Tema ou título provisório</label>
+                        <input id="tema-yt" placeholder="Ex.: teste de fone Bluetooth">
+                    </div>
+                    <div class="module-field module-field-wide">
+                        <label for="yt-opiniao">Sua opinião e experiência</label>
+                        <textarea id="yt-opiniao" rows="4" placeholder="Conte sua experiência"></textarea>
+                        <small>Escreva pelo menos alguns detalhes. Sua experiência é a base do roteiro.</small>
+                    </div>
+                    <div class="module-field module-field-wide">
+                        <label for="canal-yt">Link do canal (opcional)</label>
+                        <input id="canal-yt" placeholder="https://youtube.com/@seucanal">
+                    </div>
+                </div>
+            </section>
+
+            <section class="card-app module-card module-actions">
+                <div class="module-card-heading">
+                    <span class="module-step">02</span>
+                    <div><b>Prepare seu conteúdo</b><p>Gere um roteiro ou receba ideias de títulos para o tema.</p></div>
+                </div>
+                <button class="btn-app btn-grad" onclick="gerarComIASeguroYT()">Gerar roteiro com IA →</button>
+                <button class="btn-app btn-ghost-app" onclick="gerarTitulosYTSeguro()">Sugerir 3 títulos</button>
+                <p id="ferramenta-yt-resultado" class="module-generated-text module-tool-result"></p>
+            </section>
+
+            <section id="resultado-yt-ia" class="module-output" style="display:none">
+                <div class="card-app">
+                    <div class="module-card-heading"><span class="module-step">03</span><div><b>Seu roteiro</b><p>Leia, adapte e confira antes de salvar.</p></div></div>
+                    <p id="roteiro-yt-ia" class="module-generated-text"></p>
+                    <div class="module-checklist">
+                        <label><input type="checkbox" id="check-humano"> Vou gravar com minha voz e adaptar o texto.</label>
+                        <label><input type="checkbox" id="check-original"> O roteiro contém minha opinião e é original.</label>
+                    </div>
+                    <div class="module-output-actions">
+                        <button class="btn-app btn-dark" onclick="copiarTexto('roteiro-yt-ia')">Copiar roteiro</button>
+                        <button class="btn-app btn-grad" onclick="salvarVideoYTSeguro()">Salvar após revisar</button>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <div id="tela-mikaia" class="tela">
-            <h2 style="font-size:22px">✨ Mika IA</h2>
-            <div class="card-app"><label>O que você quer criar?</label><textarea id="mika-tema" rows="4"
-                    placeholder="Ex: Tv box, preço 200 + sua opinião real"></textarea><select id="mika-plataforma">
-                    <option value="shop">🛍️ Shopee</option>
-                    <option value="insta">📸 Instagram</option>
-                    <option value="youtube">▶️ YouTube</option>
-                </select><button class="btn-app btn-grad" onclick="perguntarMikaIA()">✨ Criar com Mika IA</button></div>
-            <div class="card-app"><b>Melhorar</b>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><button
-                        class="btn-app btn-ghost-app" style="margin:0" onclick="melhorarMika('mais profissional')">Mais
-                        profissional</button><button class="btn-app btn-ghost-app" style="margin:0"
-                        onclick="melhorarMika('mais persuasivo')">Mais persuasivo</button><button
-                        class="btn-app btn-ghost-app" style="margin:0" onclick="melhorarMika('mais curto')">Mais
-                        curto</button><button class="btn-app btn-ghost-app" style="margin:0"
-                        onclick="melhorarMika('mais engraçado')">Mais engraçado</button><button
-                        class="btn-app btn-ghost-app" style="margin:0" onclick="melhorarMika('outro gancho')">Outro
-                        gancho</button><button class="btn-app btn-ghost-app" style="margin:0"
-                        onclick="melhorarMika('outra versão')">Outra versão</button><button
-                        class="btn-app btn-ghost-app" style="margin:0;grid-column:span 2"
-                        onclick="melhorarMika('melhor CTA')">Melhor CTA</button></div>
-            </div>
-            <div class="card-app"><b>💬 Resposta da Mika IA</b>
-                <p id="mika-resposta" style="white-space:pre-line;color:#ddd">Ainda não gerou nada.</p><button
-                    class="btn-app btn-dark" onclick="copiarTexto('mika-resposta')">📋 Copiar</button><button
-                    class="btn-app btn-grad" onclick="salvarMikaIAComoRoteiro()">✅ Salvar como roteiro</button>
-            </div>
-        </div>
+            <header class="module-intro">
+                <span class="module-kicker">ASSISTENTE DE CRIAÇÃO</span>
+                <h2>✨ Mika IA</h2>
+                <p>Transforme sua ideia em conteúdo. Conte o que deseja criar, escolha a plataforma e revise a sugestão.</p>
+            </header>
 
+            <section class="card-app module-card mika-idea-card">
+                <div class="module-card-heading">
+                    <span class="module-step">01</span>
+                    <div><b>Comece pela sua ideia</b><p>Quanto mais contexto você informar, mais útil será a sugestão.</p></div>
+                </div>
+                <div class="module-fields mika-input-fields">
+                    <div class="module-field module-field-wide">
+                        <label for="mika-tema">O que você quer criar?</label>
+                        <textarea id="mika-tema" rows="4" placeholder="Ex.: vídeo sobre um fone Bluetooth"></textarea>
+                        <small>Inclua detalhes importantes, sua opinião e sua experiência real.</small>
+                    </div>
+                    <div class="module-field module-field-wide">
+                        <label for="mika-plataforma">Escolha onde vai publicar</label>
+                        <select id="mika-plataforma">
+                            <option value="shop">🛍️ Shopee</option>
+                            <option value="insta">📸 Instagram</option>
+                            <option value="youtube">▶️ YouTube</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mika-create-action">
+                    <button class="btn-app btn-grad" onclick="perguntarMikaIA()">✨ Criar com Mika IA</button>
+                    <p>A resposta aparecerá na etapa de resultado, logo abaixo.</p>
+                </div>
+            </section>
+
+            <section class="card-app module-card mika-adjust-card">
+                <div class="module-card-heading">
+                    <span class="module-step">02</span>
+                    <div><b>Personalize a resposta</b><p>Depois de gerar o conteúdo, escolha um ajuste para pedir outra versão.</p></div>
+                </div>
+                <div class="module-tool-grid mika-adjust-grid">
+                    <button class="btn-app btn-ghost-app" onclick="melhorarMika('mais profissional')">Mais profissional</button>
+                    <button class="btn-app btn-ghost-app" onclick="melhorarMika('mais persuasivo')">Mais persuasivo</button>
+                    <button class="btn-app btn-ghost-app" onclick="melhorarMika('mais curto')">Mais curto</button>
+                    <button class="btn-app btn-ghost-app" onclick="melhorarMika('mais engraçado')">Mais descontraído</button>
+                    <button class="btn-app btn-ghost-app" onclick="melhorarMika('outro gancho')">Outro gancho</button>
+                    <button class="btn-app btn-ghost-app" onclick="melhorarMika('outra versão')">Outra versão</button>
+                    <button class="btn-app btn-ghost-app" onclick="melhorarMika('melhor CTA')">Melhor chamada para ação</button>
+                </div>
+            </section>
+
+            <section class="card-app module-card module-output mika-result-card">
+                <div class="module-card-heading">
+                    <span class="module-step">03</span>
+                    <div><b>Seu conteúdo gerado</b><p>Leia, revise e adapte o texto antes de publicar.</p></div>
+                </div>
+                <p id="mika-resposta" class="module-generated-text">Sua resposta aparecerá aqui depois que você criar o conteúdo.</p>
+                <div class="module-output-actions">
+                    <button class="btn-app btn-dark" onclick="copiarTexto('mika-resposta')">📋 Copiar conteúdo</button>
+                    <button class="btn-app btn-grad" onclick="salvarMikaIAComoRoteiro()">✅ Salvar como roteiro</button>
+                </div>
+            </section>
+        </div>
         <div id="tela-conteudos" class="tela">
-            <h2 style="font-size:22px">📚 Meus Conteúdos</h2><input id="busca-conteudo" placeholder="🔍 Pesquisar..."
-                oninput="renderListaVideos()">
-            <div class="abas"><button class="aba ativa" id="aba-res-shop"
-                    onclick="filtrarRoteirosPorPlataforma('shop')">🛍️ Shopee</button><button class="aba"
-                    id="aba-res-insta" onclick="filtrarRoteirosPorPlataforma('instagram')">📸 Instagram</button><button
-                    class="aba" id="aba-res-yt" onclick="filtrarRoteirosPorPlataforma('youtube')">▶️
-                    YouTube</button><button class="aba" id="aba-res-todos"
-                    onclick="filtrarRoteirosPorPlataforma('todos')">Todos</button><button class="aba" id="aba-fav"
-                    onclick="filtrarFavoritos()">⭐ Favoritos</button></div>
-            <div id="lista-videos"></div><button class="btn-app btn-ghost-app" onclick="limparVideos()">Limpar
-                todos</button>
-        </div>
+            <header class="module-intro">
+                <span class="module-kicker">SUA BIBLIOTECA</span>
+                <h2>📚 Meus Conteúdos</h2>
+                <p>Todos os seus roteiros em um só lugar. Pesquise, filtre e encontre o conteúdo que deseja usar.</p>
+            </header>
 
+            <section class="card-app module-card library-toolbar">
+                <div class="library-toolbar-heading">
+                    <span class="library-toolbar-icon">⌕</span>
+                    <div><b>Encontre um conteúdo</b><p>Pesquise pelo nome ou pelo tema do roteiro.</p></div>
+                </div>
+                <label for="busca-conteudo">Pesquisar na biblioteca</label>
+                <input id="busca-conteudo" placeholder="Digite o nome ou tema..." oninput="renderListaVideos()">
+                <div class="library-filter-heading">
+                    <b>Filtrar conteúdos</b>
+                    <span>Escolha uma plataforma ou veja todos.</span>
+                </div>
+                <div class="abas library-tabs">
+                    <button class="aba ativa" id="aba-res-shop" onclick="filtrarRoteirosPorPlataforma('shop')">🛍️ Shopee</button>
+                    <button class="aba" id="aba-res-insta" onclick="filtrarRoteirosPorPlataforma('instagram')">📸 Instagram</button>
+                    <button class="aba" id="aba-res-yt" onclick="filtrarRoteirosPorPlataforma('youtube')">▶️ YouTube</button>
+                    <button class="aba" id="aba-res-todos" onclick="filtrarRoteirosPorPlataforma('todos')">Todos</button>
+                    <button class="aba" id="aba-fav" onclick="filtrarFavoritos()">⭐ Favoritos</button>
+                </div>
+            </section>
+
+            <section class="library-results">
+                <div class="library-results-heading">
+                    <div><span class="module-kicker">SUA COLEÇÃO</span><b>Conteúdos salvos</b></div>
+                    <span>Os roteiros encontrados aparecem aqui.</span>
+                </div>
+                <div id="lista-videos"></div>
+                <div class="library-footer">
+                    <p>Gerencie seus conteúdos salvos nesta biblioteca.</p>
+                    <button class="btn-app btn-ghost-app library-clear" onclick="limparVideos()">Limpar todos</button>
+                </div>
+            </section>
+        </div>
         <div id="tela-calendario" class="tela">
-            <h2 style="font-size:22px">📅 Calendário</h2>
-            <div class="card-app"><input id="cal-tema" placeholder="Tema"><select id="cal-plataforma">
-                    <option value="shop">🛍️ Shopee</option>
-                    <option value="instagram">📸 Instagram</option>
-                    <option value="youtube">▶️ YouTube</option>
-                </select><input id="cal-data" type="date"><button class="btn-app btn-grad"
-                    onclick="salvarCalendario()">Salvar planejamento</button></div>
-            <div id="lista-calendario"></div>
-        </div>
+            <header class="module-intro">
+                <span class="module-kicker">ORGANIZAÇÃO E ROTINA</span>
+                <h2>📅 Calendário</h2>
+                <p>Organize suas ideias e acompanhe o que pretende publicar em cada plataforma.</p>
+            </header>
 
+            <section class="card-app module-card calendar-create-card">
+                <div class="module-card-heading">
+                    <span class="module-step">01</span>
+                    <div><b>Planeje uma publicação</b><p>Adicione o tema, escolha a plataforma e defina quando pretende publicar.</p></div>
+                </div>
+                <div class="module-fields calendar-fields">
+                    <div class="module-field module-field-wide">
+                        <label for="cal-tema">O que você pretende publicar?</label>
+                        <input id="cal-tema" placeholder="Ex.: análise de um produto">
+                    </div>
+                    <div class="module-field">
+                        <label for="cal-plataforma">Onde vai publicar?</label>
+                        <select id="cal-plataforma">
+                            <option value="shop">🛍️ Shopee</option>
+                            <option value="instagram">📸 Instagram</option>
+                            <option value="youtube">▶️ YouTube</option>
+                        </select>
+                    </div>
+                    <div class="module-field">
+                        <label for="cal-data">Quando pretende publicar?</label>
+                        <input id="cal-data" type="date">
+                    </div>
+                </div>
+                <div class="calendar-save-action">
+                    <button class="btn-app btn-grad" onclick="salvarCalendario()">＋ Adicionar ao calendário</button>
+                    <p>Seu planejamento ficará disponível na lista abaixo.</p>
+                </div>
+            </section>
+
+            <section class="library-results calendar-list">
+                <div class="library-results-heading">
+                    <div><span class="module-kicker">SUA AGENDA</span><b>Seus planejamentos</b></div>
+                    <span>Consulte os conteúdos organizados por data.</span>
+                </div>
+                <div id="lista-calendario"></div>
+            </section>
+        </div>
         <div id="tela-comissao" class="tela">
-            <h2 style="font-size:22px">💰 Resultados</h2>
-            <div class="card-app" style="border-color:#1E5A3A"><b>💵 Reais</b>
-                <p>Total: <b id="comissao-real-total">R$ 0,00</b> • Vendas: <b id="comissao-real-vendas">0</b></p>
-                <div id="lista-comissao-real"></div>
-            </div>
-            <div class="card-app" style="border-color:#7C5A00"><b>🧪 Simulados</b>
-                <p>Total: <b id="comissao-sim-total">R$ 0,00</b> • Vendas: <b id="comissao-sim-vendas">0</b></p><button
-                    class="btn-app btn-dark" onclick="simularVenda()">+ Simular venda</button><button
-                    class="btn-app btn-ghost-app" onclick="limparSimulacao()">Limpar simulações</button>
-            </div>
-            <div class="card-app"><b>🧪 Testar API</b><input id="api-order" placeholder="Order ID"><input id="api-valor"
-                    placeholder="Valor - ex: 89,90" inputmode="decimal"><button class="btn-app btn-dark"
-                    onclick="testarAPIComissao()">Testar →</button>
-                <p id="api-resultado" style="font-size:12px;margin-top:10px"></p>
-            </div>
-        </div>
+            <header class="module-intro">
+                <span class="module-kicker">ACOMPANHAMENTO FINANCEIRO</span>
+                <h2>💰 Resultados</h2>
+                <p>Acompanhe suas comissões, confira os registros e faça simulações sem misturar estimativas com vendas reais.</p>
+            </header>
 
+            <section class="card-app module-card results-real">
+                <div class="results-heading">
+                    <span class="results-icon">R$</span>
+                    <div><b>Vendas reais</b><p>Comissões registradas como resultado confirmado.</p></div>
+                </div>
+                <div class="results-metrics">
+                    <div><small>Comissão total</small><b id="comissao-real-total">R$ 0,00</b></div>
+                    <div><small>Vendas registradas</small><b id="comissao-real-vendas">0</b></div>
+                </div>
+                <div class="results-list-heading"><b>Registros de vendas</b><span>Seus resultados reais</span></div>
+                <div id="lista-comissao-real"></div>
+            </section>
+
+            <section class="card-app module-card results-simulated">
+                <div class="results-heading">
+                    <span class="results-icon">↗</span>
+                    <div><b>Simulador de comissão</b><p>Teste valores e cenários. Simulações não representam vendas confirmadas.</p></div>
+                </div>
+                <div class="results-metrics">
+                    <div><small>Comissão estimada</small><b id="comissao-sim-total">R$ 0,00</b></div>
+                    <div><small>Simulações</small><b id="comissao-sim-vendas">0</b></div>
+                </div>
+                <div class="module-output-actions">
+                    <button class="btn-app btn-dark" onclick="simularVenda()">＋ Simular venda</button>
+                    <button class="btn-app btn-ghost-app" onclick="limparSimulacao()">Limpar simulações</button>
+                </div>
+            </section>
+
+            <section class="card-app module-card api-test-card">
+                <div class="module-card-heading">
+                    <span class="module-step">API</span>
+                    <div><b>Teste de integração</b><p>Área técnica para consultar a API de comissão usando dados de teste.</p></div>
+                </div>
+                <div class="module-fields">
+                    <div class="module-field"><label for="api-order">Order ID</label><input id="api-order" placeholder="Identificador do pedido"></div>
+                    <div class="module-field"><label for="api-valor">Valor do pedido</label><input id="api-valor" placeholder="Ex.: 89,90" inputmode="decimal"></div>
+                </div>
+                <button class="btn-app btn-dark" onclick="testarAPIComissao()">Testar integração →</button>
+                <p id="api-resultado" class="module-generated-text"></p>
+            </section>
+        </div>
         <div id="tela-conta" class="tela">
-            <h2 style="font-size:22px">👤 Minha Conta</h2>
+            <header class="module-intro">
+                <span class="module-kicker">PREFERÊNCIAS E CONFIGURAÇÕES</span>
+                <h2>👤 Minha Conta</h2>
+                <p>Gerencie seu perfil, conexões, cópias de segurança e opções de segurança.</p>
+            </header>
+            <div class="account-groups">
             <div class="grupo-conta"><button class="grupo-header"
                     onclick="abrirGrupoConta('g-perfil',this)"><span>👤</span>
                     <div style="flex:1"><b>Perfil</b><small id="perfil-detalhe"
@@ -1164,8 +2587,24 @@
                     </div>
                 </div>
             </div>
+        
+            </div>
         </div>
+
         <div id="tela-meus-videos" class="tela">
+            <header class="module-intro">
+                <span class="module-kicker">SUA BIBLIOTECA</span>
+                <h2>🎬 Meus Vídeos</h2>
+                <p>Encontre seus roteiros salvos e continue organizando suas ideias de conteúdo.</p>
+            </header>
+            <section class="card-app module-card my-videos-guide">
+                <div class="my-videos-guide-icon">▤</div>
+                <div class="my-videos-guide-copy">
+                    <b>Seus conteúdos em um só lugar</b>
+                    <p>Os roteiros que você gera e salva ficam disponíveis na biblioteca de Conteúdos. Lá você pode abrir, editar, favoritar e excluir seus materiais.</p>
+                </div>
+                <button class="btn-app btn-dark" onclick="irPara('tela-conteudos')">Abrir minha biblioteca →</button>
+            </section>
             <div id="lista-videos-2"></div>
         </div>
     </div>
@@ -1197,23 +2636,131 @@
         </div>
     </div>
 
-    <script>
-        /* LOGICA PRESERVADA - MESMOS NOMES, MESMOS IDS */
-        const $ = function (id) { return document.getElementById(id); };
-        function mostrarErro(m) { alert(m); registrarLog("erro", m); }
-        function escapeHtml(s) { return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"); }
-        function sanitizar(t, max) { if (typeof t !== "string") return ""; var x = t.trim(); x = x.replace(/<script[\s\S]*?<\/script>/gi, ""); x = x.replace(/<iframe[\s\S]*?<\/iframe>/gi, ""); x = x.replace(/on\w+\s*=/gi, ""); if (max && x.length > max) x = x.substring(0, max); return x; }
-        function parsePreco(txt) { if (!txt) return 0; var l = String(txt).replace("R$", "").replace(/\s/g, "").replace(",", "."); var n = parseFloat(l); if (isNaN(n) || n < 0 || n > 1000000) return 0; return n; }
-        function normalizarLink(link) { try { var u = new URL(link.trim().toLowerCase()); var h = u.toString(); if (h.endsWith("/")) h = h.slice(0, -1); return h; } catch (e) { return link.trim().toLowerCase(); } }
-        function formatarBRL(v) { return "R$ " + Number(v || 0).toFixed(2).replace(".", ","); }
-        window.MIKA_CONFIG = window.MIKA_CONFIG || { GOOGLE_CLIENT_ID: "", SUPABASE_URL: "", SUPABASE_ANON_KEY: "" };
-        function getConfig() { var w = window.MIKA_CONFIG || {}; var s = {}; try { s = JSON.parse(localStorage.getItem("mikalive_cloud_config_v11") || "{}") || {}; } catch (e) { s = {}; } return { GOOGLE_CLIENT_ID: w.GOOGLE_CLIENT_ID || "", SUPABASE_URL: w.SUPABASE_URL || s.url || "", SUPABASE_ANON_KEY: w.SUPABASE_ANON_KEY || s.key || "" }; }
-        var filtroRoteiroAtual = 'shop', mostrarSoFavoritos = false, mikaUltimaResposta = "", mikaUltimoTema = "", mikaUltimaPlataforma = "shop";
-        var DB_KEY = "mikalive_db_v10", SESSION_KEY = "mikalive_session_v10", BACKUP_AUTO_KEY = "mikalive_backup_auto_v10", LOG_KEY = "mikalive_log_v10", CLOUD_KEY = "mikalive_cloud_config_v11", SESSION_DIAS = 30, USER_KEYS_KEY = "mikalive_user_keys_v12";
-        var CLIENT_ID = getConfig().GOOGLE_CLIENT_ID;
-        var DB = loadDB(), videoAtual = null, videoAbertoId = null, googleEmailAtual = "";
-        function irPara(id) { mostrarTela(id); }
-        function mostrarTela(id) {
+    
+    
+    
+    
+    
+    
+    
+<script>
+
+/* ===== CAMADA DE DADOS ===== */
+/* MikaLIVE — camada de dados do aplicativo principal.
+
+ * Extraída da implementação oficial da raiz, preservando sua lógica atual.
+
+ * As dependências de interface são resolvidas em app.js após o carregamento dos dois scripts.
+
+ */
+
+window.MIKA_CONFIG = window.MIKA_CONFIG || { GOOGLE_CLIENT_ID: "", SUPABASE_URL: "", SUPABASE_ANON_KEY: "" };
+
+var DB_KEY = "mikalive_db_v10", SESSION_KEY = "mikalive_session_v10", BACKUP_AUTO_KEY = "mikalive_backup_auto_v10", LOG_KEY = "mikalive_log_v10", CLOUD_KEY = "mikalive_cloud_config_v11", SESSION_DIAS = 30, USER_KEYS_KEY = "mikalive_user_keys_v12";
+
+function getConfig() { var w = window.MIKA_CONFIG || {}; var s = {}; try { s = JSON.parse(localStorage.getItem("mikalive_cloud_config_v11") || "{}") || {}; } catch (e) { s = {}; } return { GOOGLE_CLIENT_ID: w.GOOGLE_CLIENT_ID || "", SUPABASE_URL: w.SUPABASE_URL || s.url || "", SUPABASE_ANON_KEY: w.SUPABASE_ANON_KEY || s.key || "" }; }
+
+function atualizarResumoConta() { var rn = $("resumo-nuvem"); var dn = $("dot-nuvem"); var cfg = getCloudConfig(); if (rn) { if (cfg && cfg.url) { rn.textContent = '✅ Conectada'; if (dn) dn.textContent = '🟢'; } else { rn.textContent = 'Não conectada'; if (dn) dn.textContent = '🔴'; } } var rc = $("resumo-chaves"); if (rc) { var q = Object.keys(getUserKeys()).length; rc.textContent = q === 0 ? 'Nenhuma salva' : '✅ ' + q + ' salvas'; } }
+
+function getUserKeys() { try { return JSON.parse(localStorage.getItem(USER_KEYS_KEY) || "{}"); } catch (e) { return {}; } }
+
+function setUserKeys(o) { localStorage.setItem(USER_KEYS_KEY, JSON.stringify(o)); }
+
+function getChaveAssinante(s) { var a = getUserKeys(); return (a[s] && a[s].publica) || ""; }
+
+function salvarChaveAssinante() { var s = $("key-servico").value; var p = ($("key-publica").value || "").trim(); if (!p) { mostrarErro("Cola a chave pública."); return; } if (/service_role|sk_live|gsk_|senha|secret/i.test(p)) { mostrarErro("Isso parece SECRET! Não cole."); return; } var a = getUserKeys(); a[s] = { publica: p, salvaEm: new Date().toISOString() }; setUserKeys(a); $("key-publica").value = ""; $("key-status").textContent = "✅ Salva."; atualizarListaChaves(); }
+
+function removerChaveAssinante() { var s = $("key-servico").value; var a = getUserKeys(); if (!a[s]) { mostrarErro("Nenhuma chave."); return; } if (!confirm("Remover?")) return; delete a[s]; setUserKeys(a); atualizarListaChaves(); }
+
+function apagarTodasChaves() { if (!confirm("Apagar TODAS?")) return; localStorage.removeItem(USER_KEYS_KEY); localStorage.removeItem(CLOUD_KEY); atualizarListaChaves(); alert("✅ Apagadas."); }
+
+function atualizarListaChaves() { var el = $("lista-chaves-assinante"); if (!el) return; var a = getUserKeys(); var n = Object.keys(a); el.innerHTML = n.length ? ("Salvas: " + n.map(function (x) { return "✅ " + x; }).join(" • ")) : "Nenhuma chave salva."; atualizarResumoConta(); }
+
+function getCloudConfig() { var c = getConfig(); if (c.SUPABASE_URL && c.SUPABASE_ANON_KEY) return { url: c.SUPABASE_URL, key: c.SUPABASE_ANON_KEY }; try { return JSON.parse(localStorage.getItem(CLOUD_KEY) || "null"); } catch (e) { return null; } }
+
+function getUserIdNuvem() { if (DB.usuario && DB.usuario.email) return "google_" + DB.usuario.email.toLowerCase(); return "visitante_" + (DB.usuario ? DB.usuario.nome : "anonimo"); }
+
+function salvarConfigNuvem() { var url = ($("cloud-url").value || "").trim(); var key = ($("cloud-key").value || "").trim(); if (!url.startsWith("https://") || !url.includes("supabase.co")) { mostrarErro("URL inválida."); return; } if (key.length < 20) { mostrarErro("Chave inválida."); return; } localStorage.setItem(CLOUD_KEY, JSON.stringify({ url: url.replace(/\/$/, ""), key: key })); $("cloud-status").textContent = "✅ Configurada."; atualizarResumoConta(); }
+
+function mostrarCloudConfig() { var c = getCloudConfig(); if (!c) { atualizarResumoConta(); return; } var u = $("cloud-url"); var k = $("cloud-key"); var s = $("cloud-status"); if (u) u.value = c.url; if (k) k.value = "****" + c.key.slice(-4); if (s) s.textContent = "✅ Configurada."; atualizarResumoConta(); }
+
+async function tentarSyncCloud() { var cfg = getCloudConfig(); if (!cfg) { mostrarErro("Configura a nuvem primeiro!"); return false; } try { fazerBackupAutomatico("antes_sync"); var res = await fetch(cfg.url + "/rest/v1/mikalive_sync?on_conflict=user_id", { method: "POST", headers: { "apikey": cfg.key, "Authorization": "Bearer " + cfg.key, "Content-Type": "application/json", "Prefer": "resolution=merge-duplicates,return=representation" }, body: JSON.stringify({ user_id: getUserIdNuvem(), dados: DB, atualizado_em: new Date().toISOString() }) }); if (!res.ok) throw new Error("Supabase " + res.status); DB.sync.ultimaSync = new Date().toISOString(); saveDB(); alert("✅ Sincronizado!"); return true; } catch (e) { mostrarErro("❌ " + e.message); return false; } }
+
+async function baixarDaNuvem() { var cfg = getCloudConfig(); if (!cfg) { mostrarErro("Configura a nuvem primeiro."); return; } if (!confirm("Baixar da nuvem? Vai substituir os dados.")) return; try { fazerBackupAutomatico("antes_baixar"); var res = await fetch(cfg.url + "/rest/v1/mikalive_sync?user_id=eq." + encodeURIComponent(getUserIdNuvem()) + "&select=dados", { headers: { "apikey": cfg.key, "Authorization": "Bearer " + cfg.key } }); var arr = await res.json(); if (!arr || !arr.length || !arr[0].dados) { mostrarErro("Nenhum dado na nuvem."); return; } var v = validarBackup(arr[0].dados); if (!v.ok) { mostrarErro("❌ " + v.erro); return; } DB = arr[0].dados; saveDB(); atualizarResumo(); alert("✅ Baixado!"); irPara('tela-inicio'); } catch (e) { mostrarErro("Erro: " + e.message); } }
+
+function registrarLog(t, m) { try { var logs = JSON.parse(localStorage.getItem(LOG_KEY) || "[]"); logs.push({ tipo: String(t).slice(0, 30), mensagem: String(m).slice(0, 200), data: new Date().toISOString() }); if (logs.length > 100) logs = logs.slice(-100); localStorage.setItem(LOG_KEY, JSON.stringify(logs)); atualizarLogUI(); } catch (e) { } }
+
+function atualizarLogUI() { try { var el = $("log-erros-info"); if (!el) return; var logs = JSON.parse(localStorage.getItem(LOG_KEY) || "[]"); var err = logs.filter(function (l) { return l.tipo === "erro"; }); el.textContent = err.length ? ("⚠️ " + err.length + " erro(s)") : "✅ Nenhum erro."; } catch (e) { } }
+
+function verLogSeguranca() { try { var logs = JSON.parse(localStorage.getItem(LOG_KEY) || "[]"); if (!logs.length) { alert("✅ Log limpo."); return; } var txt = "🛡️ LOG:\n\n"; logs.slice(-20).reverse().forEach(function (l) { txt += "[" + new Date(l.data).toLocaleString("pt-BR") + "] " + l.tipo + ": " + l.mensagem + "\n"; }); alert(txt); } catch (e) { mostrarErro("Erro ao ler log."); } }
+
+function validarBackup(im) { if (!im || typeof im !== "object") return { ok: false, erro: "Backup inválido" }; if (!im.versao) return { ok: false, erro: "Sem versão" }; if (!Array.isArray(im.videos)) return { ok: false, erro: "Sem vídeos" }; if (!Array.isArray(im.produtos)) return { ok: false, erro: "Sem produtos" }; return { ok: true }; }
+
+function fazerBackupAutomatico(m) { try { localStorage.setItem(BACKUP_AUTO_KEY, JSON.stringify({ data: new Date().toISOString(), motivo: m || "auto", dados: DB })); } catch (e) { } }
+
+function restaurarBackupAutomatico() { try { var raw = localStorage.getItem(BACKUP_AUTO_KEY); if (!raw) { mostrarErro("Nenhum backup."); return; } var b = JSON.parse(raw); if (!b || !b.dados) { mostrarErro("Backup corrompido."); return; } if (!confirm("Restaurar backup de " + new Date(b.data).toLocaleString("pt-BR") + "?")) return; DB = b.dados; saveDB(); atualizarResumo(); alert("Restaurado! ✅"); irPara('tela-inicio'); } catch (e) { mostrarErro("Erro ao restaurar."); } }
+
+function exportarDados() { try { fazerBackupAutomatico("antes_exportar"); var blob = new Blob([JSON.stringify(DB, null, 2)], { type: "application/json" }); var url = URL.createObjectURL(blob); var a = document.createElement("a"); a.href = url; a.download = "mikalive-backup-v10.json"; a.click(); URL.revokeObjectURL(url); } catch (e) { mostrarErro("Erro ao exportar."); } }
+
+function importarDados(event) { var file = event.target.files[0]; if (!file) return; if (file.size > 5 * 1024 * 1024) { mostrarErro("Arquivo muito grande!"); event.target.value = ""; return; } var r = new FileReader(); r.onload = function () { try { var imp = JSON.parse(r.result); var v = validarBackup(imp); if (!v.ok) { mostrarErro("❌ " + v.erro); return; } fazerBackupAutomatico("antes_importar"); DB.videos = DB.videos.concat(imp.videos.filter(function (v) { return !DB.videos.some(function (x) { return x.id === v.id; }); })); if (imp.calendario) DB.calendario = imp.calendario; saveDB(); atualizarResumo(); alert("Importado!"); irPara('tela-inicio'); } catch (e) { mostrarErro("Erro ao importar."); } }; r.readAsText(file); event.target.value = ""; }
+
+function getDBPadrao() { return { versao: "10", usuario: null, produtos: [], videos: [], calendario: [], comissoes: { reais: { total: 0, vendas: 0, lista: [] }, simuladas: { total: 0, vendas: 0, lista: [] } }, conexoes: { shop: { status: "nao_conectada" }, instagram: { status: "nao_conectada" }, youtube: { status: "nao_conectada", canal: "" } }, sync: { ultimaSync: null, pendente: false }, criadoEm: new Date().toISOString() }; }
+
+function loadDB() { try { var raw = localStorage.getItem(DB_KEY); if (!raw) return getDBPadrao(); var p = JSON.parse(raw); if (!p || typeof p !== "object" || !Array.isArray(p.videos)) return getDBPadrao(); var base = getDBPadrao(); var out = Object.assign({}, base, p); out.comissoes = Object.assign({}, base.comissoes, p.comissoes || {}); if (!Array.isArray(out.calendario)) out.calendario = []; out.videos.forEach(function (v) { if (v.favorito === undefined) v.favorito = false; }); return out; } catch (e) { return getDBPadrao(); } }
+
+function saveDB() { try { localStorage.setItem(DB_KEY, JSON.stringify(DB)); DB.sync.pendente = true; atualizarSyncUI(); } catch (e) { } }
+
+function atualizarSyncUI() { var txt = $("sync-texto"); if (!txt) return; if (DB.sync && DB.sync.ultimaSync) { txt.innerText = "Última sync: " + new Date(DB.sync.ultimaSync).toLocaleString("pt-BR"); } else { txt.innerText = "Só neste dispositivo"; } }
+
+var DB = loadDB();
+
+
+/* ===== AUTENTICACAO E SESSAO ===== */
+/* MikaLIVE — autenticação e sessão.
+
+ * Extraído da implementação principal sem alterar seu comportamento nesta etapa.
+
+ * ATENÇÃO: a validação do token Google ainda precisa ser feita no servidor antes de produção.
+
+ */
+
+var CLIENT_ID = getConfig().GOOGLE_CLIENT_ID;
+
+var googleEmailAtual = "";
+
+function salvarSessao() { try { if (DB.usuario) localStorage.setItem(SESSION_KEY, JSON.stringify({ usuario: DB.usuario, salvaEm: new Date().toISOString() })); } catch (e) { } }
+
+function restaurarSessao() { try { var raw = localStorage.getItem(SESSION_KEY); if (!raw) return false; var s = JSON.parse(raw); if (!s || !s.usuario || !s.usuario.nome) return false; var dias = (Date.now() - new Date(s.salvaEm).getTime()) / (1000 * 60 * 60 * 24); if (dias > SESSION_DIAS) { localStorage.removeItem(SESSION_KEY); return false; } DB.usuario = s.usuario; if (s.usuario.email) googleEmailAtual = s.usuario.email; saveDB(); var si = $("sessao-info"); if (si) si.textContent = "🔒 Sessão • expira em " + Math.max(0, Math.ceil(SESSION_DIAS - dias)) + " dias"; atualizarResumo(); mostrarTela("tela-inicio"); return true; } catch (e) { return false; } }
+
+function entrarPainel(nome, email, foto) { try { var nl = sanitizar(nome, 100) || "Usuário"; var el = sanitizar(email, 150) || ""; if (el && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el)) { mostrarErro("Email inválido."); return; } googleEmailAtual = el; DB.usuario = { nome: nl, email: el, foto: foto || "", logadoEm: new Date().toISOString() }; saveDB(); salvarSessao(); var si = $("sessao-info"); if (si) si.textContent = "🔒 Sessão segura • 30 dias"; var sa = $("saudacao"); if (sa) sa.textContent = "Olá, " + nl.split(" ")[0] + " 👋"; atualizarResumo(); mostrarTela("tela-inicio"); } catch (e) { mostrarErro("Erro ao entrar."); } }
+
+function handleGoogleCredential(res) { try { var payload = JSON.parse(atob(res.credential.split(".")[1])); var t = $("google-btn-temp"); if (t) t.remove(); entrarPainel(payload.name || "Usuário", payload.email || "", payload.picture || ""); } catch (e) { mostrarErro("Erro ao logar."); } }
+
+function loginGoogle() { var btn = $("btnGoogle"); if (btn) btn.textContent = "Entrando..."; if (!CLIENT_ID) { if (btn) btn.textContent = "Continuar com Google"; mostrarErro("GOOGLE_CLIENT_ID não configurado. Use visitante por enquanto."); return; } if (typeof google === "undefined" || !google.accounts) { if (btn) btn.textContent = "Continuar com Google"; mostrarErro("Google carregando, espera 2s."); return; } google.accounts.id.initialize({ client_id: CLIENT_ID, callback: handleGoogleCredential, auto_select: false }); var old = $("google-btn-temp"); if (old) old.remove(); var div = document.createElement("div"); div.id = "google-btn-temp"; div.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center"; div.innerHTML = '<div style="background:#1e1e32;padding:24px;border-radius:16px;text-align:center;max-width:320px;width:90%"><p style="color:#fff;font-weight:700;margin-bottom:12px">Escolha sua conta Google</p><div id="btn-google-real" style="display:flex;justify-content:center"></div><p style="color:#aaa;font-size:12px;margin-top:14px;cursor:pointer" onclick="document.getElementById(\'google-btn-temp\').remove()">Fechar</p></div>'; document.body.appendChild(div); google.accounts.id.renderButton($("btn-google-real"), { theme: "filled_black", size: "large", width: 280 }); google.accounts.id.prompt(); if (btn) btn.textContent = "Continuar com Google"; }
+
+function initGoogleBtn() { if (!CLIENT_ID) return; if (typeof google === "undefined" || !google.accounts) return; google.accounts.id.initialize({ client_id: CLIENT_ID, callback: handleGoogleCredential }); var area = $("google-btn-area"); if (area && !area.innerHTML) { google.accounts.id.renderButton(area, { theme: "filled_black", size: "large", width: 280, text: "signin_with" }); } }
+
+function entrarVisitante() { var btn = $("btnVisitante"); if (btn) btn.textContent = "Entrando..."; entrarPainel("Visitante", "", ""); }
+
+function sair() { try { DB.usuario = null; googleEmailAtual = ""; saveDB(); localStorage.removeItem(SESSION_KEY); } catch (e) { } mostrarTela("tela-login"); }
+
+function sairDoGoogle() { if (!confirm("Sair do Google?")) return; try { if (typeof google !== "undefined" && google.accounts && google.accounts.id) { google.accounts.id.disableAutoSelect(); if (googleEmailAtual) google.accounts.id.revoke(googleEmailAtual, function () { }); } } catch (e) { } DB.usuario = null; googleEmailAtual = ""; saveDB(); try { localStorage.removeItem(SESSION_KEY); } catch (e) { } alert("Você saiu! ✅"); mostrarTela("tela-login"); setTimeout(initGoogleBtn, 300); }
+
+
+/* ===== NAVEGACAO ===== */
+/* MikaLIVE — navegação e troca de telas.
+
+ * Extraída da implementação principal, preservando os IDs e o comportamento atual.
+
+ * As funções de renderização são fornecidas por app.js e executadas após o carregamento.
+
+ */
+
+var filtroRoteiroAtual = 'shop', mostrarSoFavoritos = false;
+
+function irPara(id) { mostrarTela(id); }
+
+function mostrarTela(id) {
             var landing = $("landing"); var app = $("app"); var menu = $("menuBaixo");
             if (id === "tela-login") { if (landing) landing.style.display = "block"; if (app) app.classList.remove("visivel"); if (menu) menu.style.display = "none"; return; }
             if (landing) landing.style.display = "none"; if (app) app.classList.add("visivel"); if (menu) menu.style.display = "flex";
@@ -1230,10 +2777,24 @@
             if (id === "tela-calendario") renderCalendario();
             if (id === "tela-shop") renderListaProdutos();
         }
-        function filtrarRoteirosPorPlataforma(f) { filtroRoteiroAtual = f; mostrarSoFavoritos = false;['aba-res-shop', 'aba-res-insta', 'aba-res-yt', 'aba-res-todos', 'aba-fav'].forEach(function (id) { var b = $(id); if (b) b.classList.remove('ativa'); }); var mapa = { shop: 'aba-res-shop', instagram: 'aba-res-insta', youtube: 'aba-res-yt', todos: 'aba-res-todos' }; var b = $(mapa[f]); if (b) b.classList.add('ativa'); renderListaVideos(); }
-        function filtrarFavoritos() { mostrarSoFavoritos = true; document.querySelectorAll('.aba').forEach(function (b) { b.classList.remove('ativa'); }); var b = $('aba-fav'); if (b) b.classList.add('ativa'); renderListaVideos(); }
-        function abrirGrupoConta(id, botao) { var c = $(id); if (!c) return; var aberto = c.classList.contains('aberto'); document.querySelectorAll('.grupo-conteudo').forEach(function (x) { x.classList.remove('aberto'); }); if (!aberto) c.classList.add('aberto'); }
-        function gerarVideoShop() {
+
+function filtrarRoteirosPorPlataforma(f) { filtroRoteiroAtual = f; mostrarSoFavoritos = false;['aba-res-shop', 'aba-res-insta', 'aba-res-yt', 'aba-res-todos', 'aba-fav'].forEach(function (id) { var b = $(id); if (b) b.classList.remove('ativa'); }); var mapa = { shop: 'aba-res-shop', instagram: 'aba-res-insta', youtube: 'aba-res-yt', todos: 'aba-res-todos' }; var b = $(mapa[f]); if (b) b.classList.add('ativa'); renderListaVideos(); }
+
+function filtrarFavoritos() { mostrarSoFavoritos = true; document.querySelectorAll('.aba').forEach(function (b) { b.classList.remove('ativa'); }); var b = $('aba-fav'); if (b) b.classList.add('ativa'); renderListaVideos(); }
+
+function abrirGrupoConta(id, botao) { var c = $(id); if (!c) return; var aberto = c.classList.contains('aberto'); document.querySelectorAll('.grupo-conteudo').forEach(function (x) { x.classList.remove('aberto'); }); if (!aberto) c.classList.add('aberto'); }
+
+
+/* ===== MODULO SHOPEE ===== */
+/* MikaLIVE — geração de roteiro para Shopee.
+
+ * Função extraída do index.html principal. Mantém os campos e o comportamento da versão atual.
+
+ * Dependências globais: $, sanitizar, parsePreco, videoAtual, DB e renderListaProdutos (carregadas nos outros scripts).
+
+ */
+
+function gerarVideoShop() {
             var link = sanitizar($("link-shop").value, 500);
             var nome = sanitizar($("nome-produto").value, 120) || "Tv box";
             if (link && !$("nome-produto").value) nome = link;
@@ -1245,8 +2806,14 @@
             videoAtual = { tipo: "shop", titulo: nome, roteiro: roteiro, legenda: nome + " que todo mundo tá amando! 💜", hashtags: "#shopee #achadinhos #oferta", criadoEm: new Date().toISOString() };
             if (link) { var norm = link.toLowerCase(); var ja = DB.produtos.find(function (p) { return (p.linkNormalizado || "") === norm; }); if (!ja) { DB.produtos.push({ link: link, linkNormalizado: norm, nome: nome, preco: preco, criadoEm: new Date().toISOString() }); saveDB(); } renderListaProdutos(); }
         }
-        function calcularComissao() { var p = parsePreco($("calc-preco").value) || 89.90; var t = parseFloat(($("calc-taxa").value || "15").replace(",", ".")) || 15; var com = p * t / 100; $("calc-resultado").textContent = "💰 Você ganha R$ " + com.toFixed(2).replace(".", ",") + " por venda!"; }
-        function gerarVideoInsta() {
+
+
+/* ===== MODULO INSTAGRAM ===== */
+/* MikaLIVE — ferramentas de conteúdo para Instagram.
+ * Extraídas da versão principal atual. Dependências: sanitizar, $, mostrarErro, videoAtual.
+ */
+
+function gerarVideoInsta() {
             var tema = sanitizar($("tema-insta").value, 120) || "Achadinho"; var estilo = $("estilo-insta").value; var opiniao = sanitizar($("insta-opiniao").value, 500) || "";
             if (!opiniao) { mostrarErro("Escreve sua opinião real primeiro."); return; }
             var link = $("link-insta-shop").value || "Link na bio";
@@ -1255,9 +2822,39 @@
             $("roteiro-insta").textContent = roteiro; $("legenda-insta").textContent = legenda; $("hashtags-insta").textContent = tags; $("resultado-insta").style.display = "block";
             videoAtual = { tipo: "insta", titulo: tema, roteiro: roteiro, legenda: legenda, hashtags: tags, criadoEm: new Date().toISOString() };
         }
-        function gerarLegendasEstilos() { $("ferramenta-insta-resultado").textContent = "✍️ 3 ESTILOS:\n\n1. VENDEDORA: \"Link na bio, corre!\"\n2. ENGRAÇADA: \"Eu comprando de novo...\"\n3. PROVA: \"7 vendas hoje!\""; }
-        function mostrarBancoHashtags() { $("ferramenta-insta-resultado").textContent = "#️⃣ BANCO:\n\nBeleza: #skincare #beleza\nCasa: #achadinhos #casa\nModa: #moda #look\nFitness: #fitness #treino"; }
-        function gerarCTA() { $("ferramenta-insta-resultado").textContent = "💬 CTA:\n\n\"Comenta EU QUERO!\"\n\"Salva pra não perder!\"\n\"Marca aquela amiga!\""; }
+
+function gerarLegendasEstilos() { $("ferramenta-insta-resultado").textContent = "✍️ 3 ESTILOS:\n\n1. VENDEDORA: \"Link na bio, corre!\"\n2. ENGRAÇADA: \"Eu comprando de novo...\"\n3. PROVA: \"7 vendas hoje!\""; }
+
+function mostrarBancoHashtags() { $("ferramenta-insta-resultado").textContent = "#️⃣ BANCO:\n\nBeleza: #skincare #beleza\nCasa: #achadinhos #casa\nModa: #moda #look\nFitness: #fitness #treino"; }
+
+function gerarCTA() { $("ferramenta-insta-resultado").textContent = "💬 CTA:\n\n\"Comenta EU QUERO!\"\n\"Salva pra não perder!\"\n\"Marca aquela amiga!\""; }
+
+
+/* ===== MODULO YOUTUBE ===== */
+/* MikaLIVE — ações e validações da área YouTube.
+ * Extraídas da implementação principal atual. Dependências: $, mostrarErro, gerarComIA, salvarVideoAtual.
+ */
+
+function gerarComIASeguroYT() { var tema = $("tema-yt").value.trim(); var opiniao = $("yt-opiniao").value.trim(); if (!tema) { mostrarErro("Escreve o tema primeiro."); return; } if (!opiniao || opiniao.length < 15) { mostrarErro("Escreve sua opinião real com pelo menos 15 letras."); return; } gerarComIA('youtube'); }
+
+function gerarTitulosYTSeguro() { var tema = $("tema-yt").value || "Vídeo"; $("ferramenta-yt-resultado").textContent = "✍️ 3 TÍTULOS:\n\n1. Eu testei " + tema + " e me surpreendi...\n2. " + tema + " - o que ninguém te conta\n3. Minha opinião sincera sobre " + tema; }
+
+function salvarVideoYTSeguro() { var c1 = $("check-humano").checked; var c2 = $("check-original").checked; if (!c1 || !c2) { mostrarErro("Marca os 2 checks antes de salvar."); return; } salvarVideoAtual(); }
+
+
+/* ===== APLICATIVO E RECURSOS ===== */
+        /* LOGICA PRESERVADA - MESMOS NOMES, MESMOS IDS */
+        const $ = function (id) { return document.getElementById(id); };
+        function mostrarErro(m) { alert(m); registrarLog("erro", m); }
+        function escapeHtml(s) { return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"); }
+        function sanitizar(t, max) { if (typeof t !== "string") return ""; var x = t.trim(); x = x.replace(/<script[\s\S]*?<\/script>/gi, ""); x = x.replace(/<iframe[\s\S]*?<\/iframe>/gi, ""); x = x.replace(/on\w+\s*=/gi, ""); if (max && x.length > max) x = x.substring(0, max); return x; }
+        function parsePreco(txt) { if (!txt) return 0; var l = String(txt).replace("R$", "").replace(/\s/g, "").replace(",", "."); var n = parseFloat(l); if (isNaN(n) || n < 0 || n > 1000000) return 0; return n; }
+        function normalizarLink(link) { try { var u = new URL(link.trim().toLowerCase()); var h = u.toString(); if (h.endsWith("/")) h = h.slice(0, -1); return h; } catch (e) { return link.trim().toLowerCase(); } }
+        function formatarBRL(v) { return "R$ " + Number(v || 0).toFixed(2).replace(".", ","); }
+        var mikaUltimaResposta = "", mikaUltimoTema = "", mikaUltimaPlataforma = "shop";
+        var videoAtual = null, videoAbertoId = null;
+        function calcularComissao() { var p = parsePreco($("calc-preco").value) || 89.90; var t = parseFloat(($("calc-taxa").value || "15").replace(",", ".")) || 15; var com = p * t / 100; $("calc-resultado").textContent = "💰 Você ganha R$ " + com.toFixed(2).replace(".", ",") + " por venda!"; }
+
         function copiarTexto(id) { var el = $(id); if (!el) return; var txt = el.textContent || ""; if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { alert("Copiado! ✅"); }); }
         function salvarVideoAtual() { if (!videoAtual || !videoAtual.roteiro) { mostrarErro("Gera um roteiro primeiro."); return; } var ja = DB.videos.find(function (v) { return v.titulo === videoAtual.titulo && v.roteiro === videoAtual.roteiro; }); if (ja) { var av = $("aviso-duplicado"); if (av) { av.style.display = "block"; av.textContent = "⚠️ Já está salvo."; } return; } DB.videos.push({ id: "vid_" + Date.now(), tipo: videoAtual.tipo, titulo: videoAtual.titulo, roteiro: videoAtual.roteiro, legenda: videoAtual.legenda || "", hashtags: videoAtual.hashtags || "", criadoEm: new Date().toISOString(), favorito: false }); saveDB(); atualizarResumo(); alert("Salvo! ✅"); irPara('tela-conteudos'); }
         function renderListaVideos() { var lista = $("lista-videos"); if (!lista) return; var busca = ($("busca-conteudo") ? $("busca-conteudo").value || "" : "").toLowerCase(); var vids = DB.videos.slice().reverse(); if (mostrarSoFavoritos) { vids = vids.filter(function (v) { return v.favorito; }); } else if (filtroRoteiroAtual !== 'todos') { var mapaFiltro = { shop: 'shop', instagram: 'insta', youtube: 'youtube' }; var alvo = mapaFiltro[filtroRoteiroAtual] || filtroRoteiroAtual; vids = vids.filter(function (v) { return v.tipo === alvo; }); } if (busca) { vids = vids.filter(function (v) { return (v.titulo || "").toLowerCase().includes(busca); }); } if (!vids.length) { lista.innerHTML = "<p style='color:var(--muted);font-size:13px'>Nenhum roteiro.</p>"; return; } lista.innerHTML = vids.map(function (v) { return "<div class='list-item' onclick='abrirVideo(\"" + v.id + "\")'><b>" + escapeHtml(v.titulo || "Sem título") + (v.favorito ? " ⭐" : "") + "</b><small>" + (v.tipo === "shop" ? "🛍️ Shopee" : v.tipo === "insta" ? "📸 Instagram" : "▶️ YouTube") + " • " + new Date(v.criadoEm).toLocaleDateString("pt-BR") + "</small><small>" + escapeHtml((v.roteiro || "").slice(0, 90)) + "...</small></div>"; }).join(""); }
@@ -1283,48 +2880,12 @@
                 else if (tipo === 'youtube') { $("roteiro-yt-ia").textContent = dados.resposta; $("resultado-yt-ia").style.display = "block"; videoAtual = { tipo: "youtube", titulo: $("tema-yt").value || "YouTube", roteiro: dados.resposta, legenda: "", hashtags: "", criadoEm: new Date().toISOString() }; }
             } catch (e) { mostrarErro("Erro IA: " + e.message + " — Verifique se a chave GROQ está na Vercel e se existe /api/ia"); }
         }
+        function gerarPacoteIA() { return gerarComIA('shop'); }
+
         async function perguntarMikaIA() { var tema = ($("mika-tema").value || "").trim(); if (!tema) { mostrarErro("Escreve o tema primeiro."); return; } var plat = $("mika-plataforma").value; mikaUltimoTema = tema; mikaUltimaPlataforma = plat; $("mika-resposta").textContent = "✨ Mika IA pensando..."; try { var res = await fetch('/api/ia', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pergunta: "Você é a Mika IA, assistente de ROTEIRO. Plataforma: " + plat + ". Tema: " + tema + ". Crie roteiro original, gancho, opinião e CTA." }) }); var dados = await res.json(); if (!res.ok) throw new Error(dados.erro || 'Erro'); mikaUltimaResposta = dados.resposta; $("mika-resposta").textContent = dados.resposta; } catch (e) { $("mika-resposta").textContent = "Erro: " + e.message; } }
         async function melhorarMika(acao) { if (!mikaUltimaResposta) { mostrarErro("Gera primeiro."); return; } $("mika-resposta").textContent = "✨ Melhorando: " + acao + "..."; try { var res = await fetch('/api/ia', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pergunta: "Reescreva deixando " + acao + ", tema: " + mikaUltimoTema + ". Texto: " + mikaUltimaResposta }) }); var dados = await res.json(); if (!res.ok) throw new Error(dados.erro || 'Erro'); mikaUltimaResposta = dados.resposta; $("mika-resposta").textContent = dados.resposta; } catch (e) { mostrarErro("Erro: " + e.message); } }
         function salvarMikaIAComoRoteiro() { if (!mikaUltimaResposta) { mostrarErro("Gera primeiro."); return; } var tipo = mikaUltimaPlataforma === 'insta' ? 'insta' : mikaUltimaPlataforma; DB.videos.push({ id: "vid_" + Date.now(), tipo: tipo, titulo: mikaUltimoTema.slice(0, 80), roteiro: mikaUltimaResposta, legenda: "", hashtags: "", criadoEm: new Date().toISOString(), favorito: false }); saveDB(); atualizarResumo(); alert("Salvo! ✅"); irPara('tela-conteudos'); }
-        function gerarComIASeguroYT() { var tema = $("tema-yt").value.trim(); var opiniao = $("yt-opiniao").value.trim(); if (!tema) { mostrarErro("Escreve o tema primeiro."); return; } if (!opiniao || opiniao.length < 15) { mostrarErro("Escreve sua opinião real com pelo menos 15 letras."); return; } gerarComIA('youtube'); }
-        function gerarTitulosYTSeguro() { var tema = $("tema-yt").value || "Vídeo"; $("ferramenta-yt-resultado").textContent = "✍️ 3 TÍTULOS:\n\n1. Eu testei " + tema + " e me surpreendi...\n2. " + tema + " - o que ninguém te conta\n3. Minha opinião sincera sobre " + tema; }
-        function salvarVideoYTSeguro() { var c1 = $("check-humano").checked; var c2 = $("check-original").checked; if (!c1 || !c2) { mostrarErro("Marca os 2 checks antes de salvar."); return; } salvarVideoAtual(); }
-        function salvarSessao() { try { if (DB.usuario) localStorage.setItem(SESSION_KEY, JSON.stringify({ usuario: DB.usuario, salvaEm: new Date().toISOString() })); } catch (e) { } }
-        function restaurarSessao() { try { var raw = localStorage.getItem(SESSION_KEY); if (!raw) return false; var s = JSON.parse(raw); if (!s || !s.usuario || !s.usuario.nome) return false; var dias = (Date.now() - new Date(s.salvaEm).getTime()) / (1000 * 60 * 60 * 24); if (dias > SESSION_DIAS) { localStorage.removeItem(SESSION_KEY); return false; } DB.usuario = s.usuario; if (s.usuario.email) googleEmailAtual = s.usuario.email; saveDB(); var si = $("sessao-info"); if (si) si.textContent = "🔒 Sessão • expira em " + Math.max(0, Math.ceil(SESSION_DIAS - dias)) + " dias"; atualizarResumo(); mostrarTela("tela-inicio"); return true; } catch (e) { return false; } }
-        function entrarPainel(nome, email, foto) { try { var nl = sanitizar(nome, 100) || "Usuário"; var el = sanitizar(email, 150) || ""; if (el && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el)) { mostrarErro("Email inválido."); return; } googleEmailAtual = el; DB.usuario = { nome: nl, email: el, foto: foto || "", logadoEm: new Date().toISOString() }; saveDB(); salvarSessao(); var si = $("sessao-info"); if (si) si.textContent = "🔒 Sessão segura • 30 dias"; var sa = $("saudacao"); if (sa) sa.textContent = "Olá, " + nl.split(" ")[0] + " 👋"; atualizarResumo(); mostrarTela("tela-inicio"); } catch (e) { mostrarErro("Erro ao entrar."); } }
-        function handleGoogleCredential(res) { try { var payload = JSON.parse(atob(res.credential.split(".")[1])); var t = $("google-btn-temp"); if (t) t.remove(); entrarPainel(payload.name || "Usuário", payload.email || "", payload.picture || ""); } catch (e) { mostrarErro("Erro ao logar."); } }
-        function loginGoogle() { var btn = $("btnGoogle"); if (btn) btn.textContent = "Entrando..."; if (!CLIENT_ID) { if (btn) btn.textContent = "Continuar com Google"; mostrarErro("GOOGLE_CLIENT_ID não configurado. Use visitante por enquanto."); return; } if (typeof google === "undefined" || !google.accounts) { if (btn) btn.textContent = "Continuar com Google"; mostrarErro("Google carregando, espera 2s."); return; } google.accounts.id.initialize({ client_id: CLIENT_ID, callback: handleGoogleCredential, auto_select: false }); var old = $("google-btn-temp"); if (old) old.remove(); var div = document.createElement("div"); div.id = "google-btn-temp"; div.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center"; div.innerHTML = '<div style="background:#1e1e32;padding:24px;border-radius:16px;text-align:center;max-width:320px;width:90%"><p style="color:#fff;font-weight:700;margin-bottom:12px">Escolha sua conta Google</p><div id="btn-google-real" style="display:flex;justify-content:center"></div><p style="color:#aaa;font-size:12px;margin-top:14px;cursor:pointer" onclick="document.getElementById(\'google-btn-temp\').remove()">Fechar</p></div>'; document.body.appendChild(div); google.accounts.id.renderButton($("btn-google-real"), { theme: "filled_black", size: "large", width: 280 }); google.accounts.id.prompt(); if (btn) btn.textContent = "Continuar com Google"; }
-        function initGoogleBtn() { if (!CLIENT_ID) return; if (typeof google === "undefined" || !google.accounts) return; google.accounts.id.initialize({ client_id: CLIENT_ID, callback: handleGoogleCredential }); var area = $("google-btn-area"); if (area && !area.innerHTML) { google.accounts.id.renderButton(area, { theme: "filled_black", size: "large", width: 280, text: "signin_with" }); } }
-        function entrarVisitante() { var btn = $("btnVisitante"); if (btn) btn.textContent = "Entrando..."; entrarPainel("Visitante", "", ""); }
-        function sair() { try { DB.usuario = null; googleEmailAtual = ""; saveDB(); localStorage.removeItem(SESSION_KEY); } catch (e) { } mostrarTela("tela-login"); }
-        function sairDoGoogle() { if (!confirm("Sair do Google?")) return; try { if (typeof google !== "undefined" && google.accounts && google.accounts.id) { google.accounts.id.disableAutoSelect(); if (googleEmailAtual) google.accounts.id.revoke(googleEmailAtual, function () { }); } } catch (e) { } DB.usuario = null; googleEmailAtual = ""; saveDB(); try { localStorage.removeItem(SESSION_KEY); } catch (e) { } alert("Você saiu! ✅"); mostrarTela("tela-login"); setTimeout(initGoogleBtn, 300); }
-        function atualizarResumo() { function set(id, val) { var el = $(id); if (el) el.innerText = val; } set("kpi-roteiros", Math.max(1, DB.videos.length)); set("kpi-produtos", Math.max(1, DB.produtos.length)); }
-        function atualizarResumoConta() { var rn = $("resumo-nuvem"); var dn = $("dot-nuvem"); var cfg = getCloudConfig(); if (rn) { if (cfg && cfg.url) { rn.textContent = '✅ Conectada'; if (dn) dn.textContent = '🟢'; } else { rn.textContent = 'Não conectada'; if (dn) dn.textContent = '🔴'; } } var rc = $("resumo-chaves"); if (rc) { var q = Object.keys(getUserKeys()).length; rc.textContent = q === 0 ? 'Nenhuma salva' : '✅ ' + q + ' salvas'; } }
-        function getUserKeys() { try { return JSON.parse(localStorage.getItem(USER_KEYS_KEY) || "{}"); } catch (e) { return {}; } }
-        function setUserKeys(o) { localStorage.setItem(USER_KEYS_KEY, JSON.stringify(o)); }
-        function getChaveAssinante(s) { var a = getUserKeys(); return (a[s] && a[s].publica) || ""; }
-        function salvarChaveAssinante() { var s = $("key-servico").value; var p = ($("key-publica").value || "").trim(); if (!p) { mostrarErro("Cola a chave pública."); return; } if (/service_role|sk_live|gsk_|senha|secret/i.test(p)) { mostrarErro("Isso parece SECRET! Não cole."); return; } var a = getUserKeys(); a[s] = { publica: p, salvaEm: new Date().toISOString() }; setUserKeys(a); $("key-publica").value = ""; $("key-status").textContent = "✅ Salva."; atualizarListaChaves(); }
-        function removerChaveAssinante() { var s = $("key-servico").value; var a = getUserKeys(); if (!a[s]) { mostrarErro("Nenhuma chave."); return; } if (!confirm("Remover?")) return; delete a[s]; setUserKeys(a); atualizarListaChaves(); }
-        function apagarTodasChaves() { if (!confirm("Apagar TODAS?")) return; localStorage.removeItem(USER_KEYS_KEY); localStorage.removeItem(CLOUD_KEY); atualizarListaChaves(); alert("✅ Apagadas."); }
-        function atualizarListaChaves() { var el = $("lista-chaves-assinante"); if (!el) return; var a = getUserKeys(); var n = Object.keys(a); el.innerHTML = n.length ? ("Salvas: " + n.map(function (x) { return "✅ " + x; }).join(" • ")) : "Nenhuma chave salva."; atualizarResumoConta(); }
-        function getCloudConfig() { var c = getConfig(); if (c.SUPABASE_URL && c.SUPABASE_ANON_KEY) return { url: c.SUPABASE_URL, key: c.SUPABASE_ANON_KEY }; try { return JSON.parse(localStorage.getItem(CLOUD_KEY) || "null"); } catch (e) { return null; } }
-        function getUserIdNuvem() { if (DB.usuario && DB.usuario.email) return "google_" + DB.usuario.email.toLowerCase(); return "visitante_" + (DB.usuario ? DB.usuario.nome : "anonimo"); }
-        function salvarConfigNuvem() { var url = ($("cloud-url").value || "").trim(); var key = ($("cloud-key").value || "").trim(); if (!url.startsWith("https://") || !url.includes("supabase.co")) { mostrarErro("URL inválida."); return; } if (key.length < 20) { mostrarErro("Chave inválida."); return; } localStorage.setItem(CLOUD_KEY, JSON.stringify({ url: url.replace(/\/$/, ""), key: key })); $("cloud-status").textContent = "✅ Configurada."; atualizarResumoConta(); }
-        function mostrarCloudConfig() { var c = getCloudConfig(); if (!c) { atualizarResumoConta(); return; } var u = $("cloud-url"); var k = $("cloud-key"); var s = $("cloud-status"); if (u) u.value = c.url; if (k) k.value = "****" + c.key.slice(-4); if (s) s.textContent = "✅ Configurada."; atualizarResumoConta(); }
-        async function tentarSyncCloud() { var cfg = getCloudConfig(); if (!cfg) { mostrarErro("Configura a nuvem primeiro!"); return false; } try { fazerBackupAutomatico("antes_sync"); var res = await fetch(cfg.url + "/rest/v1/mikalive_sync?on_conflict=user_id", { method: "POST", headers: { "apikey": cfg.key, "Authorization": "Bearer " + cfg.key, "Content-Type": "application/json", "Prefer": "resolution=merge-duplicates,return=representation" }, body: JSON.stringify({ user_id: getUserIdNuvem(), dados: DB, atualizado_em: new Date().toISOString() }) }); if (!res.ok) throw new Error("Supabase " + res.status); DB.sync.ultimaSync = new Date().toISOString(); saveDB(); alert("✅ Sincronizado!"); return true; } catch (e) { mostrarErro("❌ " + e.message); return false; } }
-        async function baixarDaNuvem() { var cfg = getCloudConfig(); if (!cfg) { mostrarErro("Configura a nuvem primeiro."); return; } if (!confirm("Baixar da nuvem? Vai substituir os dados.")) return; try { fazerBackupAutomatico("antes_baixar"); var res = await fetch(cfg.url + "/rest/v1/mikalive_sync?user_id=eq." + encodeURIComponent(getUserIdNuvem()) + "&select=dados", { headers: { "apikey": cfg.key, "Authorization": "Bearer " + cfg.key } }); var arr = await res.json(); if (!arr || !arr.length || !arr[0].dados) { mostrarErro("Nenhum dado na nuvem."); return; } var v = validarBackup(arr[0].dados); if (!v.ok) { mostrarErro("❌ " + v.erro); return; } DB = arr[0].dados; saveDB(); atualizarResumo(); alert("✅ Baixado!"); irPara('tela-inicio'); } catch (e) { mostrarErro("Erro: " + e.message); } }
-        function registrarLog(t, m) { try { var logs = JSON.parse(localStorage.getItem(LOG_KEY) || "[]"); logs.push({ tipo: String(t).slice(0, 30), mensagem: String(m).slice(0, 200), data: new Date().toISOString() }); if (logs.length > 100) logs = logs.slice(-100); localStorage.setItem(LOG_KEY, JSON.stringify(logs)); atualizarLogUI(); } catch (e) { } }
-        function atualizarLogUI() { try { var el = $("log-erros-info"); if (!el) return; var logs = JSON.parse(localStorage.getItem(LOG_KEY) || "[]"); var err = logs.filter(function (l) { return l.tipo === "erro"; }); el.textContent = err.length ? ("⚠️ " + err.length + " erro(s)") : "✅ Nenhum erro."; } catch (e) { } }
-        function verLogSeguranca() { try { var logs = JSON.parse(localStorage.getItem(LOG_KEY) || "[]"); if (!logs.length) { alert("✅ Log limpo."); return; } var txt = "🛡️ LOG:\n\n"; logs.slice(-20).reverse().forEach(function (l) { txt += "[" + new Date(l.data).toLocaleString("pt-BR") + "] " + l.tipo + ": " + l.mensagem + "\n"; }); alert(txt); } catch (e) { mostrarErro("Erro ao ler log."); } }
-        function validarBackup(im) { if (!im || typeof im !== "object") return { ok: false, erro: "Backup inválido" }; if (!im.versao) return { ok: false, erro: "Sem versão" }; if (!Array.isArray(im.videos)) return { ok: false, erro: "Sem vídeos" }; if (!Array.isArray(im.produtos)) return { ok: false, erro: "Sem produtos" }; return { ok: true }; }
-        function fazerBackupAutomatico(m) { try { localStorage.setItem(BACKUP_AUTO_KEY, JSON.stringify({ data: new Date().toISOString(), motivo: m || "auto", dados: DB })); } catch (e) { } }
-        function restaurarBackupAutomatico() { try { var raw = localStorage.getItem(BACKUP_AUTO_KEY); if (!raw) { mostrarErro("Nenhum backup."); return; } var b = JSON.parse(raw); if (!b || !b.dados) { mostrarErro("Backup corrompido."); return; } if (!confirm("Restaurar backup de " + new Date(b.data).toLocaleString("pt-BR") + "?")) return; DB = b.dados; saveDB(); atualizarResumo(); alert("Restaurado! ✅"); irPara('tela-inicio'); } catch (e) { mostrarErro("Erro ao restaurar."); } }
-        function exportarDados() { try { fazerBackupAutomatico("antes_exportar"); var blob = new Blob([JSON.stringify(DB, null, 2)], { type: "application/json" }); var url = URL.createObjectURL(blob); var a = document.createElement("a"); a.href = url; a.download = "mikalive-backup-v10.json"; a.click(); URL.revokeObjectURL(url); } catch (e) { mostrarErro("Erro ao exportar."); } }
-        function importarDados(event) { var file = event.target.files[0]; if (!file) return; if (file.size > 5 * 1024 * 1024) { mostrarErro("Arquivo muito grande!"); event.target.value = ""; return; } var r = new FileReader(); r.onload = function () { try { var imp = JSON.parse(r.result); var v = validarBackup(imp); if (!v.ok) { mostrarErro("❌ " + v.erro); return; } fazerBackupAutomatico("antes_importar"); DB.videos = DB.videos.concat(imp.videos.filter(function (v) { return !DB.videos.some(function (x) { return x.id === v.id; }); })); if (imp.calendario) DB.calendario = imp.calendario; saveDB(); atualizarResumo(); alert("Importado!"); irPara('tela-inicio'); } catch (e) { mostrarErro("Erro ao importar."); } }; r.readAsText(file); event.target.value = ""; }
-        function getDBPadrao() { return { versao: "10", usuario: null, produtos: [], videos: [], calendario: [], comissoes: { reais: { total: 0, vendas: 0, lista: [] }, simuladas: { total: 0, vendas: 0, lista: [] } }, conexoes: { shop: { status: "nao_conectada" }, instagram: { status: "nao_conectada" }, youtube: { status: "nao_conectada", canal: "" } }, sync: { ultimaSync: null, pendente: false }, criadoEm: new Date().toISOString() }; }
-        function loadDB() { try { var raw = localStorage.getItem(DB_KEY); if (!raw) return getDBPadrao(); var p = JSON.parse(raw); if (!p || typeof p !== "object" || !Array.isArray(p.videos)) return getDBPadrao(); var base = getDBPadrao(); var out = Object.assign({}, base, p); out.comissoes = Object.assign({}, base.comissoes, p.comissoes || {}); if (!Array.isArray(out.calendario)) out.calendario = []; out.videos.forEach(function (v) { if (v.favorito === undefined) v.favorito = false; }); return out; } catch (e) { return getDBPadrao(); } }
-        function saveDB() { try { localStorage.setItem(DB_KEY, JSON.stringify(DB)); DB.sync.pendente = true; atualizarSyncUI(); } catch (e) { } }
-        function atualizarSyncUI() { var txt = $("sync-texto"); if (!txt) return; if (DB.sync && DB.sync.ultimaSync) { txt.innerText = "Última sync: " + new Date(DB.sync.ultimaSync).toLocaleString("pt-BR"); } else { txt.innerText = "Só neste dispositivo"; } }
+        function atualizarResumo() { function set(id, val) { var el = $(id); if (el) el.innerText = val; } set("kpi-roteiros", DB.videos.length); set("kpi-produtos", DB.produtos.length); }
         function salvarCalendario() { var tema = ($("cal-tema").value || "").trim(); var plat = $("cal-plataforma").value; var data = $("cal-data").value; if (!tema || !data) { mostrarErro("Preencha tema e data."); return; } DB.calendario.push({ id: "cal_" + Date.now(), tema: tema, plataforma: plat, data: data, criadoEm: new Date().toISOString() }); saveDB(); $("cal-tema").value = ""; renderCalendario(); renderCalendarioHoje(); alert("Salvo! ✅"); }
         function renderCalendario() { var el = $("lista-calendario"); if (!el) return; if (!DB.calendario.length) { el.innerHTML = "<p style='color:var(--muted);font-size:13px;margin-top:12px'>Nenhum planejamento.</p>"; return; } el.innerHTML = DB.calendario.slice().reverse().map(function (c, i) { return "<div class='list-item'><b>" + escapeHtml(c.tema) + "</b><small>📅 " + escapeHtml(c.data) + " • " + escapeHtml(c.plataforma) + "</small><button class='btn-app btn-ghost-app' onclick='excluirCalendario(" + (DB.calendario.length - 1 - i) + ")'>Excluir</button></div>"; }).join(""); }
         function excluirCalendario(idx) { DB.calendario.splice(idx, 1); saveDB(); renderCalendario(); renderCalendarioHoje(); }
@@ -1336,7 +2897,8 @@
         function testarAPIComissao() { var order = ($("api-order").value || "").trim() || "ORD-12345"; var valor = parsePreco($("api-valor").value) || 89.90; var com = valor * 0.15; DB.comissoes.reais.total += com; DB.comissoes.reais.vendas += 1; DB.comissoes.reais.lista.push({ orderId: order, valor: valor, comissao: com, data: new Date().toISOString() }); saveDB(); atualizarComissoesTela(); atualizarResumo(); $("api-resultado").textContent = "✅ Comissão registrada! " + order + " - R$ " + com.toFixed(2).replace(".", ","); }
         window.addEventListener("load", function () { setTimeout(initGoogleBtn, 500); atualizarLogUI(); mostrarCloudConfig(); atualizarListaChaves(); atualizarResumoConta(); if (!restaurarSessao()) { mostrarTela("tela-login"); } });
         if (!restaurarSessao()) { mostrarTela("tela-login"); } else { atualizarResumo(); }
-    </script>
+
+</script>
 </body>
 
 </html>
