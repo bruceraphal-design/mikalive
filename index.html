@@ -12,6 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
         rel="stylesheet">
     <style>
+
         /* ============ MIKALIVE - PAGINA INICIAL PREMIUM ============ */
         :root {
             --bg: #080D20;
@@ -756,7 +757,7 @@
     --text: #f4f6fb; --muted: #9aa7ba; --verde: #34d399; --verde-bg: #102820;
     --surface: #0e1523; --radius-card: 18px; --shadow-card: 0 14px 38px rgba(0,0,0,.18);
 }
-html { scroll-behavior: smooth; }
+html { scroll-behavior:auto; }
 body { background: radial-gradient(ellipse at 12% 0%, rgba(118,87,246,.12), transparent 34rem), var(--bg); color: var(--text); line-height: 1.55; letter-spacing: -.01em; }
 button, input, textarea, select { font: inherit; }
 button {  }
@@ -1867,7 +1868,7 @@ p,small,label{color:var(--muted)}
 .home-welcome{margin:10px 0 20px}.home-welcome p{margin:0;font-size:14px}.home-welcome h1{margin:4px 0;font-size:32px}.home-primary-action{margin:0 0 32px}
 .home-shortcuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}.home-shortcuts .btn-app{padding-inline:6px;font-size:12px}
 .home-overview,.home-panel{margin-top:32px}.home-section-heading,.home-panel-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin-bottom:12px}
-.home-section-heading h2,.home-panel-heading h2{margin:2px 0 0;font-size:20px}.home-section-heading>span,.home-panel-heading>span{color:var(--muted);font-size:11px}
+.home-section-heading h2,.home-panel-heading h2{margin:2px 0 0;font-size:22px}.home-section-heading>span,.home-panel-heading>span{color:var(--muted);font-size:11px}
 .home-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.home-kpi-card{display:flex;flex-direction:column;gap:4px;text-align:left}
 .home-kpi-card b{font-family:'Sora',sans-serif;font-size:28px;color:var(--text)}.home-kpi-card>span:last-child{color:var(--muted);font-size:12px}
 input,textarea,select{display:block;box-sizing:border-box;width:100%;min-width:0;min-height:56px;padding:16px!important;border:1px solid var(--border)!important;border-radius:14px!important;background:#0E1630!important;color:var(--text)!important;font-family:'Inter',sans-serif!important;font-size:16px!important;line-height:1.4!important;margin-top:8px}
@@ -1883,13 +1884,14 @@ button:hover,.btn:hover,.btn-app:hover{filter:brightness(1.04)}button:active,.bt
 .module-card-heading b,.results-heading b{display:block;color:var(--text);font-size:15px}.module-card-heading p,.results-heading p{margin:4px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
 .module-step{color:var(--highlight);font-weight:800}.module-output,.module-generated-text{color:var(--text);overflow-wrap:anywhere;line-height:1.7}
 .menu-baixo{position:fixed;z-index:50;left:12px;right:12px;bottom:max(10px,env(safe-area-inset-bottom));width:auto;display:flex;gap:4px;padding:8px;border:1px solid var(--border);border-radius:18px;background:#101831;box-shadow:none!important}
-.menu-baixo button{flex:1;min-width:0;min-height:52px;padding:5px 2px;border:0;border-radius:12px;background:transparent;color:var(--muted);font-size:11px}.menu-baixo button.ativo{color:var(--highlight);background:rgba(167,139,250,.12)}
+.menu-baixo button{flex:1;min-width:0;min-height:56px;padding:5px 2px;border:0;border-radius:16px;background:transparent;color:var(--muted);font-size:11px}.menu-baixo button.ativo{color:var(--highlight);background:rgba(167,139,250,.12)}
 #modal-video{padding:12px;background:rgba(3,7,18,.92);align-items:flex-end}#modal-video .modal-box{width:100%;max-width:600px;max-height:88vh;overflow:auto;padding:18px;border:1px solid var(--border);border-radius:20px 20px 0 0;background:var(--card);box-shadow:none}
 #modal-video .modal-box h2{font-size:22px;color:var(--text)}#modal-video .modal-box .card-app{padding:14px;margin-bottom:12px}.list-item{min-width:0;overflow-wrap:anywhere;border-bottom:1px solid var(--border);padding:12px 0}
-.aba{min-height:44px;border-radius:12px;background:#202B4D;color:var(--muted)}.aba.ativa{background:var(--primary);color:#fff}
+.aba{min-height:56px;border-radius:16px;background:#202B4D;color:var(--muted)}.aba.ativa{background:var(--primary);color:#fff}
 @media(min-width:640px){.landing{padding:28px 28px 56px}.landing .grid3,.landing .passos{grid-template-columns:repeat(3,minmax(0,1fr))}.app{padding-inline:24px}.module-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.module-field-wide{grid-column:1/-1}.menu-baixo{left:50%;right:auto;width:min(680px,calc(100% - 32px))}#modal-video{align-items:center}#modal-video .modal-box{border-radius:20px}}
 @media(max-width:380px){.home-shortcuts{gap:5px}.home-shortcuts .btn-app{font-size:11px}.app{padding-inline:12px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
 
 </style>
 </head>
@@ -1906,9 +1908,9 @@ button:hover,.btn:hover,.btn-app:hover{filter:brightness(1.04)}button:active,.bt
         <!-- SECAO 1 - HERO -->
         <section>
             <p class="eyebrow">Sua plataforma de vídeos de vendas</p>
-            <h1>Transforme qualquer produto em um <em>vídeo que vende.</em></h1>
-            <p class="sub">Envie o link do produto e receba um roteiro de vendas, legenda e cálculo de comissão em
-                segundos.</p>
+            <h1>Transforme o link da Shopee em <em>roteiro, legenda e comissão.</em></h1>
+            <p class="sub">Cole o link do produto e organize roteiro, legenda e estimativa de comissão em um só lugar.</p>
+            <button class="btn btn-visitante" onclick="document.getElementById('area-entrada').scrollIntoView({behavior:'auto'})">Começar gratuitamente →</button>
 
             <div class="demo" aria-label="Exemplo de como funciona">
                 <div class="demo-head"><span class="dot"></span><span class="dot"></span><span
@@ -1948,12 +1950,12 @@ button:hover,.btn:hover,.btn-app:hover{filter:brightness(1.04)}button:active,.bt
             <h2 style="margin-bottom:16px">Por que usar o MikaLIVE?</h2>
             <div class="grid3">
                 <div class="benef">
-                    <div class="ico">🎁</div><b>10 roteiros grátis</b>
-                    <p>Experimente a plataforma e comece a criar seus primeiros conteúdos.</p>
+                    <div class="ico">🎁</div><b>Criação mais simples</b>
+                    <p>Organize suas ideias e transforme informações do produto em um roteiro claro.</p>
                 </div>
                 <div class="benef">
-                    <div class="ico">⚡</div><b>Roteiros em segundos</b>
-                    <p>Receba um texto organizado, pronto para ler e gravar.</p>
+                    <div class="ico">⚡</div><b>Roteiros organizados</b>
+                    <p>Estruture gancho, apresentação do produto e chamada para ação.</p>
                 </div>
                 <div class="benef">
                     <div class="ico">💰</div><b>Calculadora de comissão</b>
@@ -1986,7 +1988,7 @@ button:hover,.btn:hover,.btn-app:hover{filter:brightness(1.04)}button:active,.bt
             <h2 style="margin-bottom:16px">O que as pessoas dizem</h2>
             <div class="depo">
                 <span class="tag">EXEMPLO • NÃO É AVALIAÇÃO REAL</span>
-                <p>“Fiz meu primeiro vídeo com roteiro da Mika e vendi 7 produtos no mesmo dia!”</p>
+                <p>“Organizei meu roteiro, legenda e comissão em um só lugar.”</p>
                 <small>⭐⭐⭐⭐⭐ • Exemplo de layout — substitua por depoimento real quando houver</small>
             </div>
             <p style="font-size:12px;color:var(--muted);margin-top:10px">Não utilizamos depoimentos, nomes ou resultados
@@ -1998,7 +2000,7 @@ button:hover,.btn:hover,.btn-app:hover{filter:brightness(1.04)}button:active,.bt
             <h2>Seu próximo vídeo pode começar aqui.</h2>
             <p>Transforme seus links em conteúdo de vendas e comece a criar com o MikaLIVE.</p>
             <button class="btn"
-                onclick="document.getElementById('area-entrada').scrollIntoView({behavior:'smooth'})">Começar
+                onclick="document.getElementById('area-entrada').scrollIntoView({behavior:'auto'})">Começar
                 gratuitamente →</button>
         </section>
         <p class="footer">MikaLIVE • A Mika cria só o roteiro. Você grava, edita e posta.<br>Não poste conteúdo
@@ -2618,7 +2620,7 @@ button:hover,.btn:hover,.btn-app:hover{filter:brightness(1.04)}button:active,.bt
     
 <script>
 
-/* ===== assets/js/database.js ===== */
+/* ===== CAMADA DE DADOS ===== */
 /* MikaLIVE — camada de dados do aplicativo principal.
 
  * Extraída da implementação oficial da raiz, preservando sua lógica atual.
@@ -2688,7 +2690,7 @@ function atualizarSyncUI() { var txt = $("sync-texto"); if (!txt) return; if (DB
 var DB = loadDB();
 
 
-/* ===== assets/js/auth.js ===== */
+/* ===== AUTENTICACAO E SESSAO ===== */
 /* MikaLIVE — autenticação e sessão.
 
  * Extraído da implementação principal sem alterar seu comportamento nesta etapa.
@@ -2720,7 +2722,7 @@ function sair() { try { DB.usuario = null; googleEmailAtual = ""; saveDB(); loca
 function sairDoGoogle() { if (!confirm("Sair do Google?")) return; try { if (typeof google !== "undefined" && google.accounts && google.accounts.id) { google.accounts.id.disableAutoSelect(); if (googleEmailAtual) google.accounts.id.revoke(googleEmailAtual, function () { }); } } catch (e) { } DB.usuario = null; googleEmailAtual = ""; saveDB(); try { localStorage.removeItem(SESSION_KEY); } catch (e) { } alert("Você saiu! ✅"); mostrarTela("tela-login"); setTimeout(initGoogleBtn, 300); }
 
 
-/* ===== assets/js/navigation.js ===== */
+/* ===== NAVEGACAO ===== */
 /* MikaLIVE — navegação e troca de telas.
 
  * Extraída da implementação principal, preservando os IDs e o comportamento atual.
@@ -2758,7 +2760,7 @@ function filtrarFavoritos() { mostrarSoFavoritos = true; document.querySelectorA
 function abrirGrupoConta(id, botao) { var c = $(id); if (!c) return; var aberto = c.classList.contains('aberto'); document.querySelectorAll('.grupo-conteudo').forEach(function (x) { x.classList.remove('aberto'); }); if (!aberto) c.classList.add('aberto'); }
 
 
-/* ===== assets/js/shopee.js ===== */
+/* ===== MODULO SHOPEE ===== */
 /* MikaLIVE — geração de roteiro para Shopee.
 
  * Função extraída do index.html principal. Mantém os campos e o comportamento da versão atual.
@@ -2781,7 +2783,7 @@ function gerarVideoShop() {
         }
 
 
-/* ===== assets/js/instagram.js ===== */
+/* ===== MODULO INSTAGRAM ===== */
 /* MikaLIVE — ferramentas de conteúdo para Instagram.
  * Extraídas da versão principal atual. Dependências: sanitizar, $, mostrarErro, videoAtual.
  */
@@ -2803,7 +2805,7 @@ function mostrarBancoHashtags() { $("ferramenta-insta-resultado").textContent = 
 function gerarCTA() { $("ferramenta-insta-resultado").textContent = "💬 CTA:\n\n\"Comenta EU QUERO!\"\n\"Salva pra não perder!\"\n\"Marca aquela amiga!\""; }
 
 
-/* ===== assets/js/youtube.js ===== */
+/* ===== MODULO YOUTUBE ===== */
 /* MikaLIVE — ações e validações da área YouTube.
  * Extraídas da implementação principal atual. Dependências: $, mostrarErro, gerarComIA, salvarVideoAtual.
  */
@@ -2815,7 +2817,7 @@ function gerarTitulosYTSeguro() { var tema = $("tema-yt").value || "Vídeo"; $("
 function salvarVideoYTSeguro() { var c1 = $("check-humano").checked; var c2 = $("check-original").checked; if (!c1 || !c2) { mostrarErro("Marca os 2 checks antes de salvar."); return; } salvarVideoAtual(); }
 
 
-/* ===== assets/js/app.js ===== */
+/* ===== APLICATIVO E RECURSOS ===== */
         /* LOGICA PRESERVADA - MESMOS NOMES, MESMOS IDS */
         const $ = function (id) { return document.getElementById(id); };
         function mostrarErro(m) { alert(m); registrarLog("erro", m); }
