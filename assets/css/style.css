@@ -1681,3 +1681,32 @@ button:disabled {
   #tela-calendario .calendar-list .library-results-heading { align-items:start; }
   #tela-calendario .calendar-list .library-results-heading > span { max-width:125px; }
 }
+
+
+/* Resultados: separar acompanhamento real, simulações e integração */
+#tela-comissao .results-real,
+#tela-comissao .results-simulated,
+#tela-comissao .api-test-card { margin-top:14px; }
+#tela-comissao .results-real { border-color:rgba(16,185,129,.25); }
+#tela-comissao .results-simulated { border-color:rgba(245,158,11,.25); }
+#tela-comissao .results-heading { align-items:center; }
+#tela-comissao .results-metrics { gap:11px; margin:18px 0 15px; }
+#tela-comissao .results-metrics > div { min-height:88px; justify-content:center; }
+#tela-comissao .results-list-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; padding-top:14px; border-top:1px solid rgba(148,163,184,.13); }
+#tela-comissao .results-list-heading b { color:#dce5f3; font-size:12px; }
+#tela-comissao .results-list-heading span { color:#8998ad; font-size:10px; text-align:right; }
+#tela-comissao .results-simulated .module-output-actions { margin-top:16px; }
+#tela-comissao .results-simulated .module-output-actions .btn-app { min-height:45px; }
+#tela-comissao .api-test-card { margin-top:22px; border-style:dashed; border-color:rgba(148,163,184,.22); }
+#tela-comissao .api-test-card .module-fields { margin-top:4px; }
+#tela-comissao .api-test-card input { min-height:46px; }
+#tela-comissao .api-test-card > .btn-app { min-height:46px; margin-top:16px; }
+#tela-comissao #api-resultado { overflow-wrap:anywhere; }
+@media (max-width:600px) {
+  #tela-comissao .results-metrics { gap:8px; }
+  #tela-comissao .results-metrics > div { min-height:78px; padding:11px; }
+  #tela-comissao .results-heading { align-items:flex-start; }
+  #tela-comissao .results-list-heading { align-items:flex-start; flex-direction:column; }
+  #tela-comissao .results-list-heading span { text-align:left; }
+  #tela-comissao .results-simulated .module-output-actions { grid-template-columns:1fr; }
+}
