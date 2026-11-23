@@ -401,16 +401,40 @@
             <header class="module-intro">
                 <span class="module-kicker">ASSISTENTE DE CRIAÇÃO</span>
                 <h2>✨ Mika IA</h2>
-                <p>Descreva sua ideia, escolha onde vai publicar e receba uma sugestão de conteúdo para revisar.</p>
+                <p>Transforme sua ideia em conteúdo. Conte o que deseja criar, escolha a plataforma e revise a sugestão.</p>
             </header>
-            <section class="card-app module-card">
-                <div class="module-card-heading"><span class="module-step">01</span><div><b>Conte sua ideia</b><p>Inclua o tema, detalhes importantes e sua experiência real.</p></div></div>
-                <div class="module-field module-field-wide"><label for="mika-tema">O que você quer criar?</label><textarea id="mika-tema" rows="4" placeholder="Ex.: vídeo sobre um fone Bluetooth, preço e o que achei do produto."></textarea></div>
-                <div class="module-field"><label for="mika-plataforma">Onde vai publicar?</label><select id="mika-plataforma"><option value="shop">🛍️ Shopee</option><option value="insta">📸 Instagram</option><option value="youtube">▶️ YouTube</option></select></div>
-                <button class="btn-app btn-grad" onclick="perguntarMikaIA()">✨ Criar com Mika IA</button>
+
+            <section class="card-app module-card mika-idea-card">
+                <div class="module-card-heading">
+                    <span class="module-step">01</span>
+                    <div><b>Comece pela sua ideia</b><p>Quanto mais contexto você informar, mais útil será a sugestão.</p></div>
+                </div>
+                <div class="module-fields mika-input-fields">
+                    <div class="module-field module-field-wide">
+                        <label for="mika-tema">O que você quer criar?</label>
+                        <textarea id="mika-tema" rows="4" placeholder="Ex.: vídeo sobre um fone Bluetooth, preço, benefícios e o que achei do produto."></textarea>
+                        <small>Inclua detalhes importantes, sua opinião e sua experiência real.</small>
+                    </div>
+                    <div class="module-field module-field-wide">
+                        <label for="mika-plataforma">Escolha onde vai publicar</label>
+                        <select id="mika-plataforma">
+                            <option value="shop">🛍️ Shopee</option>
+                            <option value="insta">📸 Instagram</option>
+                            <option value="youtube">▶️ YouTube</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mika-create-action">
+                    <button class="btn-app btn-grad" onclick="perguntarMikaIA()">✨ Criar com Mika IA</button>
+                    <p>A resposta aparecerá na etapa de resultado, logo abaixo.</p>
+                </div>
             </section>
-            <section class="card-app module-card">
-                <div class="module-card-heading"><span class="module-step">02</span><div><b>Ajuste o resultado</b><p>Escolha como deseja melhorar a resposta gerada.</p></div></div>
+
+            <section class="card-app module-card mika-adjust-card">
+                <div class="module-card-heading">
+                    <span class="module-step">02</span>
+                    <div><b>Personalize a resposta</b><p>Depois de gerar o conteúdo, escolha um ajuste para pedir outra versão.</p></div>
+                </div>
                 <div class="module-tool-grid mika-adjust-grid">
                     <button class="btn-app btn-ghost-app" onclick="melhorarMika('mais profissional')">Mais profissional</button>
                     <button class="btn-app btn-ghost-app" onclick="melhorarMika('mais persuasivo')">Mais persuasivo</button>
@@ -421,17 +445,19 @@
                     <button class="btn-app btn-ghost-app" onclick="melhorarMika('melhor CTA')">Melhor chamada para ação</button>
                 </div>
             </section>
-            <section class="card-app module-card module-output">
-                <div class="module-card-heading"><span class="module-step">03</span><div><b>Resultado da Mika</b><p>Sempre revise o conteúdo antes de usar.</p></div></div>
-                <p id="mika-resposta" class="module-generated-text">Ainda não gerou nada.</p>
+
+            <section class="card-app module-card module-output mika-result-card">
+                <div class="module-card-heading">
+                    <span class="module-step">03</span>
+                    <div><b>Seu conteúdo gerado</b><p>Leia, revise e adapte o texto antes de publicar.</p></div>
+                </div>
+                <p id="mika-resposta" class="module-generated-text">Sua resposta aparecerá aqui depois que você criar o conteúdo.</p>
                 <div class="module-output-actions">
-                    <button class="btn-app btn-dark" onclick="copiarTexto('mika-resposta')">📋 Copiar</button>
+                    <button class="btn-app btn-dark" onclick="copiarTexto('mika-resposta')">📋 Copiar conteúdo</button>
                     <button class="btn-app btn-grad" onclick="salvarMikaIAComoRoteiro()">✅ Salvar como roteiro</button>
                 </div>
             </section>
-
         </div>
-
         <div id="tela-conteudos" class="tela">
             <header class="module-intro">
                 <span class="module-kicker">SUA BIBLIOTECA</span>
