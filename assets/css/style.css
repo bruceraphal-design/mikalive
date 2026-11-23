@@ -1574,3 +1574,30 @@ button:disabled {
     #tela-comissao .results-metrics > div { padding: 11px; }
     #tela-conta .grupo-header { padding: 13px; }
 }
+
+
+/* Tela inicial: hierarquia visual do resumo e dos painéis */
+#tela-inicio .home-overview { margin: 18px 0 14px; }
+#tela-inicio .home-section-heading { display:flex; align-items:end; justify-content:space-between; gap:12px; margin:0 2px 10px; }
+#tela-inicio .home-section-heading h2,
+#tela-inicio .home-panel-heading h2 { margin:4px 0 0; font-size:17px; line-height:1.3; }
+#tela-inicio .home-section-heading > span,
+#tela-inicio .home-panel-heading > span { color:#94a3b8; font-size:11px; text-align:right; }
+#tela-inicio .home-kpis { margin:0; gap:10px; }
+#tela-inicio .home-kpi-card { position:relative; min-height:112px; display:grid; grid-template-columns:1fr auto; grid-template-rows:auto 1fr; align-items:center; gap:4px 8px; padding:14px 15px; }
+#tela-inicio .home-kpi-card .home-kpi-icon { grid-column:2; grid-row:1 / span 2; width:38px; height:38px; display:grid; place-items:center; border-radius:12px; background:rgba(139,92,246,.14); font-size:19px; }
+#tela-inicio .home-kpi-card b { grid-column:1; grid-row:1; align-self:end; font-size:26px; line-height:1.1; }
+#tela-inicio .home-kpi-card > span:last-child { grid-column:1; grid-row:2; align-self:start; color:#aab6c9; font-size:12px; }
+#tela-inicio .home-panel { margin-top:12px; padding:17px; }
+#tela-inicio .home-panel-heading { align-items:end; margin-bottom:14px; }
+#tela-inicio .home-panel-heading .module-kicker { display:block; }
+#tela-inicio .home-panel > .btn-app { width:100%; margin-top:12px; }
+#tela-inicio .home-welcome { padding:2px 1px; }
+#tela-inicio .home-primary-action { box-shadow:0 12px 32px rgba(7,10,20,.16); }
+@media (max-width:600px) {
+  #tela-inicio .home-section-heading { align-items:start; }
+  #tela-inicio .home-section-heading > span { max-width:110px; }
+  #tela-inicio .home-panel { padding:14px; }
+  #tela-inicio .home-panel-heading { align-items:start; }
+  #tela-inicio .home-panel-heading > span { max-width:105px; }
+}
