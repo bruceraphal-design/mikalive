@@ -543,31 +543,44 @@
         </div>
         <div id="tela-comissao" class="tela">
             <header class="module-intro">
-                <span class="module-kicker">ACOMPANHAMENTO</span>
+                <span class="module-kicker">ACOMPANHAMENTO FINANCEIRO</span>
                 <h2>💰 Resultados</h2>
-                <p>Acompanhe os valores registrados e diferencie vendas reais de simulações.</p>
+                <p>Acompanhe suas comissões, confira os registros e faça simulações sem misturar estimativas com vendas reais.</p>
             </header>
+
             <section class="card-app module-card results-real">
-                <div class="results-heading"><span class="results-icon">R$</span><div><b>Vendas reais</b><p>Valores registrados como resultado.</p></div></div>
-                <div class="results-metrics">
-                    <div><small>Total</small><b id="comissao-real-total">R$ 0,00</b></div>
-                    <div><small>Vendas</small><b id="comissao-real-vendas">0</b></div>
+                <div class="results-heading">
+                    <span class="results-icon">R$</span>
+                    <div><b>Vendas reais</b><p>Comissões registradas como resultado confirmado.</p></div>
                 </div>
+                <div class="results-metrics">
+                    <div><small>Comissão total</small><b id="comissao-real-total">R$ 0,00</b></div>
+                    <div><small>Vendas registradas</small><b id="comissao-real-vendas">0</b></div>
+                </div>
+                <div class="results-list-heading"><b>Registros de vendas</b><span>Seus resultados reais</span></div>
                 <div id="lista-comissao-real"></div>
             </section>
+
             <section class="card-app module-card results-simulated">
-                <div class="results-heading"><span class="results-icon">↗</span><div><b>Simulações</b><p>Estimativas para testar cenários. Não são vendas confirmadas.</p></div></div>
+                <div class="results-heading">
+                    <span class="results-icon">↗</span>
+                    <div><b>Simulador de comissão</b><p>Teste valores e cenários. Simulações não representam vendas confirmadas.</p></div>
+                </div>
                 <div class="results-metrics">
-                    <div><small>Total simulado</small><b id="comissao-sim-total">R$ 0,00</b></div>
+                    <div><small>Comissão estimada</small><b id="comissao-sim-total">R$ 0,00</b></div>
                     <div><small>Simulações</small><b id="comissao-sim-vendas">0</b></div>
                 </div>
                 <div class="module-output-actions">
-                    <button class="btn-app btn-dark" onclick="simularVenda()">+ Simular venda</button>
+                    <button class="btn-app btn-dark" onclick="simularVenda()">＋ Simular venda</button>
                     <button class="btn-app btn-ghost-app" onclick="limparSimulacao()">Limpar simulações</button>
                 </div>
             </section>
+
             <section class="card-app module-card api-test-card">
-                <div class="module-card-heading"><span class="module-step">API</span><div><b>Teste de integração</b><p>Informe os dados de teste para consultar a API de comissão.</p></div></div>
+                <div class="module-card-heading">
+                    <span class="module-step">API</span>
+                    <div><b>Teste de integração</b><p>Área técnica para consultar a API de comissão usando dados de teste.</p></div>
+                </div>
                 <div class="module-fields">
                     <div class="module-field"><label for="api-order">Order ID</label><input id="api-order" placeholder="Identificador do pedido"></div>
                     <div class="module-field"><label for="api-valor">Valor do pedido</label><input id="api-valor" placeholder="Ex.: 89,90" inputmode="decimal"></div>
@@ -575,9 +588,7 @@
                 <button class="btn-app btn-dark" onclick="testarAPIComissao()">Testar integração →</button>
                 <p id="api-resultado" class="module-generated-text"></p>
             </section>
-
         </div>
-
         <div id="tela-conta" class="tela">
             <header class="module-intro">
                 <span class="module-kicker">PREFERÊNCIAS E CONFIGURAÇÕES</span>
