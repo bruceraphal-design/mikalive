@@ -1624,3 +1624,38 @@ button:disabled {
   #tela-mikaia .mika-adjust-grid .btn-app { min-height: 46px; padding: 9px 7px; font-size: 11px; }
   #tela-mikaia .mika-result-card .module-output-actions { grid-template-columns: 1fr; }
 }
+
+
+/* Meus Conteúdos: pesquisa, filtros e biblioteca */
+#tela-conteudos .library-toolbar { padding: clamp(18px,2.5vw,24px); }
+#tela-conteudos .library-toolbar-heading { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+#tela-conteudos .library-toolbar-heading > div { min-width:0; }
+#tela-conteudos .library-toolbar-heading b { display:block; margin-bottom:4px; font-size:15px; }
+#tela-conteudos .library-toolbar-heading p { margin:0; color:#94a3b8; font-size:12px; line-height:1.55; }
+#tela-conteudos .library-toolbar-icon { display:grid; place-items:center; flex:0 0 40px; width:40px; height:40px; border:1px solid rgba(155,135,255,.2); border-radius:13px; background:rgba(118,87,246,.13); color:#c7bbff; font-size:25px; }
+#tela-conteudos .library-toolbar > label { margin-bottom:8px; }
+#tela-conteudos .library-toolbar > input { min-height:48px; margin:0 0 21px; }
+#tela-conteudos .library-filter-heading { display:flex; flex-direction:column; gap:4px; margin-bottom:11px; }
+#tela-conteudos .library-filter-heading b { color:#d5dced; font-size:12px; }
+#tela-conteudos .library-filter-heading span { color:#8998ad; font-size:11px; }
+#tela-conteudos .library-tabs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+#tela-conteudos .library-tabs .aba { min-width:0; min-height:43px; padding:9px 8px; }
+#tela-conteudos .library-results { margin-top:22px; }
+#tela-conteudos .library-results-heading { display:flex; align-items:end; justify-content:space-between; gap:12px; padding:0 2px 13px; border-bottom:1px solid rgba(148,163,184,.13); }
+#tela-conteudos .library-results-heading > div { display:flex; flex-direction:column; gap:4px; }
+#tela-conteudos .library-results-heading .module-kicker { margin:0; font-size:9px; }
+#tela-conteudos .library-results-heading b { color:#edf2fb; font-size:17px; }
+#tela-conteudos .library-results-heading > span { max-width:180px; text-align:right; }
+#tela-conteudos #lista-videos { padding-top:14px; }
+#tela-conteudos .library-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:18px; padding-top:14px; border-top:1px solid rgba(148,163,184,.13); }
+#tela-conteudos .library-footer p { margin:0; color:#8998ad; font-size:11px; line-height:1.5; }
+#tela-conteudos .library-clear { flex:0 0 auto; margin:0; min-height:40px; padding:9px 13px; }
+@media (max-width:600px) {
+  #tela-conteudos .library-toolbar { padding:16px; }
+  #tela-conteudos .library-tabs { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #tela-conteudos .library-tabs .aba:last-child { grid-column:1 / -1; }
+  #tela-conteudos .library-results-heading { align-items:start; }
+  #tela-conteudos .library-results-heading > span { max-width:120px; }
+  #tela-conteudos .library-footer { align-items:flex-start; flex-direction:column; }
+  #tela-conteudos .library-clear { width:100%; }
+}
