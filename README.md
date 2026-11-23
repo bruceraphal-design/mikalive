@@ -10,6 +10,7 @@ Aplicação principal: `index.html` na raiz do repositório.
 - Autenticação/sessão: `assets/js/auth.js`.
 - Navegação: `assets/js/navigation.js`.
 - Ferramenta Shopee: `assets/js/shopee.js`.
+- Ferramentas Instagram: `assets/js/instagram.js`.
 - Funcionalidades restantes da interface: `assets/js/app.js`.
 - Ordem: banco, autenticação, navegação, Shopee, aplicação.
 - `HTML/index.html` redireciona para a raiz; versão anterior em `archive/HTML-index-legacy.html`.
@@ -27,6 +28,7 @@ assets/
     auth.js
     navigation.js
     shopee.js
+    instagram.js
     app.js
     modules/                # módulos legados em migração
 api/
@@ -40,7 +42,7 @@ A raiz é a fonte oficial. Migre cada funcionalidade para seu módulo usando exa
 
 ## Estado da migração
 
-- Banco, autenticação/sessão, navegação e geração de roteiro Shopee foram separados da aplicação principal preservando a lógica atual.
+- Banco, autenticação/sessão, navegação, geração de roteiro Shopee e ferramentas Instagram foram separados da aplicação principal preservando a lógica atual.
 - Os módulos antigos foram preservados em `assets/js/modules/` com prefixo `legacy-`.
 - O token Google ainda é decodificado no navegador, sem validação criptográfica; validar no servidor antes de produção.
 - A sincronização Supabase ainda usa e-mail/nome do cliente como identificador; implementar autenticação real e políticas RLS.

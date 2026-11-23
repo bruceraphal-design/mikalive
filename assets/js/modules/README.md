@@ -4,6 +4,6 @@ Estes arquivos foram preservados da pasta `Js/` original. Os módulos ativos fic
 
 Não carregue os módulos legados junto com a aplicação principal: alguns repetem funções globais e podem sobrescrever implementações atuais.
 
-Migre uma responsabilidade por vez, remova duplicações, preserve os IDs/contratos e teste no navegador antes de ativar.
+Migre uma responsabilidade por vez a partir da implementação atual da raiz, remova duplicações, preserve IDs e contratos e teste no navegador antes de ativar.
 
-Próximas áreas: Instagram, YouTube, Mika IA, biblioteca, calendário e comissões.
+Próximas áreas: YouTube, Mika IA, biblioteca, calendário e comissões.
