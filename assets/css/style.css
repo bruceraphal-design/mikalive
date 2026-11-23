@@ -735,3 +735,111 @@
                 transition: none !important
             }
         }
+
+/* =========================================================
+   MIKALIVE — REDESIGN VISUAL GERAL
+   Camada visual: preserva IDs, telas, eventos e lógica atual.
+   ========================================================= */
+:root {
+    color-scheme: dark;
+    --bg: #090d18; --card: #111827; --card2: #172033; --border: #273449;
+    --roxo: #7657f6; --roxo2: #9b87ff;
+    --grad: linear-gradient(120deg, #7657f6 0%, #a855f7 52%, #d946a8 100%);
+    --text: #f4f6fb; --muted: #9aa7ba; --verde: #34d399; --verde-bg: #102820;
+    --surface: #0e1523; --radius-card: 18px; --shadow-card: 0 14px 38px rgba(0,0,0,.18);
+}
+html { scroll-behavior: smooth; }
+body { background: radial-gradient(ellipse at 12% 0%, rgba(118,87,246,.12), transparent 34rem), var(--bg); color: var(--text); line-height: 1.55; letter-spacing: -.01em; }
+button, input, textarea, select { font: inherit; }
+button { transition: transform .16s ease, filter .16s ease, border-color .16s ease, background .16s ease; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--roxo2); outline-offset: 3px; }
+.landing { max-width: 1120px; padding: 0 28px 64px; }
+.top { padding: 24px 0 18px; }
+.logo { font-size: 27px; letter-spacing: -1.1px; }
+.badge-top { border-color: rgba(155,135,255,.25); color: #c7bbff; background: rgba(118,87,246,.08); }
+.landing > section:first-of-type { padding: 28px 0 12px; }
+.eyebrow { color: #b9aaff; letter-spacing: 1.5px; }
+.landing h1 { max-width: 780px; font-size: clamp(38px, 6vw, 66px); letter-spacing: -2.6px; line-height: 1.04; }
+.sub { max-width: 650px; font-size: 17px; }
+.demo { max-width: 720px; border-radius: 22px; box-shadow: 0 24px 70px rgba(0,0,0,.25); }
+.demo-head { background: rgba(255,255,255,.025); }
+.secao { margin-top: 64px; }
+.secao h2, .cta-final h2 { letter-spacing: -1px; }
+.card-entrada, .benef, .passo, .depo, .demo, .card-app, .grupo-conta { border-color: var(--border); box-shadow: var(--shadow-card); }
+.card-entrada, .benef, .passo { background: linear-gradient(160deg, #151e2f, #101827); }
+.grid3, .passos { gap: 16px; }
+.benef, .passo { border-radius: var(--radius-card); padding: 22px; }
+.benef .ico { background: rgba(118,87,246,.13); border-color: rgba(155,135,255,.22); }
+.depo { background: #10251f; border-color: #245441; }
+.cta-final { border-radius: 24px; padding: 38px 28px; box-shadow: 0 18px 48px rgba(118,87,246,.18); }
+.footer { padding: 8px 12px 0; }
+.app { max-width: 1180px; padding: 0 28px 128px; }
+.app.visivel { min-height: 100vh; }
+.topbar { position: sticky; top: 0; z-index: 20; margin: 0 -28px 28px; padding: 17px 28px; background: rgba(9,13,24,.88); border-bottom: 1px solid rgba(39,52,73,.72); backdrop-filter: blur(18px); }
+.topbar .logo { font-size: 24px !important; }
+.tela { max-width: 900px; margin: 0 auto; }
+.tela.ativa { animation: telaEntrada .22s ease both; }
+@keyframes telaEntrada { from { opacity: .55; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+.tela > h1, .tela > h2 { font-family: 'Sora', sans-serif; letter-spacing: -1px; line-height: 1.2; margin: 8px 0 12px; }
+.tela > h2 { font-size: clamp(24px, 3vw, 32px) !important; }
+.tela > p { line-height: 1.6; }
+.card-app { background: linear-gradient(155deg, rgba(23,32,51,.98), rgba(17,24,39,.98)); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 22px; margin: 16px 0; }
+.card-app > b { display: block; font-size: 15px; letter-spacing: -.2px; margin-bottom: 8px; }
+.card-app p { line-height: 1.7; }
+input, textarea, select { background: #0b1220; border: 1px solid #2a3850; border-radius: 11px; min-height: 48px; padding: 12px 14px; color: var(--text); margin-top: 7px; margin-bottom: 12px; transition: border-color .16s ease, box-shadow .16s ease; }
+textarea { min-height: 92px; resize: vertical; }
+input::placeholder, textarea::placeholder { color: #718096; }
+input:focus, textarea:focus, select:focus { border-color: var(--roxo2); box-shadow: 0 0 0 3px rgba(155,135,255,.12); outline: none; }
+label { color: #c0cada; font-size: 12px; letter-spacing: .02em; margin-top: 13px; }
+.btn-app { min-height: 48px; padding: 12px 16px; border-radius: 11px; margin-top: 10px; font-size: 13px; letter-spacing: .01em; }
+.btn-app:hover { filter: brightness(1.08); }
+.btn-app:active { transform: translateY(1px) scale(.995); }
+.btn-grad { background: var(--grad); box-shadow: 0 8px 22px rgba(118,87,246,.2); }
+.btn-dark { background: #e9eaf2; color: #171827; }
+.btn-ghost-app { background: #182338; border: 1px solid #30415d; color: #e5eaf4; }
+.btn-ghost-app:hover { background: #202e48; border-color: #56658a; }
+.list-item { background: #121d2d; border: 1px solid #2a3850; border-radius: 13px; padding: 15px 16px; margin-top: 10px; transition: border-color .16s ease, background .16s ease; }
+.list-item:hover { border-color: #6d5bd0; background: #172338; }
+.list-item b { font-size: 14px; }
+.list-item small { line-height: 1.55; }
+.abas { gap: 8px; }
+.aba { background: #121d2d; border-color: #2a3850; color: #c5cede; }
+.aba.ativa { background: #e9eaf2; color: #171827; border-color: #e9eaf2; }
+.grupo-conta { background: #111827; border-radius: 15px; }
+.grupo-header { min-height: 58px; }
+.grupo-header:hover { background: rgba(255,255,255,.025); }
+.grupo-conteudo { padding-top: 4px; }
+.aviso-seguro { background: #2b2412; border-color: #705b2b; color: #f5dfa1; }
+.modal { align-items: center; padding: 18px; }
+.modal-box { background: #111a2a; border: 1px solid #35445e; border-radius: 22px; box-shadow: 0 24px 80px rgba(0,0,0,.5); }
+.menu-baixo { left: 50%; right: auto; bottom: max(14px, env(safe-area-inset-bottom)); transform: translateX(-50%); width: min(680px, calc(100% - 24px)); background: rgba(14,21,35,.94); border: 1px solid #2a3850; border-radius: 20px; box-shadow: 0 16px 50px rgba(0,0,0,.42); backdrop-filter: blur(18px); padding: 9px 10px calc(9px + env(safe-area-inset-bottom)); }
+.menu-baixo button { flex: 1; min-height: 48px; border-radius: 12px; color: #9aa7ba; font-weight: 600; }
+.menu-baixo button.ativo { color: #fff; background: rgba(118,87,246,.2); }
+.menu-centro { border-color: #0e1523 !important; box-shadow: 0 8px 24px rgba(118,87,246,.35); }
+@media (min-width: 768px) {
+    .landing > section:first-of-type { padding-top: 46px; }
+    .landing > section:first-of-type .demo { margin-top: 28px; }
+    .landing .secao { margin-top: 76px; }
+    .app { padding-left: 36px; padding-right: 36px; }
+    .topbar { margin-left: -36px; margin-right: -36px; padding-left: 36px; padding-right: 36px; }
+    .tela { max-width: 900px; }
+    .card-app { padding: 24px; }
+    .btn-app { min-height: 50px; }
+}
+@media (max-width: 600px) {
+    .landing { padding-left: 18px; padding-right: 18px; }
+    .top { align-items: flex-start; gap: 10px; }
+    .badge-top { max-width: 170px; text-align: center; font-size: 9px; line-height: 1.4; }
+    .landing h1 { font-size: clamp(36px, 10vw, 46px); letter-spacing: -1.8px; }
+    .sub { font-size: 15px; }
+    .secao { margin-top: 48px; }
+    .app { padding-left: 16px; padding-right: 16px; }
+    .topbar { margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
+    .card-app { padding: 17px; border-radius: 15px; }
+    .menu-baixo { width: calc(100% - 20px); border-radius: 17px; }
+    .menu-baixo button { font-size: 10px; padding-left: 3px; padding-right: 3px; }
+    .menu-centro { width: 50px; height: 50px; }
+    .modal { padding: 10px; }
+    .modal-box { max-height: 90vh; padding: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { .tela.ativa { animation: none; } }
