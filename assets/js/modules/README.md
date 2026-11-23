@@ -1,14 +1,14 @@
-# Módulos em migração
+# Módulos legados em migração
 
-Estes arquivos foram preservados da pasta `Js/` original e organizados aqui.
+Estes módulos foram preservados da pasta `Js/` original. A aplicação ativa carrega `../database.js` e `../app.js`.
 
-**Importante:** a aplicação ativa carrega apenas `../app.js`, extraído do `index.html` principal. Estes módulos não são carregados automaticamente porque ainda existem funções globais e responsabilidades sobrepostas. Conectá-los todos de uma vez poderia sobrescrever funções e quebrar funcionalidades.
+**Não carregue estes módulos automaticamente em conjunto com a aplicação principal:** alguns repetem funções globais e podem sobrescrever a implementação atual.
 
 Migração segura:
-1. Comparar cada módulo com a implementação equivalente em `../app.js`.
-2. Atualizar o módulo usando a lógica mais recente da aplicação principal.
-3. Remover duplicações e definir dependências explícitas.
-4. Testar o módulo isoladamente.
-5. Só então conectá-lo à aplicação e remover a implementação antiga de `app.js`.
+1. Comparar o módulo com a lógica atual de `../database.js` e `../app.js`.
+2. Migrar uma responsabilidade por vez.
+3. Remover duplicações e declarar dependências.
+4. Testar no navegador antes de ativar.
+5. Atualizar esta documentação após cada módulo migrado.
 
-A ordem sugerida é database, auth, navigation, shope, instagram, youtube, mika-ia, content-library, calendar e commission.
+Ordem sugerida: autenticação, navegação, Shopee, Instagram, YouTube, Mika IA, biblioteca, calendário e comissões.
