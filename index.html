@@ -133,34 +133,34 @@
         </div>
 
         <div id="tela-inicio" class="tela ativa">
-            <p style="color:var(--muted);font-size:13px">Olá,</p>
-            <h1 id="saudacao" style="font-size:24px">Criador 👋</h1>
-            <p style="color:var(--muted);font-size:14px;margin:6px 0 14px">O que vamos criar hoje?</p>
-            <button class="btn-app btn-grad" style="background:linear-gradient(135deg,#823DF0,#EC4899)"
-                onclick="irPara('tela-shop')">🛍️ CRIAR ROTEIRO SHOPEE →</button>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px"><button
-                    class="btn-app btn-ghost-app" style="margin:0" onclick="irPara('tela-insta')">📸
-                    Instagram</button><button class="btn-app btn-ghost-app" style="margin:0"
-                    onclick="irPara('tela-youtube')">▶️ YouTube</button><button class="btn-app btn-ghost-app"
-                    style="margin:0" onclick="irPara('tela-mikaia')">✨ Mika IA</button></div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0">
-                <div class="card-app" style="text-align:center;margin:0"><b id="kpi-roteiros"
-                        style="font-size:20px;display:block">1</b><span
-                        style="font-size:11px;color:var(--muted)">Roteiros</span></div>
-                <div class="card-app" style="text-align:center;margin:0"><b id="kpi-produtos"
-                        style="font-size:20px;display:block">1</b><span
-                        style="font-size:11px;color:var(--muted)">Produtos</span></div>
-            </div>
-            <div class="card-app"><b>Conteúdos recentes</b>
-                <div id="lista-recentes"></div><button class="btn-app btn-ghost-app"
-                    onclick="irPara('tela-conteudos')">Ver toda a biblioteca →</button>
-            </div>
-            <div class="card-app"><b>Planejamento de hoje</b>
-                <div id="calendario-hoje">
-                    <p>Nenhum conteúdo planejado pra hoje.</p>
-                </div><button class="btn-app btn-ghost-app" onclick="irPara('tela-calendario')">Abrir calendário
-                    →</button>
-            </div>
+            <header class="home-welcome">
+                <span class="module-kicker">SEU ESPAÇO DE CRIAÇÃO</span>
+                <p>Olá,</p>
+                <h1 id="saudacao">Criador 👋</h1>
+                <span>O que vamos criar hoje?</span>
+            </header>
+            <section class="home-primary-action">
+                <button class="btn-app btn-grad" onclick="irPara('tela-shop')">🛍️ Criar roteiro para Shopee →</button>
+                <div class="home-shortcuts">
+                    <button class="btn-app btn-ghost-app" onclick="irPara('tela-insta')">📸 Instagram</button>
+                    <button class="btn-app btn-ghost-app" onclick="irPara('tela-youtube')">▶️ YouTube</button>
+                    <button class="btn-app btn-ghost-app" onclick="irPara('tela-mikaia')">✨ Mika IA</button>
+                </div>
+            </section>
+            <section class="home-kpis">
+                <div class="card-app"><b id="kpi-roteiros">1</b><span>Roteiros</span></div>
+                <div class="card-app"><b id="kpi-produtos">1</b><span>Produtos</span></div>
+            </section>
+            <section class="card-app home-panel">
+                <div class="home-panel-heading"><b>Conteúdos recentes</b><span>Seus últimos roteiros</span></div>
+                <div id="lista-recentes"></div>
+                <button class="btn-app btn-ghost-app" onclick="irPara('tela-conteudos')">Ver toda a biblioteca →</button>
+            </section>
+            <section class="card-app home-panel">
+                <div class="home-panel-heading"><b>Planejamento de hoje</b><span>O que está na sua agenda</span></div>
+                <div id="calendario-hoje"><p>Nenhum conteúdo planejado pra hoje.</p></div>
+                <button class="btn-app btn-ghost-app" onclick="irPara('tela-calendario')">Abrir calendário →</button>
+            </section>
         </div>
 
         <div id="tela-shop" class="tela">
@@ -392,78 +392,133 @@
         </div>
 
         <div id="tela-mikaia" class="tela">
-            <h2 style="font-size:22px">✨ Mika IA</h2>
-            <div class="card-app"><label>O que você quer criar?</label><textarea id="mika-tema" rows="4"
-                    placeholder="Ex: Tv box, preço 200 + sua opinião real"></textarea><select id="mika-plataforma">
-                    <option value="shop">🛍️ Shopee</option>
-                    <option value="insta">📸 Instagram</option>
-                    <option value="youtube">▶️ YouTube</option>
-                </select><button class="btn-app btn-grad" onclick="perguntarMikaIA()">✨ Criar com Mika IA</button></div>
-            <div class="card-app"><b>Melhorar</b>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><button
-                        class="btn-app btn-ghost-app" style="margin:0" onclick="melhorarMika('mais profissional')">Mais
-                        profissional</button><button class="btn-app btn-ghost-app" style="margin:0"
-                        onclick="melhorarMika('mais persuasivo')">Mais persuasivo</button><button
-                        class="btn-app btn-ghost-app" style="margin:0" onclick="melhorarMika('mais curto')">Mais
-                        curto</button><button class="btn-app btn-ghost-app" style="margin:0"
-                        onclick="melhorarMika('mais engraçado')">Mais engraçado</button><button
-                        class="btn-app btn-ghost-app" style="margin:0" onclick="melhorarMika('outro gancho')">Outro
-                        gancho</button><button class="btn-app btn-ghost-app" style="margin:0"
-                        onclick="melhorarMika('outra versão')">Outra versão</button><button
-                        class="btn-app btn-ghost-app" style="margin:0;grid-column:span 2"
-                        onclick="melhorarMika('melhor CTA')">Melhor CTA</button></div>
-            </div>
-            <div class="card-app"><b>💬 Resposta da Mika IA</b>
-                <p id="mika-resposta" style="white-space:pre-line;color:#ddd">Ainda não gerou nada.</p><button
-                    class="btn-app btn-dark" onclick="copiarTexto('mika-resposta')">📋 Copiar</button><button
-                    class="btn-app btn-grad" onclick="salvarMikaIAComoRoteiro()">✅ Salvar como roteiro</button>
-            </div>
+            <header class="module-intro">
+                <span class="module-kicker">ASSISTENTE DE CRIAÇÃO</span>
+                <h2>✨ Mika IA</h2>
+                <p>Descreva sua ideia, escolha onde vai publicar e receba uma sugestão de conteúdo para revisar.</p>
+            </header>
+            <section class="card-app module-card">
+                <div class="module-card-heading"><span class="module-step">01</span><div><b>Conte sua ideia</b><p>Inclua o tema, detalhes importantes e sua experiência real.</p></div></div>
+                <div class="module-field module-field-wide"><label for="mika-tema">O que você quer criar?</label><textarea id="mika-tema" rows="4" placeholder="Ex.: vídeo sobre um fone Bluetooth, preço e o que achei do produto."></textarea></div>
+                <div class="module-field"><label for="mika-plataforma">Onde vai publicar?</label><select id="mika-plataforma"><option value="shop">🛍️ Shopee</option><option value="insta">📸 Instagram</option><option value="youtube">▶️ YouTube</option></select></div>
+                <button class="btn-app btn-grad" onclick="perguntarMikaIA()">✨ Criar com Mika IA</button>
+            </section>
+            <section class="card-app module-card">
+                <div class="module-card-heading"><span class="module-step">02</span><div><b>Ajuste o resultado</b><p>Escolha como deseja melhorar a resposta gerada.</p></div></div>
+                <div class="module-tool-grid mika-adjust-grid">
+                    <button class="btn-app btn-ghost-app" onclick="melhorarMika('mais profissional')">Mais profissional</button>
+                    <button class="btn-app btn-ghost-app" onclick="melhorarMika('mais persuasivo')">Mais persuasivo</button>
+                    <button class="btn-app btn-ghost-app" onclick="melhorarMika('mais curto')">Mais curto</button>
+                    <button class="btn-app btn-ghost-app" onclick="melhorarMika('mais engraçado')">Mais descontraído</button>
+                    <button class="btn-app btn-ghost-app" onclick="melhorarMika('outro gancho')">Outro gancho</button>
+                    <button class="btn-app btn-ghost-app" onclick="melhorarMika('outra versão')">Outra versão</button>
+                    <button class="btn-app btn-ghost-app" onclick="melhorarMika('melhor CTA')">Melhor chamada para ação</button>
+                </div>
+            </section>
+            <section class="card-app module-card module-output">
+                <div class="module-card-heading"><span class="module-step">03</span><div><b>Resultado da Mika</b><p>Sempre revise o conteúdo antes de usar.</p></div></div>
+                <p id="mika-resposta" class="module-generated-text">Ainda não gerou nada.</p>
+                <div class="module-output-actions">
+                    <button class="btn-app btn-dark" onclick="copiarTexto('mika-resposta')">📋 Copiar</button>
+                    <button class="btn-app btn-grad" onclick="salvarMikaIAComoRoteiro()">✅ Salvar como roteiro</button>
+                </div>
+            </section>
+
         </div>
 
         <div id="tela-conteudos" class="tela">
-            <h2 style="font-size:22px">📚 Meus Conteúdos</h2><input id="busca-conteudo" placeholder="🔍 Pesquisar..."
-                oninput="renderListaVideos()">
-            <div class="abas"><button class="aba ativa" id="aba-res-shop"
-                    onclick="filtrarRoteirosPorPlataforma('shop')">🛍️ Shopee</button><button class="aba"
-                    id="aba-res-insta" onclick="filtrarRoteirosPorPlataforma('instagram')">📸 Instagram</button><button
-                    class="aba" id="aba-res-yt" onclick="filtrarRoteirosPorPlataforma('youtube')">▶️
-                    YouTube</button><button class="aba" id="aba-res-todos"
-                    onclick="filtrarRoteirosPorPlataforma('todos')">Todos</button><button class="aba" id="aba-fav"
-                    onclick="filtrarFavoritos()">⭐ Favoritos</button></div>
-            <div id="lista-videos"></div><button class="btn-app btn-ghost-app" onclick="limparVideos()">Limpar
-                todos</button>
+            <header class="module-intro">
+                <span class="module-kicker">SUA BIBLIOTECA</span>
+                <h2>📚 Meus Conteúdos</h2>
+                <p>Encontre, filtre e organize os roteiros que você já criou.</p>
+            </header>
+            <section class="card-app module-card library-toolbar">
+                <label for="busca-conteudo">Pesquisar na biblioteca</label>
+                <input id="busca-conteudo" placeholder="Digite o nome ou tema..." oninput="renderListaVideos()">
+                <div class="library-filter-label">Filtrar por plataforma ou tipo</div>
+                <div class="abas library-tabs">
+                    <button class="aba ativa" id="aba-res-shop" onclick="filtrarRoteirosPorPlataforma('shop')">🛍️ Shopee</button>
+                    <button class="aba" id="aba-res-insta" onclick="filtrarRoteirosPorPlataforma('instagram')">📸 Instagram</button>
+                    <button class="aba" id="aba-res-yt" onclick="filtrarRoteirosPorPlataforma('youtube')">▶️ YouTube</button>
+                    <button class="aba" id="aba-res-todos" onclick="filtrarRoteirosPorPlataforma('todos')">Todos</button>
+                    <button class="aba" id="aba-fav" onclick="filtrarFavoritos()">⭐ Favoritos</button>
+                </div>
+            </section>
+            <section class="library-results">
+                <div class="library-results-heading"><b>Conteúdos salvos</b><span>Seus roteiros aparecem abaixo</span></div>
+                <div id="lista-videos"></div>
+                <button class="btn-app btn-ghost-app library-clear" onclick="limparVideos()">Limpar todos</button>
+            </section>
+
         </div>
 
         <div id="tela-calendario" class="tela">
-            <h2 style="font-size:22px">📅 Calendário</h2>
-            <div class="card-app"><input id="cal-tema" placeholder="Tema"><select id="cal-plataforma">
-                    <option value="shop">🛍️ Shopee</option>
-                    <option value="instagram">📸 Instagram</option>
-                    <option value="youtube">▶️ YouTube</option>
-                </select><input id="cal-data" type="date"><button class="btn-app btn-grad"
-                    onclick="salvarCalendario()">Salvar planejamento</button></div>
-            <div id="lista-calendario"></div>
+            <header class="module-intro">
+                <span class="module-kicker">ORGANIZAÇÃO E ROTINA</span>
+                <h2>📅 Calendário</h2>
+                <p>Planeje o que publicar, em qual plataforma e em que data.</p>
+            </header>
+            <section class="card-app module-card">
+                <div class="module-card-heading"><span class="module-step">01</span><div><b>Adicionar planejamento</b><p>Registre a próxima ideia de conteúdo.</p></div></div>
+                <div class="module-fields">
+                    <div class="module-field module-field-wide"><label for="cal-tema">Tema do conteúdo</label><input id="cal-tema" placeholder="Ex.: análise de um produto"></div>
+                    <div class="module-field"><label for="cal-plataforma">Plataforma</label><select id="cal-plataforma"><option value="shop">🛍️ Shopee</option><option value="instagram">📸 Instagram</option><option value="youtube">▶️ YouTube</option></select></div>
+                    <div class="module-field"><label for="cal-data">Data de publicação</label><input id="cal-data" type="date"></div>
+                </div>
+                <button class="btn-app btn-grad" onclick="salvarCalendario()">Salvar planejamento</button>
+            </section>
+            <section class="library-results calendar-list">
+                <div class="library-results-heading"><b>Seus planejamentos</b><span>Conteúdos organizados por data</span></div>
+                <div id="lista-calendario"></div>
+            </section>
+
         </div>
 
         <div id="tela-comissao" class="tela">
-            <h2 style="font-size:22px">💰 Resultados</h2>
-            <div class="card-app" style="border-color:#1E5A3A"><b>💵 Reais</b>
-                <p>Total: <b id="comissao-real-total">R$ 0,00</b> • Vendas: <b id="comissao-real-vendas">0</b></p>
+            <header class="module-intro">
+                <span class="module-kicker">ACOMPANHAMENTO</span>
+                <h2>💰 Resultados</h2>
+                <p>Acompanhe os valores registrados e diferencie vendas reais de simulações.</p>
+            </header>
+            <section class="card-app module-card results-real">
+                <div class="results-heading"><span class="results-icon">R$</span><div><b>Vendas reais</b><p>Valores registrados como resultado.</p></div></div>
+                <div class="results-metrics">
+                    <div><small>Total</small><b id="comissao-real-total">R$ 0,00</b></div>
+                    <div><small>Vendas</small><b id="comissao-real-vendas">0</b></div>
+                </div>
                 <div id="lista-comissao-real"></div>
-            </div>
-            <div class="card-app" style="border-color:#7C5A00"><b>🧪 Simulados</b>
-                <p>Total: <b id="comissao-sim-total">R$ 0,00</b> • Vendas: <b id="comissao-sim-vendas">0</b></p><button
-                    class="btn-app btn-dark" onclick="simularVenda()">+ Simular venda</button><button
-                    class="btn-app btn-ghost-app" onclick="limparSimulacao()">Limpar simulações</button>
-            </div>
-            <div class="card-app"><b>🧪 Testar API</b><input id="api-order" placeholder="Order ID"><input id="api-valor"
-                    placeholder="Valor - ex: 89,90" inputmode="decimal"><button class="btn-app btn-dark"
-                    onclick="testarAPIComissao()">Testar →</button>
-                <p id="api-resultado" style="font-size:12px;margin-top:10px"></p>
-            </div>
+            </section>
+            <section class="card-app module-card results-simulated">
+                <div class="results-heading"><span class="results-icon">↗</span><div><b>Simulações</b><p>Estimativas para testar cenários. Não são vendas confirmadas.</p></div></div>
+                <div class="results-metrics">
+                    <div><small>Total simulado</small><b id="comissao-sim-total">R$ 0,00</b></div>
+                    <div><small>Simulações</small><b id="comissao-sim-vendas">0</b></div>
+                </div>
+                <div class="module-output-actions">
+                    <button class="btn-app btn-dark" onclick="simularVenda()">+ Simular venda</button>
+                    <button class="btn-app btn-ghost-app" onclick="limparSimulacao()">Limpar simulações</button>
+                </div>
+            </section>
+            <section class="card-app module-card api-test-card">
+                <div class="module-card-heading"><span class="module-step">API</span><div><b>Teste de integração</b><p>Informe os dados de teste para consultar a API de comissão.</p></div></div>
+                <div class="module-fields">
+                    <div class="module-field"><label for="api-order">Order ID</label><input id="api-order" placeholder="Identificador do pedido"></div>
+                    <div class="module-field"><label for="api-valor">Valor do pedido</label><input id="api-valor" placeholder="Ex.: 89,90" inputmode="decimal"></div>
+                </div>
+                <button class="btn-app btn-dark" onclick="testarAPIComissao()">Testar integração →</button>
+                <p id="api-resultado" class="module-generated-text"></p>
+            </section>
+
         </div>
 
         <div id="tela-conta" class="tela">
+            <header class="module-intro">
+                <span class="module-kicker">PREFERÊNCIAS E CONFIGURAÇÕES</span>
+                <h2>👤 Minha Conta</h2>
+                <p>Gerencie seu perfil, conexões, cópias de segurança e opções de segurança.</p>
+            </header>
+            <div class="account-groups">
+
             <h2 style="font-size:22px">👤 Minha Conta</h2>
             <div class="grupo-conta"><button class="grupo-header"
                     onclick="abrirGrupoConta('g-perfil',this)"><span>👤</span>
@@ -549,7 +604,10 @@
                     </div>
                 </div>
             </div>
+        
+            </div>
         </div>
+
         <div id="tela-meus-videos" class="tela">
             <div id="lista-videos-2"></div>
         </div>
