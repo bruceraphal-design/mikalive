@@ -1601,3 +1601,26 @@ button:disabled {
   #tela-inicio .home-panel-heading { align-items:start; }
   #tela-inicio .home-panel-heading > span { max-width:105px; }
 }
+
+
+/* Mika IA: fluxo de criação mais claro */
+#tela-mikaia .mika-idea-card,
+#tela-mikaia .mika-adjust-card,
+#tela-mikaia .mika-result-card { margin-top: 14px; }
+#tela-mikaia .mika-input-fields { gap: 15px; }
+#tela-mikaia .mika-input-fields textarea { min-height: 116px; line-height: 1.65; }
+#tela-mikaia .mika-input-fields select { min-height: 48px; }
+#tela-mikaia .mika-create-action { margin-top: 17px; padding-top: 15px; border-top: 1px solid rgba(148,163,184,.13); }
+#tela-mikaia .mika-create-action .btn-app { width: 100%; min-height: 49px; margin: 0; }
+#tela-mikaia .mika-create-action p { margin: 9px 0 0; color: #8998ad; font-size: 11px; line-height: 1.5; text-align: center; }
+#tela-mikaia .mika-adjust-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+#tela-mikaia .mika-adjust-grid .btn-app { min-height: 44px; padding: 10px 12px; }
+#tela-mikaia .mika-adjust-grid .btn-app:last-child { grid-column: 1 / -1; }
+#tela-mikaia .mika-result-card { border-color: rgba(155,135,255,.2); }
+#tela-mikaia .mika-result-card #mika-resposta { min-height: 116px; margin: 0 0 17px; padding: 17px; border: 1px solid rgba(155,135,255,.17); border-radius: 13px; background: rgba(5,10,20,.38); }
+#tela-mikaia .mika-result-card .module-output-actions { padding-top: 15px; border-top: 1px solid rgba(148,163,184,.13); }
+@media (max-width: 600px) {
+  #tela-mikaia .mika-adjust-grid { gap: 8px; }
+  #tela-mikaia .mika-adjust-grid .btn-app { min-height: 46px; padding: 9px 7px; font-size: 11px; }
+  #tela-mikaia .mika-result-card .module-output-actions { grid-template-columns: 1fr; }
+}
