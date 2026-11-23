@@ -1509,3 +1509,68 @@ button:disabled {
     .module-output-actions { grid-template-columns: 1fr; }
     .module-output-actions .btn-app:last-child:nth-child(odd) { grid-column: auto; }
 }
+
+
+/* REORGANIZAÇÃO DAS TELAS INTERNAS — MIKA IA, BIBLIOTECA, AGENDA E CONTA */
+#tela-inicio .home-welcome { margin: 8px 0 22px; }
+#tela-inicio .home-welcome > p { margin: 0 0 3px; color: #9aa7ba; font-size: 13px; }
+#tela-inicio .home-welcome h1 { margin: 0 0 7px; font-size: clamp(27px,4vw,34px) !important; }
+#tela-inicio .home-welcome > span:last-child { color: #aab6c9; font-size: 14px; }
+#tela-inicio .home-primary-action { padding: 19px; border: 1px solid rgba(155,135,255,.18); border-radius: 18px; background: linear-gradient(145deg,rgba(118,87,246,.13),rgba(17,24,39,.96) 65%); }
+#tela-inicio .home-primary-action > .btn-app { margin: 0; min-height: 52px; }
+#tela-inicio .home-shortcuts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; margin-top: 10px; }
+#tela-inicio .home-shortcuts .btn-app { margin: 0; min-height: 45px; padding: 9px 5px; font-size: 12px; }
+#tela-inicio .home-kpis { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; margin: 13px 0; }
+#tela-inicio .home-kpis .card-app { display: flex; flex-direction: column; gap: 4px; margin: 0; padding: 15px; }
+#tela-inicio .home-kpis b { font-size: 23px; }
+#tela-inicio .home-kpis span,.home-panel-heading span { color: #94a3b8; font-size: 11px; }
+#tela-inicio .home-panel { padding: 18px; }
+.home-panel-heading { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+#tela-mikaia .module-card > .module-field { margin-bottom: 14px; }
+#tela-mikaia .module-card > .btn-app { width: 100%; margin-top: 8px; }
+#tela-mikaia .mika-adjust-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+#tela-mikaia .mika-adjust-grid .btn-app:last-child { grid-column: 1 / -1; }
+#tela-mikaia #mika-resposta { min-height: 100px; padding: 16px; border: 1px solid rgba(155,135,255,.18); border-radius: 13px; background: rgba(5,10,20,.38); }
+#tela-conteudos .library-toolbar { margin-bottom: 18px; }
+.library-toolbar > label,.library-filter-label { display: block; margin: 0 0 8px; color: #d5dced; font-size: 12px; font-weight: 700; }
+.library-toolbar > input { margin: 0 0 17px; }
+.library-filter-label { color: #9aa7ba; font-weight: 600; }
+.library-tabs { display: flex; flex-wrap: wrap; gap: 7px; margin: 0; }
+.library-tabs .aba { flex: 1 1 auto; min-height: 39px; margin: 0; padding: 8px 11px; }
+.library-results-heading { display: flex; flex-direction: column; gap: 4px; margin: 0 0 13px; }
+.library-results-heading b { font-size: 15px; }
+.library-results-heading span { color: #94a3b8; font-size: 11px; }
+#tela-conteudos #lista-videos,#tela-calendario #lista-calendario { display: grid; gap: 11px; }
+#tela-conteudos .library-clear { margin-top: 15px; }
+#tela-calendario .module-card > .btn-app,#tela-comissao .api-test-card > .btn-app { width: 100%; margin-top: 16px; }
+#tela-calendario .calendar-list { margin-top: 22px; }
+#tela-comissao .results-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+#tela-comissao .results-heading > div { min-width: 0; }
+#tela-comissao .results-heading b { display: block; font-size: 15px; }
+#tela-comissao .results-heading p { margin: 4px 0 0; color: #9aa7ba; font-size: 11px; line-height: 1.5; }
+#tela-comissao .results-icon { display: grid; place-items: center; flex: 0 0 40px; width: 40px; height: 40px; border-radius: 12px; background: rgba(16,185,129,.13); color: #86efac; font-size: 13px; font-weight: 800; }
+#tela-comissao .results-simulated .results-icon { background: rgba(245,158,11,.12); color: #fcd34d; }
+#tela-comissao .results-metrics { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; margin-bottom: 14px; }
+#tela-comissao .results-metrics > div { display: flex; flex-direction: column; gap: 5px; padding: 13px; border: 1px solid rgba(148,163,184,.12); border-radius: 12px; background: rgba(5,10,20,.25); }
+#tela-comissao .results-metrics small { color: #94a3b8; font-size: 11px; }
+#tela-comissao .results-metrics b { font-size: clamp(17px,4vw,22px); overflow-wrap: anywhere; }
+#tela-comissao .results-real { border-color: rgba(16,185,129,.3); }
+#tela-comissao .results-simulated { border-color: rgba(245,158,11,.3); }
+#tela-comissao .api-test-card .module-fields { margin-bottom: 4px; }
+#tela-conta .account-groups { display: grid; gap: 10px; }
+#tela-conta .grupo-conta { overflow: hidden; border: 1px solid rgba(148,163,184,.14); border-radius: 15px; background: rgba(17,24,39,.88); }
+#tela-conta .grupo-header { width: 100%; min-height: 65px; padding: 14px 16px; }
+#tela-conta .grupo-conteudo { padding: 15px; border-top: 1px solid rgba(39,52,73,.6); }
+#tela-conta .grupo-conteudo > input,#tela-conta .grupo-conteudo > select { margin-bottom: 13px; }
+#tela-conta .grupo-conteudo > .btn-app { margin-top: 7px; }
+#tela-conta .grupo-conteudo .card-app { line-height: 1.75; }
+@media (max-width: 600px) {
+    #tela-inicio .home-primary-action { padding: 15px; }
+    #tela-inicio .home-shortcuts { gap: 6px; }
+    #tela-inicio .home-shortcuts .btn-app { font-size: 10px; }
+    #tela-mikaia .mika-adjust-grid { gap: 7px; }
+    #tela-mikaia .mika-adjust-grid .btn-app { min-height: 44px; padding: 9px 7px; font-size: 11px; }
+    .library-tabs .aba { min-width: calc(33.333% - 7px); }
+    #tela-comissao .results-metrics > div { padding: 11px; }
+    #tela-conta .grupo-header { padding: 13px; }
+}
