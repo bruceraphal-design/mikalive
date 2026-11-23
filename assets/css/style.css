@@ -843,3 +843,228 @@ label { color: #c0cada; font-size: 12px; letter-spacing: .02em; margin-top: 13px
     .modal-box { max-height: 90vh; padding: 18px; }
 }
 @media (prefers-reduced-motion: reduce) { .tela.ativa { animation: none; } }
+
+
+/* =========================================================
+   MIKALIVE — ACABAMENTO DA ÁREA INTERNA
+   Ajustes de consistência, leitura e responsividade.
+   Sem alterar IDs, eventos ou lógica.
+   ========================================================= */
+.app {
+    position: relative;
+    isolation: isolate;
+}
+.app::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 82% 12%, rgba(168,85,247,.07), transparent 34rem);
+}
+.topbar > div:last-child {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(155,135,255,.24);
+    border-radius: 14px;
+    background: rgba(118,87,246,.12);
+    font-size: 18px;
+}
+.tela {
+    padding-bottom: 24px;
+}
+.tela > h2 {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 38px;
+}
+.tela > p {
+    color: var(--muted);
+}
+.card-app {
+    position: relative;
+    overflow: hidden;
+}
+.card-app > b:first-child {
+    color: #f2f3fb;
+}
+.card-app label {
+    line-height: 1.45;
+}
+.card-app input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.card-app textarea,
+.card-app select {
+    width: 100%;
+}
+input[type="checkbox"], input[type="radio"] {
+    width: 18px !important;
+    min-width: 18px;
+    height: 18px;
+    min-height: 18px;
+    margin: 0;
+    padding: 0;
+    accent-color: var(--roxo2);
+    flex: 0 0 18px;
+}
+input[type="file"] {
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+.btn-app {
+    line-height: 1.35;
+    white-space: normal;
+}
+.btn-app:disabled,
+button:disabled {
+    opacity: .48;
+    cursor: not-allowed;
+    transform: none;
+    filter: none;
+}
+#tela-inicio .card-app > b,
+#tela-shop .card-app > b,
+#tela-mikaia .card-app > b {
+    letter-spacing: -.25px;
+}
+#tela-inicio #kpi-roteiros,
+#tela-inicio #kpi-produtos {
+    color: #d9ceff;
+    font-family: 'Sora', sans-serif;
+}
+#tela-conteudos .abas {
+    padding: 4px 0 8px;
+}
+#tela-conteudos .aba {
+    min-height: 40px;
+}
+#lista-videos,
+#lista-videos-2,
+#lista-produtos,
+#lista-calendario,
+#lista-comissao-real,
+#lista-recentes {
+    min-width: 0;
+}
+#resultado-shop,
+#resultado-insta,
+#resultado-yt-ia {
+    animation: telaEntrada .2s ease both;
+}
+#roteiro-shop,
+#roteiro-insta,
+#legenda-insta,
+#hashtags-insta,
+#roteiro-yt-ia,
+#mika-resposta,
+#modal-roteiro,
+#modal-legenda,
+#modal-hashtags {
+    overflow-wrap: anywhere;
+}
+#calc-resultado,
+#api-resultado,
+#cloud-status,
+#key-status,
+#ferramenta-insta-resultado,
+#ferramenta-yt-resultado {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.035);
+}
+.grupo-conta {
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+.grupo-header {
+    gap: 13px;
+}
+.grupo-header > span:first-child {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: rgba(118,87,246,.12);
+}
+.grupo-conteudo .card-app {
+    box-shadow: none;
+}
+.menu-baixo button {
+    line-height: 1.2;
+}
+.menu-baixo button span {
+    font-size: 17px;
+}
+.menu-centro {
+    flex: 0 0 54px !important;
+    line-height: 1.15;
+}
+.modal-box > h2 {
+    margin: 14px 0 6px;
+    font-family: 'Sora', sans-serif;
+    letter-spacing: -.7px;
+}
+.modal-box > p {
+    margin-bottom: 14px;
+}
+@media (min-width: 900px) {
+    .app {
+        padding-bottom: 150px;
+    }
+    .topbar {
+        margin-bottom: 34px;
+    }
+    .tela > h2 {
+        margin-bottom: 18px;
+    }
+    #tela-inicio > .card-app,
+    #tela-shop > .card-app,
+    #tela-insta > .card-app,
+    #tela-youtube > .card-app,
+    #tela-mikaia > .card-app {
+        padding: 24px;
+    }
+}
+@media (max-width: 600px) {
+    .topbar {
+        min-height: 68px;
+    }
+    .tela {
+        padding-bottom: 18px;
+    }
+    .tela > h2 {
+        font-size: 25px !important;
+    }
+    .card-app {
+        margin: 12px 0;
+    }
+    .card-app label {
+        font-size: 12px;
+    }
+    .btn-app {
+        min-height: 46px;
+    }
+    #tela-conteudos .abas {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding-bottom: 10px;
+    }
+    #tela-conteudos .abas::-webkit-scrollbar {
+        display: none;
+    }
+    #tela-conteudos .aba {
+        flex: 0 0 auto;
+    }
+    .menu-baixo {
+        bottom: max(10px, env(safe-area-inset-bottom));
+        padding-top: 7px;
+        padding-bottom: calc(7px + env(safe-area-inset-bottom));
+    }
+    .menu-centro {
+        flex-basis: 50px !important;
+    }
+}
