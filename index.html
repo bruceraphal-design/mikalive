@@ -2842,7 +2842,7 @@ function salvarVideoYTSeguro() { var c1 = $("check-humano").checked; var c2 = $(
         function favoritarVideoModal() { var v = DB.videos.find(function (x) { return x.id === videoAbertoId; }); if (!v) return; v.favorito = !v.favorito; saveDB(); renderListaVideos(); alert(v.favorito ? "Favoritado ⭐" : "Desfavoritado"); }
         function excluirVideoModal() { if (!confirm("Excluir?")) return; DB.videos = DB.videos.filter(function (x) { return x.id !== videoAbertoId; }); saveDB(); fecharModal(); renderListaVideos(); atualizarResumo(); }
         function limparVideos() { if (!confirm("Limpar TODOS?")) return; DB.videos = []; saveDB(); renderListaVideos(); atualizarResumo(); }
-        async async function gerarComIA(tipo) {
+        async function gerarComIA(tipo) {
             try {
                 var pergunta = "";
                 if (tipo === 'shop') { pergunta = "Crie roteiro 30s para vender: " + ($("nome-produto").value || "Tv box") + ", preço " + ($("preco-produto").value || "200") + ", descrição: " + ($("desc-produto").value || "") + ", opinião: " + ($("shop-opiniao").value || ""); }
