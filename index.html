@@ -501,24 +501,46 @@
             <header class="module-intro">
                 <span class="module-kicker">ORGANIZAÇÃO E ROTINA</span>
                 <h2>📅 Calendário</h2>
-                <p>Planeje o que publicar, em qual plataforma e em que data.</p>
+                <p>Organize suas ideias e acompanhe o que pretende publicar em cada plataforma.</p>
             </header>
-            <section class="card-app module-card">
-                <div class="module-card-heading"><span class="module-step">01</span><div><b>Adicionar planejamento</b><p>Registre a próxima ideia de conteúdo.</p></div></div>
-                <div class="module-fields">
-                    <div class="module-field module-field-wide"><label for="cal-tema">Tema do conteúdo</label><input id="cal-tema" placeholder="Ex.: análise de um produto"></div>
-                    <div class="module-field"><label for="cal-plataforma">Plataforma</label><select id="cal-plataforma"><option value="shop">🛍️ Shopee</option><option value="instagram">📸 Instagram</option><option value="youtube">▶️ YouTube</option></select></div>
-                    <div class="module-field"><label for="cal-data">Data de publicação</label><input id="cal-data" type="date"></div>
+
+            <section class="card-app module-card calendar-create-card">
+                <div class="module-card-heading">
+                    <span class="module-step">01</span>
+                    <div><b>Planeje uma publicação</b><p>Adicione o tema, escolha a plataforma e defina quando pretende publicar.</p></div>
                 </div>
-                <button class="btn-app btn-grad" onclick="salvarCalendario()">Salvar planejamento</button>
+                <div class="module-fields calendar-fields">
+                    <div class="module-field module-field-wide">
+                        <label for="cal-tema">O que você pretende publicar?</label>
+                        <input id="cal-tema" placeholder="Ex.: análise de um produto">
+                    </div>
+                    <div class="module-field">
+                        <label for="cal-plataforma">Onde vai publicar?</label>
+                        <select id="cal-plataforma">
+                            <option value="shop">🛍️ Shopee</option>
+                            <option value="instagram">📸 Instagram</option>
+                            <option value="youtube">▶️ YouTube</option>
+                        </select>
+                    </div>
+                    <div class="module-field">
+                        <label for="cal-data">Quando pretende publicar?</label>
+                        <input id="cal-data" type="date">
+                    </div>
+                </div>
+                <div class="calendar-save-action">
+                    <button class="btn-app btn-grad" onclick="salvarCalendario()">＋ Adicionar ao calendário</button>
+                    <p>Seu planejamento ficará disponível na lista abaixo.</p>
+                </div>
             </section>
+
             <section class="library-results calendar-list">
-                <div class="library-results-heading"><b>Seus planejamentos</b><span>Conteúdos organizados por data</span></div>
+                <div class="library-results-heading">
+                    <div><span class="module-kicker">SUA AGENDA</span><b>Seus planejamentos</b></div>
+                    <span>Consulte os conteúdos organizados por data.</span>
+                </div>
                 <div id="lista-calendario"></div>
             </section>
-
         </div>
-
         <div id="tela-comissao" class="tela">
             <header class="module-intro">
                 <span class="module-kicker">ACOMPANHAMENTO</span>
