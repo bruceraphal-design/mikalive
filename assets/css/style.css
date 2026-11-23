@@ -1730,3 +1730,98 @@ button:disabled {
   #tela-meus-videos .my-videos-guide { padding:24px; }
   #tela-meus-videos .my-videos-guide .btn-app { width:auto; min-width:220px; }
 }
+
+
+/* Acabamento global: cabeçalho do app e janela de roteiro */
+.app .topbar {
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px 2px 18px;
+  margin-bottom:8px;
+  border-bottom:1px solid rgba(148,163,184,.12);
+}
+.app .topbar .logo {
+  font-size:21px !important;
+  font-weight:800;
+  letter-spacing:-.7px;
+}
+.app .topbar > div:last-child {
+  display:grid;
+  place-items:center;
+  width:38px;
+  height:38px;
+  border:1px solid rgba(148,163,184,.18);
+  border-radius:13px;
+  background:rgba(30,41,59,.72);
+  font-size:17px;
+}
+#modal-video {
+  padding:16px;
+  background:rgba(3,7,18,.78);
+  backdrop-filter:blur(8px);
+  align-items:center;
+}
+#modal-video .modal-box {
+  width:min(100%,600px);
+  max-height:min(88vh,820px);
+  padding:22px;
+  border:1px solid rgba(148,163,184,.2);
+  border-radius:22px;
+  background:linear-gradient(160deg,#172033,#101827);
+  box-shadow:0 24px 80px rgba(0,0,0,.48);
+}
+#modal-video .modal-box > span:first-child {
+  display:inline-flex;
+  align-items:center;
+  min-height:36px;
+  padding:0 12px;
+  border-radius:10px;
+  background:rgba(168,85,247,.12);
+  color:#d8b4fe !important;
+  font-size:12px;
+  font-weight:700;
+}
+#modal-video .modal-box h2 {
+  margin:18px 0 6px;
+  color:#f8fafc;
+  font-size:21px;
+  line-height:1.3;
+  overflow-wrap:anywhere;
+}
+#modal-video .modal-box > p {
+  margin-bottom:18px;
+  color:#94a3b8 !important;
+}
+#modal-video .modal-box .card-app {
+  padding:16px;
+  margin-bottom:12px;
+  border-radius:15px;
+  background:rgba(15,23,42,.72);
+}
+#modal-video .modal-box .card-app b {
+  color:#d8b4fe;
+  font-size:12px;
+}
+#modal-video .modal-box .card-app p {
+  margin:9px 0 0;
+  color:#dbe4f0;
+  font-size:13px;
+  line-height:1.75;
+  overflow-wrap:anywhere;
+}
+#modal-video .modal-box > button {
+  min-height:44px;
+  margin-top:10px;
+}
+@media (max-width:600px) {
+  #modal-video { padding:0; align-items:flex-end; }
+  #modal-video .modal-box {
+    width:100%;
+    max-height:90vh;
+    padding:20px 16px calc(20px + env(safe-area-inset-bottom));
+    border-radius:22px 22px 0 0;
+  }
+}
