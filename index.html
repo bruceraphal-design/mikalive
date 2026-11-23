@@ -147,17 +147,23 @@
                     <button class="btn-app btn-ghost-app" onclick="irPara('tela-mikaia')">✨ Mika IA</button>
                 </div>
             </section>
-            <section class="home-kpis">
-                <div class="card-app"><b id="kpi-roteiros">1</b><span>Roteiros</span></div>
-                <div class="card-app"><b id="kpi-produtos">1</b><span>Produtos</span></div>
+            <section class="home-overview" aria-label="Resumo da sua criação">
+                <div class="home-section-heading">
+                    <div><span class="module-kicker">VISÃO GERAL</span><h2>Seu progresso</h2></div>
+                    <span>Resumo da biblioteca</span>
+                </div>
+                <div class="home-kpis">
+                    <div class="card-app home-kpi-card"><span class="home-kpi-icon">✍️</span><b id="kpi-roteiros">1</b><span>Roteiros criados</span></div>
+                    <div class="card-app home-kpi-card"><span class="home-kpi-icon">🛍️</span><b id="kpi-produtos">1</b><span>Produtos salvos</span></div>
+                </div>
             </section>
             <section class="card-app home-panel">
-                <div class="home-panel-heading"><b>Conteúdos recentes</b><span>Seus últimos roteiros</span></div>
+                <div class="home-panel-heading"><div><span class="module-kicker">CONTINUE DE ONDE PAROU</span><h2>Conteúdos recentes</h2></div><span>Seus últimos roteiros</span></div>
                 <div id="lista-recentes"></div>
                 <button class="btn-app btn-ghost-app" onclick="irPara('tela-conteudos')">Ver toda a biblioteca →</button>
             </section>
             <section class="card-app home-panel">
-                <div class="home-panel-heading"><b>Planejamento de hoje</b><span>O que está na sua agenda</span></div>
+                <div class="home-panel-heading"><div><span class="module-kicker">SUA ROTINA</span><h2>Planejamento de hoje</h2></div><span>O que está na sua agenda</span></div>
                 <div id="calendario-hoje"><p>Nenhum conteúdo planejado pra hoje.</p></div>
                 <button class="btn-app btn-ghost-app" onclick="irPara('tela-calendario')">Abrir calendário →</button>
             </section>
