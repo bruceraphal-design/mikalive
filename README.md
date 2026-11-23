@@ -4,14 +4,15 @@ Aplicação principal: `index.html` na raiz do repositório.
 
 ## Fonte oficial
 
-- O `index.html` da raiz é a única entrada oficial e atual.
-- CSS ativo: `assets/css/style.css`.
+- O `index.html` da raiz é a única entrada oficial.
+- CSS: `assets/css/style.css`.
 - Camada de dados: `assets/js/database.js`.
-- Autenticação e sessão: `assets/js/auth.js`.
+- Autenticação/sessão: `assets/js/auth.js`.
 - Navegação: `assets/js/navigation.js`.
-- Lógica principal e funcionalidades: `assets/js/app.js`.
-- Ordem de carregamento: banco, autenticação, navegação, aplicação.
-- `HTML/index.html` redireciona para a raiz; a versão anterior está em `archive/HTML-index-legacy.html`.
+- Ferramenta Shopee: `assets/js/shopee.js`.
+- Funcionalidades restantes da interface: `assets/js/app.js`.
+- Ordem: banco, autenticação, navegação, Shopee, aplicação.
+- `HTML/index.html` redireciona para a raiz; versão anterior em `archive/HTML-index-legacy.html`.
 
 ## Estrutura
 
@@ -25,6 +26,7 @@ assets/
     database.js
     auth.js
     navigation.js
+    shopee.js
     app.js
     modules/                # módulos legados em migração
 api/
@@ -34,17 +36,13 @@ HTML/
 
 ## Regra de atualização
 
-1. A raiz define a versão oficial.
-2. Atualize primeiro a implementação principal e depois migre a responsabilidade para o módulo correspondente.
-3. Não carregue módulos legados em paralelo com os módulos ativos.
-4. Migre uma responsabilidade por vez, mantendo IDs e contratos existentes, e valide no navegador antes de avançar.
-5. CSS novo deve ficar em `assets/css/`.
+A raiz é a fonte oficial. Migre cada funcionalidade para seu módulo usando exatamente a implementação atual da raiz como referência. Não carregue módulos legados em paralelo. Teste no navegador antes de avançar.
 
 ## Estado da migração
 
-- Banco de dados, autenticação/sessão e navegação foram separados da implementação principal preservando a lógica atual.
-- Módulos antigos foram preservados em `assets/js/modules/` com prefixo `legacy-` quando existe módulo ativo correspondente.
+- Banco, autenticação/sessão, navegação e geração de roteiro Shopee foram separados da aplicação principal preservando a lógica atual.
+- Os módulos antigos foram preservados em `assets/js/modules/` com prefixo `legacy-`.
 - O token Google ainda é decodificado no navegador, sem validação criptográfica; validar no servidor antes de produção.
-- A sincronização Supabase ainda usa e-mail/nome informado no cliente como identificador; implementar autenticação real e políticas RLS.
-- A função de teste de comissão ainda insere dados na lista de comissões reais; não tratar como venda confirmada.
+- A sincronização Supabase ainda usa e-mail/nome do cliente como identificador; implementar autenticação real e políticas RLS.
+- A função de teste de comissão ainda registra uma simulação na lista de comissões reais; não tratar como venda confirmada.
 - O webhook precisa de assinatura obrigatória e persistência durável.
