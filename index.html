@@ -164,108 +164,231 @@
         </div>
 
         <div id="tela-shop" class="tela">
-            <h2 style="font-size:22px">🛍️ Shopee</h2>
-            <p style="color:var(--muted);font-size:13.5px;margin:4px 0 14px">Link → Roteiro em 30 segundos.</p>
-            <div class="aviso-seguro">⚠️ Não prometa o que o produto não faz. Fale sua experiência real.</div>
-            <div class="card-app"><label>Link / Código / Nome</label><input id="link-shop"
-                    placeholder="Ex: https://shopee... ou EUD-HBB-TYD"><label>Nome do produto</label><input
-                    id="nome-produto" placeholder="Ex: Tv box"><label>Preço</label><input id="preco-produto"
-                    placeholder="Ex: 200" inputmode="decimal"><label>O que o produto faz?</label><textarea
-                    id="desc-produto" rows="3" placeholder="Ex: Proporciona mais para minha tv"></textarea><label>Minha
-                    opinião real</label><textarea id="shop-opiniao" rows="2"
-                    placeholder="Ex: Usei e gostei..."></textarea></div>
-            <div class="card-app"><button class="btn-app btn-grad"
-                    style="background:linear-gradient(135deg,#823DF0,#EC4899)" onclick="gerarVideoShop()">Gerar Roteiro
-                    →</button><button class="btn-app btn-dark" onclick="gerarComIA('shop')">🤖 Gerar com IA
-                    Groq</button></div>
-            <div class="card-app"><b>🧮 Calculadora de comissão</b><input id="calc-preco"
-                    placeholder="Preço - ex: 89,90" inputmode="decimal"><input id="calc-taxa"
-                    placeholder="Taxa % - ex: 15" inputmode="decimal"><button class="btn-app btn-ghost-app"
-                    onclick="calcularComissao()">Calcular estimativa</button>
-                <p id="calc-resultado" style="margin-top:10px;font-weight:700"></p>
-            </div>
-            <div id="resultado-shop" style="display:none">
-                <div class="card-app"><b>🎬 Roteiro Shopee</b>
-                    <p id="roteiro-shop" style="white-space:pre-line;color:#ddd"></p>
-                </div><button class="btn-app btn-dark" onclick="copiarTexto('roteiro-shop')">Copiar
-                    roteiro</button><button class="btn-app btn-grad"
-                    style="background:linear-gradient(135deg,#823DF0,#EC4899)" onclick="salvarVideoAtual()">✅ Salvar
-                    roteiro</button>
-                <div id="aviso-duplicado"
-                    style="display:none;background:#2A220A;border:1px solid #7C5A00;color:#FDE68A;padding:12px;border-radius:12px;font-size:12px;margin-top:10px">
+            <header class="module-intro">
+                <span class="module-kicker">CRIAÇÃO DE CONTEÚDO • SHOPEE</span>
+                <h2>🛍️ Roteiro para Shopee</h2>
+                <p>Transforme as informações de um produto em um roteiro curto para apresentar e divulgar.</p>
+            </header>
+
+            <div class="aviso-seguro">Dica: descreva o produto com sinceridade e compartilhe sua experiência real. Não prometa resultados que não pode garantir.</div>
+
+            <section class="card-app module-card">
+                <div class="module-card-heading">
+                    <span class="module-step">01</span>
+                    <div><b>Informações do produto</b><p>Preencha os dados para montar seu roteiro.</p></div>
                 </div>
-            </div>
-            <div class="card-app"><b>📦 Produtos recentes</b>
+                <div class="module-fields">
+                    <div class="module-field module-field-wide">
+                        <label for="link-shop">Link, código ou nome do produto</label>
+                        <input id="link-shop" placeholder="Cole o link da Shopee ou informe o código">
+                        <small>Se tiver o link, cole aqui. Também pode informar o nome ou código.</small>
+                    </div>
+                    <div class="module-field">
+                        <label for="nome-produto">Nome do produto</label>
+                        <input id="nome-produto" placeholder="Ex.: Fone Bluetooth">
+                    </div>
+                    <div class="module-field">
+                        <label for="preco-produto">Preço do produto</label>
+                        <input id="preco-produto" placeholder="Ex.: 49,90" inputmode="decimal">
+                    </div>
+                    <div class="module-field module-field-wide">
+                        <label for="desc-produto">O que o produto faz?</label>
+                        <textarea id="desc-produto" rows="3" placeholder="Descreva as principais características e utilidades."></textarea>
+                    </div>
+                    <div class="module-field module-field-wide">
+                        <label for="shop-opiniao">Sua opinião ou experiência</label>
+                        <textarea id="shop-opiniao" rows="3" placeholder="O que você achou? O que gostou ou não gostou?"></textarea>
+                        <small>Use sua opinião verdadeira para deixar o conteúdo mais autêntico.</small>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card-app module-card module-actions">
+                <div class="module-card-heading">
+                    <span class="module-step">02</span>
+                    <div><b>Crie seu roteiro</b><p>Escolha uma das opções para gerar o texto.</p></div>
+                </div>
+                <button class="btn-app btn-grad" style="background:linear-gradient(135deg,#823DF0,#EC4899)" onclick="gerarVideoShop()">Gerar roteiro básico →</button>
+                <button class="btn-app btn-dark" onclick="gerarComIA('shop')">✨ Gerar roteiro com IA</button>
+            </section>
+
+            <section class="card-app module-card">
+                <div class="module-card-heading">
+                    <span class="module-step">03</span>
+                    <div><b>Calcular comissão</b><p>Faça uma estimativa com base no preço e na taxa.</p></div>
+                </div>
+                <div class="module-fields module-fields-compact">
+                    <div class="module-field">
+                        <label for="calc-preco">Preço do produto</label>
+                        <input id="calc-preco" placeholder="Ex.: 89,90" inputmode="decimal">
+                    </div>
+                    <div class="module-field">
+                        <label for="calc-taxa">Comissão (%)</label>
+                        <input id="calc-taxa" placeholder="Ex.: 15" inputmode="decimal">
+                    </div>
+                </div>
+                <button class="btn-app btn-ghost-app" onclick="calcularComissao()">Calcular estimativa</button>
+                <p id="calc-resultado" class="module-result-note"></p>
+            </section>
+
+            <section id="resultado-shop" class="module-output" style="display:none">
+                <div class="card-app">
+                    <div class="module-card-heading"><span class="module-step">04</span><div><b>Seu roteiro está pronto</b><p>Revise o texto antes de gravar.</p></div></div>
+                    <p id="roteiro-shop" class="module-generated-text"></p>
+                </div>
+                <div class="module-output-actions">
+                    <button class="btn-app btn-dark" onclick="copiarTexto('roteiro-shop')">Copiar roteiro</button>
+                    <button class="btn-app btn-grad" style="background:linear-gradient(135deg,#823DF0,#EC4899)" onclick="salvarVideoAtual()">Salvar roteiro</button>
+                </div>
+                <div id="aviso-duplicado" style="display:none;background:#2A220A;border:1px solid #7C5A00;color:#FDE68A;padding:12px;border-radius:12px;font-size:12px;margin-top:10px"></div>
+            </section>
+
+            <section class="card-app module-card module-secondary">
+                <b>Produtos usados recentemente</b>
+                <p>Seus últimos produtos adicionados aparecem aqui.</p>
                 <div id="lista-produtos"></div>
-            </div>
+            </section>
             <input id="loja-produto" type="hidden" value="">
         </div>
 
         <div id="tela-insta" class="tela">
-            <h2 style="font-size:22px">📸 Instagram</h2>
-            <div class="card-app"><input id="tema-insta" placeholder="Ex: Achadinho de cozinha"><label>Opinião real —
-                    obrigatória</label><textarea id="insta-opiniao" rows="2"
-                    placeholder="Sua experiência real"></textarea><select id="estilo-insta">
-                    <option value="viral">Viral / Gancho forte</option>
-                    <option value="tutorial">Tutorial rápido</option>
-                    <option value="depoimento">Depoimento</option>
-                    <option value="humor">Humor / Trend</option>
-                    <option value="comparacao">Comparação</option>
-                </select><select id="nicho-insta">
-                    <option value="beleza">Beleza / Skincare</option>
-                    <option value="casa">Casa / Utilidades</option>
-                    <option value="moda">Moda / Acessórios</option>
-                    <option value="fitness">Fitness / Saúde</option>
-                    <option value="geral">Geral / Achadinhos</option>
-                </select><input id="link-insta-shop" placeholder="Link da Shopee pra legenda"></div>
-            <div class="card-app"><button class="btn-app btn-grad" onclick="gerarVideoInsta()">Gerar Roteiro
-                    →</button><button class="btn-app btn-dark" onclick="gerarComIA('insta')">🤖 Gerar com IA</button>
-            </div>
-            <div class="card-app"><b>✍️ Ferramentas</b><button class="btn-app btn-ghost-app"
-                    onclick="gerarLegendasEstilos()">✍️ Legendas em 3 estilos</button><button
-                    class="btn-app btn-ghost-app" onclick="mostrarBancoHashtags()">#️⃣ Banco de hashtags</button><button
-                    class="btn-app btn-ghost-app" onclick="gerarCTA()">💬 Chamada pra comentários</button>
-                <p id="ferramenta-insta-resultado" style="white-space:pre-line;margin-top:12px;color:#ddd"></p>
-            </div>
-            <div id="resultado-insta" style="display:none">
-                <div class="card-app"><b>🎬 Roteiro</b>
-                    <p id="roteiro-insta" style="white-space:pre-line;color:#ddd"></p>
+            <header class="module-intro">
+                <span class="module-kicker">CRIAÇÃO DE CONTEÚDO • INSTAGRAM</span>
+                <h2>📸 Conteúdo para Instagram</h2>
+                <p>Monte um roteiro para Reels, uma legenda e hashtags a partir do tema e da sua opinião.</p>
+            </header>
+
+            <section class="card-app module-card">
+                <div class="module-card-heading">
+                    <span class="module-step">01</span>
+                    <div><b>Sobre o que será o vídeo?</b><p>Conte qual é o assunto e dê seu ponto de vista.</p></div>
                 </div>
-                <div class="card-app"><b>✍️ Legenda</b>
-                    <p id="legenda-insta" style="white-space:pre-line;color:#ddd"></p>
+                <div class="module-fields">
+                    <div class="module-field module-field-wide">
+                        <label for="tema-insta">Tema ou nome do produto</label>
+                        <input id="tema-insta" placeholder="Ex.: Achadinho para organizar a cozinha">
+                    </div>
+                    <div class="module-field module-field-wide">
+                        <label for="insta-opiniao">Sua opinião ou experiência</label>
+                        <textarea id="insta-opiniao" rows="3" placeholder="O que você pensa ou viveu sobre esse assunto?"></textarea>
+                        <small>Esse campo ajuda a criar um conteúdo mais pessoal e original.</small>
+                    </div>
+                    <div class="module-field">
+                        <label for="estilo-insta">Estilo do vídeo</label>
+                        <select id="estilo-insta">
+                            <option value="viral">Gancho forte</option>
+                            <option value="tutorial">Tutorial rápido</option>
+                            <option value="depoimento">Relato pessoal</option>
+                            <option value="humor">Humor / Trend</option>
+                            <option value="comparacao">Comparação</option>
+                        </select>
+                    </div>
+                    <div class="module-field">
+                        <label for="nicho-insta">Categoria do conteúdo</label>
+                        <select id="nicho-insta">
+                            <option value="beleza">Beleza / Skincare</option>
+                            <option value="casa">Casa / Utilidades</option>
+                            <option value="moda">Moda / Acessórios</option>
+                            <option value="fitness">Fitness / Saúde</option>
+                            <option value="geral">Geral / Achadinhos</option>
+                        </select>
+                    </div>
+                    <div class="module-field module-field-wide">
+                        <label for="link-insta-shop">Link do produto (opcional)</label>
+                        <input id="link-insta-shop" placeholder="Cole o link para incluir na legenda">
+                    </div>
                 </div>
-                <div class="card-app"><b>#️⃣ Hashtags</b>
-                    <p id="hashtags-insta" style="white-space:pre-line;color:#ddd"></p>
-                </div><button class="btn-app btn-dark" onclick="copiarTexto('legenda-insta')">📋 Copiar
-                    legenda</button><button class="btn-app btn-dark" onclick="copiarTexto('hashtags-insta')">📋 Copiar
-                    hashtags</button><button class="btn-app btn-grad" onclick="salvarVideoAtual()">✅ Salvar</button>
-            </div>
+            </section>
+
+            <section class="card-app module-card module-actions">
+                <div class="module-card-heading">
+                    <span class="module-step">02</span>
+                    <div><b>Gerar conteúdo</b><p>Crie uma primeira versão e depois revise com seu jeito de falar.</p></div>
+                </div>
+                <button class="btn-app btn-grad" onclick="gerarVideoInsta()">Gerar roteiro e legenda →</button>
+                <button class="btn-app btn-dark" onclick="gerarComIA('insta')">✨ Gerar com IA</button>
+            </section>
+
+            <section class="card-app module-card module-tools">
+                <div class="module-card-heading">
+                    <span class="module-step">03</span>
+                    <div><b>Ferramentas extras</b><p>Recursos rápidos para complementar sua publicação.</p></div>
+                </div>
+                <div class="module-tool-grid">
+                    <button class="btn-app btn-ghost-app" onclick="gerarLegendasEstilos()">Criar 3 opções de legenda</button>
+                    <button class="btn-app btn-ghost-app" onclick="mostrarBancoHashtags()">Ver ideias de hashtags</button>
+                    <button class="btn-app btn-ghost-app" onclick="gerarCTA()">Criar chamada para comentários</button>
+                </div>
+                <p id="ferramenta-insta-resultado" class="module-generated-text module-tool-result"></p>
+            </section>
+
+            <section id="resultado-insta" class="module-output" style="display:none">
+                <div class="card-app"><b>Roteiro do vídeo</b><p id="roteiro-insta" class="module-generated-text"></p></div>
+                <div class="card-app"><b>Legenda da publicação</b><p id="legenda-insta" class="module-generated-text"></p></div>
+                <div class="card-app"><b>Hashtags</b><p id="hashtags-insta" class="module-generated-text"></p></div>
+                <div class="module-output-actions">
+                    <button class="btn-app btn-dark" onclick="copiarTexto('legenda-insta')">Copiar legenda</button>
+                    <button class="btn-app btn-dark" onclick="copiarTexto('hashtags-insta')">Copiar hashtags</button>
+                    <button class="btn-app btn-grad" onclick="salvarVideoAtual()">Salvar conteúdo</button>
+                </div>
+            </section>
         </div>
 
         <div id="tela-youtube" class="tela">
-            <h2 style="font-size:22px">▶️ YouTube — Modo Seguro</h2>
-            <div class="aviso-seguro">⚠️ É PROIBIDO gerar conteúdo igual em massa. Use IA só como ajuda e grave com sua
-                voz e opinião.</div>
-            <div class="card-app"><input id="tema-yt" placeholder="Ex: Testei fone barato por 7 dias"><label>Opinião
-                    pessoal — obrigatória</label><textarea id="yt-opiniao" rows="2"
-                    placeholder="Sua opinião real"></textarea><input id="canal-yt" placeholder="Link do seu canal">
-            </div>
-            <div class="card-app"><button class="btn-app btn-dark" onclick="gerarComIASeguroYT()">🤖 Gerar 1 roteiro com
-                    sua opinião</button><button class="btn-app btn-ghost-app" onclick="gerarTitulosYTSeguro()">✍️ 3
-                    ideias de título</button>
-                <p id="ferramenta-yt-resultado" style="white-space:pre-line;margin-top:12px;color:#ddd"></p>
-            </div>
-            <div id="resultado-yt-ia" style="display:none">
-                <div class="card-app"><b>🎬 Roteiro YouTube</b>
-                    <p id="roteiro-yt-ia" style="white-space:pre-line;color:#ddd"></p><label
-                        style="display:flex;gap:8px;font-size:13px"><input type="checkbox" id="check-humano"
-                            style="width:18px"> Eu vou gravar com minha voz e mudar com minhas palavras.</label><label
-                        style="display:flex;gap:8px;font-size:13px"><input type="checkbox" id="check-original"
-                            style="width:18px"> Tem minha opinião, não é cópia.</label><button class="btn-app btn-dark"
-                        onclick="copiarTexto('roteiro-yt-ia')">Copiar roteiro</button><button class="btn-app btn-grad"
-                        onclick="salvarVideoYTSeguro()">✅ Salvar depois de revisar</button>
+            <header class="module-intro">
+                <span class="module-kicker">CRIAÇÃO DE CONTEÚDO • YOUTUBE</span>
+                <h2>▶️ Roteiro para YouTube</h2>
+                <p>Organize suas ideias para criar vídeos originais, com sua voz, experiência e opinião.</p>
+            </header>
+
+            <div class="aviso-seguro">Importante: use o roteiro como ponto de partida. Revise, acrescente sua experiência e evite publicar vídeos repetitivos ou conteúdo que não represente sua opinião.</div>
+
+            <section class="card-app module-card">
+                <div class="module-card-heading">
+                    <span class="module-step">01</span>
+                    <div><b>Planeje seu vídeo</b><p>Informe o assunto e o que você tem a dizer sobre ele.</p></div>
                 </div>
-            </div>
+                <div class="module-fields">
+                    <div class="module-field module-field-wide">
+                        <label for="tema-yt">Tema ou título provisório</label>
+                        <input id="tema-yt" placeholder="Ex.: Testei um fone barato por 7 dias">
+                    </div>
+                    <div class="module-field module-field-wide">
+                        <label for="yt-opiniao">Sua opinião e experiência</label>
+                        <textarea id="yt-opiniao" rows="4" placeholder="Conte o que aconteceu, o que funcionou e o que você concluiu."></textarea>
+                        <small>Escreva pelo menos alguns detalhes. Sua experiência é a base do roteiro.</small>
+                    </div>
+                    <div class="module-field module-field-wide">
+                        <label for="canal-yt">Link do canal (opcional)</label>
+                        <input id="canal-yt" placeholder="https://youtube.com/@seucanal">
+                    </div>
+                </div>
+            </section>
+
+            <section class="card-app module-card module-actions">
+                <div class="module-card-heading">
+                    <span class="module-step">02</span>
+                    <div><b>Prepare seu conteúdo</b><p>Gere um roteiro ou receba ideias de títulos para o tema.</p></div>
+                </div>
+                <button class="btn-app btn-grad" onclick="gerarComIASeguroYT()">Gerar roteiro com IA →</button>
+                <button class="btn-app btn-ghost-app" onclick="gerarTitulosYTSeguro()">Sugerir 3 títulos</button>
+                <p id="ferramenta-yt-resultado" class="module-generated-text module-tool-result"></p>
+            </section>
+
+            <section id="resultado-yt-ia" class="module-output" style="display:none">
+                <div class="card-app">
+                    <div class="module-card-heading"><span class="module-step">03</span><div><b>Seu roteiro</b><p>Leia, adapte e confira antes de salvar.</p></div></div>
+                    <p id="roteiro-yt-ia" class="module-generated-text"></p>
+                    <div class="module-checklist">
+                        <label><input type="checkbox" id="check-humano"> Vou gravar com minha voz e adaptar o texto.</label>
+                        <label><input type="checkbox" id="check-original"> O roteiro contém minha opinião e é original.</label>
+                    </div>
+                    <div class="module-output-actions">
+                        <button class="btn-app btn-dark" onclick="copiarTexto('roteiro-yt-ia')">Copiar roteiro</button>
+                        <button class="btn-app btn-grad" onclick="salvarVideoYTSeguro()">Salvar após revisar</button>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <div id="tela-mikaia" class="tela">
