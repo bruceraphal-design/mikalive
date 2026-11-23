@@ -2882,8 +2882,62 @@ function salvarVideoYTSeguro() { var c1 = $("check-humano").checked; var c2 = $(
         }
         function gerarPacoteIA() { return gerarComIA('shop'); }
 
-        async function perguntarMikaIA() { var tema = ($("mika-tema").value || "").trim(); if (!tema) { mostrarErro("Escreve o tema primeiro."); return; } var plat = $("mika-plataforma").value; mikaUltimoTema = tema; mikaUltimaPlataforma = plat; $("mika-resposta").textContent = "✨ Mika IA pensando..."; try { var res = await fetch('/api/ia', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pergunta: "Você é a Mika IA, assistente de ROTEIRO. Plataforma: " + plat + ". Tema: " + tema + ". Crie roteiro original, gancho, opinião e CTA." }) }); var dados = await res.json(); if (!res.ok) throw new Error(dados.erro || 'Erro'); mikaUltimaResposta = dados.resposta; $("mika-resposta").textContent = dados.resposta; } catch (e) { $("mika-resposta").textContent = "Erro: " + e.message; } }
-        async function melhorarMika(acao) { if (!mikaUltimaResposta) { mostrarErro("Gera primeiro."); return; } $("mika-resposta").textContent = "✨ Melhorando: " + acao + "..."; try { var res = await fetch('/api/ia', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pergunta: "Reescreva deixando " + acao + ", tema: " + mikaUltimoTema + ". Texto: " + mikaUltimaResposta }) }); var dados = await res.json(); if (!res.ok) throw new Error(dados.erro || 'Erro'); mikaUltimaResposta = dados.resposta; $("mika-resposta").textContent = dados.resposta; } catch (e) { mostrarErro("Erro: " + e.message); } }
+        async function solicitarTextoMika(pergunta) {
+            var res = await fetch('/api/ia', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ pergunta: pergunta })
+            });
+            var corpo = await res.text();
+            var dados;
+            try { dados = JSON.parse(corpo); }
+            catch (erro) { throw new Error("O servidor retornou uma resposta inválida. Tente novamente."); }
+            if (!res.ok) throw new Error(dados.erro || ("Falha ao gerar conteúdo (HTTP " + res.status + ")."));
+            if (!dados || typeof dados.resposta !== 'string' || !dados.resposta.trim()) {
+                throw new Error("A IA respondeu sem enviar o roteiro. Tente novamente.");
+            }
+            return dados.resposta.trim();
+        }
+
+        async function perguntarMikaIA() {
+            var tema = ($("mika-tema").value || "").trim();
+            if (!tema) { mostrarErro("Escreva o tema ou produto primeiro."); return; }
+            var plat = $("mika-plataforma").value;
+            var botao = document.querySelector("#tela-mikaia .mika-create-action button");
+            if (botao && botao.disabled) return;
+            mikaUltimoTema = tema;
+            mikaUltimaPlataforma = plat;
+            $("mika-resposta").textContent = "✨ Mika IA está criando seu conteúdo...";
+            if (botao) { botao.disabled = true; botao.setAttribute("aria-busy", "true"); botao.textContent = "Criando conteúdo..."; }
+            try {
+                var pergunta = "Você é a Mika IA, assistente de criação de conteúdo. Plataforma: " + plat + ". Tema/produto: " + tema + ". Crie um roteiro original com título, gancho, desenvolvimento, benefício, opinião sem inventar experiência pessoal e chamada para ação. Responda em português do Brasil.";
+                mikaUltimaResposta = await solicitarTextoMika(pergunta);
+                $("mika-resposta").textContent = mikaUltimaResposta;
+            } catch (e) {
+                $("mika-resposta").textContent = "Não foi possível gerar o conteúdo. " + e.message;
+            } finally {
+                if (botao) { botao.disabled = false; botao.removeAttribute("aria-busy"); botao.textContent = "✨ Criar com Mika IA"; }
+            }
+        }
+
+        async function melhorarMika(acao) {
+            if (!mikaUltimaResposta) { mostrarErro("Gere um conteúdo primeiro."); return; }
+            var respostaAnterior = mikaUltimaResposta;
+            var botoes = document.querySelectorAll("#tela-mikaia .mika-adjust-grid button");
+            botoes.forEach(function (botao) { botao.disabled = true; });
+            $("mika-resposta").textContent = "✨ Ajustando o conteúdo: " + acao + "...";
+            try {
+                var pergunta = "Reescreva o conteúdo abaixo para ficar " + acao + ". Mantenha o tema " + mikaUltimoTema + ", preserve informações verdadeiras e não invente experiências pessoais. Texto original: " + respostaAnterior;
+                mikaUltimaResposta = await solicitarTextoMika(pergunta);
+                $("mika-resposta").textContent = mikaUltimaResposta;
+            } catch (e) {
+                mikaUltimaResposta = respostaAnterior;
+                $("mika-resposta").textContent = respostaAnterior;
+                mostrarErro("Não foi possível ajustar o conteúdo: " + e.message);
+            } finally {
+                botoes.forEach(function (botao) { botao.disabled = false; });
+            }
+        }
         function salvarMikaIAComoRoteiro() { if (!mikaUltimaResposta) { mostrarErro("Gera primeiro."); return; } var tipo = mikaUltimaPlataforma === 'insta' ? 'insta' : mikaUltimaPlataforma; DB.videos.push({ id: "vid_" + Date.now(), tipo: tipo, titulo: mikaUltimoTema.slice(0, 80), roteiro: mikaUltimaResposta, legenda: "", hashtags: "", criadoEm: new Date().toISOString(), favorito: false }); saveDB(); atualizarResumo(); alert("Salvo! ✅"); irPara('tela-conteudos'); }
         function atualizarResumo() { function set(id, val) { var el = $(id); if (el) el.innerText = val; } set("kpi-roteiros", DB.videos.length); set("kpi-produtos", DB.produtos.length); }
         function salvarCalendario() { var tema = ($("cal-tema").value || "").trim(); var plat = $("cal-plataforma").value; var data = $("cal-data").value; if (!tema || !data) { mostrarErro("Preencha tema e data."); return; } DB.calendario.push({ id: "cal_" + Date.now(), tema: tema, plataforma: plat, data: data, criadoEm: new Date().toISOString() }); saveDB(); $("cal-tema").value = ""; renderCalendario(); renderCalendarioHoje(); alert("Salvo! ✅"); }
