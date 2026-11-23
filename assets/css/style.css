@@ -1659,3 +1659,25 @@ button:disabled {
   #tela-conteudos .library-footer { align-items:flex-start; flex-direction:column; }
   #tela-conteudos .library-clear { width:100%; }
 }
+
+
+/* Calendário: criação de planejamento e lista da agenda */
+#tela-calendario .calendar-create-card { margin-top:14px; }
+#tela-calendario .calendar-fields { gap:15px; }
+#tela-calendario .calendar-fields input,
+#tela-calendario .calendar-fields select { min-height:47px; }
+#tela-calendario .calendar-save-action { margin-top:18px; padding-top:15px; border-top:1px solid rgba(148,163,184,.13); }
+#tela-calendario .calendar-save-action .btn-app { width:100%; min-height:49px; margin:0; }
+#tela-calendario .calendar-save-action p { margin:9px 0 0; color:#8998ad; font-size:11px; line-height:1.5; text-align:center; }
+#tela-calendario .calendar-list { margin-top:24px; }
+#tela-calendario .calendar-list .library-results-heading { align-items:end; padding:0 2px 13px; border-bottom:1px solid rgba(148,163,184,.13); }
+#tela-calendario .calendar-list .library-results-heading > div { display:flex; flex-direction:column; gap:4px; }
+#tela-calendario .calendar-list .library-results-heading .module-kicker { margin:0; font-size:9px; }
+#tela-calendario .calendar-list .library-results-heading b { color:#edf2fb; font-size:17px; }
+#tela-calendario #lista-calendario { padding-top:14px; }
+@media (max-width:600px) {
+  #tela-calendario .calendar-fields { grid-template-columns:1fr; }
+  #tela-calendario .calendar-fields .module-field-wide { grid-column:auto; }
+  #tela-calendario .calendar-list .library-results-heading { align-items:start; }
+  #tela-calendario .calendar-list .library-results-heading > span { max-width:125px; }
+}
